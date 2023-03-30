@@ -25,4 +25,9 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="GUI\" />
+    <Folder Include="Utility\" />
+  </ItemGroup>
+
 </Project>

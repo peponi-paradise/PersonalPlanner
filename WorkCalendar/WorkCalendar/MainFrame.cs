@@ -1,8 +1,7 @@
 ﻿using DevExpress.LookAndFeel;
-using DevExpress.XtraScheduler.iCalendar;
 using System;
-using System.IO;
 using System.Windows.Forms;
+using WorkCalendar.Data;
 
 namespace WorkCalendar
 {
@@ -11,30 +10,27 @@ namespace WorkCalendar
         public MainFrame()
         {
             InitializeComponent();
+            schedulerControl1.Start = DateTime.Now;
         }
 
-        private void ScheduleImportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private async void ScheduleImportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    iCalendarImporter calendarImporter = new iCalendarImporter(schedulerDataStorage1);
-                    calendarImporter.Import(fileDialog.FileName);
+                    await CalendarData.ReadCalendar(fileDialog.FileName, schedulerDataStorage1);
                 }
                 catch
                 {
                     MessageBox.Show("Could not import calendar file");
                     return;
                 }
-                var settings = Properties.Settings.Default;
-                settings.CalendarFilePath = fileDialog.FileName;
-                settings.Save();
             }
         }
 
-        private void ScheduleSaveButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private async void ScheduleSaveButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.OverwritePrompt = true;
@@ -44,87 +40,66 @@ namespace WorkCalendar
             {
                 try
                 {
-                    iCalendarExporter calendarExporter = new iCalendarExporter(schedulerDataStorage1);
-                    calendarExporter.Export(saveFileDialog.FileName);
+                    await CalendarData.WriteCalendar(saveFileDialog.FileName, schedulerDataStorage1);
                 }
                 catch
                 {
                     MessageBox.Show("Could not save calendar file");
                     return;
                 }
-                var settings = Properties.Settings.Default;
-                settings.CalendarFilePath = saveFileDialog.FileName;
-                settings.Save();
             }
         }
 
-        private void MemoImportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private async void MemoImportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
-            if (fileDialog.ShowDialog() == DialogResult.OK)
-            {
-                var text = File.ReadAllText(fileDialog.FileName);
-                memoEdit.Text = text;
-                var settings = Properties.Settings.Default;
-                settings.MemoFilePath = fileDialog.FileName;
-                settings.Save();
-            }
+            if (fileDialog.ShowDialog() == DialogResult.OK) memoEdit.Text = await MemoData.ReadMemo(fileDialog.FileName);
         }
 
-        private void MemoSaveButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private async void MemoSaveButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.OverwritePrompt = true;
             saveFileDialog.Filter = "Text file (*.txt)|*.txt";
             saveFileDialog.DefaultExt = "txt";
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                File.WriteAllText(saveFileDialog.FileName, memoEdit.Text);
-                var settings = Properties.Settings.Default;
-                settings.MemoFilePath = saveFileDialog.FileName;
-                settings.Save();
-            }
+            if (saveFileDialog.ShowDialog() == DialogResult.OK) await MemoData.WriteMemo(saveFileDialog.FileName, memoEdit.Text);
         }
 
-        private void MainFrame_FormClosing(object sender, FormClosingEventArgs e)
+        private async void MainFrame_FormClosing(object sender, FormClosingEventArgs e)
         {
+            await SkinData.SaveAllSkinData();
             var settings = Properties.Settings.Default;
-            settings.SkinName = UserLookAndFeel.Default.SkinName;
-            settings.Palette = UserLookAndFeel.Default.ActiveSvgPaletteName;
-            settings.Save();
-            if (!string.IsNullOrEmpty(settings.MemoFilePath)) File.WriteAllText(settings.MemoFilePath, memoEdit.Text);
-            if (!string.IsNullOrEmpty(settings.CalendarFilePath))
-            {
-                iCalendarExporter calendarExporter = new iCalendarExporter(schedulerDataStorage1);
-                calendarExporter.Export(settings.CalendarFilePath);
-            }
+            await MemoData.WriteMemo(settings.MemoFilePath, memoEdit.Text);
+            await CalendarData.WriteCalendar(settings.CalendarFilePath, schedulerDataStorage1);
         }
 
-        protected override void OnShown(EventArgs e)
+        protected override async void OnShown(EventArgs e)
         {
             base.OnShown(e);
             var settings = Properties.Settings.Default;
             if (!string.IsNullOrEmpty(settings.SkinName))
             {
-                if (!string.IsNullOrEmpty(settings.Palette))
-                    UserLookAndFeel.Default.SetSkinStyle(settings.SkinName, settings.Palette);
+                if (!string.IsNullOrEmpty(settings.Palette)) UserLookAndFeel.Default.SetSkinStyle(settings.SkinName, settings.Palette);
                 else UserLookAndFeel.Default.SetSkinStyle(settings.SkinName, "DefaultSkinPalette");
             }
+
+            // Import Memo
             try
             {
-                if (!string.IsNullOrEmpty(settings.MemoFilePath)) memoEdit.Text = File.ReadAllText(settings.MemoFilePath);
+                // First execute check
+                if (string.IsNullOrEmpty(settings.MemoFilePath)) settings.MemoFilePath = $@"{Environment.CurrentDirectory}\Memo.txt";
+                else memoEdit.Text = await MemoData.ReadMemo(settings.MemoFilePath);
             }
             catch
             {
                 MessageBox.Show("Could not import memo file");
             }
+
+            // Import Calendar
             try
             {
-                if (!string.IsNullOrEmpty(settings.CalendarFilePath))
-                {
-                    iCalendarImporter calendarImporter = new iCalendarImporter(schedulerDataStorage1);
-                    calendarImporter.Import(settings.CalendarFilePath);
-                }
+                if (string.IsNullOrEmpty(settings.CalendarFilePath)) settings.CalendarFilePath = $@"{Environment.CurrentDirectory}\Calendar.ics";
+                else await CalendarData.ReadCalendar(settings.CalendarFilePath, schedulerDataStorage1);
             }
             catch
             {

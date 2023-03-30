@@ -29,16 +29,14 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrame));
-            DevExpress.XtraScheduler.TimeRuler timeRuler4 = new DevExpress.XtraScheduler.TimeRuler();
-            DevExpress.XtraScheduler.TimeRuler timeRuler5 = new DevExpress.XtraScheduler.TimeRuler();
-            DevExpress.XtraScheduler.TimeRuler timeRuler6 = new DevExpress.XtraScheduler.TimeRuler();
+            DevExpress.XtraScheduler.TimeRuler timeRuler1 = new DevExpress.XtraScheduler.TimeRuler();
+            DevExpress.XtraScheduler.TimeRuler timeRuler2 = new DevExpress.XtraScheduler.TimeRuler();
+            DevExpress.XtraScheduler.TimeRuler timeRuler3 = new DevExpress.XtraScheduler.TimeRuler();
             ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
             skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             printPreviewItem1 = new DevExpress.XtraScheduler.UI.PrintPreviewItem();
-            printItem1 = new DevExpress.XtraScheduler.UI.PrintItem();
             printPageSetupItem1 = new DevExpress.XtraScheduler.UI.PrintPageSetupItem();
             newAppointmentItem1 = new DevExpress.XtraScheduler.UI.NewAppointmentItem();
             newRecurringAppointmentItem1 = new DevExpress.XtraScheduler.UI.NewRecurringAppointmentItem();
@@ -53,7 +51,6 @@
             switchToFullWeekViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToFullWeekViewItem();
             switchToMonthViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToMonthViewItem();
             switchToTimelineViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToTimelineViewItem();
-            switchToGanttViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToGanttViewItem();
             switchToAgendaViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToAgendaViewItem();
             switchToYearViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToYearViewItem();
             switchTimeScalesItem1 = new DevExpress.XtraScheduler.UI.SwitchTimeScalesItem();
@@ -82,16 +79,14 @@
             skinPaletteDropDownButtonItem1 = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
             FontSelect = new DevExpress.XtraBars.BarEditItem();
             repositoryItemFontEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemFontEdit();
+            ScheduleImportButton = new DevExpress.XtraBars.BarButtonItem();
+            ScheduleSaveButton = new DevExpress.XtraBars.BarButtonItem();
             calendarToolsRibbonPageCategory1 = new DevExpress.XtraScheduler.UI.CalendarToolsRibbonPageCategory();
             schedulerControl1 = new DevExpress.XtraScheduler.SchedulerControl();
             schedulerDataStorage1 = new DevExpress.XtraScheduler.SchedulerDataStorage(components);
             appointmentRibbonPage1 = new DevExpress.XtraScheduler.UI.AppointmentRibbonPage();
             actionsRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.ActionsRibbonPageGroup();
             optionsRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.OptionsRibbonPageGroup();
-            fileRibbonPage1 = new DevExpress.XtraScheduler.UI.FileRibbonPage();
-            ScheduleFileRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.CommonRibbonPageGroup();
-            SchedulePrintRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.PrintRibbonPageGroup();
-            MemoFileRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             homeRibbonPage1 = new DevExpress.XtraScheduler.UI.HomeRibbonPage();
             appointmentRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.AppointmentRibbonPageGroup();
             navigatorRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.NavigatorRibbonPageGroup();
@@ -100,6 +95,10 @@
             activeViewRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.ActiveViewRibbonPageGroup();
             timeScaleRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.TimeScaleRibbonPageGroup();
             layoutRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.LayoutRibbonPageGroup();
+            fileRibbonPage1 = new DevExpress.XtraScheduler.UI.FileRibbonPage();
+            MemoFileRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ScheduleFileRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.CommonRibbonPageGroup();
+            SchedulePrintRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.PrintRibbonPageGroup();
             ribbonPageSkin = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroupSkins = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroupSkinColors = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -108,8 +107,6 @@
             splitContainerControlCalendar = new DevExpress.XtraEditors.SplitContainerControl();
             dateNavigator1 = new DevExpress.XtraScheduler.DateNavigator();
             schedulerBarController1 = new DevExpress.XtraScheduler.UI.SchedulerBarController(components);
-            ScheduleImportButton = new DevExpress.XtraBars.BarButtonItem();
-            ScheduleSaveButton = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemSpinEdit1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemDuration1).BeginInit();
@@ -138,14 +135,14 @@
             // 
             ribbonControl1.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 32, 35, 32);
             ribbonControl1.ExpandCollapseItem.Id = 0;
-            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, ribbonControl1.SearchEditItem, skinPaletteRibbonGalleryBarItem1, skinRibbonGalleryBarItem1, printPreviewItem1, printItem1, printPageSetupItem1, newAppointmentItem1, newRecurringAppointmentItem1, navigateViewBackwardItem1, navigateViewForwardItem1, gotoTodayItem1, viewZoomInItem1, viewZoomOutItem1, switchToDayViewItem1, switchToWorkWeekViewItem1, switchToWeekViewItem1, switchToFullWeekViewItem1, switchToMonthViewItem1, switchToTimelineViewItem1, switchToGanttViewItem1, switchToAgendaViewItem1, switchToYearViewItem1, switchTimeScalesItem1, changeScaleWidthItem1, switchTimeScalesCaptionItem1, switchCompressWeekendItem1, switchShowWorkTimeOnlyItem1, switchCellsAutoHeightItem1, changeSnapToCellsuiItem1, editAppointmentQueryItem1, editOccurrenceuiCommandItem1, editSeriesuiCommandItem1, deleteAppointmentsItem1, deleteOccurrenceItem1, deleteSeriesItem1, splitAppointmentItem1, changeAppointmentStatusItem1, changeAppointmentLabelItem1, toggleRecurrenceItem1, changeAppointmentReminderItem1, MemoImportButton, MemoSaveButton, skinDropDownButtonItem1, skinPaletteDropDownButtonItem1, FontSelect, ScheduleImportButton, ScheduleSaveButton });
+            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, ribbonControl1.SearchEditItem, skinPaletteRibbonGalleryBarItem1, skinRibbonGalleryBarItem1, printPreviewItem1, printPageSetupItem1, newAppointmentItem1, newRecurringAppointmentItem1, navigateViewBackwardItem1, navigateViewForwardItem1, gotoTodayItem1, viewZoomInItem1, viewZoomOutItem1, switchToDayViewItem1, switchToWorkWeekViewItem1, switchToWeekViewItem1, switchToFullWeekViewItem1, switchToMonthViewItem1, switchToTimelineViewItem1, switchToAgendaViewItem1, switchToYearViewItem1, switchTimeScalesItem1, changeScaleWidthItem1, switchTimeScalesCaptionItem1, switchCompressWeekendItem1, switchShowWorkTimeOnlyItem1, switchCellsAutoHeightItem1, changeSnapToCellsuiItem1, editAppointmentQueryItem1, editOccurrenceuiCommandItem1, editSeriesuiCommandItem1, deleteAppointmentsItem1, deleteOccurrenceItem1, deleteSeriesItem1, splitAppointmentItem1, changeAppointmentStatusItem1, changeAppointmentLabelItem1, toggleRecurrenceItem1, changeAppointmentReminderItem1, MemoImportButton, MemoSaveButton, skinDropDownButtonItem1, skinPaletteDropDownButtonItem1, FontSelect, ScheduleImportButton, ScheduleSaveButton });
             ribbonControl1.Location = new System.Drawing.Point(0, 0);
             ribbonControl1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             ribbonControl1.MaxItemId = 57;
             ribbonControl1.Name = "ribbonControl1";
             ribbonControl1.OptionsMenuMinWidth = 385;
             ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] { calendarToolsRibbonPageCategory1 });
-            ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { fileRibbonPage1, homeRibbonPage1, viewRibbonPage1, ribbonPageSkin });
+            ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { homeRibbonPage1, viewRibbonPage1, fileRibbonPage1, ribbonPageSkin });
             ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemSpinEdit1, repositoryItemDuration1, repositoryItemFontEdit1 });
             ribbonControl1.Size = new System.Drawing.Size(1022, 160);
             // 
@@ -165,11 +162,6 @@
             // 
             printPreviewItem1.Id = 6;
             printPreviewItem1.Name = "printPreviewItem1";
-            // 
-            // printItem1
-            // 
-            printItem1.Id = 7;
-            printItem1.Name = "printItem1";
             // 
             // printPageSetupItem1
             // 
@@ -240,11 +232,6 @@
             // 
             switchToTimelineViewItem1.Id = 21;
             switchToTimelineViewItem1.Name = "switchToTimelineViewItem1";
-            // 
-            // switchToGanttViewItem1
-            // 
-            switchToGanttViewItem1.Id = 22;
-            switchToGanttViewItem1.Name = "switchToGanttViewItem1";
             // 
             // switchToAgendaViewItem1
             // 
@@ -416,6 +403,23 @@
             repositoryItemFontEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             repositoryItemFontEdit1.Name = "repositoryItemFontEdit1";
             // 
+            // ScheduleImportButton
+            // 
+            ScheduleImportButton.Caption = "Import";
+            ScheduleImportButton.Id = 55;
+            ScheduleImportButton.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ScheduleImportButton.ImageOptions.SvgImage");
+            ScheduleImportButton.Name = "ScheduleImportButton";
+            ScheduleImportButton.ItemClick += ScheduleImportButton_ItemClick;
+            // 
+            // ScheduleSaveButton
+            // 
+            ScheduleSaveButton.Caption = "Save";
+            ScheduleSaveButton.Id = 56;
+            ScheduleSaveButton.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ScheduleSaveButton.ImageOptions.SvgImage");
+            ScheduleSaveButton.Name = "ScheduleSaveButton";
+            ScheduleSaveButton.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            ScheduleSaveButton.ItemClick += ScheduleSaveButton_ItemClick;
+            // 
             // calendarToolsRibbonPageCategory1
             // 
             calendarToolsRibbonPageCategory1.Control = schedulerControl1;
@@ -434,11 +438,16 @@
             schedulerControl1.Start = new System.DateTime(2023, 3, 29, 0, 0, 0, 0);
             schedulerControl1.TabIndex = 0;
             schedulerControl1.Text = "schedulerControl1";
-            schedulerControl1.Views.DayView.TimeRulers.Add(timeRuler4);
+            schedulerControl1.Views.DayView.TimeRulers.Add(timeRuler1);
+            schedulerControl1.Views.DayView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             schedulerControl1.Views.FullWeekView.Enabled = true;
-            schedulerControl1.Views.FullWeekView.TimeRulers.Add(timeRuler5);
-            schedulerControl1.Views.WeekView.Enabled = false;
-            schedulerControl1.Views.WorkWeekView.TimeRulers.Add(timeRuler6);
+            schedulerControl1.Views.FullWeekView.TimeRulers.Add(timeRuler2);
+            schedulerControl1.Views.FullWeekView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
+            schedulerControl1.Views.GanttView.Enabled = false;
+            schedulerControl1.Views.GanttView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
+            schedulerControl1.Views.TimelineView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
+            schedulerControl1.Views.WorkWeekView.TimeRulers.Add(timeRuler3);
+            schedulerControl1.Views.WorkWeekView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             schedulerControl1.Views.YearView.UseOptimizedScrolling = false;
             // 
             // schedulerDataStorage1
@@ -485,35 +494,6 @@
             optionsRibbonPageGroup1.ItemLinks.Add(changeAppointmentReminderItem1);
             optionsRibbonPageGroup1.Name = "optionsRibbonPageGroup1";
             // 
-            // fileRibbonPage1
-            // 
-            fileRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ScheduleFileRibbonPageGroup1, SchedulePrintRibbonPageGroup1, MemoFileRibbonPageGroup });
-            fileRibbonPage1.Name = "fileRibbonPage1";
-            // 
-            // ScheduleFileRibbonPageGroup1
-            // 
-            ScheduleFileRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            ScheduleFileRibbonPageGroup1.ItemLinks.Add(ScheduleImportButton);
-            ScheduleFileRibbonPageGroup1.ItemLinks.Add(ScheduleSaveButton);
-            ScheduleFileRibbonPageGroup1.Name = "ScheduleFileRibbonPageGroup1";
-            ScheduleFileRibbonPageGroup1.Text = "Schedule";
-            // 
-            // SchedulePrintRibbonPageGroup1
-            // 
-            SchedulePrintRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            SchedulePrintRibbonPageGroup1.ItemLinks.Add(printPreviewItem1);
-            SchedulePrintRibbonPageGroup1.ItemLinks.Add(printItem1);
-            SchedulePrintRibbonPageGroup1.ItemLinks.Add(printPageSetupItem1);
-            SchedulePrintRibbonPageGroup1.Name = "SchedulePrintRibbonPageGroup1";
-            SchedulePrintRibbonPageGroup1.Text = "Schedule";
-            // 
-            // MemoFileRibbonPageGroup
-            // 
-            MemoFileRibbonPageGroup.ItemLinks.Add(MemoImportButton);
-            MemoFileRibbonPageGroup.ItemLinks.Add(MemoSaveButton);
-            MemoFileRibbonPageGroup.Name = "MemoFileRibbonPageGroup";
-            MemoFileRibbonPageGroup.Text = "Memo";
-            // 
             // homeRibbonPage1
             // 
             homeRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { appointmentRibbonPageGroup1, navigatorRibbonPageGroup1, arrangeRibbonPageGroup1 });
@@ -545,7 +525,6 @@
             arrangeRibbonPageGroup1.ItemLinks.Add(switchToFullWeekViewItem1);
             arrangeRibbonPageGroup1.ItemLinks.Add(switchToMonthViewItem1);
             arrangeRibbonPageGroup1.ItemLinks.Add(switchToTimelineViewItem1);
-            arrangeRibbonPageGroup1.ItemLinks.Add(switchToGanttViewItem1);
             arrangeRibbonPageGroup1.ItemLinks.Add(switchToAgendaViewItem1);
             arrangeRibbonPageGroup1.ItemLinks.Add(switchToYearViewItem1);
             arrangeRibbonPageGroup1.Name = "arrangeRibbonPageGroup1";
@@ -564,7 +543,6 @@
             activeViewRibbonPageGroup1.ItemLinks.Add(switchToFullWeekViewItem1);
             activeViewRibbonPageGroup1.ItemLinks.Add(switchToMonthViewItem1);
             activeViewRibbonPageGroup1.ItemLinks.Add(switchToTimelineViewItem1);
-            activeViewRibbonPageGroup1.ItemLinks.Add(switchToGanttViewItem1);
             activeViewRibbonPageGroup1.ItemLinks.Add(switchToAgendaViewItem1);
             activeViewRibbonPageGroup1.ItemLinks.Add(switchToYearViewItem1);
             activeViewRibbonPageGroup1.Name = "activeViewRibbonPageGroup1";
@@ -585,6 +563,34 @@
             layoutRibbonPageGroup1.ItemLinks.Add(switchCellsAutoHeightItem1);
             layoutRibbonPageGroup1.ItemLinks.Add(changeSnapToCellsuiItem1);
             layoutRibbonPageGroup1.Name = "layoutRibbonPageGroup1";
+            // 
+            // fileRibbonPage1
+            // 
+            fileRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { MemoFileRibbonPageGroup, ScheduleFileRibbonPageGroup1, SchedulePrintRibbonPageGroup1 });
+            fileRibbonPage1.Name = "fileRibbonPage1";
+            // 
+            // MemoFileRibbonPageGroup
+            // 
+            MemoFileRibbonPageGroup.ItemLinks.Add(MemoImportButton);
+            MemoFileRibbonPageGroup.ItemLinks.Add(MemoSaveButton);
+            MemoFileRibbonPageGroup.Name = "MemoFileRibbonPageGroup";
+            MemoFileRibbonPageGroup.Text = "Memo";
+            // 
+            // ScheduleFileRibbonPageGroup1
+            // 
+            ScheduleFileRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            ScheduleFileRibbonPageGroup1.ItemLinks.Add(ScheduleImportButton);
+            ScheduleFileRibbonPageGroup1.ItemLinks.Add(ScheduleSaveButton);
+            ScheduleFileRibbonPageGroup1.Name = "ScheduleFileRibbonPageGroup1";
+            ScheduleFileRibbonPageGroup1.Text = "Schedule";
+            // 
+            // SchedulePrintRibbonPageGroup1
+            // 
+            SchedulePrintRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            SchedulePrintRibbonPageGroup1.ItemLinks.Add(printPreviewItem1);
+            SchedulePrintRibbonPageGroup1.ItemLinks.Add(printPageSetupItem1);
+            SchedulePrintRibbonPageGroup1.Name = "SchedulePrintRibbonPageGroup1";
+            SchedulePrintRibbonPageGroup1.Text = "Schedule";
             // 
             // ribbonPageSkin
             // 
@@ -662,7 +668,9 @@
             dateNavigator1.CalendarAppearance.DayCellSpecial.FontStyleDelta = System.Drawing.FontStyle.Bold;
             dateNavigator1.CalendarAppearance.DayCellSpecial.Options.UseFont = true;
             dateNavigator1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            dateNavigator1.DateTime = new System.DateTime(2023, 3, 29, 0, 0, 0, 0);
             dateNavigator1.Dock = System.Windows.Forms.DockStyle.Fill;
+            dateNavigator1.EditValue = new System.DateTime(2023, 3, 29, 0, 0, 0, 0);
             dateNavigator1.FirstDayOfWeek = System.DayOfWeek.Sunday;
             dateNavigator1.Location = new System.Drawing.Point(0, 0);
             dateNavigator1.Name = "dateNavigator1";
@@ -673,7 +681,6 @@
             // schedulerBarController1
             // 
             schedulerBarController1.BarItems.Add(printPreviewItem1);
-            schedulerBarController1.BarItems.Add(printItem1);
             schedulerBarController1.BarItems.Add(printPageSetupItem1);
             schedulerBarController1.BarItems.Add(newAppointmentItem1);
             schedulerBarController1.BarItems.Add(newRecurringAppointmentItem1);
@@ -688,7 +695,6 @@
             schedulerBarController1.BarItems.Add(switchToFullWeekViewItem1);
             schedulerBarController1.BarItems.Add(switchToMonthViewItem1);
             schedulerBarController1.BarItems.Add(switchToTimelineViewItem1);
-            schedulerBarController1.BarItems.Add(switchToGanttViewItem1);
             schedulerBarController1.BarItems.Add(switchToAgendaViewItem1);
             schedulerBarController1.BarItems.Add(switchToYearViewItem1);
             schedulerBarController1.BarItems.Add(switchTimeScalesItem1);
@@ -710,23 +716,6 @@
             schedulerBarController1.BarItems.Add(toggleRecurrenceItem1);
             schedulerBarController1.BarItems.Add(changeAppointmentReminderItem1);
             schedulerBarController1.Control = schedulerControl1;
-            // 
-            // ScheduleImportButton
-            // 
-            ScheduleImportButton.Caption = "Import";
-            ScheduleImportButton.Id = 55;
-            ScheduleImportButton.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem1.ImageOptions.SvgImage");
-            ScheduleImportButton.Name = "ScheduleImportButton";
-            ScheduleImportButton.ItemClick += ScheduleImportButton_ItemClick;
-            // 
-            // ScheduleSaveButton
-            // 
-            ScheduleSaveButton.Caption = "Save";
-            ScheduleSaveButton.Id = 56;
-            ScheduleSaveButton.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem1.ImageOptions.SvgImage1");
-            ScheduleSaveButton.Name = "ScheduleSaveButton";
-            ScheduleSaveButton.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            ScheduleSaveButton.ItemClick += ScheduleSaveButton_ItemClick;
             // 
             // MainFrame
             // 
@@ -777,7 +766,6 @@
         private DevExpress.XtraScheduler.SchedulerDataStorage schedulerDataStorage1;
         private DevExpress.XtraScheduler.DateNavigator dateNavigator1;
         private DevExpress.XtraScheduler.UI.PrintPreviewItem printPreviewItem1;
-        private DevExpress.XtraScheduler.UI.PrintItem printItem1;
         private DevExpress.XtraScheduler.UI.PrintPageSetupItem printPageSetupItem1;
         private DevExpress.XtraScheduler.UI.NewAppointmentItem newAppointmentItem1;
         private DevExpress.XtraScheduler.UI.NewRecurringAppointmentItem newRecurringAppointmentItem1;
@@ -792,7 +780,6 @@
         private DevExpress.XtraScheduler.UI.SwitchToFullWeekViewItem switchToFullWeekViewItem1;
         private DevExpress.XtraScheduler.UI.SwitchToMonthViewItem switchToMonthViewItem1;
         private DevExpress.XtraScheduler.UI.SwitchToTimelineViewItem switchToTimelineViewItem1;
-        private DevExpress.XtraScheduler.UI.SwitchToGanttViewItem switchToGanttViewItem1;
         private DevExpress.XtraScheduler.UI.SwitchToAgendaViewItem switchToAgendaViewItem1;
         private DevExpress.XtraScheduler.UI.SwitchToYearViewItem switchToYearViewItem1;
         private DevExpress.XtraScheduler.UI.SwitchTimeScalesItem switchTimeScalesItem1;
