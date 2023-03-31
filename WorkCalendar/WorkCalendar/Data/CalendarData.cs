@@ -6,25 +6,33 @@ namespace WorkCalendar.Data
 {
     public static class CalendarData
     {
-        public static async Task ReadCalendar(string filePath, SchedulerDataStorage dataStorage)
+        public static void ReadCalendar(string filePath, SchedulerDataStorage dataStorage)
+        {
+            iCalendarImporter calendarImporter = new iCalendarImporter(dataStorage);
+            calendarImporter.Import(filePath);
+        }
+
+        public static async Task ReadCalendarAsync(string filePath, SchedulerDataStorage dataStorage)
         {
             await Task.Run(() =>
             {
-                iCalendarImporter calendarImporter = new iCalendarImporter(dataStorage);
-                calendarImporter.Import(filePath);
+                ReadCalendar(filePath, dataStorage);
             });
         }
 
-        public static async Task WriteCalendar(string filePath, SchedulerDataStorage dataStorage)
+        public static void WriteCalendar(string filePath, SchedulerDataStorage dataStorage)
+        {
+            iCalendarExporter calendarExporter = new iCalendarExporter(dataStorage);
+            calendarExporter.Export(filePath);
+        }
+
+        public static async Task WriteCalendarAsync(string filePath, SchedulerDataStorage dataStorage)
         {
             await Task.Run(() =>
             {
-                iCalendarExporter calendarExporter = new iCalendarExporter(dataStorage);
-                calendarExporter.Export(filePath);
+                WriteCalendar(filePath, dataStorage);
             });
         }
-
-        public static async Task SetCalendarDataPath(string filePath) => await Task.Run(() => ChangeCalendarDataPath(filePath)).ConfigureAwait(false);
 
         private static void ChangeCalendarDataPath(string filePath)
         {

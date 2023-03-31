@@ -7,10 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DevExpress.Win.Design" Version="22.2.4.0" />
+    <None Remove="Calendar.ics" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Calendar.ics">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Dev.Test\StatusTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Dev.Test\LabelTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
@@ -27,7 +39,11 @@
 
   <ItemGroup>
     <Folder Include="GUI\" />
-    <Folder Include="Utility\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DevExpress.Win.Design" Version="22.2.4" />
+    <PackageReference Include="YamlDotNet" Version="13.0.2" />
   </ItemGroup>
 
 </Project>

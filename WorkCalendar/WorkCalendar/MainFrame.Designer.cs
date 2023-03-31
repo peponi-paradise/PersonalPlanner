@@ -99,9 +99,10 @@
             MemoFileRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ScheduleFileRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.CommonRibbonPageGroup();
             SchedulePrintRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.PrintRibbonPageGroup();
-            ribbonPageSkin = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            ribbonPageSettings = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroupSkins = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroupSkinColors = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             splitContainerControlMain = new DevExpress.XtraEditors.SplitContainerControl();
             memoEdit = new DevExpress.XtraEditors.MemoEdit();
             splitContainerControlCalendar = new DevExpress.XtraEditors.SplitContainerControl();
@@ -142,7 +143,7 @@
             ribbonControl1.Name = "ribbonControl1";
             ribbonControl1.OptionsMenuMinWidth = 385;
             ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] { calendarToolsRibbonPageCategory1 });
-            ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { homeRibbonPage1, viewRibbonPage1, fileRibbonPage1, ribbonPageSkin });
+            ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { homeRibbonPage1, viewRibbonPage1, fileRibbonPage1, ribbonPageSettings });
             ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemSpinEdit1, repositoryItemDuration1, repositoryItemFontEdit1 });
             ribbonControl1.Size = new System.Drawing.Size(1022, 160);
             // 
@@ -430,6 +431,9 @@
             // schedulerControl1
             // 
             schedulerControl1.DataStorage = schedulerDataStorage1;
+            schedulerControl1.DateNavigationBar.CalendarButton.Show = true;
+            schedulerControl1.DateNavigationBar.ShowTodayButton = true;
+            schedulerControl1.DateNavigationBar.ShowViewSelectorButton = true;
             schedulerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             schedulerControl1.Location = new System.Drawing.Point(0, 0);
             schedulerControl1.MenuManager = ribbonControl1;
@@ -592,11 +596,11 @@
             SchedulePrintRibbonPageGroup1.Name = "SchedulePrintRibbonPageGroup1";
             SchedulePrintRibbonPageGroup1.Text = "Schedule";
             // 
-            // ribbonPageSkin
+            // ribbonPageSettings
             // 
-            ribbonPageSkin.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroupSkins, ribbonPageGroupSkinColors });
-            ribbonPageSkin.Name = "ribbonPageSkin";
-            ribbonPageSkin.Text = "Skins";
+            ribbonPageSettings.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroupSkins, ribbonPageGroupSkinColors, ribbonPageGroup1 });
+            ribbonPageSettings.Name = "ribbonPageSettings";
+            ribbonPageSettings.Text = "Setting";
             // 
             // ribbonPageGroupSkins
             // 
@@ -611,6 +615,11 @@
             ribbonPageGroupSkinColors.ItemLinks.Add(skinPaletteRibbonGalleryBarItem1);
             ribbonPageGroupSkinColors.Name = "ribbonPageGroupSkinColors";
             ribbonPageGroupSkinColors.Text = "SkinColors";
+            // 
+            // ribbonPageGroup1
+            // 
+            ribbonPageGroup1.Name = "ribbonPageGroup1";
+            ribbonPageGroup1.Text = "ribbonPageGroup1";
             // 
             // splitContainerControlMain
             // 
@@ -820,7 +829,7 @@
         private DevExpress.XtraScheduler.UI.SchedulerBarController schedulerBarController1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupSkinColors;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupSkins;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageSkin;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageSettings;
         private DevExpress.XtraEditors.MemoEdit memoEdit;
         private DevExpress.XtraBars.BarButtonItem MemoImportButton;
         private DevExpress.XtraBars.BarButtonItem MemoSaveButton;
@@ -831,6 +840,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemFontEdit repositoryItemFontEdit1;
         private DevExpress.XtraBars.BarButtonItem ScheduleImportButton;
         private DevExpress.XtraBars.BarButtonItem ScheduleSaveButton;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
     }
 }
 

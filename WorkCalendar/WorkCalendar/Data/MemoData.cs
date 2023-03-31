@@ -5,11 +5,13 @@ namespace WorkCalendar.Data
 {
     public static class MemoData
     {
-        public static async Task<string> ReadMemo(string filePath) => await File.ReadAllTextAsync(filePath).ConfigureAwait(false);
+        public static string ReadMemo(string filePath) => File.ReadAllText(filePath);
 
-        public static async Task WriteMemo(string filePath, string text) => await File.WriteAllTextAsync(filePath, text).ConfigureAwait(false);
+        public static async Task<string> ReadMemoAsync(string filePath) => await File.ReadAllTextAsync(filePath).ConfigureAwait(false);
 
-        public static async Task SetMemoDataPath(string filePath) => await Task.Run(() => ChangeMemoDataPath(filePath)).ConfigureAwait(false);
+        public static void WriteMemo(string filePath, string text) => File.WriteAllText(filePath, text);
+
+        public static async Task WriteMemoAsync(string filePath, string text) => await File.WriteAllTextAsync(filePath, text).ConfigureAwait(false);
 
         private static void ChangeMemoDataPath(string filePath)
         {
