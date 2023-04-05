@@ -1,4 +1,4 @@
-﻿namespace WorkCalendar.GUI
+﻿namespace WorkCalendar.Dev.Test
 {
     partial class StatusTest
     {

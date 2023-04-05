@@ -8,6 +8,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
 using WorkCalendar.Data;
+using WorkCalendar.Dev.Test;
 using WorkCalendar.GUI;
 using WorkCalendar.Parser.YAML;
 
@@ -142,14 +143,14 @@ namespace WorkCalendar
             //labelTest.SetDataSources(schedulerControl1.DataStorage.Appointments.Labels);
             //labelTest.ShowDialog();
 
-            //var data = schedulerControl1.DataStorage.Appointments.Statuses;
-            //var a = data.CreateNewStatus(1, "a", "a");
-            //var brush = new HatchBrush(HatchStyle.Horizontal, Color.Red);
-            //a.SetBrush(brush);
+            var data = schedulerControl1.DataStorage.Appointments.Statuses;
+            var a = data.CreateNewStatus(1, "a", "a");
+            var brush = new HatchBrush(HatchStyle.Horizontal, Color.Red);
+            a.SetBrush(brush);
 
-            //LabelTest statusTest = new LabelTest();
-            //statusTest.SetDataSources(schedulerControl1.DataStorage.Appointments.Statuses);
-            //statusTest.ShowDialog();
+            StatusTest statusTest = new();
+            statusTest.SetDataSources(schedulerControl1.DataStorage.Appointments.Statuses);
+            statusTest.ShowDialog();
         }
     }
 

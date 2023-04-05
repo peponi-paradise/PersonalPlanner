@@ -3,6 +3,7 @@ using DevExpress.Utils.Filtering.Internal;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.CustomEditor;
 using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,30 +14,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WorkCalendar.GUI
+namespace WorkCalendar.Dev.Test
 {
     public partial class StatusTest : Form
     {
-        private RepositoryItemColorPickEdit ColorPickEdit;
-
         public StatusTest()
         {
             InitializeComponent();
-            ColorPickEdit = new RepositoryItemColorPickEdit();
-            ColorPickEdit.StoreColorAsInteger = true;
-            gridControl1.DataSourceChanged += GridControl1_DataSourceChanged;
-        }
-
-        private void GridControl1_DataSourceChanged(object sender, EventArgs e)
-        {
-            if (!gridControl1.RepositoryItems.Contains(ColorPickEdit))
-            {
-                gridControl1.RepositoryItems.Add(ColorPickEdit);
-                ColorPickEdit.AutoHeight = false;
-                ColorPickEdit.AutomaticColor = Color.Black;
-                ColorPickEdit.Name = "Color Picker";
-            }
-            if (gridView1.Columns.ColumnByFieldName("Color") != null) gridView1.Columns["Color"].ColumnEdit = ColorPickEdit;
+            gridView1.OptionsBehavior.EditingMode = GridEditingMode.EditForm;
+            gridView1.OptionsEditForm.CustomEditFormLayout = new StatusEditTest();
         }
 
         public void SetDataSources(object source) => gridControl1.DataSource = source;

@@ -31,211 +31,218 @@
             DevExpress.XtraEditors.Controls.ImageListBoxItemImageOptions imageListBoxItemImageOptions1 = new DevExpress.XtraEditors.Controls.ImageListBoxItemImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatusEditTest));
             DevExpress.XtraEditors.Controls.ImageListBoxItemImageOptions imageListBoxItemImageOptions2 = new DevExpress.XtraEditors.Controls.ImageListBoxItemImageOptions();
-            MainPanel = new System.Windows.Forms.TableLayoutPanel();
-            IdLabel = new System.Windows.Forms.Label();
-            IDEdit = new DevExpress.XtraEditors.TextEdit();
-            DisplayNameLabel = new System.Windows.Forms.Label();
-            DisplayNameEdit = new DevExpress.XtraEditors.TextEdit();
-            PaintStyleLabel = new System.Windows.Forms.Label();
-            PaintStyleList = new DevExpress.XtraEditors.ImageListBoxControl();
-            HatchStyleLabel = new System.Windows.Forms.Label();
-            listBoxControl1 = new DevExpress.XtraEditors.ListBoxControl();
-            ColorPick = new DevExpress.XtraEditors.ColorPickEdit();
-            ColorLabel = new System.Windows.Forms.Label();
-            PreviewLabel = new System.Windows.Forms.Label();
-            Preview = new System.Windows.Forms.PictureBox();
-            MainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)IDEdit.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)DisplayNameEdit.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)PaintStyleList).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)listBoxControl1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)ColorPick.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)Preview).BeginInit();
-            SuspendLayout();
+            this.MainPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.PreviewLabel = new System.Windows.Forms.Label();
+            this.ColorLabel = new System.Windows.Forms.Label();
+            this.HatchStyleLabel = new System.Windows.Forms.Label();
+            this.PaintStyleLabel = new System.Windows.Forms.Label();
+            this.DisplayNameLabel = new System.Windows.Forms.Label();
+            this.DisplayNameEdit = new DevExpress.XtraEditors.TextEdit();
+            this.IdLabel = new System.Windows.Forms.Label();
+            this.IDEdit = new DevExpress.XtraEditors.TextEdit();
+            this.PaintStyleList = new DevExpress.XtraEditors.ImageListBoxControl();
+            this.HatchStyleList = new DevExpress.XtraEditors.ListBoxControl();
+            this.ColorPick = new DevExpress.XtraEditors.ColorPickEdit();
+            this.Preview = new System.Windows.Forms.PictureBox();
+            this.MainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DisplayNameEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IDEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PaintStyleList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HatchStyleList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ColorPick.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Preview)).BeginInit();
+            this.SuspendLayout();
             // 
             // MainPanel
             // 
-            SetBoundPropertyName(MainPanel, "");
-            MainPanel.ColumnCount = 3;
-            MainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            MainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            MainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            MainPanel.Controls.Add(PreviewLabel, 2, 0);
-            MainPanel.Controls.Add(ColorLabel, 0, 4);
-            MainPanel.Controls.Add(HatchStyleLabel, 0, 3);
-            MainPanel.Controls.Add(PaintStyleLabel, 0, 2);
-            MainPanel.Controls.Add(DisplayNameLabel, 0, 1);
-            MainPanel.Controls.Add(DisplayNameEdit, 1, 1);
-            MainPanel.Controls.Add(IdLabel, 0, 0);
-            MainPanel.Controls.Add(IDEdit, 1, 0);
-            MainPanel.Controls.Add(PaintStyleList, 1, 2);
-            MainPanel.Controls.Add(listBoxControl1, 1, 3);
-            MainPanel.Controls.Add(ColorPick, 1, 4);
-            MainPanel.Controls.Add(Preview, 2, 1);
-            MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            MainPanel.Location = new System.Drawing.Point(0, 0);
-            MainPanel.Name = "MainPanel";
-            MainPanel.RowCount = 5;
-            MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            MainPanel.Size = new System.Drawing.Size(400, 250);
-            MainPanel.TabIndex = 0;
-            // 
-            // IdLabel
-            // 
-            IdLabel.AutoSize = true;
-            SetBoundPropertyName(IdLabel, "");
-            IdLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            IdLabel.Location = new System.Drawing.Point(3, 0);
-            IdLabel.Name = "IdLabel";
-            IdLabel.Size = new System.Drawing.Size(74, 37);
-            IdLabel.TabIndex = 0;
-            IdLabel.Text = "ID";
-            IdLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // IDEdit
-            // 
-            SetBoundPropertyName(IDEdit, "");
-            IDEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            IDEdit.Location = new System.Drawing.Point(83, 3);
-            IDEdit.Name = "IDEdit";
-            IDEdit.Size = new System.Drawing.Size(154, 20);
-            IDEdit.TabIndex = 1;
-            // 
-            // DisplayNameLabel
-            // 
-            DisplayNameLabel.AutoSize = true;
-            SetBoundPropertyName(DisplayNameLabel, "");
-            DisplayNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            DisplayNameLabel.Location = new System.Drawing.Point(3, 37);
-            DisplayNameLabel.Name = "DisplayNameLabel";
-            DisplayNameLabel.Size = new System.Drawing.Size(74, 37);
-            DisplayNameLabel.TabIndex = 2;
-            DisplayNameLabel.Text = "Display Name";
-            DisplayNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // DisplayNameEdit
-            // 
-            SetBoundPropertyName(DisplayNameEdit, "");
-            DisplayNameEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            DisplayNameEdit.Location = new System.Drawing.Point(83, 40);
-            DisplayNameEdit.Name = "DisplayNameEdit";
-            DisplayNameEdit.Size = new System.Drawing.Size(154, 20);
-            DisplayNameEdit.TabIndex = 3;
-            // 
-            // PaintStyleLabel
-            // 
-            PaintStyleLabel.AutoSize = true;
-            SetBoundPropertyName(PaintStyleLabel, "");
-            PaintStyleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            PaintStyleLabel.Location = new System.Drawing.Point(3, 74);
-            PaintStyleLabel.Name = "PaintStyleLabel";
-            PaintStyleLabel.Size = new System.Drawing.Size(74, 75);
-            PaintStyleLabel.TabIndex = 4;
-            PaintStyleLabel.Text = "Paint Style";
-            PaintStyleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // PaintStyleList
-            // 
-            SetBoundPropertyName(PaintStyleList, "");
-            PaintStyleList.Dock = System.Windows.Forms.DockStyle.Fill;
-            imageListBoxItemImageOptions1.Image = (System.Drawing.Image)resources.GetObject("imageListBoxItemImageOptions1.Image");
-            imageListBoxItemImageOptions2.Image = (System.Drawing.Image)resources.GetObject("imageListBoxItemImageOptions2.Image");
-            PaintStyleList.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageListBoxItem[] { new DevExpress.XtraEditors.Controls.ImageListBoxItem(null, "Solid", imageListBoxItemImageOptions1, null), new DevExpress.XtraEditors.Controls.ImageListBoxItem(null, "Hatch", imageListBoxItemImageOptions2, null) });
-            PaintStyleList.Location = new System.Drawing.Point(83, 77);
-            PaintStyleList.Name = "PaintStyleList";
-            PaintStyleList.Size = new System.Drawing.Size(154, 69);
-            PaintStyleList.TabIndex = 5;
-            // 
-            // HatchStyleLabel
-            // 
-            HatchStyleLabel.AutoSize = true;
-            SetBoundPropertyName(HatchStyleLabel, "");
-            HatchStyleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            HatchStyleLabel.Location = new System.Drawing.Point(3, 149);
-            HatchStyleLabel.Name = "HatchStyleLabel";
-            HatchStyleLabel.Size = new System.Drawing.Size(74, 62);
-            HatchStyleLabel.TabIndex = 6;
-            HatchStyleLabel.Text = "Hatch Style";
-            HatchStyleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // listBoxControl1
-            // 
-            SetBoundPropertyName(listBoxControl1, "");
-            listBoxControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            listBoxControl1.Location = new System.Drawing.Point(83, 152);
-            listBoxControl1.Name = "listBoxControl1";
-            listBoxControl1.Size = new System.Drawing.Size(154, 56);
-            listBoxControl1.TabIndex = 7;
-            // 
-            // ColorPick
-            // 
-            SetBoundPropertyName(ColorPick, "");
-            ColorPick.Dock = System.Windows.Forms.DockStyle.Fill;
-            ColorPick.EditValue = System.Drawing.Color.Empty;
-            ColorPick.Location = new System.Drawing.Point(83, 214);
-            ColorPick.Name = "ColorPick";
-            ColorPick.Properties.AutoHeight = false;
-            ColorPick.Properties.AutomaticColor = System.Drawing.Color.Black;
-            ColorPick.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            ColorPick.Properties.StoreColorAsInteger = true;
-            ColorPick.Size = new System.Drawing.Size(154, 33);
-            ColorPick.TabIndex = 8;
-            // 
-            // ColorLabel
-            // 
-            ColorLabel.AutoSize = true;
-            SetBoundPropertyName(ColorLabel, "");
-            ColorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            ColorLabel.Location = new System.Drawing.Point(3, 211);
-            ColorLabel.Name = "ColorLabel";
-            ColorLabel.Size = new System.Drawing.Size(74, 39);
-            ColorLabel.TabIndex = 9;
-            ColorLabel.Text = "Color";
-            ColorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SetBoundPropertyName(this.MainPanel, "");
+            this.MainPanel.ColumnCount = 3;
+            this.MainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.MainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.MainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.MainPanel.Controls.Add(this.PreviewLabel, 2, 0);
+            this.MainPanel.Controls.Add(this.ColorLabel, 0, 4);
+            this.MainPanel.Controls.Add(this.HatchStyleLabel, 0, 3);
+            this.MainPanel.Controls.Add(this.PaintStyleLabel, 0, 2);
+            this.MainPanel.Controls.Add(this.DisplayNameLabel, 0, 1);
+            this.MainPanel.Controls.Add(this.DisplayNameEdit, 1, 1);
+            this.MainPanel.Controls.Add(this.IdLabel, 0, 0);
+            this.MainPanel.Controls.Add(this.IDEdit, 1, 0);
+            this.MainPanel.Controls.Add(this.PaintStyleList, 1, 2);
+            this.MainPanel.Controls.Add(this.HatchStyleList, 1, 3);
+            this.MainPanel.Controls.Add(this.ColorPick, 1, 4);
+            this.MainPanel.Controls.Add(this.Preview, 2, 1);
+            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainPanel.Location = new System.Drawing.Point(0, 0);
+            this.MainPanel.Name = "MainPanel";
+            this.MainPanel.RowCount = 5;
+            this.MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.MainPanel.Size = new System.Drawing.Size(400, 250);
+            this.MainPanel.TabIndex = 0;
             // 
             // PreviewLabel
             // 
-            PreviewLabel.AutoSize = true;
-            SetBoundPropertyName(PreviewLabel, "");
-            PreviewLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            PreviewLabel.Location = new System.Drawing.Point(243, 0);
-            PreviewLabel.Name = "PreviewLabel";
-            PreviewLabel.Size = new System.Drawing.Size(154, 37);
-            PreviewLabel.TabIndex = 10;
-            PreviewLabel.Text = "Preview";
-            PreviewLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PreviewLabel.AutoSize = true;
+            this.SetBoundPropertyName(this.PreviewLabel, "");
+            this.PreviewLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PreviewLabel.Location = new System.Drawing.Point(243, 0);
+            this.PreviewLabel.Name = "PreviewLabel";
+            this.PreviewLabel.Size = new System.Drawing.Size(154, 37);
+            this.PreviewLabel.TabIndex = 10;
+            this.PreviewLabel.Text = "Preview";
+            this.PreviewLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ColorLabel
+            // 
+            this.ColorLabel.AutoSize = true;
+            this.SetBoundPropertyName(this.ColorLabel, "");
+            this.ColorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ColorLabel.Location = new System.Drawing.Point(3, 211);
+            this.ColorLabel.Name = "ColorLabel";
+            this.ColorLabel.Size = new System.Drawing.Size(74, 39);
+            this.ColorLabel.TabIndex = 9;
+            this.ColorLabel.Text = "Color";
+            this.ColorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // HatchStyleLabel
+            // 
+            this.HatchStyleLabel.AutoSize = true;
+            this.SetBoundPropertyName(this.HatchStyleLabel, "");
+            this.HatchStyleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.HatchStyleLabel.Location = new System.Drawing.Point(3, 149);
+            this.HatchStyleLabel.Name = "HatchStyleLabel";
+            this.HatchStyleLabel.Size = new System.Drawing.Size(74, 62);
+            this.HatchStyleLabel.TabIndex = 6;
+            this.HatchStyleLabel.Text = "Hatch Style";
+            this.HatchStyleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PaintStyleLabel
+            // 
+            this.PaintStyleLabel.AutoSize = true;
+            this.SetBoundPropertyName(this.PaintStyleLabel, "");
+            this.PaintStyleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PaintStyleLabel.Location = new System.Drawing.Point(3, 74);
+            this.PaintStyleLabel.Name = "PaintStyleLabel";
+            this.PaintStyleLabel.Size = new System.Drawing.Size(74, 75);
+            this.PaintStyleLabel.TabIndex = 4;
+            this.PaintStyleLabel.Text = "Paint Style";
+            this.PaintStyleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // DisplayNameLabel
+            // 
+            this.DisplayNameLabel.AutoSize = true;
+            this.SetBoundPropertyName(this.DisplayNameLabel, "");
+            this.DisplayNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DisplayNameLabel.Location = new System.Drawing.Point(3, 37);
+            this.DisplayNameLabel.Name = "DisplayNameLabel";
+            this.DisplayNameLabel.Size = new System.Drawing.Size(74, 37);
+            this.DisplayNameLabel.TabIndex = 2;
+            this.DisplayNameLabel.Text = "Display Name";
+            this.DisplayNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // DisplayNameEdit
+            // 
+            this.SetBoundPropertyName(this.DisplayNameEdit, "");
+            this.DisplayNameEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DisplayNameEdit.Location = new System.Drawing.Point(83, 40);
+            this.DisplayNameEdit.Name = "DisplayNameEdit";
+            this.DisplayNameEdit.Size = new System.Drawing.Size(154, 20);
+            this.DisplayNameEdit.TabIndex = 3;
+            // 
+            // IdLabel
+            // 
+            this.IdLabel.AutoSize = true;
+            this.SetBoundPropertyName(this.IdLabel, "");
+            this.IdLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.IdLabel.Location = new System.Drawing.Point(3, 0);
+            this.IdLabel.Name = "IdLabel";
+            this.IdLabel.Size = new System.Drawing.Size(74, 37);
+            this.IdLabel.TabIndex = 0;
+            this.IdLabel.Text = "ID";
+            this.IdLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // IDEdit
+            // 
+            this.SetBoundPropertyName(this.IDEdit, "");
+            this.IDEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.IDEdit.Location = new System.Drawing.Point(83, 3);
+            this.IDEdit.Name = "IDEdit";
+            this.IDEdit.Size = new System.Drawing.Size(154, 20);
+            this.IDEdit.TabIndex = 1;
+            // 
+            // PaintStyleList
+            // 
+            this.SetBoundPropertyName(this.PaintStyleList, "");
+            this.PaintStyleList.Dock = System.Windows.Forms.DockStyle.Fill;
+            imageListBoxItemImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("imageListBoxItemImageOptions1.Image")));
+            imageListBoxItemImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("imageListBoxItemImageOptions2.Image")));
+            this.PaintStyleList.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageListBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageListBoxItem("Solid", "Solid", imageListBoxItemImageOptions1, null),
+            new DevExpress.XtraEditors.Controls.ImageListBoxItem("Hatch", "Hatch", imageListBoxItemImageOptions2, null)});
+            this.PaintStyleList.Location = new System.Drawing.Point(83, 77);
+            this.PaintStyleList.Name = "PaintStyleList";
+            this.PaintStyleList.Size = new System.Drawing.Size(154, 69);
+            this.PaintStyleList.TabIndex = 5;
+            this.PaintStyleList.SelectedIndexChanged += new System.EventHandler(this.PaintStyleList_SelectedIndexChanged);
+            // 
+            // HatchStyleList
+            // 
+            this.SetBoundPropertyName(this.HatchStyleList, "");
+            this.HatchStyleList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.HatchStyleList.Location = new System.Drawing.Point(83, 152);
+            this.HatchStyleList.Name = "HatchStyleList";
+            this.HatchStyleList.Size = new System.Drawing.Size(154, 56);
+            this.HatchStyleList.TabIndex = 7;
+            this.HatchStyleList.SelectedIndexChanged += new System.EventHandler(this.HatchStyleList_SelectedIndexChanged);
+            // 
+            // ColorPick
+            // 
+            this.SetBoundPropertyName(this.ColorPick, "");
+            this.ColorPick.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ColorPick.EditValue = System.Drawing.Color.Empty;
+            this.ColorPick.Location = new System.Drawing.Point(83, 214);
+            this.ColorPick.Name = "ColorPick";
+            this.ColorPick.Properties.AutoHeight = false;
+            this.ColorPick.Properties.AutomaticColor = System.Drawing.Color.Black;
+            this.ColorPick.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ColorPick.Properties.StoreColorAsInteger = true;
+            this.ColorPick.Size = new System.Drawing.Size(154, 33);
+            this.ColorPick.TabIndex = 8;
+            this.ColorPick.EditValueChanged += new System.EventHandler(this.ColorPick_EditValueChanged);
             // 
             // Preview
             // 
-            SetBoundPropertyName(Preview, "");
-            Preview.Dock = System.Windows.Forms.DockStyle.Fill;
-            Preview.Location = new System.Drawing.Point(243, 40);
-            Preview.Name = "Preview";
-            MainPanel.SetRowSpan(Preview, 4);
-            Preview.Size = new System.Drawing.Size(154, 207);
-            Preview.TabIndex = 11;
-            Preview.TabStop = false;
+            this.SetBoundPropertyName(this.Preview, "");
+            this.Preview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Preview.Location = new System.Drawing.Point(243, 40);
+            this.Preview.Name = "Preview";
+            this.MainPanel.SetRowSpan(this.Preview, 4);
+            this.Preview.Size = new System.Drawing.Size(154, 207);
+            this.Preview.TabIndex = 11;
+            this.Preview.TabStop = false;
             // 
             // StatusEditTest
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            Controls.Add(MainPanel);
-            Name = "StatusEditTest";
-            Size = new System.Drawing.Size(400, 250);
-            MainPanel.ResumeLayout(false);
-            MainPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)IDEdit.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)DisplayNameEdit.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)PaintStyleList).EndInit();
-            ((System.ComponentModel.ISupportInitialize)listBoxControl1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)ColorPick.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)Preview).EndInit();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.Controls.Add(this.MainPanel);
+            this.Name = "StatusEditTest";
+            this.Size = new System.Drawing.Size(400, 250);
+            this.MainPanel.ResumeLayout(false);
+            this.MainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DisplayNameEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IDEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PaintStyleList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HatchStyleList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ColorPick.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Preview)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -249,7 +256,7 @@
         private System.Windows.Forms.Label HatchStyleLabel;
         private System.Windows.Forms.Label PaintStyleLabel;
         private DevExpress.XtraEditors.ImageListBoxControl PaintStyleList;
-        private DevExpress.XtraEditors.ListBoxControl listBoxControl1;
+        private DevExpress.XtraEditors.ListBoxControl HatchStyleList;
         private DevExpress.XtraEditors.ColorPickEdit ColorPick;
         private System.Windows.Forms.Label PreviewLabel;
         private System.Windows.Forms.PictureBox Preview;
