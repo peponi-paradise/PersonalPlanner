@@ -28,801 +28,728 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrame));
             DevExpress.XtraScheduler.TimeRuler timeRuler1 = new DevExpress.XtraScheduler.TimeRuler();
             DevExpress.XtraScheduler.TimeRuler timeRuler2 = new DevExpress.XtraScheduler.TimeRuler();
             DevExpress.XtraScheduler.TimeRuler timeRuler3 = new DevExpress.XtraScheduler.TimeRuler();
-            this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
-            this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
-            this.printPreviewItem1 = new DevExpress.XtraScheduler.UI.PrintPreviewItem();
-            this.printPageSetupItem1 = new DevExpress.XtraScheduler.UI.PrintPageSetupItem();
-            this.newAppointmentItem1 = new DevExpress.XtraScheduler.UI.NewAppointmentItem();
-            this.newRecurringAppointmentItem1 = new DevExpress.XtraScheduler.UI.NewRecurringAppointmentItem();
-            this.navigateViewBackwardItem1 = new DevExpress.XtraScheduler.UI.NavigateViewBackwardItem();
-            this.navigateViewForwardItem1 = new DevExpress.XtraScheduler.UI.NavigateViewForwardItem();
-            this.gotoTodayItem1 = new DevExpress.XtraScheduler.UI.GotoTodayItem();
-            this.viewZoomInItem1 = new DevExpress.XtraScheduler.UI.ViewZoomInItem();
-            this.viewZoomOutItem1 = new DevExpress.XtraScheduler.UI.ViewZoomOutItem();
-            this.switchToDayViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToDayViewItem();
-            this.switchToWorkWeekViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToWorkWeekViewItem();
-            this.switchToWeekViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToWeekViewItem();
-            this.switchToFullWeekViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToFullWeekViewItem();
-            this.switchToMonthViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToMonthViewItem();
-            this.switchToTimelineViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToTimelineViewItem();
-            this.switchToAgendaViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToAgendaViewItem();
-            this.switchToYearViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToYearViewItem();
-            this.switchTimeScalesItem1 = new DevExpress.XtraScheduler.UI.SwitchTimeScalesItem();
-            this.changeScaleWidthItem1 = new DevExpress.XtraScheduler.UI.ChangeScaleWidthItem();
-            this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
-            this.switchTimeScalesCaptionItem1 = new DevExpress.XtraScheduler.UI.SwitchTimeScalesCaptionItem();
-            this.switchCompressWeekendItem1 = new DevExpress.XtraScheduler.UI.SwitchCompressWeekendItem();
-            this.switchShowWorkTimeOnlyItem1 = new DevExpress.XtraScheduler.UI.SwitchShowWorkTimeOnlyItem();
-            this.switchCellsAutoHeightItem1 = new DevExpress.XtraScheduler.UI.SwitchCellsAutoHeightItem();
-            this.changeSnapToCellsuiItem1 = new DevExpress.XtraScheduler.UI.ChangeSnapToCellsUIItem();
-            this.editAppointmentQueryItem1 = new DevExpress.XtraScheduler.UI.EditAppointmentQueryItem();
-            this.editOccurrenceuiCommandItem1 = new DevExpress.XtraScheduler.UI.EditOccurrenceUICommandItem();
-            this.editSeriesuiCommandItem1 = new DevExpress.XtraScheduler.UI.EditSeriesUICommandItem();
-            this.deleteAppointmentsItem1 = new DevExpress.XtraScheduler.UI.DeleteAppointmentsItem();
-            this.deleteOccurrenceItem1 = new DevExpress.XtraScheduler.UI.DeleteOccurrenceItem();
-            this.deleteSeriesItem1 = new DevExpress.XtraScheduler.UI.DeleteSeriesItem();
-            this.splitAppointmentItem1 = new DevExpress.XtraScheduler.UI.SplitAppointmentItem();
-            this.changeAppointmentStatusItem1 = new DevExpress.XtraScheduler.UI.ChangeAppointmentStatusItem();
-            this.changeAppointmentLabelItem1 = new DevExpress.XtraScheduler.UI.ChangeAppointmentLabelItem();
-            this.toggleRecurrenceItem1 = new DevExpress.XtraScheduler.UI.ToggleRecurrenceItem();
-            this.changeAppointmentReminderItem1 = new DevExpress.XtraScheduler.UI.ChangeAppointmentReminderItem();
-            this.repositoryItemDuration1 = new DevExpress.XtraScheduler.UI.RepositoryItemDuration();
-            this.MemoImportButton = new DevExpress.XtraBars.BarButtonItem();
-            this.MemoSaveButton = new DevExpress.XtraBars.BarButtonItem();
-            this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
-            this.skinPaletteDropDownButtonItem1 = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
-            this.ScheduleImportButton = new DevExpress.XtraBars.BarButtonItem();
-            this.ScheduleSaveButton = new DevExpress.XtraBars.BarButtonItem();
-            this.calendarToolsRibbonPageCategory1 = new DevExpress.XtraScheduler.UI.CalendarToolsRibbonPageCategory();
-            this.schedulerControl1 = new DevExpress.XtraScheduler.SchedulerControl();
-            this.schedulerDataStorage1 = new DevExpress.XtraScheduler.SchedulerDataStorage(this.components);
-            this.appointmentRibbonPage1 = new DevExpress.XtraScheduler.UI.AppointmentRibbonPage();
-            this.actionsRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.ActionsRibbonPageGroup();
-            this.optionsRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.OptionsRibbonPageGroup();
-            this.homeRibbonPage1 = new DevExpress.XtraScheduler.UI.HomeRibbonPage();
-            this.appointmentRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.AppointmentRibbonPageGroup();
-            this.navigatorRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.NavigatorRibbonPageGroup();
-            this.arrangeRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.ArrangeRibbonPageGroup();
-            this.viewRibbonPage1 = new DevExpress.XtraScheduler.UI.ViewRibbonPage();
-            this.activeViewRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.ActiveViewRibbonPageGroup();
-            this.timeScaleRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.TimeScaleRibbonPageGroup();
-            this.layoutRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.LayoutRibbonPageGroup();
-            this.fileRibbonPage1 = new DevExpress.XtraScheduler.UI.FileRibbonPage();
-            this.MemoFileRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ScheduleFileRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.CommonRibbonPageGroup();
-            this.SchedulePrintRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.PrintRibbonPageGroup();
-            this.ribbonPageSettings = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroupSkins = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroupSkinColors = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.splitContainerControlMain = new DevExpress.XtraEditors.SplitContainerControl();
-            this.memoEdit = new DevExpress.XtraEditors.MemoEdit();
-            this.splitContainerControlCalendar = new DevExpress.XtraEditors.SplitContainerControl();
-            this.dateNavigator1 = new DevExpress.XtraScheduler.DateNavigator();
-            this.schedulerBarController1 = new DevExpress.XtraScheduler.UI.SchedulerBarController(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDuration1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.schedulerControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.schedulerDataStorage1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControlMain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControlMain.Panel1)).BeginInit();
-            this.splitContainerControlMain.Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControlMain.Panel2)).BeginInit();
-            this.splitContainerControlMain.Panel2.SuspendLayout();
-            this.splitContainerControlMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControlCalendar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControlCalendar.Panel1)).BeginInit();
-            this.splitContainerControlCalendar.Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControlCalendar.Panel2)).BeginInit();
-            this.splitContainerControlCalendar.Panel2.SuspendLayout();
-            this.splitContainerControlCalendar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dateNavigator1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateNavigator1.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.schedulerBarController1)).BeginInit();
-            this.SuspendLayout();
+            ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
+            skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
+            printPreviewItem1 = new DevExpress.XtraScheduler.UI.PrintPreviewItem();
+            printPageSetupItem1 = new DevExpress.XtraScheduler.UI.PrintPageSetupItem();
+            newAppointmentItem1 = new DevExpress.XtraScheduler.UI.NewAppointmentItem();
+            newRecurringAppointmentItem1 = new DevExpress.XtraScheduler.UI.NewRecurringAppointmentItem();
+            navigateViewBackwardItem1 = new DevExpress.XtraScheduler.UI.NavigateViewBackwardItem();
+            navigateViewForwardItem1 = new DevExpress.XtraScheduler.UI.NavigateViewForwardItem();
+            gotoTodayItem1 = new DevExpress.XtraScheduler.UI.GotoTodayItem();
+            viewZoomInItem1 = new DevExpress.XtraScheduler.UI.ViewZoomInItem();
+            viewZoomOutItem1 = new DevExpress.XtraScheduler.UI.ViewZoomOutItem();
+            switchToDayViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToDayViewItem();
+            switchToWorkWeekViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToWorkWeekViewItem();
+            switchToWeekViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToWeekViewItem();
+            switchToFullWeekViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToFullWeekViewItem();
+            switchToMonthViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToMonthViewItem();
+            switchToTimelineViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToTimelineViewItem();
+            switchToAgendaViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToAgendaViewItem();
+            switchToYearViewItem1 = new DevExpress.XtraScheduler.UI.SwitchToYearViewItem();
+            switchTimeScalesItem1 = new DevExpress.XtraScheduler.UI.SwitchTimeScalesItem();
+            changeScaleWidthItem1 = new DevExpress.XtraScheduler.UI.ChangeScaleWidthItem();
+            repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
+            switchTimeScalesCaptionItem1 = new DevExpress.XtraScheduler.UI.SwitchTimeScalesCaptionItem();
+            switchCompressWeekendItem1 = new DevExpress.XtraScheduler.UI.SwitchCompressWeekendItem();
+            switchShowWorkTimeOnlyItem1 = new DevExpress.XtraScheduler.UI.SwitchShowWorkTimeOnlyItem();
+            switchCellsAutoHeightItem1 = new DevExpress.XtraScheduler.UI.SwitchCellsAutoHeightItem();
+            changeSnapToCellsuiItem1 = new DevExpress.XtraScheduler.UI.ChangeSnapToCellsUIItem();
+            editAppointmentQueryItem1 = new DevExpress.XtraScheduler.UI.EditAppointmentQueryItem();
+            editOccurrenceuiCommandItem1 = new DevExpress.XtraScheduler.UI.EditOccurrenceUICommandItem();
+            editSeriesuiCommandItem1 = new DevExpress.XtraScheduler.UI.EditSeriesUICommandItem();
+            deleteAppointmentsItem1 = new DevExpress.XtraScheduler.UI.DeleteAppointmentsItem();
+            deleteOccurrenceItem1 = new DevExpress.XtraScheduler.UI.DeleteOccurrenceItem();
+            deleteSeriesItem1 = new DevExpress.XtraScheduler.UI.DeleteSeriesItem();
+            splitAppointmentItem1 = new DevExpress.XtraScheduler.UI.SplitAppointmentItem();
+            changeAppointmentStatusItem1 = new DevExpress.XtraScheduler.UI.ChangeAppointmentStatusItem();
+            changeAppointmentLabelItem1 = new DevExpress.XtraScheduler.UI.ChangeAppointmentLabelItem();
+            toggleRecurrenceItem1 = new DevExpress.XtraScheduler.UI.ToggleRecurrenceItem();
+            changeAppointmentReminderItem1 = new DevExpress.XtraScheduler.UI.ChangeAppointmentReminderItem();
+            repositoryItemDuration1 = new DevExpress.XtraScheduler.UI.RepositoryItemDuration();
+            MemoImportButton = new DevExpress.XtraBars.BarButtonItem();
+            MemoSaveButton = new DevExpress.XtraBars.BarButtonItem();
+            skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
+            skinPaletteDropDownButtonItem1 = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
+            ScheduleImportButton = new DevExpress.XtraBars.BarButtonItem();
+            ScheduleSaveButton = new DevExpress.XtraBars.BarButtonItem();
+            calendarToolsRibbonPageCategory1 = new DevExpress.XtraScheduler.UI.CalendarToolsRibbonPageCategory();
+            MainScheduler = new DevExpress.XtraScheduler.SchedulerControl();
+            MainSchedulerDataStorage = new DevExpress.XtraScheduler.SchedulerDataStorage(components);
+            appointmentRibbonPage1 = new DevExpress.XtraScheduler.UI.AppointmentRibbonPage();
+            actionsRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.ActionsRibbonPageGroup();
+            optionsRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.OptionsRibbonPageGroup();
+            homeRibbonPage1 = new DevExpress.XtraScheduler.UI.HomeRibbonPage();
+            appointmentRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.AppointmentRibbonPageGroup();
+            navigatorRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.NavigatorRibbonPageGroup();
+            arrangeRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.ArrangeRibbonPageGroup();
+            viewRibbonPage1 = new DevExpress.XtraScheduler.UI.ViewRibbonPage();
+            activeViewRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.ActiveViewRibbonPageGroup();
+            timeScaleRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.TimeScaleRibbonPageGroup();
+            layoutRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.LayoutRibbonPageGroup();
+            fileRibbonPage1 = new DevExpress.XtraScheduler.UI.FileRibbonPage();
+            MemoFileRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ScheduleFileRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.CommonRibbonPageGroup();
+            SchedulePrintRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.PrintRibbonPageGroup();
+            ribbonPageSettings = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            ribbonPageGroupSkins = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ribbonPageGroupSkinColors = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            AppointmentSettingGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            splitContainerControlMain = new DevExpress.XtraEditors.SplitContainerControl();
+            memoEdit = new DevExpress.XtraEditors.MemoEdit();
+            splitContainerControlCalendar = new DevExpress.XtraEditors.SplitContainerControl();
+            MainCalendar = new DevExpress.XtraScheduler.DateNavigator();
+            MainSchedulerBarController = new DevExpress.XtraScheduler.UI.SchedulerBarController(components);
+            OpenStatusEdit = new DevExpress.XtraBars.BarButtonItem();
+            ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemSpinEdit1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemDuration1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)MainScheduler).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)MainSchedulerDataStorage).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)splitContainerControlMain).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)splitContainerControlMain.Panel1).BeginInit();
+            splitContainerControlMain.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainerControlMain.Panel2).BeginInit();
+            splitContainerControlMain.Panel2.SuspendLayout();
+            splitContainerControlMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)memoEdit.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)splitContainerControlCalendar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)splitContainerControlCalendar.Panel1).BeginInit();
+            splitContainerControlCalendar.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainerControlCalendar.Panel2).BeginInit();
+            splitContainerControlCalendar.Panel2.SuspendLayout();
+            splitContainerControlCalendar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)MainCalendar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)MainCalendar.CalendarTimeProperties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)MainSchedulerBarController).BeginInit();
+            SuspendLayout();
             // 
             // ribbonControl1
             // 
-            this.ribbonControl1.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 32, 35, 32);
-            this.ribbonControl1.ExpandCollapseItem.Id = 0;
-            this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ribbonControl1.ExpandCollapseItem,
-            this.ribbonControl1.SearchEditItem,
-            this.skinPaletteRibbonGalleryBarItem1,
-            this.skinRibbonGalleryBarItem1,
-            this.printPreviewItem1,
-            this.printPageSetupItem1,
-            this.newAppointmentItem1,
-            this.newRecurringAppointmentItem1,
-            this.navigateViewBackwardItem1,
-            this.navigateViewForwardItem1,
-            this.gotoTodayItem1,
-            this.viewZoomInItem1,
-            this.viewZoomOutItem1,
-            this.switchToDayViewItem1,
-            this.switchToWorkWeekViewItem1,
-            this.switchToWeekViewItem1,
-            this.switchToFullWeekViewItem1,
-            this.switchToMonthViewItem1,
-            this.switchToTimelineViewItem1,
-            this.switchToAgendaViewItem1,
-            this.switchToYearViewItem1,
-            this.switchTimeScalesItem1,
-            this.changeScaleWidthItem1,
-            this.switchTimeScalesCaptionItem1,
-            this.switchCompressWeekendItem1,
-            this.switchShowWorkTimeOnlyItem1,
-            this.switchCellsAutoHeightItem1,
-            this.changeSnapToCellsuiItem1,
-            this.editAppointmentQueryItem1,
-            this.editOccurrenceuiCommandItem1,
-            this.editSeriesuiCommandItem1,
-            this.deleteAppointmentsItem1,
-            this.deleteOccurrenceItem1,
-            this.deleteSeriesItem1,
-            this.splitAppointmentItem1,
-            this.changeAppointmentStatusItem1,
-            this.changeAppointmentLabelItem1,
-            this.toggleRecurrenceItem1,
-            this.changeAppointmentReminderItem1,
-            this.MemoImportButton,
-            this.MemoSaveButton,
-            this.skinDropDownButtonItem1,
-            this.skinPaletteDropDownButtonItem1,
-            this.ScheduleImportButton,
-            this.ScheduleSaveButton});
-            this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.ribbonControl1.MaxItemId = 59;
-            this.ribbonControl1.Name = "ribbonControl1";
-            this.ribbonControl1.OptionsMenuMinWidth = 385;
-            this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
-            this.calendarToolsRibbonPageCategory1});
-            this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.homeRibbonPage1,
-            this.viewRibbonPage1,
-            this.fileRibbonPage1,
-            this.ribbonPageSettings});
-            this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemSpinEdit1,
-            this.repositoryItemDuration1});
-            this.ribbonControl1.Size = new System.Drawing.Size(1022, 160);
+            ribbonControl1.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 32, 35, 32);
+            ribbonControl1.ExpandCollapseItem.Id = 0;
+            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, ribbonControl1.SearchEditItem, skinPaletteRibbonGalleryBarItem1, skinRibbonGalleryBarItem1, printPreviewItem1, printPageSetupItem1, newAppointmentItem1, newRecurringAppointmentItem1, navigateViewBackwardItem1, navigateViewForwardItem1, gotoTodayItem1, viewZoomInItem1, viewZoomOutItem1, switchToDayViewItem1, switchToWorkWeekViewItem1, switchToWeekViewItem1, switchToFullWeekViewItem1, switchToMonthViewItem1, switchToTimelineViewItem1, switchToAgendaViewItem1, switchToYearViewItem1, switchTimeScalesItem1, changeScaleWidthItem1, switchTimeScalesCaptionItem1, switchCompressWeekendItem1, switchShowWorkTimeOnlyItem1, switchCellsAutoHeightItem1, changeSnapToCellsuiItem1, editAppointmentQueryItem1, editOccurrenceuiCommandItem1, editSeriesuiCommandItem1, deleteAppointmentsItem1, deleteOccurrenceItem1, deleteSeriesItem1, splitAppointmentItem1, changeAppointmentStatusItem1, changeAppointmentLabelItem1, toggleRecurrenceItem1, changeAppointmentReminderItem1, MemoImportButton, MemoSaveButton, skinDropDownButtonItem1, skinPaletteDropDownButtonItem1, ScheduleImportButton, ScheduleSaveButton, OpenStatusEdit });
+            ribbonControl1.Location = new System.Drawing.Point(0, 0);
+            ribbonControl1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            ribbonControl1.MaxItemId = 60;
+            ribbonControl1.Name = "ribbonControl1";
+            ribbonControl1.OptionsMenuMinWidth = 385;
+            ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] { calendarToolsRibbonPageCategory1 });
+            ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { homeRibbonPage1, viewRibbonPage1, fileRibbonPage1, ribbonPageSettings });
+            ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemSpinEdit1, repositoryItemDuration1 });
+            ribbonControl1.Size = new System.Drawing.Size(1022, 160);
             // 
             // skinPaletteRibbonGalleryBarItem1
             // 
-            this.skinPaletteRibbonGalleryBarItem1.Caption = "skinPaletteRibbonGalleryBarItem1";
-            this.skinPaletteRibbonGalleryBarItem1.Id = 1;
-            this.skinPaletteRibbonGalleryBarItem1.Name = "skinPaletteRibbonGalleryBarItem1";
+            skinPaletteRibbonGalleryBarItem1.Caption = "skinPaletteRibbonGalleryBarItem1";
+            skinPaletteRibbonGalleryBarItem1.Id = 1;
+            skinPaletteRibbonGalleryBarItem1.Name = "skinPaletteRibbonGalleryBarItem1";
             // 
             // skinRibbonGalleryBarItem1
             // 
-            this.skinRibbonGalleryBarItem1.Caption = "skinRibbonGalleryBarItem1";
-            this.skinRibbonGalleryBarItem1.Id = 2;
-            this.skinRibbonGalleryBarItem1.Name = "skinRibbonGalleryBarItem1";
+            skinRibbonGalleryBarItem1.Caption = "skinRibbonGalleryBarItem1";
+            skinRibbonGalleryBarItem1.Id = 2;
+            skinRibbonGalleryBarItem1.Name = "skinRibbonGalleryBarItem1";
             // 
             // printPreviewItem1
             // 
-            this.printPreviewItem1.Id = 6;
-            this.printPreviewItem1.Name = "printPreviewItem1";
+            printPreviewItem1.Id = 6;
+            printPreviewItem1.Name = "printPreviewItem1";
             // 
             // printPageSetupItem1
             // 
-            this.printPageSetupItem1.Id = 8;
-            this.printPageSetupItem1.Name = "printPageSetupItem1";
+            printPageSetupItem1.Id = 8;
+            printPageSetupItem1.Name = "printPageSetupItem1";
             // 
             // newAppointmentItem1
             // 
-            this.newAppointmentItem1.Id = 9;
-            this.newAppointmentItem1.Name = "newAppointmentItem1";
+            newAppointmentItem1.Id = 9;
+            newAppointmentItem1.Name = "newAppointmentItem1";
             // 
             // newRecurringAppointmentItem1
             // 
-            this.newRecurringAppointmentItem1.Id = 10;
-            this.newRecurringAppointmentItem1.Name = "newRecurringAppointmentItem1";
+            newRecurringAppointmentItem1.Id = 10;
+            newRecurringAppointmentItem1.Name = "newRecurringAppointmentItem1";
             // 
             // navigateViewBackwardItem1
             // 
-            this.navigateViewBackwardItem1.Id = 11;
-            this.navigateViewBackwardItem1.Name = "navigateViewBackwardItem1";
+            navigateViewBackwardItem1.Id = 11;
+            navigateViewBackwardItem1.Name = "navigateViewBackwardItem1";
             // 
             // navigateViewForwardItem1
             // 
-            this.navigateViewForwardItem1.Id = 12;
-            this.navigateViewForwardItem1.Name = "navigateViewForwardItem1";
+            navigateViewForwardItem1.Id = 12;
+            navigateViewForwardItem1.Name = "navigateViewForwardItem1";
             // 
             // gotoTodayItem1
             // 
-            this.gotoTodayItem1.Id = 13;
-            this.gotoTodayItem1.Name = "gotoTodayItem1";
+            gotoTodayItem1.Id = 13;
+            gotoTodayItem1.Name = "gotoTodayItem1";
             // 
             // viewZoomInItem1
             // 
-            this.viewZoomInItem1.Id = 14;
-            this.viewZoomInItem1.Name = "viewZoomInItem1";
+            viewZoomInItem1.Id = 14;
+            viewZoomInItem1.Name = "viewZoomInItem1";
             // 
             // viewZoomOutItem1
             // 
-            this.viewZoomOutItem1.Id = 15;
-            this.viewZoomOutItem1.Name = "viewZoomOutItem1";
+            viewZoomOutItem1.Id = 15;
+            viewZoomOutItem1.Name = "viewZoomOutItem1";
             // 
             // switchToDayViewItem1
             // 
-            this.switchToDayViewItem1.Id = 16;
-            this.switchToDayViewItem1.Name = "switchToDayViewItem1";
+            switchToDayViewItem1.Id = 16;
+            switchToDayViewItem1.Name = "switchToDayViewItem1";
             // 
             // switchToWorkWeekViewItem1
             // 
-            this.switchToWorkWeekViewItem1.Id = 17;
-            this.switchToWorkWeekViewItem1.Name = "switchToWorkWeekViewItem1";
+            switchToWorkWeekViewItem1.Id = 17;
+            switchToWorkWeekViewItem1.Name = "switchToWorkWeekViewItem1";
             // 
             // switchToWeekViewItem1
             // 
-            this.switchToWeekViewItem1.Id = 18;
-            this.switchToWeekViewItem1.Name = "switchToWeekViewItem1";
+            switchToWeekViewItem1.Id = 18;
+            switchToWeekViewItem1.Name = "switchToWeekViewItem1";
             // 
             // switchToFullWeekViewItem1
             // 
-            this.switchToFullWeekViewItem1.Id = 19;
-            this.switchToFullWeekViewItem1.Name = "switchToFullWeekViewItem1";
+            switchToFullWeekViewItem1.Id = 19;
+            switchToFullWeekViewItem1.Name = "switchToFullWeekViewItem1";
             // 
             // switchToMonthViewItem1
             // 
-            this.switchToMonthViewItem1.Id = 20;
-            this.switchToMonthViewItem1.Name = "switchToMonthViewItem1";
+            switchToMonthViewItem1.Id = 20;
+            switchToMonthViewItem1.Name = "switchToMonthViewItem1";
             // 
             // switchToTimelineViewItem1
             // 
-            this.switchToTimelineViewItem1.Id = 21;
-            this.switchToTimelineViewItem1.Name = "switchToTimelineViewItem1";
+            switchToTimelineViewItem1.Id = 21;
+            switchToTimelineViewItem1.Name = "switchToTimelineViewItem1";
             // 
             // switchToAgendaViewItem1
             // 
-            this.switchToAgendaViewItem1.Id = 23;
-            this.switchToAgendaViewItem1.Name = "switchToAgendaViewItem1";
+            switchToAgendaViewItem1.Id = 23;
+            switchToAgendaViewItem1.Name = "switchToAgendaViewItem1";
             // 
             // switchToYearViewItem1
             // 
-            this.switchToYearViewItem1.Id = 24;
-            this.switchToYearViewItem1.Name = "switchToYearViewItem1";
+            switchToYearViewItem1.Id = 24;
+            switchToYearViewItem1.Name = "switchToYearViewItem1";
             // 
             // switchTimeScalesItem1
             // 
-            this.switchTimeScalesItem1.Id = 28;
-            this.switchTimeScalesItem1.Name = "switchTimeScalesItem1";
+            switchTimeScalesItem1.Id = 28;
+            switchTimeScalesItem1.Name = "switchTimeScalesItem1";
             // 
             // changeScaleWidthItem1
             // 
-            this.changeScaleWidthItem1.Edit = this.repositoryItemSpinEdit1;
-            this.changeScaleWidthItem1.Id = 29;
-            this.changeScaleWidthItem1.Name = "changeScaleWidthItem1";
-            this.changeScaleWidthItem1.UseCommandCaption = true;
+            changeScaleWidthItem1.Edit = repositoryItemSpinEdit1;
+            changeScaleWidthItem1.Id = 29;
+            changeScaleWidthItem1.Name = "changeScaleWidthItem1";
+            changeScaleWidthItem1.UseCommandCaption = true;
             // 
             // repositoryItemSpinEdit1
             // 
-            this.repositoryItemSpinEdit1.AutoHeight = false;
-            this.repositoryItemSpinEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemSpinEdit1.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.repositoryItemSpinEdit1.MaxValue = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.repositoryItemSpinEdit1.MinValue = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.repositoryItemSpinEdit1.Name = "repositoryItemSpinEdit1";
+            repositoryItemSpinEdit1.AutoHeight = false;
+            repositoryItemSpinEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            repositoryItemSpinEdit1.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
+            repositoryItemSpinEdit1.MaxValue = new decimal(new int[] { 200, 0, 0, 0 });
+            repositoryItemSpinEdit1.MinValue = new decimal(new int[] { 10, 0, 0, 0 });
+            repositoryItemSpinEdit1.Name = "repositoryItemSpinEdit1";
             // 
             // switchTimeScalesCaptionItem1
             // 
-            this.switchTimeScalesCaptionItem1.Id = 30;
-            this.switchTimeScalesCaptionItem1.Name = "switchTimeScalesCaptionItem1";
+            switchTimeScalesCaptionItem1.Id = 30;
+            switchTimeScalesCaptionItem1.Name = "switchTimeScalesCaptionItem1";
             // 
             // switchCompressWeekendItem1
             // 
-            this.switchCompressWeekendItem1.Id = 31;
-            this.switchCompressWeekendItem1.Name = "switchCompressWeekendItem1";
+            switchCompressWeekendItem1.Id = 31;
+            switchCompressWeekendItem1.Name = "switchCompressWeekendItem1";
             // 
             // switchShowWorkTimeOnlyItem1
             // 
-            this.switchShowWorkTimeOnlyItem1.Id = 32;
-            this.switchShowWorkTimeOnlyItem1.Name = "switchShowWorkTimeOnlyItem1";
+            switchShowWorkTimeOnlyItem1.Id = 32;
+            switchShowWorkTimeOnlyItem1.Name = "switchShowWorkTimeOnlyItem1";
             // 
             // switchCellsAutoHeightItem1
             // 
-            this.switchCellsAutoHeightItem1.Id = 33;
-            this.switchCellsAutoHeightItem1.Name = "switchCellsAutoHeightItem1";
+            switchCellsAutoHeightItem1.Id = 33;
+            switchCellsAutoHeightItem1.Name = "switchCellsAutoHeightItem1";
             // 
             // changeSnapToCellsuiItem1
             // 
-            this.changeSnapToCellsuiItem1.Id = 34;
-            this.changeSnapToCellsuiItem1.Name = "changeSnapToCellsuiItem1";
+            changeSnapToCellsuiItem1.Id = 34;
+            changeSnapToCellsuiItem1.Name = "changeSnapToCellsuiItem1";
             // 
             // editAppointmentQueryItem1
             // 
-            this.editAppointmentQueryItem1.Id = 35;
-            this.editAppointmentQueryItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.editOccurrenceuiCommandItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.editSeriesuiCommandItem1)});
-            this.editAppointmentQueryItem1.Name = "editAppointmentQueryItem1";
-            this.editAppointmentQueryItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            editAppointmentQueryItem1.Id = 35;
+            editAppointmentQueryItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { new DevExpress.XtraBars.LinkPersistInfo(editOccurrenceuiCommandItem1), new DevExpress.XtraBars.LinkPersistInfo(editSeriesuiCommandItem1) });
+            editAppointmentQueryItem1.Name = "editAppointmentQueryItem1";
+            editAppointmentQueryItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // editOccurrenceuiCommandItem1
             // 
-            this.editOccurrenceuiCommandItem1.Id = 36;
-            this.editOccurrenceuiCommandItem1.Name = "editOccurrenceuiCommandItem1";
+            editOccurrenceuiCommandItem1.Id = 36;
+            editOccurrenceuiCommandItem1.Name = "editOccurrenceuiCommandItem1";
             // 
             // editSeriesuiCommandItem1
             // 
-            this.editSeriesuiCommandItem1.Id = 37;
-            this.editSeriesuiCommandItem1.Name = "editSeriesuiCommandItem1";
+            editSeriesuiCommandItem1.Id = 37;
+            editSeriesuiCommandItem1.Name = "editSeriesuiCommandItem1";
             // 
             // deleteAppointmentsItem1
             // 
-            this.deleteAppointmentsItem1.Id = 38;
-            this.deleteAppointmentsItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.deleteOccurrenceItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.deleteSeriesItem1)});
-            this.deleteAppointmentsItem1.Name = "deleteAppointmentsItem1";
-            this.deleteAppointmentsItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            deleteAppointmentsItem1.Id = 38;
+            deleteAppointmentsItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { new DevExpress.XtraBars.LinkPersistInfo(deleteOccurrenceItem1), new DevExpress.XtraBars.LinkPersistInfo(deleteSeriesItem1) });
+            deleteAppointmentsItem1.Name = "deleteAppointmentsItem1";
+            deleteAppointmentsItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // deleteOccurrenceItem1
             // 
-            this.deleteOccurrenceItem1.Id = 39;
-            this.deleteOccurrenceItem1.Name = "deleteOccurrenceItem1";
+            deleteOccurrenceItem1.Id = 39;
+            deleteOccurrenceItem1.Name = "deleteOccurrenceItem1";
             // 
             // deleteSeriesItem1
             // 
-            this.deleteSeriesItem1.Id = 40;
-            this.deleteSeriesItem1.Name = "deleteSeriesItem1";
+            deleteSeriesItem1.Id = 40;
+            deleteSeriesItem1.Name = "deleteSeriesItem1";
             // 
             // splitAppointmentItem1
             // 
-            this.splitAppointmentItem1.Id = 41;
-            this.splitAppointmentItem1.Name = "splitAppointmentItem1";
+            splitAppointmentItem1.Id = 41;
+            splitAppointmentItem1.Name = "splitAppointmentItem1";
             // 
             // changeAppointmentStatusItem1
             // 
-            this.changeAppointmentStatusItem1.Id = 42;
-            this.changeAppointmentStatusItem1.Name = "changeAppointmentStatusItem1";
+            changeAppointmentStatusItem1.Id = 42;
+            changeAppointmentStatusItem1.Name = "changeAppointmentStatusItem1";
             // 
             // changeAppointmentLabelItem1
             // 
-            this.changeAppointmentLabelItem1.Id = 43;
-            this.changeAppointmentLabelItem1.Name = "changeAppointmentLabelItem1";
+            changeAppointmentLabelItem1.Id = 43;
+            changeAppointmentLabelItem1.Name = "changeAppointmentLabelItem1";
             // 
             // toggleRecurrenceItem1
             // 
-            this.toggleRecurrenceItem1.Id = 44;
-            this.toggleRecurrenceItem1.Name = "toggleRecurrenceItem1";
+            toggleRecurrenceItem1.Id = 44;
+            toggleRecurrenceItem1.Name = "toggleRecurrenceItem1";
             // 
             // changeAppointmentReminderItem1
             // 
-            this.changeAppointmentReminderItem1.Edit = this.repositoryItemDuration1;
-            this.changeAppointmentReminderItem1.Id = 45;
-            this.changeAppointmentReminderItem1.Name = "changeAppointmentReminderItem1";
+            changeAppointmentReminderItem1.Edit = repositoryItemDuration1;
+            changeAppointmentReminderItem1.Id = 45;
+            changeAppointmentReminderItem1.Name = "changeAppointmentReminderItem1";
             // 
             // repositoryItemDuration1
             // 
-            this.repositoryItemDuration1.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
-            this.repositoryItemDuration1.AutoHeight = false;
-            this.repositoryItemDuration1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemDuration1.DisabledStateText = null;
-            this.repositoryItemDuration1.Name = "repositoryItemDuration1";
-            this.repositoryItemDuration1.ShowEmptyItem = true;
-            this.repositoryItemDuration1.ValidateOnEnterKey = true;
+            repositoryItemDuration1.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            repositoryItemDuration1.AutoHeight = false;
+            repositoryItemDuration1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            repositoryItemDuration1.DisabledStateText = null;
+            repositoryItemDuration1.Name = "repositoryItemDuration1";
+            repositoryItemDuration1.ShowEmptyItem = true;
+            repositoryItemDuration1.ValidateOnEnterKey = true;
             // 
             // MemoImportButton
             // 
-            this.MemoImportButton.Caption = "Import";
-            this.MemoImportButton.Id = 46;
-            this.MemoImportButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("MemoImportButton.ImageOptions.SvgImage")));
-            this.MemoImportButton.Name = "MemoImportButton";
-            this.MemoImportButton.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            MemoImportButton.Caption = "Import";
+            MemoImportButton.Id = 46;
+            MemoImportButton.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("MemoImportButton.ImageOptions.SvgImage");
+            MemoImportButton.Name = "MemoImportButton";
+            MemoImportButton.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
             // MemoSaveButton
             // 
-            this.MemoSaveButton.Caption = "Save";
-            this.MemoSaveButton.Id = 47;
-            this.MemoSaveButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("MemoSaveButton.ImageOptions.SvgImage")));
-            this.MemoSaveButton.Name = "MemoSaveButton";
+            MemoSaveButton.Caption = "Save";
+            MemoSaveButton.Id = 47;
+            MemoSaveButton.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("MemoSaveButton.ImageOptions.SvgImage");
+            MemoSaveButton.Name = "MemoSaveButton";
             // 
             // skinDropDownButtonItem1
             // 
-            this.skinDropDownButtonItem1.ActAsDropDown = true;
-            this.skinDropDownButtonItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
-            this.skinDropDownButtonItem1.Id = 50;
-            this.skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
+            skinDropDownButtonItem1.ActAsDropDown = true;
+            skinDropDownButtonItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
+            skinDropDownButtonItem1.Id = 50;
+            skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
             // 
             // skinPaletteDropDownButtonItem1
             // 
-            this.skinPaletteDropDownButtonItem1.ActAsDropDown = true;
-            this.skinPaletteDropDownButtonItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
-            this.skinPaletteDropDownButtonItem1.Id = 53;
-            this.skinPaletteDropDownButtonItem1.Name = "skinPaletteDropDownButtonItem1";
+            skinPaletteDropDownButtonItem1.ActAsDropDown = true;
+            skinPaletteDropDownButtonItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
+            skinPaletteDropDownButtonItem1.Id = 53;
+            skinPaletteDropDownButtonItem1.Name = "skinPaletteDropDownButtonItem1";
             // 
             // ScheduleImportButton
             // 
-            this.ScheduleImportButton.Caption = "Import";
-            this.ScheduleImportButton.Id = 55;
-            this.ScheduleImportButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ScheduleImportButton.ImageOptions.SvgImage")));
-            this.ScheduleImportButton.Name = "ScheduleImportButton";
+            ScheduleImportButton.Caption = "Import";
+            ScheduleImportButton.Id = 55;
+            ScheduleImportButton.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ScheduleImportButton.ImageOptions.SvgImage");
+            ScheduleImportButton.Name = "ScheduleImportButton";
             // 
             // ScheduleSaveButton
             // 
-            this.ScheduleSaveButton.Caption = "Save";
-            this.ScheduleSaveButton.Id = 56;
-            this.ScheduleSaveButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("ScheduleSaveButton.ImageOptions.SvgImage")));
-            this.ScheduleSaveButton.Name = "ScheduleSaveButton";
-            this.ScheduleSaveButton.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            ScheduleSaveButton.Caption = "Save";
+            ScheduleSaveButton.Id = 56;
+            ScheduleSaveButton.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ScheduleSaveButton.ImageOptions.SvgImage");
+            ScheduleSaveButton.Name = "ScheduleSaveButton";
+            ScheduleSaveButton.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
             // calendarToolsRibbonPageCategory1
             // 
-            this.calendarToolsRibbonPageCategory1.Control = this.schedulerControl1;
-            this.calendarToolsRibbonPageCategory1.Name = "calendarToolsRibbonPageCategory1";
-            this.calendarToolsRibbonPageCategory1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.appointmentRibbonPage1});
-            this.calendarToolsRibbonPageCategory1.Visible = false;
+            calendarToolsRibbonPageCategory1.Control = MainScheduler;
+            calendarToolsRibbonPageCategory1.Name = "calendarToolsRibbonPageCategory1";
+            calendarToolsRibbonPageCategory1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { appointmentRibbonPage1 });
+            calendarToolsRibbonPageCategory1.Visible = false;
             // 
-            // schedulerControl1
+            // MainScheduler
             // 
-            this.schedulerControl1.DataStorage = this.schedulerDataStorage1;
-            this.schedulerControl1.DateNavigationBar.CalendarButton.Show = true;
-            this.schedulerControl1.DateNavigationBar.ShowTodayButton = true;
-            this.schedulerControl1.DateNavigationBar.ShowViewSelectorButton = true;
-            this.schedulerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.schedulerControl1.Location = new System.Drawing.Point(0, 0);
-            this.schedulerControl1.MenuManager = this.ribbonControl1;
-            this.schedulerControl1.Name = "schedulerControl1";
-            this.schedulerControl1.Size = new System.Drawing.Size(547, 607);
-            this.schedulerControl1.Start = new System.DateTime(2023, 3, 29, 0, 0, 0, 0);
-            this.schedulerControl1.TabIndex = 0;
-            this.schedulerControl1.Text = "schedulerControl1";
-            this.schedulerControl1.Views.DayView.TimeRulers.Add(timeRuler1);
-            this.schedulerControl1.Views.DayView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
-            this.schedulerControl1.Views.FullWeekView.Enabled = true;
-            this.schedulerControl1.Views.FullWeekView.TimeRulers.Add(timeRuler2);
-            this.schedulerControl1.Views.FullWeekView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
-            this.schedulerControl1.Views.GanttView.Enabled = false;
-            this.schedulerControl1.Views.GanttView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
-            this.schedulerControl1.Views.TimelineView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
-            this.schedulerControl1.Views.WorkWeekView.TimeRulers.Add(timeRuler3);
-            this.schedulerControl1.Views.WorkWeekView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
-            this.schedulerControl1.Views.YearView.UseOptimizedScrolling = false;
+            MainScheduler.DataStorage = MainSchedulerDataStorage;
+            MainScheduler.DateNavigationBar.CalendarButton.Show = true;
+            MainScheduler.DateNavigationBar.ShowTodayButton = true;
+            MainScheduler.DateNavigationBar.ShowViewSelectorButton = true;
+            MainScheduler.Dock = System.Windows.Forms.DockStyle.Fill;
+            MainScheduler.Location = new System.Drawing.Point(0, 0);
+            MainScheduler.MenuManager = ribbonControl1;
+            MainScheduler.Name = "MainScheduler";
+            MainScheduler.Size = new System.Drawing.Size(547, 607);
+            MainScheduler.Start = new System.DateTime(2023, 3, 29, 0, 0, 0, 0);
+            MainScheduler.TabIndex = 0;
+            MainScheduler.Text = "schedulerControl1";
+            MainScheduler.Views.DayView.TimeRulers.Add(timeRuler1);
+            MainScheduler.Views.DayView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
+            MainScheduler.Views.FullWeekView.Enabled = true;
+            MainScheduler.Views.FullWeekView.TimeRulers.Add(timeRuler2);
+            MainScheduler.Views.FullWeekView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
+            MainScheduler.Views.GanttView.Enabled = false;
+            MainScheduler.Views.GanttView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
+            MainScheduler.Views.TimelineView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
+            MainScheduler.Views.WorkWeekView.TimeRulers.Add(timeRuler3);
+            MainScheduler.Views.WorkWeekView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
+            MainScheduler.Views.YearView.UseOptimizedScrolling = false;
             // 
-            // schedulerDataStorage1
-            // 
+            // MainSchedulerDataStorage
             // 
             // 
             // 
-            this.schedulerDataStorage1.AppointmentDependencies.AutoReload = false;
+            // 
+            MainSchedulerDataStorage.AppointmentDependencies.AutoReload = false;
             // 
             // 
             // 
-            this.schedulerDataStorage1.Appointments.Labels.CreateNewLabel(0, "None", "&None", System.Drawing.SystemColors.Window);
-            this.schedulerDataStorage1.Appointments.Labels.CreateNewLabel(1, "Important", "&Important", System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(194)))), ((int)(((byte)(190))))));
-            this.schedulerDataStorage1.Appointments.Labels.CreateNewLabel(2, "Business", "&Business", System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(213)))), ((int)(((byte)(255))))));
-            this.schedulerDataStorage1.Appointments.Labels.CreateNewLabel(3, "Personal", "&Personal", System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(244)))), ((int)(((byte)(156))))));
-            this.schedulerDataStorage1.Appointments.Labels.CreateNewLabel(4, "Vacation", "&Vacation", System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(228)))), ((int)(((byte)(199))))));
-            this.schedulerDataStorage1.Appointments.Labels.CreateNewLabel(5, "Must Attend", "Must &Attend", System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(206)))), ((int)(((byte)(147))))));
-            this.schedulerDataStorage1.Appointments.Labels.CreateNewLabel(6, "Travel Required", "&Travel Required", System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(244)))), ((int)(((byte)(255))))));
-            this.schedulerDataStorage1.Appointments.Labels.CreateNewLabel(7, "Needs Preparation", "&Needs Preparation", System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(219)))), ((int)(((byte)(152))))));
-            this.schedulerDataStorage1.Appointments.Labels.CreateNewLabel(8, "Birthday", "&Birthday", System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(207)))), ((int)(((byte)(233))))));
-            this.schedulerDataStorage1.Appointments.Labels.CreateNewLabel(9, "Anniversary", "&Anniversary", System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(233)))), ((int)(((byte)(223))))));
-            this.schedulerDataStorage1.Appointments.Labels.CreateNewLabel(10, "Phone Call", "Phone &Call", System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(247)))), ((int)(((byte)(165))))));
+            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(0, "None", "&None", System.Drawing.SystemColors.Window);
+            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(1, "Important", "&Important", System.Drawing.Color.FromArgb(255, 194, 190));
+            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(2, "Business", "&Business", System.Drawing.Color.FromArgb(168, 213, 255));
+            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(3, "Personal", "&Personal", System.Drawing.Color.FromArgb(193, 244, 156));
+            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(4, "Vacation", "&Vacation", System.Drawing.Color.FromArgb(243, 228, 199));
+            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(5, "Must Attend", "Must &Attend", System.Drawing.Color.FromArgb(244, 206, 147));
+            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(6, "Travel Required", "&Travel Required", System.Drawing.Color.FromArgb(199, 244, 255));
+            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(7, "Needs Preparation", "&Needs Preparation", System.Drawing.Color.FromArgb(207, 219, 152));
+            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(8, "Birthday", "&Birthday", System.Drawing.Color.FromArgb(224, 207, 233));
+            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(9, "Anniversary", "&Anniversary", System.Drawing.Color.FromArgb(141, 233, 223));
+            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(10, "Phone Call", "Phone &Call", System.Drawing.Color.FromArgb(255, 247, 165));
             // 
             // appointmentRibbonPage1
             // 
-            this.appointmentRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.actionsRibbonPageGroup1,
-            this.optionsRibbonPageGroup1});
-            this.appointmentRibbonPage1.Name = "appointmentRibbonPage1";
-            this.appointmentRibbonPage1.Visible = false;
+            appointmentRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { actionsRibbonPageGroup1, optionsRibbonPageGroup1 });
+            appointmentRibbonPage1.Name = "appointmentRibbonPage1";
+            appointmentRibbonPage1.Visible = false;
             // 
             // actionsRibbonPageGroup1
             // 
-            this.actionsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.actionsRibbonPageGroup1.ItemLinks.Add(this.editAppointmentQueryItem1);
-            this.actionsRibbonPageGroup1.ItemLinks.Add(this.deleteAppointmentsItem1);
-            this.actionsRibbonPageGroup1.ItemLinks.Add(this.splitAppointmentItem1);
-            this.actionsRibbonPageGroup1.Name = "actionsRibbonPageGroup1";
+            actionsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            actionsRibbonPageGroup1.ItemLinks.Add(editAppointmentQueryItem1);
+            actionsRibbonPageGroup1.ItemLinks.Add(deleteAppointmentsItem1);
+            actionsRibbonPageGroup1.ItemLinks.Add(splitAppointmentItem1);
+            actionsRibbonPageGroup1.Name = "actionsRibbonPageGroup1";
             // 
             // optionsRibbonPageGroup1
             // 
-            this.optionsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.optionsRibbonPageGroup1.ItemLinks.Add(this.changeAppointmentStatusItem1);
-            this.optionsRibbonPageGroup1.ItemLinks.Add(this.changeAppointmentLabelItem1);
-            this.optionsRibbonPageGroup1.ItemLinks.Add(this.toggleRecurrenceItem1);
-            this.optionsRibbonPageGroup1.ItemLinks.Add(this.changeAppointmentReminderItem1);
-            this.optionsRibbonPageGroup1.Name = "optionsRibbonPageGroup1";
+            optionsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            optionsRibbonPageGroup1.ItemLinks.Add(changeAppointmentStatusItem1);
+            optionsRibbonPageGroup1.ItemLinks.Add(changeAppointmentLabelItem1);
+            optionsRibbonPageGroup1.ItemLinks.Add(toggleRecurrenceItem1);
+            optionsRibbonPageGroup1.ItemLinks.Add(changeAppointmentReminderItem1);
+            optionsRibbonPageGroup1.Name = "optionsRibbonPageGroup1";
             // 
             // homeRibbonPage1
             // 
-            this.homeRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.appointmentRibbonPageGroup1,
-            this.navigatorRibbonPageGroup1,
-            this.arrangeRibbonPageGroup1});
-            this.homeRibbonPage1.Name = "homeRibbonPage1";
+            homeRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { appointmentRibbonPageGroup1, navigatorRibbonPageGroup1, arrangeRibbonPageGroup1 });
+            homeRibbonPage1.Name = "homeRibbonPage1";
             // 
             // appointmentRibbonPageGroup1
             // 
-            this.appointmentRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.appointmentRibbonPageGroup1.ItemLinks.Add(this.newAppointmentItem1);
-            this.appointmentRibbonPageGroup1.ItemLinks.Add(this.newRecurringAppointmentItem1);
-            this.appointmentRibbonPageGroup1.Name = "appointmentRibbonPageGroup1";
+            appointmentRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            appointmentRibbonPageGroup1.ItemLinks.Add(newAppointmentItem1);
+            appointmentRibbonPageGroup1.ItemLinks.Add(newRecurringAppointmentItem1);
+            appointmentRibbonPageGroup1.Name = "appointmentRibbonPageGroup1";
             // 
             // navigatorRibbonPageGroup1
             // 
-            this.navigatorRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.navigatorRibbonPageGroup1.ItemLinks.Add(this.navigateViewBackwardItem1);
-            this.navigatorRibbonPageGroup1.ItemLinks.Add(this.navigateViewForwardItem1);
-            this.navigatorRibbonPageGroup1.ItemLinks.Add(this.gotoTodayItem1);
-            this.navigatorRibbonPageGroup1.ItemLinks.Add(this.viewZoomInItem1);
-            this.navigatorRibbonPageGroup1.ItemLinks.Add(this.viewZoomOutItem1);
-            this.navigatorRibbonPageGroup1.Name = "navigatorRibbonPageGroup1";
+            navigatorRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            navigatorRibbonPageGroup1.ItemLinks.Add(navigateViewBackwardItem1);
+            navigatorRibbonPageGroup1.ItemLinks.Add(navigateViewForwardItem1);
+            navigatorRibbonPageGroup1.ItemLinks.Add(gotoTodayItem1);
+            navigatorRibbonPageGroup1.ItemLinks.Add(viewZoomInItem1);
+            navigatorRibbonPageGroup1.ItemLinks.Add(viewZoomOutItem1);
+            navigatorRibbonPageGroup1.Name = "navigatorRibbonPageGroup1";
             // 
             // arrangeRibbonPageGroup1
             // 
-            this.arrangeRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.arrangeRibbonPageGroup1.ItemLinks.Add(this.switchToDayViewItem1);
-            this.arrangeRibbonPageGroup1.ItemLinks.Add(this.switchToWorkWeekViewItem1);
-            this.arrangeRibbonPageGroup1.ItemLinks.Add(this.switchToWeekViewItem1);
-            this.arrangeRibbonPageGroup1.ItemLinks.Add(this.switchToFullWeekViewItem1);
-            this.arrangeRibbonPageGroup1.ItemLinks.Add(this.switchToMonthViewItem1);
-            this.arrangeRibbonPageGroup1.ItemLinks.Add(this.switchToTimelineViewItem1);
-            this.arrangeRibbonPageGroup1.ItemLinks.Add(this.switchToAgendaViewItem1);
-            this.arrangeRibbonPageGroup1.ItemLinks.Add(this.switchToYearViewItem1);
-            this.arrangeRibbonPageGroup1.Name = "arrangeRibbonPageGroup1";
+            arrangeRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            arrangeRibbonPageGroup1.ItemLinks.Add(switchToDayViewItem1);
+            arrangeRibbonPageGroup1.ItemLinks.Add(switchToWorkWeekViewItem1);
+            arrangeRibbonPageGroup1.ItemLinks.Add(switchToWeekViewItem1);
+            arrangeRibbonPageGroup1.ItemLinks.Add(switchToFullWeekViewItem1);
+            arrangeRibbonPageGroup1.ItemLinks.Add(switchToMonthViewItem1);
+            arrangeRibbonPageGroup1.ItemLinks.Add(switchToTimelineViewItem1);
+            arrangeRibbonPageGroup1.ItemLinks.Add(switchToAgendaViewItem1);
+            arrangeRibbonPageGroup1.ItemLinks.Add(switchToYearViewItem1);
+            arrangeRibbonPageGroup1.Name = "arrangeRibbonPageGroup1";
             // 
             // viewRibbonPage1
             // 
-            this.viewRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.activeViewRibbonPageGroup1,
-            this.timeScaleRibbonPageGroup1,
-            this.layoutRibbonPageGroup1});
-            this.viewRibbonPage1.Name = "viewRibbonPage1";
+            viewRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { activeViewRibbonPageGroup1, timeScaleRibbonPageGroup1, layoutRibbonPageGroup1 });
+            viewRibbonPage1.Name = "viewRibbonPage1";
             // 
             // activeViewRibbonPageGroup1
             // 
-            this.activeViewRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.activeViewRibbonPageGroup1.ItemLinks.Add(this.switchToDayViewItem1);
-            this.activeViewRibbonPageGroup1.ItemLinks.Add(this.switchToWorkWeekViewItem1);
-            this.activeViewRibbonPageGroup1.ItemLinks.Add(this.switchToWeekViewItem1);
-            this.activeViewRibbonPageGroup1.ItemLinks.Add(this.switchToFullWeekViewItem1);
-            this.activeViewRibbonPageGroup1.ItemLinks.Add(this.switchToMonthViewItem1);
-            this.activeViewRibbonPageGroup1.ItemLinks.Add(this.switchToTimelineViewItem1);
-            this.activeViewRibbonPageGroup1.ItemLinks.Add(this.switchToAgendaViewItem1);
-            this.activeViewRibbonPageGroup1.ItemLinks.Add(this.switchToYearViewItem1);
-            this.activeViewRibbonPageGroup1.Name = "activeViewRibbonPageGroup1";
+            activeViewRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            activeViewRibbonPageGroup1.ItemLinks.Add(switchToDayViewItem1);
+            activeViewRibbonPageGroup1.ItemLinks.Add(switchToWorkWeekViewItem1);
+            activeViewRibbonPageGroup1.ItemLinks.Add(switchToWeekViewItem1);
+            activeViewRibbonPageGroup1.ItemLinks.Add(switchToFullWeekViewItem1);
+            activeViewRibbonPageGroup1.ItemLinks.Add(switchToMonthViewItem1);
+            activeViewRibbonPageGroup1.ItemLinks.Add(switchToTimelineViewItem1);
+            activeViewRibbonPageGroup1.ItemLinks.Add(switchToAgendaViewItem1);
+            activeViewRibbonPageGroup1.ItemLinks.Add(switchToYearViewItem1);
+            activeViewRibbonPageGroup1.Name = "activeViewRibbonPageGroup1";
             // 
             // timeScaleRibbonPageGroup1
             // 
-            this.timeScaleRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.timeScaleRibbonPageGroup1.ItemLinks.Add(this.switchTimeScalesItem1);
-            this.timeScaleRibbonPageGroup1.ItemLinks.Add(this.changeScaleWidthItem1);
-            this.timeScaleRibbonPageGroup1.ItemLinks.Add(this.switchTimeScalesCaptionItem1);
-            this.timeScaleRibbonPageGroup1.Name = "timeScaleRibbonPageGroup1";
+            timeScaleRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            timeScaleRibbonPageGroup1.ItemLinks.Add(switchTimeScalesItem1);
+            timeScaleRibbonPageGroup1.ItemLinks.Add(changeScaleWidthItem1);
+            timeScaleRibbonPageGroup1.ItemLinks.Add(switchTimeScalesCaptionItem1);
+            timeScaleRibbonPageGroup1.Name = "timeScaleRibbonPageGroup1";
             // 
             // layoutRibbonPageGroup1
             // 
-            this.layoutRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.layoutRibbonPageGroup1.ItemLinks.Add(this.switchCompressWeekendItem1);
-            this.layoutRibbonPageGroup1.ItemLinks.Add(this.switchShowWorkTimeOnlyItem1);
-            this.layoutRibbonPageGroup1.ItemLinks.Add(this.switchCellsAutoHeightItem1);
-            this.layoutRibbonPageGroup1.ItemLinks.Add(this.changeSnapToCellsuiItem1);
-            this.layoutRibbonPageGroup1.Name = "layoutRibbonPageGroup1";
+            layoutRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            layoutRibbonPageGroup1.ItemLinks.Add(switchCompressWeekendItem1);
+            layoutRibbonPageGroup1.ItemLinks.Add(switchShowWorkTimeOnlyItem1);
+            layoutRibbonPageGroup1.ItemLinks.Add(switchCellsAutoHeightItem1);
+            layoutRibbonPageGroup1.ItemLinks.Add(changeSnapToCellsuiItem1);
+            layoutRibbonPageGroup1.Name = "layoutRibbonPageGroup1";
             // 
             // fileRibbonPage1
             // 
-            this.fileRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.MemoFileRibbonPageGroup,
-            this.ScheduleFileRibbonPageGroup1,
-            this.SchedulePrintRibbonPageGroup1});
-            this.fileRibbonPage1.Name = "fileRibbonPage1";
+            fileRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { MemoFileRibbonPageGroup, ScheduleFileRibbonPageGroup1, SchedulePrintRibbonPageGroup1 });
+            fileRibbonPage1.Name = "fileRibbonPage1";
             // 
             // MemoFileRibbonPageGroup
             // 
-            this.MemoFileRibbonPageGroup.ItemLinks.Add(this.MemoImportButton);
-            this.MemoFileRibbonPageGroup.ItemLinks.Add(this.MemoSaveButton);
-            this.MemoFileRibbonPageGroup.Name = "MemoFileRibbonPageGroup";
-            this.MemoFileRibbonPageGroup.Text = "Memo";
+            MemoFileRibbonPageGroup.ItemLinks.Add(MemoImportButton);
+            MemoFileRibbonPageGroup.ItemLinks.Add(MemoSaveButton);
+            MemoFileRibbonPageGroup.Name = "MemoFileRibbonPageGroup";
+            MemoFileRibbonPageGroup.Text = "Memo";
             // 
             // ScheduleFileRibbonPageGroup1
             // 
-            this.ScheduleFileRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.ScheduleFileRibbonPageGroup1.ItemLinks.Add(this.ScheduleImportButton);
-            this.ScheduleFileRibbonPageGroup1.ItemLinks.Add(this.ScheduleSaveButton);
-            this.ScheduleFileRibbonPageGroup1.Name = "ScheduleFileRibbonPageGroup1";
-            this.ScheduleFileRibbonPageGroup1.Text = "Schedule";
+            ScheduleFileRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            ScheduleFileRibbonPageGroup1.ItemLinks.Add(ScheduleImportButton);
+            ScheduleFileRibbonPageGroup1.ItemLinks.Add(ScheduleSaveButton);
+            ScheduleFileRibbonPageGroup1.Name = "ScheduleFileRibbonPageGroup1";
+            ScheduleFileRibbonPageGroup1.Text = "Schedule";
             // 
             // SchedulePrintRibbonPageGroup1
             // 
-            this.SchedulePrintRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.SchedulePrintRibbonPageGroup1.ItemLinks.Add(this.printPreviewItem1);
-            this.SchedulePrintRibbonPageGroup1.ItemLinks.Add(this.printPageSetupItem1);
-            this.SchedulePrintRibbonPageGroup1.Name = "SchedulePrintRibbonPageGroup1";
-            this.SchedulePrintRibbonPageGroup1.Text = "Schedule";
+            SchedulePrintRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            SchedulePrintRibbonPageGroup1.ItemLinks.Add(printPreviewItem1);
+            SchedulePrintRibbonPageGroup1.ItemLinks.Add(printPageSetupItem1);
+            SchedulePrintRibbonPageGroup1.Name = "SchedulePrintRibbonPageGroup1";
+            SchedulePrintRibbonPageGroup1.Text = "Schedule";
             // 
             // ribbonPageSettings
             // 
-            this.ribbonPageSettings.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroupSkins,
-            this.ribbonPageGroupSkinColors,
-            this.ribbonPageGroup1});
-            this.ribbonPageSettings.Name = "ribbonPageSettings";
-            this.ribbonPageSettings.Text = "Setting";
+            ribbonPageSettings.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroupSkins, ribbonPageGroupSkinColors, AppointmentSettingGroup });
+            ribbonPageSettings.Name = "ribbonPageSettings";
+            ribbonPageSettings.Text = "Setting";
             // 
             // ribbonPageGroupSkins
             // 
-            this.ribbonPageGroupSkins.ItemLinks.Add(this.skinDropDownButtonItem1);
-            this.ribbonPageGroupSkins.ItemLinks.Add(this.skinRibbonGalleryBarItem1);
-            this.ribbonPageGroupSkins.Name = "ribbonPageGroupSkins";
-            this.ribbonPageGroupSkins.Text = "Skins";
+            ribbonPageGroupSkins.ItemLinks.Add(skinDropDownButtonItem1);
+            ribbonPageGroupSkins.ItemLinks.Add(skinRibbonGalleryBarItem1);
+            ribbonPageGroupSkins.Name = "ribbonPageGroupSkins";
+            ribbonPageGroupSkins.Text = "Skins";
             // 
             // ribbonPageGroupSkinColors
             // 
-            this.ribbonPageGroupSkinColors.ItemLinks.Add(this.skinPaletteDropDownButtonItem1);
-            this.ribbonPageGroupSkinColors.ItemLinks.Add(this.skinPaletteRibbonGalleryBarItem1);
-            this.ribbonPageGroupSkinColors.Name = "ribbonPageGroupSkinColors";
-            this.ribbonPageGroupSkinColors.Text = "SkinColors";
+            ribbonPageGroupSkinColors.ItemLinks.Add(skinPaletteDropDownButtonItem1);
+            ribbonPageGroupSkinColors.ItemLinks.Add(skinPaletteRibbonGalleryBarItem1);
+            ribbonPageGroupSkinColors.Name = "ribbonPageGroupSkinColors";
+            ribbonPageGroupSkinColors.Text = "SkinColors";
             // 
-            // ribbonPageGroup1
+            // AppointmentSettingGroup
             // 
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "ribbonPageGroup1";
+            AppointmentSettingGroup.ItemLinks.Add(OpenStatusEdit);
+            AppointmentSettingGroup.Name = "AppointmentSettingGroup";
+            AppointmentSettingGroup.Text = "Appointment Settings";
             // 
             // splitContainerControlMain
             // 
-            this.splitContainerControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControlMain.Location = new System.Drawing.Point(0, 160);
-            this.splitContainerControlMain.Name = "splitContainerControlMain";
+            splitContainerControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            splitContainerControlMain.Location = new System.Drawing.Point(0, 160);
+            splitContainerControlMain.Name = "splitContainerControlMain";
             // 
             // splitContainerControlMain.Panel1
             // 
-            this.splitContainerControlMain.Panel1.Controls.Add(this.memoEdit);
-            this.splitContainerControlMain.Panel1.Text = "Panel1";
+            splitContainerControlMain.Panel1.Controls.Add(memoEdit);
+            splitContainerControlMain.Panel1.Text = "Panel1";
             // 
             // splitContainerControlMain.Panel2
             // 
-            this.splitContainerControlMain.Panel2.Controls.Add(this.splitContainerControlCalendar);
-            this.splitContainerControlMain.Panel2.Text = "Panel2";
-            this.splitContainerControlMain.Size = new System.Drawing.Size(1022, 607);
-            this.splitContainerControlMain.SplitterPosition = 213;
-            this.splitContainerControlMain.TabIndex = 1;
+            splitContainerControlMain.Panel2.Controls.Add(splitContainerControlCalendar);
+            splitContainerControlMain.Panel2.Text = "Panel2";
+            splitContainerControlMain.Size = new System.Drawing.Size(1022, 607);
+            splitContainerControlMain.SplitterPosition = 213;
+            splitContainerControlMain.TabIndex = 1;
             // 
             // memoEdit
             // 
-            this.memoEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.memoEdit.EditValue = "";
-            this.memoEdit.Location = new System.Drawing.Point(0, 0);
-            this.memoEdit.MenuManager = this.ribbonControl1;
-            this.memoEdit.Name = "memoEdit";
-            this.memoEdit.Properties.Appearance.Font = new System.Drawing.Font("Consolas", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.memoEdit.Properties.Appearance.Options.UseFont = true;
-            this.memoEdit.Size = new System.Drawing.Size(213, 607);
-            this.memoEdit.TabIndex = 0;
+            memoEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            memoEdit.EditValue = "";
+            memoEdit.Location = new System.Drawing.Point(0, 0);
+            memoEdit.MenuManager = ribbonControl1;
+            memoEdit.Name = "memoEdit";
+            memoEdit.Properties.Appearance.Font = new System.Drawing.Font("Consolas", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            memoEdit.Properties.Appearance.Options.UseFont = true;
+            memoEdit.Size = new System.Drawing.Size(213, 607);
+            memoEdit.TabIndex = 0;
             // 
             // splitContainerControlCalendar
             // 
-            this.splitContainerControlCalendar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControlCalendar.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
-            this.splitContainerControlCalendar.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerControlCalendar.Name = "splitContainerControlCalendar";
+            splitContainerControlCalendar.Dock = System.Windows.Forms.DockStyle.Fill;
+            splitContainerControlCalendar.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
+            splitContainerControlCalendar.Location = new System.Drawing.Point(0, 0);
+            splitContainerControlCalendar.Name = "splitContainerControlCalendar";
             // 
             // splitContainerControlCalendar.Panel1
             // 
-            this.splitContainerControlCalendar.Panel1.Controls.Add(this.schedulerControl1);
-            this.splitContainerControlCalendar.Panel1.Text = "Panel1";
+            splitContainerControlCalendar.Panel1.Controls.Add(MainScheduler);
+            splitContainerControlCalendar.Panel1.Text = "Panel1";
             // 
             // splitContainerControlCalendar.Panel2
             // 
-            this.splitContainerControlCalendar.Panel2.Controls.Add(this.dateNavigator1);
-            this.splitContainerControlCalendar.Panel2.Text = "Panel2";
-            this.splitContainerControlCalendar.Size = new System.Drawing.Size(799, 607);
-            this.splitContainerControlCalendar.SplitterPosition = 242;
-            this.splitContainerControlCalendar.TabIndex = 0;
+            splitContainerControlCalendar.Panel2.Controls.Add(MainCalendar);
+            splitContainerControlCalendar.Panel2.Text = "Panel2";
+            splitContainerControlCalendar.Size = new System.Drawing.Size(799, 607);
+            splitContainerControlCalendar.SplitterPosition = 242;
+            splitContainerControlCalendar.TabIndex = 0;
             // 
-            // dateNavigator1
+            // MainCalendar
             // 
-            this.dateNavigator1.CalendarAppearance.DayCellSpecial.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.dateNavigator1.CalendarAppearance.DayCellSpecial.Options.UseFont = true;
-            this.dateNavigator1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateNavigator1.DateTime = new System.DateTime(2023, 3, 29, 0, 0, 0, 0);
-            this.dateNavigator1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateNavigator1.EditValue = new System.DateTime(2023, 3, 29, 0, 0, 0, 0);
-            this.dateNavigator1.FirstDayOfWeek = System.DayOfWeek.Sunday;
-            this.dateNavigator1.Location = new System.Drawing.Point(0, 0);
-            this.dateNavigator1.Name = "dateNavigator1";
-            this.dateNavigator1.SchedulerControl = this.schedulerControl1;
-            this.dateNavigator1.Size = new System.Drawing.Size(242, 607);
-            this.dateNavigator1.TabIndex = 0;
+            MainCalendar.CalendarAppearance.DayCellSpecial.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            MainCalendar.CalendarAppearance.DayCellSpecial.Options.UseFont = true;
+            MainCalendar.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            MainCalendar.DateTime = new System.DateTime(2023, 3, 29, 0, 0, 0, 0);
+            MainCalendar.Dock = System.Windows.Forms.DockStyle.Fill;
+            MainCalendar.EditValue = new System.DateTime(2023, 3, 29, 0, 0, 0, 0);
+            MainCalendar.FirstDayOfWeek = System.DayOfWeek.Sunday;
+            MainCalendar.Location = new System.Drawing.Point(0, 0);
+            MainCalendar.Name = "MainCalendar";
+            MainCalendar.SchedulerControl = MainScheduler;
+            MainCalendar.Size = new System.Drawing.Size(242, 607);
+            MainCalendar.TabIndex = 0;
             // 
-            // schedulerBarController1
+            // MainSchedulerBarController
             // 
-            this.schedulerBarController1.BarItems.Add(this.printPreviewItem1);
-            this.schedulerBarController1.BarItems.Add(this.printPageSetupItem1);
-            this.schedulerBarController1.BarItems.Add(this.newAppointmentItem1);
-            this.schedulerBarController1.BarItems.Add(this.newRecurringAppointmentItem1);
-            this.schedulerBarController1.BarItems.Add(this.navigateViewBackwardItem1);
-            this.schedulerBarController1.BarItems.Add(this.navigateViewForwardItem1);
-            this.schedulerBarController1.BarItems.Add(this.gotoTodayItem1);
-            this.schedulerBarController1.BarItems.Add(this.viewZoomInItem1);
-            this.schedulerBarController1.BarItems.Add(this.viewZoomOutItem1);
-            this.schedulerBarController1.BarItems.Add(this.switchToDayViewItem1);
-            this.schedulerBarController1.BarItems.Add(this.switchToWorkWeekViewItem1);
-            this.schedulerBarController1.BarItems.Add(this.switchToWeekViewItem1);
-            this.schedulerBarController1.BarItems.Add(this.switchToFullWeekViewItem1);
-            this.schedulerBarController1.BarItems.Add(this.switchToMonthViewItem1);
-            this.schedulerBarController1.BarItems.Add(this.switchToTimelineViewItem1);
-            this.schedulerBarController1.BarItems.Add(this.switchToAgendaViewItem1);
-            this.schedulerBarController1.BarItems.Add(this.switchToYearViewItem1);
-            this.schedulerBarController1.BarItems.Add(this.switchTimeScalesItem1);
-            this.schedulerBarController1.BarItems.Add(this.changeScaleWidthItem1);
-            this.schedulerBarController1.BarItems.Add(this.switchTimeScalesCaptionItem1);
-            this.schedulerBarController1.BarItems.Add(this.switchCompressWeekendItem1);
-            this.schedulerBarController1.BarItems.Add(this.switchShowWorkTimeOnlyItem1);
-            this.schedulerBarController1.BarItems.Add(this.switchCellsAutoHeightItem1);
-            this.schedulerBarController1.BarItems.Add(this.changeSnapToCellsuiItem1);
-            this.schedulerBarController1.BarItems.Add(this.editOccurrenceuiCommandItem1);
-            this.schedulerBarController1.BarItems.Add(this.editSeriesuiCommandItem1);
-            this.schedulerBarController1.BarItems.Add(this.editAppointmentQueryItem1);
-            this.schedulerBarController1.BarItems.Add(this.deleteOccurrenceItem1);
-            this.schedulerBarController1.BarItems.Add(this.deleteSeriesItem1);
-            this.schedulerBarController1.BarItems.Add(this.deleteAppointmentsItem1);
-            this.schedulerBarController1.BarItems.Add(this.splitAppointmentItem1);
-            this.schedulerBarController1.BarItems.Add(this.changeAppointmentStatusItem1);
-            this.schedulerBarController1.BarItems.Add(this.changeAppointmentLabelItem1);
-            this.schedulerBarController1.BarItems.Add(this.toggleRecurrenceItem1);
-            this.schedulerBarController1.BarItems.Add(this.changeAppointmentReminderItem1);
-            this.schedulerBarController1.Control = this.schedulerControl1;
+            MainSchedulerBarController.BarItems.Add(printPreviewItem1);
+            MainSchedulerBarController.BarItems.Add(printPageSetupItem1);
+            MainSchedulerBarController.BarItems.Add(newAppointmentItem1);
+            MainSchedulerBarController.BarItems.Add(newRecurringAppointmentItem1);
+            MainSchedulerBarController.BarItems.Add(navigateViewBackwardItem1);
+            MainSchedulerBarController.BarItems.Add(navigateViewForwardItem1);
+            MainSchedulerBarController.BarItems.Add(gotoTodayItem1);
+            MainSchedulerBarController.BarItems.Add(viewZoomInItem1);
+            MainSchedulerBarController.BarItems.Add(viewZoomOutItem1);
+            MainSchedulerBarController.BarItems.Add(switchToDayViewItem1);
+            MainSchedulerBarController.BarItems.Add(switchToWorkWeekViewItem1);
+            MainSchedulerBarController.BarItems.Add(switchToWeekViewItem1);
+            MainSchedulerBarController.BarItems.Add(switchToFullWeekViewItem1);
+            MainSchedulerBarController.BarItems.Add(switchToMonthViewItem1);
+            MainSchedulerBarController.BarItems.Add(switchToTimelineViewItem1);
+            MainSchedulerBarController.BarItems.Add(switchToAgendaViewItem1);
+            MainSchedulerBarController.BarItems.Add(switchToYearViewItem1);
+            MainSchedulerBarController.BarItems.Add(switchTimeScalesItem1);
+            MainSchedulerBarController.BarItems.Add(changeScaleWidthItem1);
+            MainSchedulerBarController.BarItems.Add(switchTimeScalesCaptionItem1);
+            MainSchedulerBarController.BarItems.Add(switchCompressWeekendItem1);
+            MainSchedulerBarController.BarItems.Add(switchShowWorkTimeOnlyItem1);
+            MainSchedulerBarController.BarItems.Add(switchCellsAutoHeightItem1);
+            MainSchedulerBarController.BarItems.Add(changeSnapToCellsuiItem1);
+            MainSchedulerBarController.BarItems.Add(editOccurrenceuiCommandItem1);
+            MainSchedulerBarController.BarItems.Add(editSeriesuiCommandItem1);
+            MainSchedulerBarController.BarItems.Add(editAppointmentQueryItem1);
+            MainSchedulerBarController.BarItems.Add(deleteOccurrenceItem1);
+            MainSchedulerBarController.BarItems.Add(deleteSeriesItem1);
+            MainSchedulerBarController.BarItems.Add(deleteAppointmentsItem1);
+            MainSchedulerBarController.BarItems.Add(splitAppointmentItem1);
+            MainSchedulerBarController.BarItems.Add(changeAppointmentStatusItem1);
+            MainSchedulerBarController.BarItems.Add(changeAppointmentLabelItem1);
+            MainSchedulerBarController.BarItems.Add(toggleRecurrenceItem1);
+            MainSchedulerBarController.BarItems.Add(changeAppointmentReminderItem1);
+            MainSchedulerBarController.Control = MainScheduler;
+            // 
+            // OpenStatusEdit
+            // 
+            OpenStatusEdit.Caption = "Status";
+            OpenStatusEdit.Id = 59;
+            OpenStatusEdit.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("OpenStatusEdit.ImageOptions.SvgImage");
+            OpenStatusEdit.Name = "OpenStatusEdit";
+            OpenStatusEdit.ItemClick += OpenStatusEdit_ItemClick;
             // 
             // MainFrame
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1022, 767);
-            this.Controls.Add(this.splitContainerControlMain);
-            this.Controls.Add(this.ribbonControl1);
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "MainFrame";
-            this.Ribbon = this.ribbonControl1;
-            this.Text = "Work Calendar";
-            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDuration1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.schedulerControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.schedulerDataStorage1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControlMain.Panel1)).EndInit();
-            this.splitContainerControlMain.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControlMain.Panel2)).EndInit();
-            this.splitContainerControlMain.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControlMain)).EndInit();
-            this.splitContainerControlMain.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControlCalendar.Panel1)).EndInit();
-            this.splitContainerControlCalendar.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControlCalendar.Panel2)).EndInit();
-            this.splitContainerControlCalendar.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControlCalendar)).EndInit();
-            this.splitContainerControlCalendar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dateNavigator1.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateNavigator1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.schedulerBarController1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            ClientSize = new System.Drawing.Size(1022, 767);
+            Controls.Add(splitContainerControlMain);
+            Controls.Add(ribbonControl1);
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "MainFrame";
+            Ribbon = ribbonControl1;
+            Text = "Work Calendar";
+            ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemSpinEdit1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemDuration1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)MainScheduler).EndInit();
+            ((System.ComponentModel.ISupportInitialize)MainSchedulerDataStorage).EndInit();
+            ((System.ComponentModel.ISupportInitialize)splitContainerControlMain.Panel1).EndInit();
+            splitContainerControlMain.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainerControlMain.Panel2).EndInit();
+            splitContainerControlMain.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainerControlMain).EndInit();
+            splitContainerControlMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)memoEdit.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)splitContainerControlCalendar.Panel1).EndInit();
+            splitContainerControlCalendar.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainerControlCalendar.Panel2).EndInit();
+            splitContainerControlCalendar.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainerControlCalendar).EndInit();
+            splitContainerControlCalendar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)MainCalendar.CalendarTimeProperties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)MainCalendar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)MainSchedulerBarController).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -832,9 +759,9 @@
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControlMain;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControlCalendar;
-        private DevExpress.XtraScheduler.SchedulerControl schedulerControl1;
-        private DevExpress.XtraScheduler.SchedulerDataStorage schedulerDataStorage1;
-        private DevExpress.XtraScheduler.DateNavigator dateNavigator1;
+        private DevExpress.XtraScheduler.SchedulerControl MainScheduler;
+        private DevExpress.XtraScheduler.SchedulerDataStorage MainSchedulerDataStorage;
+        private DevExpress.XtraScheduler.DateNavigator MainCalendar;
         private DevExpress.XtraScheduler.UI.PrintPreviewItem printPreviewItem1;
         private DevExpress.XtraScheduler.UI.PrintPageSetupItem printPageSetupItem1;
         private DevExpress.XtraScheduler.UI.NewAppointmentItem newAppointmentItem1;
@@ -887,7 +814,7 @@
         private DevExpress.XtraScheduler.UI.ActiveViewRibbonPageGroup activeViewRibbonPageGroup1;
         private DevExpress.XtraScheduler.UI.TimeScaleRibbonPageGroup timeScaleRibbonPageGroup1;
         private DevExpress.XtraScheduler.UI.LayoutRibbonPageGroup layoutRibbonPageGroup1;
-        private DevExpress.XtraScheduler.UI.SchedulerBarController schedulerBarController1;
+        private DevExpress.XtraScheduler.UI.SchedulerBarController MainSchedulerBarController;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupSkinColors;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupSkins;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageSettings;
@@ -899,7 +826,8 @@
         private DevExpress.XtraBars.SkinPaletteDropDownButtonItem skinPaletteDropDownButtonItem1;
         private DevExpress.XtraBars.BarButtonItem ScheduleImportButton;
         private DevExpress.XtraBars.BarButtonItem ScheduleSaveButton;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup AppointmentSettingGroup;
+        private DevExpress.XtraBars.BarButtonItem OpenStatusEdit;
     }
 }
 
