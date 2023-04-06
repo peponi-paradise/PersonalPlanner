@@ -1,0 +1,6 @@
+﻿<Items>
+  <Resource Caption="General" Color="Crimson" />
+  <Resource Caption="Research" Color="SkyBlue" />
+  <Resource Caption="SW" Color="MediumSeaGreen" />
+  <Resource Caption="Test" Color="120,0,0" />
+</Items>

@@ -17,4 +17,16 @@ namespace WorkCalendar.Define
         public Color ForeColor = Color.White;
         public Color BackColor = Color.White;
     }
+
+    public class AppointmentLabelDefine
+    {
+        public string DisplayName = "";
+        public Color Color = Color.White;
+    }
+
+    public class AppointmentResourceDefine
+    {
+        public string Caption = "";
+        public Color Color = Color.White;
+    }
 }

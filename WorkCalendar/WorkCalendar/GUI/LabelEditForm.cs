@@ -3,6 +3,7 @@ using DevExpress.Utils.Filtering.Internal;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.CustomEditor;
 using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraScheduler;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,33 +13,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WorkCalendar.Parser.YAML;
 
 namespace WorkCalendar.GUI
 {
-    public partial class ResourcesTest : Form
+    public partial class LabelEditForm : Form
     {
         private RepositoryItemColorPickEdit ColorPickEdit;
 
-        public ResourcesTest()
+        public LabelEditForm()
         {
             InitializeComponent();
             ColorPickEdit = new RepositoryItemColorPickEdit();
             ColorPickEdit.StoreColorAsInteger = true;
-            gridControl1.DataSourceChanged += GridControl1_DataSourceChanged;
+            MainGridControl.DataSourceChanged += MainGridControl_DataSourceChanged;
         }
 
-        private void GridControl1_DataSourceChanged(object sender, EventArgs e)
+        private void MainGridControl_DataSourceChanged(object sender, EventArgs e)
         {
-            if (!gridControl1.RepositoryItems.Contains(ColorPickEdit))
+            if (!MainGridControl.RepositoryItems.Contains(ColorPickEdit))
             {
-                gridControl1.RepositoryItems.Add(ColorPickEdit);
+                MainGridControl.RepositoryItems.Add(ColorPickEdit);
                 ColorPickEdit.AutoHeight = false;
                 ColorPickEdit.AutomaticColor = Color.Black;
                 ColorPickEdit.Name = "Color Picker";
             }
-            if (gridView1.Columns.ColumnByFieldName("Color") != null) gridView1.Columns["Color"].ColumnEdit = ColorPickEdit;
+            if (MainGridView.Columns.ColumnByFieldName("Color") != null) MainGridView.Columns["Color"].ColumnEdit = ColorPickEdit;
         }
 
-        public void SetDataSources(object source) => gridControl1.DataSource = source;
+        public void SetDataSources(object source) => MainGridControl.DataSource = source;
     }
 }

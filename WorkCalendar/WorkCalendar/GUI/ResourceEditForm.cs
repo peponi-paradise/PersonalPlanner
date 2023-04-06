@@ -3,8 +3,6 @@ using DevExpress.Utils.Filtering.Internal;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.CustomEditor;
 using DevExpress.XtraEditors.Repository;
-using DevExpress.XtraGrid.Columns;
-using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,22 +15,17 @@ using System.Windows.Forms;
 
 namespace WorkCalendar.GUI
 {
-    public partial class StatusEditForm : Form
+    public partial class ResourceEditForm : Form
     {
         private RepositoryItemColorPickEdit ColorPickEdit;
 
-        public StatusEditForm()
+        public ResourceEditForm()
         {
             InitializeComponent();
-            this.TopMost = true;
             ColorPickEdit = new RepositoryItemColorPickEdit();
             ColorPickEdit.StoreColorAsInteger = true;
             MainGridControl.DataSourceChanged += MainGridControl_DataSourceChanged;
-            MainGridView.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplace;
-            MainGridView.OptionsEditForm.CustomEditFormLayout = new StatusEditLayout();
         }
-
-        public void SetDataSources(object source) => MainGridControl.DataSource = source;
 
         private void MainGridControl_DataSourceChanged(object sender, EventArgs e)
         {
@@ -43,10 +36,9 @@ namespace WorkCalendar.GUI
                 ColorPickEdit.AutomaticColor = Color.Black;
                 ColorPickEdit.Name = "Color Picker";
             }
-            foreach (GridColumn col in MainGridView.Columns)
-            {
-                if (col.Name.Contains("Color")) col.ColumnEdit = ColorPickEdit;
-            }
+            if (MainGridView.Columns.ColumnByFieldName("Color") != null) MainGridView.Columns["Color"].ColumnEdit = ColorPickEdit;
         }
+
+        public void SetDataSources(object source) => MainGridControl.DataSource = source;
     }
 }

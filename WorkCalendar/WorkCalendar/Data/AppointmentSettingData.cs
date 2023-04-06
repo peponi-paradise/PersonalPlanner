@@ -16,10 +16,51 @@ namespace WorkCalendar.Data
     public static class AppointmentSettingData
     {
         private static string DefaultFilePath = $@"{Environment.CurrentDirectory}\Data\";
+        private static string LabelFilePath = DefaultFilePath + $"{nameof(LabelDataSet)}.xml";
         private static string StatusFilePath = DefaultFilePath + $"{nameof(StatusDataSet)}.xml";
+        private static string ResourceFilePath = DefaultFilePath + $"{nameof(ResourceDataSet)}.xml";
+
+        private static DataSet LabelDataSet;
         private static DataSet StatusDataSet;
+        private static DataSet ResourceDataSet;
+
+        public static DataTable GetLabelDataSet() => LabelDataSet.Tables[0];
 
         public static DataTable GetStatusDataSet() => StatusDataSet.Tables[0];
+
+        public static DataTable GetResourceDataSet() => ResourceDataSet.Tables[0];
+
+        public static void LoadLabelData(IAppointmentLabelStorage appointmentLabels)
+        {
+            LabelDataSet = new DataSet();
+            LabelDataSet.ReadXml(LabelFilePath);
+
+            UpdateLabelData(appointmentLabels);
+        }
+
+        public static void UpdateLabelData(IAppointmentLabelStorage appointmentLabels)
+        {
+            List<AppointmentLabelDefine> labels = (from DataRow row in GetLabelDataSet().Rows
+                                                   select new AppointmentLabelDefine()
+                                                   {
+                                                       DisplayName = row[nameof(AppointmentLabelDefine.DisplayName)].ToString(),
+                                                       Color = int.TryParse(row[nameof(AppointmentLabelDefine.Color)].ToString(), out var colorInt) ? Color.FromArgb(colorInt) : Color.FromName(row[nameof(AppointmentLabelDefine.Color)].ToString())
+                                                   }).ToList();
+
+            appointmentLabels.Clear();
+            foreach (var label in labels)
+            {
+                var addData = appointmentLabels.CreateNewLabel(label.DisplayName);
+                addData.MenuCaption = label.DisplayName;
+                addData.SetColor(label.Color);
+                appointmentLabels.Add(addData);
+            }
+        }
+
+        public static void SaveLabelData()
+        {
+            LabelDataSet.WriteXml(LabelFilePath);
+        }
 
         public static void LoadStatusData(IAppointmentStatusStorage appointmentStatuses)
         {
@@ -66,6 +107,37 @@ namespace WorkCalendar.Data
         public static void SaveStatusData()
         {
             StatusDataSet.WriteXml(StatusFilePath);
+        }
+
+        public static void LoadResourceData(ResourceDataStorage dataStorage)
+        {
+            ResourceDataSet = new DataSet();
+            ResourceDataSet.ReadXml(ResourceFilePath);
+
+            UpdateResourceData(dataStorage);
+        }
+
+        public static void UpdateResourceData(ResourceDataStorage dataStorage)
+        {
+            List<AppointmentResourceDefine> resources = (from DataRow row in GetResourceDataSet().Rows
+                                                         select new AppointmentResourceDefine()
+                                                         {
+                                                             Caption = row[nameof(AppointmentResourceDefine.Caption)].ToString(),
+                                                             Color = int.TryParse(row[nameof(AppointmentResourceDefine.Color)].ToString(), out var colorInt) ? Color.FromArgb(colorInt) : Color.FromName(row[nameof(AppointmentResourceDefine.Color)].ToString())
+                                                         }).ToList();
+
+            dataStorage.Clear();
+            foreach (var resource in resources)
+            {
+                var addData = dataStorage.CreateResource(resource.Caption, resource.Caption);
+                addData.SetColor(resource.Color);
+                dataStorage.Add(addData);
+            }
+        }
+
+        public static void SaveResourceData()
+        {
+            ResourceDataSet.WriteXml(ResourceFilePath);
         }
     }
 }

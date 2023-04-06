@@ -83,7 +83,11 @@ namespace WorkCalendar
             CalendarData.WriteCalendar(settings.CalendarFilePath, MainSchedulerDataStorage);
         }
 
+        private void OpenLabelEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenLabelEditForm();
+
         private void OpenStatusEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenStatusEditForm();
+
+        private void OpenResourceEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenResourceEditForm();
 
         protected override async void OnShown(EventArgs e)
         {
@@ -101,18 +105,36 @@ namespace WorkCalendar
             // Import Environments
             try
             {
+                AppointmentSettingData.LoadLabelData(MainScheduler.DataStorage.Appointments.Labels);
+            }
+            catch
+            {
+                MessageBox.Show("Could not import Label file");
+            }
+
+            try
+            {
                 AppointmentSettingData.LoadStatusData(MainScheduler.DataStorage.Appointments.Statuses);
             }
             catch
             {
-                MessageBox.Show("Could not import Statuses file");
+                MessageBox.Show("Could not import Status file");
+            }
+
+            try
+            {
+                AppointmentSettingData.LoadResourceData(MainSchedulerDataStorage.Resources);
+            }
+            catch
+            {
+                MessageBox.Show("Could not import Resource file");
             }
 
             // Import Memo
             try
             {
                 // First execute check
-                if (string.IsNullOrEmpty(settings.MemoFilePath)) settings.MemoFilePath = $@"{Environment.CurrentDirectory}\Data\Memo.txt";
+                if (string.IsNullOrEmpty(settings.MemoFilePath)) settings.MemoFilePath = $@"{Environment.CurrentDirectory}\Data\Memo.yaml";
                 else memoEdit.Text = await MemoData.ReadMemoAsync(settings.MemoFilePath);
             }
             catch
@@ -134,6 +156,22 @@ namespace WorkCalendar
             this.ResumeLayout(false);
         }
 
+        private void OpenLabelEditForm()
+        {
+            LabelEditForm labelEditForm = new();
+            labelEditForm.FormClosing += LabelEditForm_FormClosing;
+            labelEditForm.SetDataSources(AppointmentSettingData.GetLabelDataSet());
+            labelEditForm.Show();
+        }
+
+        private void LabelEditForm_FormClosing(object sender, FormClosingEventArgs e) => UpdateAppointmentLabelList();
+
+        private void UpdateAppointmentLabelList()
+        {
+            AppointmentSettingData.SaveLabelData();
+            AppointmentSettingData.UpdateLabelData(MainScheduler.DataStorage.Appointments.Labels);
+        }
+
         private void OpenStatusEditForm()
         {
             StatusEditForm statusEditForm = new();
@@ -150,32 +188,20 @@ namespace WorkCalendar
             AppointmentSettingData.UpdateStatusData(MainScheduler.DataStorage.Appointments.Statuses);
         }
 
-        private void test()
+        private void OpenResourceEditForm()
         {
-            //schedulerDataStorage1.Resources.LoadFromXml($@"{Environment.CurrentDirectory}\testresources.xml");
-            //DataSet dataSet = new DataSet();
-            //dataSet.ReadXml($@"{Environment.CurrentDirectory}\testresources.xml");
-            //ResourcesTest resourcesTest = new ResourcesTest();
-            //resourcesTest.SetDataSources(dataSet.Tables[0]);
-            //resourcesTest.Show();
+            ResourceEditForm resourceEditForm = new();
+            resourceEditForm.FormClosing += ResourceEditForm_FormClosing;
+            resourceEditForm.SetDataSources(AppointmentSettingData.GetResourceDataSet());
+            resourceEditForm.Show();
+        }
 
-            //string[] IssueList = { "Consultation", "Treatment", "X-Ray" };
-            //Color[] IssueColorList = { Color.Ivory, Color.Pink, Color.Plum };
-            //string[] PaymentStatuses = { "Paid", "Unpaid" };
-            //Color[] PaymentColorStatuses = { Color.Green, Color.Red };
+        private void ResourceEditForm_FormClosing(object sender, FormClosingEventArgs e) => UpdateAppointmentResourceList();
 
-            //IAppointmentLabelStorage labelStorage = schedulerControl1.DataStorage.Appointments.Labels;
-            //var a = labelStorage.ToList();
-            //var b = labelStorage.CreateNewLabel(1, "b", "b");
-            //b.SetColor(Color.FromArgb(1, 2, 3, 4));
-            //var c = b.GetColor();
-            //labelStorage.Clear();
-            //labeltest t = new labeltest();
-            //t.LoadData(schedulerControl1.DataStorage.Appointments.Labels);
-
-            //LabelTest labelTest = new LabelTest();
-            //labelTest.SetDataSources(schedulerControl1.DataStorage.Appointments.Labels);
-            //labelTest.ShowDialog();
+        private void UpdateAppointmentResourceList()
+        {
+            AppointmentSettingData.SaveResourceData();
+            AppointmentSettingData.UpdateResourceData(MainSchedulerDataStorage.Resources);
         }
     }
 }
