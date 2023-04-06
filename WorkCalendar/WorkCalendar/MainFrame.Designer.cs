@@ -828,6 +828,7 @@
             this.ClientSize = new System.Drawing.Size(1022, 767);
             this.Controls.Add(this.splitContainerControlMain);
             this.Controls.Add(this.ribbonControl1);
+            this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MainFrame";
             this.Ribbon = this.ribbonControl1;
