@@ -1,17 +1,7 @@
-﻿using DevExpress.XtraEditors;
-using DevExpress.XtraEditors.Repository;
-using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraScheduler;
+﻿using DevExpress.XtraGrid.Views.Grid;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using WorkCalendar.Define;
 
 namespace WorkCalendar.GUI

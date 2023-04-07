@@ -1,26 +1,26 @@
 ﻿using DevExpress.LookAndFeel;
 using DevExpress.XtraScheduler;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.IO;
-using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 using WorkCalendar.Data;
 using WorkCalendar.GUI;
-using WorkCalendar.Parser.YAML;
 
 namespace WorkCalendar
 {
     public partial class MainFrame : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        private MemoForm MemoForm;
+        private DevExpress.XtraScheduler.SchedulerGroupType GroupType;
+
         public MainFrame()
         {
             InitializeComponent();
             MainScheduler.Start = DateTime.Now;
+            AppointmentGroupSelector.EditValue = 0;
+            MainScheduler.OptionsView.ResourceCategories.ResourceDisplayStyle = DevExpress.XtraScheduler.ResourceDisplayStyle.Tabs;
+            MainScheduler.OptionsView.ResourceCategories.ShowCloseButton = true;
+            this.FormClosing += MainFrame_FormClosing;
         }
 
         private async void ScheduleImportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -63,23 +63,27 @@ namespace WorkCalendar
         private async void MemoImportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
-            //if (fileDialog.ShowDialog() == DialogResult.OK) memoEdit.Text = await MemoData.ReadMemoAsync(fileDialog.FileName);
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                await MemoData.LoadDataAsync(fileDialog.FileName);
+                if (MemoForm != null) MemoForm.SetMemos();
+            }
         }
 
         private async void MemoSaveButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.OverwritePrompt = true;
-            saveFileDialog.Filter = "Text file (*.txt)|*.txt";
-            saveFileDialog.DefaultExt = "txt";
-            //if (saveFileDialog.ShowDialog() == DialogResult.OK) await MemoData.WriteMemoAsync(saveFileDialog.FileName, memoEdit.Text);
+            saveFileDialog.Filter = "YAML file (*.yaml)|*.yaml";
+            saveFileDialog.DefaultExt = "yaml";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK) await MemoData.SaveDataAsync(saveFileDialog.FileName);
         }
 
         private void MainFrame_FormClosing(object sender, FormClosingEventArgs e)
         {
             SkinData.SaveAllSkinData();
             var settings = Properties.Settings.Default;
-            //MemoData.WriteMemo(settings.MemoFilePath, memoEdit.Text);
+            MemoData.SaveData();
             CalendarData.WriteCalendar(settings.CalendarFilePath, MainSchedulerDataStorage);
         }
 
@@ -92,16 +96,21 @@ namespace WorkCalendar
         protected override async void OnShown(EventArgs e)
         {
             base.OnShown(e);
+            LoadingForm.OpenDialog();
+            LoadingForm.SetVersion(Assembly.GetExecutingAssembly().GetName().Version.ToString());
             this.SuspendLayout();
             var settings = Properties.Settings.Default;
 
+            LoadingForm.SetProgress("Set Skin...");
             // Set Skin
             if (!string.IsNullOrEmpty(settings.SkinName))
             {
                 if (!string.IsNullOrEmpty(settings.Palette)) UserLookAndFeel.Default.SetSkinStyle(settings.SkinName, settings.Palette);
                 else UserLookAndFeel.Default.SetSkinStyle(settings.SkinName, "DefaultSkinPalette");
             }
+            LoadingForm.SetProgress("Set Skin Done...");
 
+            LoadingForm.SetProgress("Loading Environments...");
             // Import Environments
             try
             {
@@ -129,24 +138,23 @@ namespace WorkCalendar
             {
                 MessageBox.Show("Could not import Resource file");
             }
+            LoadingForm.SetProgress("Loading Environments Done...");
 
+            LoadingForm.SetProgress("Loading Memos...");
             // Import Memo
             try
             {
                 // First execute check
                 if (string.IsNullOrEmpty(settings.MemoFilePath)) settings.MemoFilePath = $@"{Environment.CurrentDirectory}\Data\Memo.yaml";
                 else await MemoData.LoadDataAsync();
-                MemoForm memoForm = new MemoForm();
-                memoForm.Dock = DockStyle.Fill;
-                MainTabControl.TabPages[1].Controls.Add(memoForm);
-                memoForm.SetMemos();
-                memoForm.Show();
             }
             catch
             {
                 MessageBox.Show("Could not import memo file");
             }
+            LoadingForm.SetProgress("Loading Memos Done...");
 
+            LoadingForm.SetProgress("Loading Calendar...");
             // Import Calendar
             try
             {
@@ -157,8 +165,21 @@ namespace WorkCalendar
             {
                 MessageBox.Show("Could not import calendar file");
             }
+            LoadingForm.SetProgress("Loading Calendar Done...");
+
+            LoadingForm.SetProgress("Program Start...");
 
             this.ResumeLayout(false);
+
+            LoadingForm.CloseDialog();
+        }
+
+        private void OpenMemoForm()
+        {
+            if (MemoForm != null) { MemoData.SaveData(); MemoForm.Close(); }
+            MemoForm = new MemoForm();
+            MemoForm.SetMemos();
+            MemoForm.Show();
         }
 
         private void OpenLabelEditForm()
@@ -207,6 +228,33 @@ namespace WorkCalendar
         {
             AppointmentSettingData.SaveResourceData();
             AppointmentSettingData.UpdateResourceData(MainSchedulerDataStorage.Resources);
+            MainScheduler.ResourceCategories.Clear();
+        }
+
+        private void OpenMemo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenMemoForm();
+        }
+
+        private void AppointmentGroupSelector_EditValueChanged(object sender, EventArgs e)
+        {
+            MainScheduler.ResourceCategories.Clear();
+            GroupType = (DevExpress.XtraScheduler.SchedulerGroupType)(int)AppointmentGroupSelector.EditValue;
+            MainScheduler.GroupType = GroupType;
+        }
+
+        private void OfficeHourStart_EditValueChanged(object sender, EventArgs e)
+        {
+            var settings = Properties.Settings.Default;
+            settings.OfficeStart = (DateTime)OfficeHourStart.EditValue;
+            settings.Save();
+        }
+
+        private void OfficeHourEnd_EditValueChanged(object sender, EventArgs e)
+        {
+            var settings = Properties.Settings.Default;
+            settings.OfficeEnd = (DateTime)OfficeHourEnd.EditValue;
+            settings.Save();
         }
     }
 }

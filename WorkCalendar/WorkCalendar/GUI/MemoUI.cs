@@ -1,14 +1,6 @@
 ﻿using DevExpress.XtraBars;
-using DevExpress.XtraRichEdit.Commands;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WorkCalendar.Data;
 
@@ -67,7 +59,7 @@ namespace WorkCalendar.GUI
 
         private void BackGroundColor_EditValueChanged(object sender, EventArgs e)
         {
-            MemoData.BackColor = Color.FromArgb((int)BackGroundColor.EditValue);
+            MemoData.BackColor = MemoData.ToInternalColor(System.Drawing.Color.FromArgb((int)BackGroundColor.EditValue));
             ChangeSettings();
         }
 
@@ -78,8 +70,8 @@ namespace WorkCalendar.GUI
             dialog.ShowColor = true;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                MemoData.Font = dialog.Font;
-                MemoData.FontColor = dialog.Color;
+                MemoData.ToInternalFont(dialog.Font);
+                MemoData.FontColor = MemoData.ToInternalColor(dialog.Color);
                 ChangeSettings();
             }
         }
@@ -87,19 +79,19 @@ namespace WorkCalendar.GUI
         private void ApplySettings()
         {
             this.Text = MemoData.Name;
-            Memo.Font = MemoData.Font;
-            Memo.ForeColor = MemoData.FontColor;
-            Memo.BackColor = MemoData.BackColor;
-            this.BackColor = MemoData.BackColor;
+            Memo.Font = MemoData.ToDrawingFont();
+            Memo.ForeColor = MemoData.ToDrawingColor(MemoData.FontColor);
+            Memo.BackColor = MemoData.ToDrawingColor(MemoData.BackColor);
+            this.BackColor = MemoData.ToDrawingColor(MemoData.BackColor);
             Memo.Text = MemoData.Memo;
         }
 
         private void ChangeSettings()
         {
-            Memo.Font = MemoData.Font;
-            Memo.ForeColor = MemoData.FontColor;
-            Memo.BackColor = MemoData.BackColor;
-            this.BackColor = MemoData.BackColor;
+            Memo.Font = MemoData.ToDrawingFont();
+            Memo.ForeColor = MemoData.ToDrawingColor(MemoData.FontColor);
+            Memo.BackColor = MemoData.ToDrawingColor(MemoData.BackColor);
+            this.BackColor = MemoData.ToDrawingColor(MemoData.BackColor);
             PropertyChanged?.Invoke(MemoData);
         }
     }

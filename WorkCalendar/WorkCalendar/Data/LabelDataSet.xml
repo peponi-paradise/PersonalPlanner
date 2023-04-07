@@ -1,3 +1,14 @@
-﻿<Items>
-  <AppointmentLabelDefine DisplayName="Hello world" Color="-5658199" />
+<?xml version="1.0" standalone="yes"?>
+<Items>
+  <AppointmentLabelDefine DisplayName="None" Color="-1" />
+  <AppointmentLabelDefine DisplayName="Important" Color="-15682" />
+  <AppointmentLabelDefine DisplayName="Business" Color="-5712385" />
+  <AppointmentLabelDefine DisplayName="Personal" Color="-4066148" />
+  <AppointmentLabelDefine DisplayName="Vacation" Color="-793401" />
+  <AppointmentLabelDefine DisplayName="Must Attend" Color="-733549" />
+  <AppointmentLabelDefine DisplayName="Travel Required" Color="-3672833" />
+  <AppointmentLabelDefine DisplayName="Needs Preparation" Color="-3155048" />
+  <AppointmentLabelDefine DisplayName="Birthday" Color="-2043927" />
+  <AppointmentLabelDefine DisplayName="Anniversary" Color="-7476769" />
+  <AppointmentLabelDefine DisplayName="Phone Call" Color="-2139" />
 </Items>

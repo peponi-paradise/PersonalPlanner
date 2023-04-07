@@ -1,15 +1,11 @@
-﻿using DevExpress.LookAndFeel;
-using DevExpress.XtraScheduler;
-using System.Collections.Generic;
+﻿using DevExpress.XtraScheduler;
 using System;
+using System.Collections.Generic;
 using System.Data;
-using System.Drawing.Drawing2D;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
-using System.Threading.Tasks;
 using WorkCalendar.Define;
-using WorkCalendar.GUI;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WorkCalendar.Data
 {
@@ -44,7 +40,7 @@ namespace WorkCalendar.Data
                                                    select new AppointmentLabelDefine()
                                                    {
                                                        DisplayName = row[nameof(AppointmentLabelDefine.DisplayName)].ToString(),
-                                                       Color = int.TryParse(row[nameof(AppointmentLabelDefine.Color)].ToString(), out var colorInt) ? Color.FromArgb(colorInt) : Color.FromName(row[nameof(AppointmentLabelDefine.Color)].ToString())
+                                                       Color = int.TryParse(row[nameof(AppointmentLabelDefine.Color)].ToString(), out var colorInt) ? System.Drawing.Color.FromArgb(colorInt) : System.Drawing.Color.FromName(row[nameof(AppointmentLabelDefine.Color)].ToString())
                                                    }).ToList();
 
             appointmentLabels.Clear();
@@ -78,8 +74,8 @@ namespace WorkCalendar.Data
                                                           DisplayName = row[nameof(AppointmentStatusDefine.DisplayName)].ToString(),
                                                           PaintStyle = (StatusPaintStyle)Enum.Parse(typeof(StatusPaintStyle), row[nameof(AppointmentStatusDefine.PaintStyle)].ToString()),
                                                           HatchStyle = string.IsNullOrEmpty(row[nameof(AppointmentStatusDefine.HatchStyle)].ToString()) ? HatchStyle.Horizontal : (HatchStyle)Enum.Parse(typeof(HatchStyle), row[nameof(AppointmentStatusDefine.HatchStyle)].ToString()),
-                                                          ForeColor = int.TryParse(row[nameof(AppointmentStatusDefine.ForeColor)].ToString(), out var colorInt) ? Color.FromArgb(colorInt) : Color.FromName(row[nameof(AppointmentStatusDefine.ForeColor)].ToString()),
-                                                          BackColor = int.TryParse(row[nameof(AppointmentStatusDefine.BackColor)].ToString(), out colorInt) ? Color.FromArgb(colorInt) : Color.FromName(row[nameof(AppointmentStatusDefine.BackColor)].ToString())
+                                                          ForeColor = int.TryParse(row[nameof(AppointmentStatusDefine.ForeColor)].ToString(), out var colorInt) ? System.Drawing.Color.FromArgb(colorInt) : System.Drawing.Color.FromName(row[nameof(AppointmentStatusDefine.ForeColor)].ToString()),
+                                                          BackColor = int.TryParse(row[nameof(AppointmentStatusDefine.BackColor)].ToString(), out colorInt) ? System.Drawing.Color.FromArgb(colorInt) : System.Drawing.Color.FromName(row[nameof(AppointmentStatusDefine.BackColor)].ToString())
                                                       }).ToList();
 
             appointmentStatuses.Clear();
@@ -123,7 +119,7 @@ namespace WorkCalendar.Data
                                                          select new AppointmentResourceDefine()
                                                          {
                                                              Caption = row[nameof(AppointmentResourceDefine.Caption)].ToString(),
-                                                             Color = int.TryParse(row[nameof(AppointmentResourceDefine.Color)].ToString(), out var colorInt) ? Color.FromArgb(colorInt) : Color.FromName(row[nameof(AppointmentResourceDefine.Color)].ToString())
+                                                             Color = int.TryParse(row[nameof(AppointmentResourceDefine.Color)].ToString(), out var colorInt) ? System.Drawing.Color.FromArgb(colorInt) : System.Drawing.Color.FromName(row[nameof(AppointmentResourceDefine.Color)].ToString())
                                                          }).ToList();
 
             dataStorage.Clear();

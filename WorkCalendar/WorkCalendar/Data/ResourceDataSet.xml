@@ -1,6 +1,8 @@
-﻿<Items>
-  <Resource Caption="General" Color="Crimson" />
+<?xml version="1.0" standalone="yes"?>
+<Items>
+  <Resource Caption="None" Color="16777215" />
   <Resource Caption="Research" Color="SkyBlue" />
-  <Resource Caption="SW" Color="MediumSeaGreen" />
-  <Resource Caption="Test" Color="120,0,0" />
+  <Resource Caption="Meeting" Color="-8388608" />
+  <Resource Caption="Project" Color="-13726889" />
+  <Resource Caption="Urgent" Color="-65536" />
 </Items>

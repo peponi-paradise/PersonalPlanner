@@ -1,15 +1,6 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraTabbedMdi;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using WorkCalendar.Data;
 
 namespace WorkCalendar.GUI
@@ -20,6 +11,12 @@ namespace WorkCalendar.GUI
         {
             InitializeComponent();
             MdiManager.PageRemoved += MdiManager_PageRemoved;
+            this.FormClosing += MemoForm_FormClosing;
+        }
+
+        private void MemoForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        {
+            MemoData.SaveData();
         }
 
         private void NewMemo_ItemClick(object sender, ItemClickEventArgs e)
@@ -94,6 +91,7 @@ namespace WorkCalendar.GUI
 
         public void SetMemos()
         {
+            MdiManager.Pages.Clear();
             foreach (var memo in MemoData.Memos)
             {
                 MemoUI memoUI = new MemoUI(memo);
@@ -111,8 +109,8 @@ namespace WorkCalendar.GUI
             {
                 if (page.Text == memoDefine.Name)
                 {
-                    page.Appearance.Header.BackColor = memoDefine.BackColor;
-                    page.Appearance.HeaderActive.BackColor = memoDefine.BackColor;
+                    page.Appearance.Header.BackColor = memoDefine.ToDrawingColor(memoDefine.BackColor);
+                    page.Appearance.HeaderActive.BackColor = memoDefine.ToDrawingColor(memoDefine.BackColor);
                     break;
                 }
             }

@@ -1,9 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+    <Company>https://peponi-paradise.tistory.com</Company>
+    <Copyright>ClockStrikes</Copyright>
+    <Description>peponi</Description>
+    <Product>WorkCalendar with Memo</Product>
+    <ProductName>WorkCalendar</ProductName>
+    <AssemblyTitle>WorkCalendar with Memo</AssemblyTitle>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,6 +40,9 @@
 
   <ItemGroup>
     <None Update="Data\LabelDataSet.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Memo.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Data\ResourceDataSet.xml">

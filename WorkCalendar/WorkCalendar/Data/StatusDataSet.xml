@@ -1,3 +1,8 @@
-﻿<Items>
-  <AppointmentStatusDefine PaintStyle="Hatch" HatchStyle="Percent10" DisplayName="Hello world2" ForeColor="-5658199" BackColor="Crimson" />
+<?xml version="1.0" standalone="yes"?>
+<Items>
+  <AppointmentStatusDefine PaintStyle="Solid" HatchStyle="Percent10" DisplayName="Free" ForeColor="-1" BackColor="-1" />
+  <AppointmentStatusDefine PaintStyle="Hatch" HatchStyle="WideUpwardDiagonal" DisplayName="Tentative" ForeColor="-11892766" BackColor="-1" />
+  <AppointmentStatusDefine PaintStyle="Solid" DisplayName="Busy" ForeColor="-11892766" />
+  <AppointmentStatusDefine PaintStyle="Solid" DisplayName="Out Of Office" ForeColor="-8388480" />
+  <AppointmentStatusDefine PaintStyle="Hatch" HatchStyle="Percent25" DisplayName="Working Elsewhere" ForeColor="-7111727" BackColor="-1" />
 </Items>
