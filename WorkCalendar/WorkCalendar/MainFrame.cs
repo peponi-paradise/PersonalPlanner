@@ -10,6 +10,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using WorkCalendar.Data;
+using WorkCalendar.Dev.Test;
 using WorkCalendar.GUI;
 using WorkCalendar.Parser.YAML;
 
@@ -21,6 +22,8 @@ namespace WorkCalendar
         {
             InitializeComponent();
             MainScheduler.Start = DateTime.Now;
+            MemoForm m = new MemoForm();
+            m.ShowDialog();
         }
 
         private async void ScheduleImportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

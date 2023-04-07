@@ -5,9 +5,9 @@ using WorkCalendar.Parser.YAML;
 
 namespace WorkCalendar.Dev.Test
 {
-    public class MemoData : IYAML
+    public class MemoDataTest : IYAML
     {
-        public List<string> Memos = new();
+        public List<MemoDefine> Memos = new();
 
         private static void ChangeMemoDataPath(string filePath)
         {
@@ -19,7 +19,7 @@ namespace WorkCalendar.Dev.Test
         public bool LoadData()
         {
             var settings = Properties.Settings.Default;
-            if (YAMLParser.LoadData(settings.MemoFilePath, out List<string> Memos)) { this.Memos = Memos; return true; }
+            if (YAMLParser.LoadData(settings.MemoFilePath, out List<MemoDefine> Memos)) { this.Memos = Memos; return true; }
             return false;
         }
 
