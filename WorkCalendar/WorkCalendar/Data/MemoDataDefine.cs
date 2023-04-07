@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace WorkCalendar.Dev.Test
+namespace WorkCalendar.Data
 {
     public class MemoDefine
     {

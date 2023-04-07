@@ -1,17 +1,14 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
+using WorkCalendar.Parser.YAML;
 
 namespace WorkCalendar.Data
 {
     public static class MemoData
     {
-        public static string ReadMemo(string filePath) => File.ReadAllText(filePath);
-
-        public static async Task<string> ReadMemoAsync(string filePath) => await File.ReadAllTextAsync(filePath).ConfigureAwait(false);
-
-        public static void WriteMemo(string filePath, string text) => File.WriteAllText(filePath, text);
-
-        public static async Task WriteMemoAsync(string filePath, string text) => await File.WriteAllTextAsync(filePath, text).ConfigureAwait(false);
+        public static List<MemoDefine> Memos = new();
 
         private static void ChangeMemoDataPath(string filePath)
         {
@@ -19,5 +16,30 @@ namespace WorkCalendar.Data
             settings.MemoFilePath = filePath;
             settings.Save();
         }
+
+        public static bool LoadData()
+        {
+            var settings = Properties.Settings.Default;
+            if (YAMLParser.LoadData(settings.MemoFilePath, out List<MemoDefine> memos))
+            {
+                Memos.Clear();
+                foreach (var memo in memos)
+                {
+                    Memos.Add(memo);
+                }
+                return true;
+            }
+            return false;
+        }
+
+        public static async Task<bool> LoadDataAsync() => await Task.Run(() => LoadData());
+
+        public static void SaveData()
+        {
+            var settings = Properties.Settings.Default;
+            YAMLParser.SaveData(settings.MemoFilePath, Memos);
+        }
+
+        public static async Task SaveDataAsync() => await Task.Run(() => SaveData());
     }
 }

@@ -12,34 +12,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WorkCalendar.Data;
 
-namespace WorkCalendar.Dev.Test
+namespace WorkCalendar.GUI
 {
     public partial class MemoForm : DevExpress.XtraEditors.XtraForm
     {
-        public delegate void MemoUpdateEventHandler(List<MemoDefine> memoData);
-
-        public event MemoUpdateEventHandler MemoUpdated;
-
-        private List<MemoDefine> MemoList = new List<MemoDefine>();
-
         public MemoForm()
         {
             InitializeComponent();
             MdiManager.PageRemoved += MdiManager_PageRemoved;
-        }
-
-        public MemoForm(List<MemoDefine> MemoList)
-        {
-            InitializeComponent();
-            this.MemoList = MemoList;
-            MdiManager.PageRemoved += MdiManager_PageRemoved;
-            SetMemos();
-        }
-
-        private void MdiManager_PageRemoved(object sender, MdiTabPageEventArgs e)
-        {
-            var memo = MemoList.Find(memo => memo.Name == e.Page.Text);
-            if (memo != null) MemoList.Remove(memo);
         }
 
         private void NewMemo_ItemClick(object sender, ItemClickEventArgs e)
@@ -49,23 +29,35 @@ namespace WorkCalendar.Dev.Test
             {
                 MemoDefine memo = new MemoDefine();
                 memo.Name = rtn;
-                MemoList.Add(memo);
+                MemoData.Memos.Add(memo);
                 MemoUI memoUI = new MemoUI(memo);
                 memoUI.PropertyChanged += Memo_PropertyChanged;
                 memoUI.MemoUpdated += MemoUI_MemoUpdated;
                 memoUI.MdiParent = this;
                 memoUI.Show();
                 SetTabSetting(memo);
+                MemoData.SaveData();
+            }
+        }
+
+        private void MdiManager_PageRemoved(object sender, MdiTabPageEventArgs e)
+        {
+            var memo = MemoData.Memos.Find(memo => memo.Name == e.Page.Text);
+            if (memo != null)
+            {
+                MemoData.Memos.Remove(memo);
+                MemoData.SaveData();
             }
         }
 
         private void MemoUI_MemoUpdated(MemoDefine memoData)
         {
-            foreach (var memo in MemoList)
+            foreach (var memo in MemoData.Memos)
             {
                 if (memo.Name == memoData.Name)
                 {
                     memo.Memo = memoData.Memo;
+                    MemoData.SaveData();
                     break;
                 }
             }
@@ -73,7 +65,7 @@ namespace WorkCalendar.Dev.Test
 
         private void Memo_PropertyChanged(MemoDefine memoData)
         {
-            foreach (var memo in MemoList)
+            foreach (var memo in MemoData.Memos)
             {
                 if (memo.Name == memoData.Name)
                 {
@@ -81,6 +73,7 @@ namespace WorkCalendar.Dev.Test
                     memo.FontColor = memoData.FontColor;
                     memo.BackColor = memoData.BackColor;
                     SetTabSetting(memoData);
+                    MemoData.SaveData();
                     break;
                 }
             }
@@ -88,7 +81,7 @@ namespace WorkCalendar.Dev.Test
 
         private bool CheckDuplicated(string name)
         {
-            foreach (var memo in MemoList)
+            foreach (var memo in MemoData.Memos)
             {
                 if (memo.Name == name)
                 {
@@ -99,9 +92,9 @@ namespace WorkCalendar.Dev.Test
             return false;
         }
 
-        private void SetMemos()
+        public void SetMemos()
         {
-            foreach (var memo in MemoList)
+            foreach (var memo in MemoData.Memos)
             {
                 MemoUI memoUI = new MemoUI(memo);
                 memoUI.PropertyChanged += Memo_PropertyChanged;

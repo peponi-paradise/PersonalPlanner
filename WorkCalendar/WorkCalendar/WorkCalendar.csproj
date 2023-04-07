@@ -51,4 +51,8 @@
     <PackageReference Include="YamlDotNet" Version="13.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Dev.Test\" />
+  </ItemGroup>
+
 </Project>

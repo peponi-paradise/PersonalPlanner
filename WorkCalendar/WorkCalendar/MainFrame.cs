@@ -10,7 +10,6 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using WorkCalendar.Data;
-using WorkCalendar.Dev.Test;
 using WorkCalendar.GUI;
 using WorkCalendar.Parser.YAML;
 
@@ -22,8 +21,6 @@ namespace WorkCalendar
         {
             InitializeComponent();
             MainScheduler.Start = DateTime.Now;
-            MemoForm m = new MemoForm();
-            m.ShowDialog();
         }
 
         private async void ScheduleImportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -66,7 +63,7 @@ namespace WorkCalendar
         private async void MemoImportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
-            if (fileDialog.ShowDialog() == DialogResult.OK) memoEdit.Text = await MemoData.ReadMemoAsync(fileDialog.FileName);
+            //if (fileDialog.ShowDialog() == DialogResult.OK) memoEdit.Text = await MemoData.ReadMemoAsync(fileDialog.FileName);
         }
 
         private async void MemoSaveButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -75,14 +72,14 @@ namespace WorkCalendar
             saveFileDialog.OverwritePrompt = true;
             saveFileDialog.Filter = "Text file (*.txt)|*.txt";
             saveFileDialog.DefaultExt = "txt";
-            if (saveFileDialog.ShowDialog() == DialogResult.OK) await MemoData.WriteMemoAsync(saveFileDialog.FileName, memoEdit.Text);
+            //if (saveFileDialog.ShowDialog() == DialogResult.OK) await MemoData.WriteMemoAsync(saveFileDialog.FileName, memoEdit.Text);
         }
 
         private void MainFrame_FormClosing(object sender, FormClosingEventArgs e)
         {
             SkinData.SaveAllSkinData();
             var settings = Properties.Settings.Default;
-            MemoData.WriteMemo(settings.MemoFilePath, memoEdit.Text);
+            //MemoData.WriteMemo(settings.MemoFilePath, memoEdit.Text);
             CalendarData.WriteCalendar(settings.CalendarFilePath, MainSchedulerDataStorage);
         }
 
@@ -138,7 +135,12 @@ namespace WorkCalendar
             {
                 // First execute check
                 if (string.IsNullOrEmpty(settings.MemoFilePath)) settings.MemoFilePath = $@"{Environment.CurrentDirectory}\Data\Memo.yaml";
-                else memoEdit.Text = await MemoData.ReadMemoAsync(settings.MemoFilePath);
+                else await MemoData.LoadDataAsync();
+                MemoForm memoForm = new MemoForm();
+                memoForm.Dock = DockStyle.Fill;
+                MainTabControl.TabPages[1].Controls.Add(memoForm);
+                memoForm.SetMemos();
+                memoForm.Show();
             }
             catch
             {

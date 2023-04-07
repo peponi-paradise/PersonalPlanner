@@ -10,8 +10,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WorkCalendar.Data;
 
-namespace WorkCalendar.Dev.Test
+namespace WorkCalendar.GUI
 {
     public partial class MemoUI : DevExpress.XtraEditors.XtraForm
     {
