@@ -70,7 +70,7 @@ namespace MemoScheduler
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 await MemoData.LoadDataAsync(fileDialog.FileName);
-                if (MemoForm != null) MemoForm.SetMemos();
+                if (MemoForm.Visible) MemoForm.SetMemos();
             }
         }
 
@@ -150,7 +150,7 @@ namespace MemoScheduler
             {
                 // First execute check
                 if (string.IsNullOrEmpty(settings.MemoFilePath)) settings.MemoFilePath = $@"{Environment.CurrentDirectory}\Data\Memo.yaml";
-                else await MemoData.LoadDataAsync();
+                await MemoData.LoadDataAsync();
             }
             catch
             {

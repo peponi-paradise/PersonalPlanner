@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using MemoScheduler.Parser.YAML;
 
@@ -25,6 +26,7 @@ namespace MemoScheduler.Data
                     Memos.Clear();
                     foreach (var memo in memos)
                     {
+                        memo.Memo = memo.Memo.Replace("\n", Environment.NewLine);
                         Memos.Add(memo);
                     }
                     return true;
@@ -42,6 +44,7 @@ namespace MemoScheduler.Data
                 Memos.Clear();
                 foreach (var memo in memos)
                 {
+                    memo.Memo = memo.Memo.Replace("\n", Environment.NewLine);
                     Memos.Add(memo);
                 }
                 return true;

@@ -9,7 +9,7 @@
     <Product>MemoScheduler</Product>
     <ProductName>MemoScheduler</ProductName>
     <AssemblyTitle>MemoScheduler</AssemblyTitle>
-    <AssemblyVersion>1.0.0.2</AssemblyVersion>
+    <AssemblyVersion>1.0.0.3</AssemblyVersion>
     <FileVersion>1.0.0.1</FileVersion>
     <Platforms>AnyCPU;x64</Platforms>
     <ApplicationIcon>ShortDate.ico</ApplicationIcon>

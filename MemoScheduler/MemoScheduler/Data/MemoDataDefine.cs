@@ -23,7 +23,7 @@ namespace MemoScheduler.Data
         public Font Font = new Font();
         public Color FontColor = new();
 
-        public Color BackColor = new();
+        public Color BackColor = new() { R = 255, G = 255, B = 255, A = 0 };
 
         public void ToInternalFont(System.Drawing.Font f)
         {
