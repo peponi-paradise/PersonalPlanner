@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WorkCalendar.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MemoScheduler.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="SkinName" Type="System.String" Scope="User">
@@ -19,6 +19,18 @@
     </Setting>
     <Setting Name="OfficeEnd" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">17:00:00</Value>
+    </Setting>
+    <Setting Name="SchedulerViewType" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="DayViewWorktimeShow" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="WorkweekViewWorktimeShow" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="FullweekViewWorktimeShow" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

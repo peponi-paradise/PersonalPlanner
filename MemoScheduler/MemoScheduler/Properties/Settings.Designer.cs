@@ -94,5 +94,53 @@ namespace MemoScheduler.Properties {
                 this["OfficeEnd"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int SchedulerViewType {
+            get {
+                return ((int)(this["SchedulerViewType"]));
+            }
+            set {
+                this["SchedulerViewType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DayViewWorktimeShow {
+            get {
+                return ((bool)(this["DayViewWorktimeShow"]));
+            }
+            set {
+                this["DayViewWorktimeShow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool WorkweekViewWorktimeShow {
+            get {
+                return ((bool)(this["WorkweekViewWorktimeShow"]));
+            }
+            set {
+                this["WorkweekViewWorktimeShow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FullweekViewWorktimeShow {
+            get {
+                return ((bool)(this["FullweekViewWorktimeShow"]));
+            }
+            set {
+                this["FullweekViewWorktimeShow"] = value;
+            }
+        }
     }
 }

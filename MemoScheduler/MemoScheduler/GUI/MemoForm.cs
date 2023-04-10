@@ -39,7 +39,7 @@ namespace MemoScheduler.GUI
 
         private void MdiManager_PageRemoved(object sender, MdiTabPageEventArgs e)
         {
-            var memo = MemoData.Memos.Find(memo => memo.Name == e.Page.Text);
+            var memo = MemoData.Memos.Find(memo => memo.Name == e.Page.MdiChild.Name);
             if (memo != null)
             {
                 MemoData.Memos.Remove(memo);

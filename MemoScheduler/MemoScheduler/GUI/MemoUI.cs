@@ -78,6 +78,7 @@ namespace MemoScheduler.GUI
 
         private void ApplySettings()
         {
+            this.Name= MemoData.Name;
             this.Text = MemoData.Name;
             Memo.Font = MemoData.ToDrawingFont();
             Memo.ForeColor = MemoData.ToDrawingColor(MemoData.FontColor);

@@ -15,15 +15,7 @@ namespace MemoScheduler
         public MainFrame()
         {
             InitializeComponent();
-            var settings = Properties.Settings.Default;
-            MainScheduler.Start = DateTime.Now;
-            WorkTimeStart.EditValue = settings.OfficeStart;
-            WorkTimeEnd.EditValue = settings.OfficeEnd;
-            SetWorkTime();
-
-            AppointmentGroupSelector.EditValue = 0;
-            MainScheduler.OptionsView.ResourceCategories.ResourceDisplayStyle = DevExpress.XtraScheduler.ResourceDisplayStyle.Tabs;
-            MainScheduler.OptionsView.ResourceCategories.ShowCloseButton = true;
+            SetUILayout();
             this.FormClosing += MainFrame_FormClosing;
         }
 
@@ -89,6 +81,7 @@ namespace MemoScheduler
             var settings = Properties.Settings.Default;
             MemoData.SaveData();
             CalendarData.WriteCalendar(settings.CalendarFilePath, MainSchedulerDataStorage);
+            SaveUILayout();
         }
 
         private void OpenLabelEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenLabelEditForm();
@@ -275,6 +268,33 @@ namespace MemoScheduler
             MainScheduler.WorkWeekView.WorkTime.End = settings.OfficeEnd;
             MainScheduler.FullWeekView.WorkTime.End = settings.OfficeEnd;
             MainScheduler.TimelineView.WorkTime.End = settings.OfficeEnd;
+        }
+
+        private void SetUILayout()
+        {
+            var settings = Properties.Settings.Default;
+            MainScheduler.GoToToday();
+            MainScheduler.DayView.ShowWorkTimeOnly = settings.DayViewWorktimeShow;
+            MainScheduler.WorkWeekView.ShowWorkTimeOnly = settings.WorkweekViewWorktimeShow;
+            MainScheduler.FullWeekView.ShowWorkTimeOnly = settings.FullweekViewWorktimeShow;
+            MainScheduler.ActiveViewType = (DevExpress.XtraScheduler.SchedulerViewType)settings.SchedulerViewType;
+            WorkTimeStart.EditValue = settings.OfficeStart;
+            WorkTimeEnd.EditValue = settings.OfficeEnd;
+            SetWorkTime();
+
+            AppointmentGroupSelector.EditValue = 0;
+            MainScheduler.OptionsView.ResourceCategories.ResourceDisplayStyle = DevExpress.XtraScheduler.ResourceDisplayStyle.Tabs;
+            MainScheduler.OptionsView.ResourceCategories.ShowCloseButton = true;
+        }
+
+        private void SaveUILayout()
+        {
+            var settings = Properties.Settings.Default;
+            settings.SchedulerViewType = (int)MainScheduler.ActiveViewType;
+            settings.DayViewWorktimeShow = MainScheduler.DayView.ShowWorkTimeOnly;
+            settings.WorkweekViewWorktimeShow = MainScheduler.WorkWeekView.ShowWorkTimeOnly;
+            settings.FullweekViewWorktimeShow = MainScheduler.FullWeekView.ShowWorkTimeOnly;
+            settings.Save();
         }
     }
 }
