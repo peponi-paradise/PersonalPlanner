@@ -815,7 +815,7 @@
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "MainFrame";
             Ribbon = ribbonControl1;
-            Text = "Work Calendar";
+            Text = "Memo Scheduler";
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemSpinEdit1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemDuration1).EndInit();

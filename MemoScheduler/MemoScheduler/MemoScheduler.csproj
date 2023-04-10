@@ -16,6 +16,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Icon\**" />
+    <EmbeddedResource Remove="Icon\**" />
+    <None Remove="Icon\**" />
+    <Page Remove="Icon\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Calendar.ics" />
   </ItemGroup>
 
@@ -66,7 +73,6 @@
 
   <ItemGroup>
     <Folder Include="Dev.Test\" />
-    <Folder Include="Icon\" />
   </ItemGroup>
 
 </Project>
