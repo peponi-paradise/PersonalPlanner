@@ -8,6 +8,7 @@ namespace MemoScheduler.Data
     {
         public static void ReadCalendar(string filePath, SchedulerDataStorage dataStorage)
         {
+            dataStorage.Appointments.Clear();
             iCalendarImporter calendarImporter = new iCalendarImporter(dataStorage);
             calendarImporter.Import(filePath);
         }

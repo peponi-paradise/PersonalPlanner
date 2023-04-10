@@ -27,6 +27,7 @@ namespace MemoScheduler
                 try
                 {
                     await CalendarData.ReadCalendarAsync(fileDialog.FileName, MainSchedulerDataStorage);
+                    MainSchedulerDataStorage.RefreshData(true);
                 }
                 catch
                 {
