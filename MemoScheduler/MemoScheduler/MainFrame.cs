@@ -9,8 +9,37 @@ namespace MemoScheduler
 {
     public partial class MainFrame : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        /*-------------------------------------------
+         *
+         *      Design time properties
+         *
+         -------------------------------------------*/
+
+        /*-------------------------------------------
+         *
+         *      Events
+         *
+         -------------------------------------------*/
+
+        /*-------------------------------------------
+         *
+         *      Public members
+         *
+         -------------------------------------------*/
+
+        /*-------------------------------------------
+         *
+         *      Private members
+         *
+         -------------------------------------------*/
         private MemoForm MemoForm;
         private DevExpress.XtraScheduler.SchedulerGroupType GroupType;
+
+        /*-------------------------------------------
+         *
+         *      Constructor / Destructor
+         *
+         -------------------------------------------*/
 
         public MainFrame()
         {
@@ -19,77 +48,11 @@ namespace MemoScheduler
             this.FormClosing += MainFrame_FormClosing;
         }
 
-        private async void ScheduleImportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            if (fileDialog.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    await CalendarData.ReadCalendarAsync(fileDialog.FileName, MainSchedulerDataStorage);
-                    MainSchedulerDataStorage.RefreshData(true);
-                }
-                catch
-                {
-                    MessageBox.Show("Could not import calendar file");
-                    return;
-                }
-            }
-        }
-
-        private async void ScheduleSaveButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.OverwritePrompt = true;
-            saveFileDialog.Filter = "iCalendar (*.ics)|*.ics";
-            saveFileDialog.DefaultExt = "ics";
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    await CalendarData.WriteCalendarAsync(saveFileDialog.FileName, MainSchedulerDataStorage);
-                }
-                catch
-                {
-                    MessageBox.Show("Could not save calendar file");
-                    return;
-                }
-            }
-        }
-
-        private async void MemoImportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            if (fileDialog.ShowDialog() == DialogResult.OK)
-            {
-                await MemoData.LoadDataAsync(fileDialog.FileName);
-                if (MemoForm.Visible) MemoForm.SetMemos();
-            }
-        }
-
-        private async void MemoSaveButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.OverwritePrompt = true;
-            saveFileDialog.Filter = "YAML file (*.yaml)|*.yaml";
-            saveFileDialog.DefaultExt = "yaml";
-            if (saveFileDialog.ShowDialog() == DialogResult.OK) await MemoData.SaveDataAsync(saveFileDialog.FileName);
-        }
-
-        private void MainFrame_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            SkinData.SaveAllSkinData();
-            var settings = Properties.Settings.Default;
-            MemoData.SaveData();
-            CalendarData.WriteCalendar(settings.CalendarFilePath, MainSchedulerDataStorage);
-            SaveUILayout();
-        }
-
-        private void OpenLabelEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenLabelEditForm();
-
-        private void OpenStatusEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenStatusEditForm();
-
-        private void OpenResourceEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenResourceEditForm();
+        /*-------------------------------------------
+         *
+         *      Event functions
+         *
+         -------------------------------------------*/
 
         protected override async void OnShown(EventArgs e)
         {
@@ -172,6 +135,74 @@ namespace MemoScheduler
             LoadingForm.CloseDialog();
         }
 
+        private void MainFrame_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SkinData.SaveAllSkinData();
+            var settings = Properties.Settings.Default;
+            MemoData.SaveData();
+            CalendarData.WriteCalendar(settings.CalendarFilePath, MainSchedulerDataStorage);
+            SaveUILayout();
+        }
+
+        private async void ScheduleImportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    await CalendarData.ReadCalendarAsync(fileDialog.FileName, MainSchedulerDataStorage);
+                    MainSchedulerDataStorage.RefreshData(true);
+                }
+                catch
+                {
+                    MessageBox.Show("Could not import calendar file");
+                    return;
+                }
+            }
+        }
+
+        private async void ScheduleSaveButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.OverwritePrompt = true;
+            saveFileDialog.Filter = "iCalendar (*.ics)|*.ics";
+            saveFileDialog.DefaultExt = "ics";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    await CalendarData.WriteCalendarAsync(saveFileDialog.FileName, MainSchedulerDataStorage);
+                }
+                catch
+                {
+                    MessageBox.Show("Could not save calendar file");
+                    return;
+                }
+            }
+        }
+
+        private async void MemoImportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                await MemoData.LoadDataAsync(fileDialog.FileName);
+                if (MemoForm.Visible) MemoForm.SetMemos();
+            }
+        }
+
+        private async void MemoSaveButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.OverwritePrompt = true;
+            saveFileDialog.Filter = "YAML file (*.yaml)|*.yaml";
+            saveFileDialog.DefaultExt = "yaml";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK) await MemoData.SaveDataAsync(saveFileDialog.FileName);
+        }
+
+        private void OpenMemo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenMemoForm();
+
         private void OpenMemoForm()
         {
             if (MemoForm != null) { MemoData.SaveData(); MemoForm.Close(); }
@@ -179,6 +210,12 @@ namespace MemoScheduler
             MemoForm.SetMemos();
             MemoForm.Show();
         }
+
+        private void OpenLabelEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenLabelEditForm();
+
+        private void OpenStatusEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenStatusEditForm();
+
+        private void OpenResourceEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenResourceEditForm();
 
         private void OpenLabelEditForm()
         {
@@ -227,11 +264,6 @@ namespace MemoScheduler
             AppointmentSettingData.SaveResourceData();
             AppointmentSettingData.UpdateResourceData(MainSchedulerDataStorage.Resources);
             MainScheduler.ResourceCategories.Clear();
-        }
-
-        private void OpenMemo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            OpenMemoForm();
         }
 
         private void AppointmentGroupSelector_EditValueChanged(object sender, EventArgs e)
