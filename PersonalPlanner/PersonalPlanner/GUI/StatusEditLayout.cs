@@ -1,8 +1,8 @@
 ﻿using DevExpress.XtraGrid.Views.Grid;
+using PersonalPlanner.Define;
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using PersonalPlanner.Define;
 
 namespace PersonalPlanner.GUI
 {

@@ -1,8 +1,8 @@
 ﻿using DevExpress.XtraEditors;
+using PersonalPlanner.Data;
+using PersonalPlanner.Define;
 using System;
 using System.Windows.Forms;
-using PersonalPlanner.Define;
-using PersonalPlanner.Data;
 
 namespace PersonalPlanner.GUI
 {

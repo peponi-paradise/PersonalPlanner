@@ -1,8 +1,8 @@
-﻿using System;
+﻿using PersonalPlanner.Define;
+using PersonalPlanner.Parser.YAML;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using PersonalPlanner.Define;
-using PersonalPlanner.Parser.YAML;
 
 namespace PersonalPlanner.Data
 {

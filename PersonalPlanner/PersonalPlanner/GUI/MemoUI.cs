@@ -1,8 +1,8 @@
 ﻿using DevExpress.XtraBars;
+using PersonalPlanner.Define;
 using System;
 using System.Threading;
 using System.Windows.Forms;
-using PersonalPlanner.Define;
 
 namespace PersonalPlanner.GUI
 {

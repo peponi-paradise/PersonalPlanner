@@ -1,11 +1,11 @@
 ﻿using DevExpress.XtraScheduler;
+using PersonalPlanner.Define;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
-using PersonalPlanner.Define;
 
 namespace PersonalPlanner.Data
 {

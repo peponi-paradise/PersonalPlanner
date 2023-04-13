@@ -4,11 +4,11 @@ using DevExpress.XtraGantt;
 using DevExpress.XtraGantt.Options;
 using DevExpress.XtraTab;
 using DevExpress.XtraTreeList.Columns;
+using PersonalPlanner.Define;
 using System;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
-using PersonalPlanner.Define;
 
 namespace PersonalPlanner.GUI
 {

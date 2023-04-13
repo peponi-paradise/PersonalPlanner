@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace PersonalPlanner.Define
+﻿namespace PersonalPlanner.Define
 {
     public class MemoDefine
     {

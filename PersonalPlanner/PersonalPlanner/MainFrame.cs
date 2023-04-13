@@ -1,10 +1,10 @@
 ﻿using DevExpress.LookAndFeel;
+using DevExpress.XtraEditors;
+using PersonalPlanner.Data;
+using PersonalPlanner.GUI;
 using System;
 using System.Reflection;
 using System.Windows.Forms;
-using PersonalPlanner.Data;
-using PersonalPlanner.GUI;
-using DevExpress.XtraEditors;
 
 namespace PersonalPlanner
 {
