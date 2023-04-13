@@ -1,12 +1,15 @@
 ﻿using DevExpress.Utils;
+using DevExpress.XtraBars.Docking;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGantt;
 using DevExpress.XtraGantt.Options;
+using DevExpress.XtraGantt.Scrolling;
 using DevExpress.XtraTab;
 using DevExpress.XtraTreeList.Columns;
 using PersonalPlanner.Define;
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -45,6 +48,8 @@ namespace PersonalPlanner.GUI
          -------------------------------------------*/
 
         private readonly SynchronizationContext SyncContext;
+        private bool mouseIsDown = false;
+        private int _prevX;
 
         /*-------------------------------------------
          *
@@ -74,6 +79,9 @@ namespace PersonalPlanner.GUI
 
             MainGanttControl.EditFormHidden += MainGanttControl_EditFormHidden;
             this.VisibleChanged += GanttUI_VisibleChanged;
+            MainGanttControl.MouseDown += MainGanttControl_MouseDown;
+            MainGanttControl.MouseMove += MainGanttControl_MouseMove;
+            MainGanttControl.MouseUp += MainGanttControl_MouseUp;
         }
 
         /*-------------------------------------------
@@ -111,8 +119,53 @@ namespace PersonalPlanner.GUI
 
         private void GanttUI_VisibleChanged(object sender, EventArgs e)
         {
-            if (this.PageVisible) MainGanttControl.ExpandAll();
+            if (this.PageVisible)
+            {
+                MainGanttControl.ExpandAll();
+            }
         }
+
+        private void MainGanttControl_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseIsDown)
+            {
+                GanttControl gantt = sender as GanttControl;
+                var delta = (e.X - _prevX);
+                _prevX = e.X;
+                var scrolBar = gantt.Controls.OfType<GanttChartHScrollBar>().FirstOrDefault();
+                if (scrolBar != null)
+                {
+                    scrolBar.Value -= delta;
+                    scrolBar.vi
+                    if (scrolBar.Value > scrolBar.Maximum) scrolBar.Value = scrolBar.Maximum;
+                    else if (scrolBar.Value < scrolBar.Minimum) scrolBar.Value = scrolBar.Minimum;
+                }
+                (e as DXMouseEventArgs).Handled = true;
+            }
+        }
+
+        private void MainGanttControl_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left)
+                return;
+
+            GanttControl gantt = sender as GanttControl;
+            GanttControlHitInfo hitInfo = gantt.CalcHitInfo(e.Location);
+            if (hitInfo != null && hitInfo.InChart)
+            {
+                GanttChartHitTest hitTest = hitInfo.ChartHitTest;
+                if (hitTest != null)
+                {
+                    if (!hitTest.InsideDependency && !hitTest.InsideDependencyArrow && !hitTest.InsideLeftPoint && !hitTest.InsideRightPoint && !hitTest.InsideTaskShape && !hitTest.InsideTimescaleHeader && hitTest.ItemInfo == null)
+                    {
+                        mouseIsDown = true;
+                        _prevX = e.X;
+                    }
+                }
+            }
+        }
+
+        private void MainGanttControl_MouseUp(object sender, MouseEventArgs e) => mouseIsDown = false;
 
         /*-------------------------------------------
          *
@@ -125,6 +178,12 @@ namespace PersonalPlanner.GUI
             GanttData.Color.ToInternalColor(color);
             SetTabPageColor();
         }
+
+        public void ZoomIn() => MainGanttControl.ZoomIn();
+
+        public void ZoomOut() => MainGanttControl.ZoomOut();
+
+        public void ZoomReset() => MainGanttControl.OptionsMainTimeRuler.Unit = GanttTimescaleUnit.Day;
 
         public bool AddTask(Task task)
         {
@@ -187,9 +246,13 @@ namespace PersonalPlanner.GUI
             MainGanttControl.OptionsSplitter.SplitterThickness = 3;
             MainGanttControl.OptionsSplitter.OverlayResizeZoneThickness = 5;
 
-            MainGanttControl.OptionsBehavior.EditingMode = DevExpress.XtraTreeList.TreeListEditingMode.EditForm;
+            //MainGanttControl.OptionsMainTimeRuler.Unit = GanttTimescaleUnit.Day;
 
-            MainGanttControl.CustomDrawTimescaleColumn += (object sender, CustomDrawTimescaleColumnEventArgs e) => DrawTodayLine(e);
+            MainGanttControl.OptionsBehavior.EditingMode = DevExpress.XtraTreeList.TreeListEditingMode.EditForm;
+            MainGanttControl.OptionsEditForm.CustomEditFormLayout = new GanttEditLayout();
+            MainGanttControl.OptionsBehavior.TaskDateChangeMode = TaskDateChangeMode.UpdateDuration;
+
+            //MainGanttControl.CustomDrawTimescaleColumn += (object sender, CustomDrawTimescaleColumnEventArgs e) => DrawTodayLine(e);
             MainGanttControl.Load += GanttControl_Load;
         }
 

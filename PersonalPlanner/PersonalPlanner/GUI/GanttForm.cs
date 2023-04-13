@@ -106,5 +106,20 @@ namespace PersonalPlanner.GUI
             GanttData.SaveData();
             MainControl.LayoutChanged();
         }
+
+        private void ZoomIn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (MainControl.SelectedTabPage != null) (MainControl.SelectedTabPage as GanttUI).ZoomIn();
+        }
+
+        private void ZoomOut_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (MainControl.SelectedTabPage != null) (MainControl.SelectedTabPage as GanttUI).ZoomOut();
+        }
+
+        private void ZoomReset_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (MainControl.SelectedTabPage != null) (MainControl.SelectedTabPage as GanttUI).ZoomReset();
+        }
     }
 }
