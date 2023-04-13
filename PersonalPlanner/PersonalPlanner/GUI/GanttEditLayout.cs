@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraTreeList;
 using PersonalPlanner.Define;
+using System;
 
 namespace PersonalPlanner.GUI
 {
@@ -17,26 +18,18 @@ namespace PersonalPlanner.GUI
             SetBoundFieldName(ProgressEdit, nameof(Task.Progress));
             SetBoundFieldName(ResponsibilityEdit, nameof(Task.Responsibility));
 
-            StartDateEdit.EditValueChanged += StartDateEdit_EditValueChanged;
-            FinishDateEdit.EditValueChanged += FinishDateEdit_EditValueChanged;
             StartDateEdit.EditValueChanging += StartDateEdit_EditValueChanging;
             FinishDateEdit.EditValueChanging += FinishDateEdit_EditValueChanging;
         }
 
         private void FinishDateEdit_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
         {
+            if((DateTime)e.NewValue<StartDateEdit.DateTime)e.NewValue=StartDateEdit.DateTime;
         }
 
         private void StartDateEdit_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
         {
-        }
-
-        private void FinishDateEdit_EditValueChanged(object sender, System.EventArgs e)
-        {
-        }
-
-        private void StartDateEdit_EditValueChanged(object sender, System.EventArgs e)
-        {
+            if ((DateTime)e.NewValue > FinishDateEdit.DateTime) e.NewValue = FinishDateEdit.DateTime;
         }
 
         private void InitializeComponent()

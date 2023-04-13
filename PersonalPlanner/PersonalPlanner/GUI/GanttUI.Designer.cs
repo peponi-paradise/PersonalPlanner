@@ -28,25 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.MainGanttControl = new DevExpress.XtraGantt.GanttControl();
-            ((System.ComponentModel.ISupportInitialize)(this.MainGanttControl)).BeginInit();
-            this.SuspendLayout();
+            MainGanttControl = new DevExpress.XtraGantt.GanttControl();
+            ((System.ComponentModel.ISupportInitialize)MainGanttControl).BeginInit();
+            SuspendLayout();
             // 
             // MainGanttControl
             // 
-            this.MainGanttControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainGanttControl.Location = new System.Drawing.Point(0, 0);
-            this.MainGanttControl.Name = "MainGanttControl";
-            this.MainGanttControl.Size = new System.Drawing.Size(1024, 200);
-            this.MainGanttControl.SplitterPosition = 400;
-            this.MainGanttControl.TabIndex = 0;
+            MainGanttControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            MainGanttControl.Name = "MainGanttControl";
+            MainGanttControl.OptionsMainTimeRuler.MinUnit = DevExpress.XtraGantt.GanttTimescaleUnit.Day;
+            MainGanttControl.Size = new System.Drawing.Size(1024, 200);
+            MainGanttControl.SplitterPosition = 400;
+            MainGanttControl.TabIndex = 0;
             // 
             // GanttUI
             // 
-            this.Margin = new System.Windows.Forms.Padding(0);
-            ((System.ComponentModel.ISupportInitialize)(this.MainGanttControl)).EndInit();
-            this.ResumeLayout(false);
-
+            Margin = new System.Windows.Forms.Padding(0);
+            ((System.ComponentModel.ISupportInitialize)MainGanttControl).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
