@@ -1,5 +1,4 @@
 ﻿using DevExpress.Utils;
-using DevExpress.XtraBars.Docking;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGantt;
 using DevExpress.XtraGantt.Options;
@@ -51,6 +50,7 @@ namespace PersonalPlanner.GUI
         private readonly SynchronizationContext SyncContext;
         private bool mouseIsDown = false;
         private int _prevX;
+        private int EditingNodeID;
 
         /*-------------------------------------------
          *
@@ -78,6 +78,7 @@ namespace PersonalPlanner.GUI
             SetGanttControlSettings();
             BindData();
 
+            MainGanttControl.EditFormPrepared += MainGanttControl_EditFormPrepared;
             MainGanttControl.EditFormHidden += MainGanttControl_EditFormHidden;
             this.VisibleChanged += GanttUI_VisibleChanged;
             MainGanttControl.MouseDown += MainGanttControl_MouseDown;
@@ -91,7 +92,7 @@ namespace PersonalPlanner.GUI
          *
          -------------------------------------------*/
 
-        private void GanttControl_Load(object sender, EventArgs e) => MainGanttControl.ScrollChartToDate(DateTime.Now.Date);
+        private void GanttControl_Load(object sender, EventArgs e) => MainGanttControl.ScrollChartToDate(DateTime.Today);
 
         private void DrawTodayLine(CustomDrawTimescaleColumnEventArgs e)
         {
@@ -105,11 +106,29 @@ namespace PersonalPlanner.GUI
             e.DrawHeader();
         }
 
+        private void MainGanttControl_EditFormPrepared(object sender, DevExpress.XtraTreeList.EditFormPreparedEventArgs e) => EditingNodeID = (int)e.Node.GetValue(nameof(Task.ID));
+
         private void MainGanttControl_EditFormHidden(object sender, DevExpress.XtraTreeList.EditFormHiddenEventArgs e)
         {
             if (e.Result == DevExpress.XtraTreeList.EditFormResult.Update)
             {
-                if (e.Node.ParentNode != null) CheckDuration(e.Node as GanttControlNode, e.Node.ParentNode as GanttControlNode);
+                var currentNode = e.Node as GanttControlNode;
+
+                // Check Duplicated ID
+                foreach (TreeListNode node in currentNode.GanttControl.NodesIterator.All)
+                {
+                    if (node.Id != currentNode.Id)
+                    {
+                        if ((int)node.GetValue(nameof(Task.ID)) == (int)currentNode.GetValue(nameof(Task.ID)))
+                        {
+                            currentNode.SetValue(nameof(Task.ID), EditingNodeID);
+                            XtraMessageBox.Show("Duplicated ID Detected. Cancel update.");
+                            return;
+                        }
+                    }
+                }
+
+                if (currentNode.ParentNode != null) CheckChildDuration(currentNode, currentNode.ParentNode);
                 SaveData();
             }
         }
@@ -118,7 +137,8 @@ namespace PersonalPlanner.GUI
 
         private void MainGanttControl_TaskFinishDateModified(object sender, TaskFinishModifiedEventArgs e)
         {
-            if (e.ProcessedNode.ParentNode != null) CheckDuration(e.ProcessedNode, e.ProcessedNode.ParentNode);
+            if (e.ProcessedNode.ParentNode != null) CheckChildDuration(e.ProcessedNode, e.ProcessedNode.ParentNode);
+            if (e.ProcessedNode.HasChildren) foreach (GanttControlNode node in e.ProcessedNode.Nodes) CheckChildDuration(node, e.ProcessedNode);
             SaveData();
         }
 
@@ -126,16 +146,21 @@ namespace PersonalPlanner.GUI
 
         private void MainGanttControl_TaskMoved(object sender, TaskMovedEventArgs e)
         {
-            if (e.ProcessedNode.ParentNode != null) CheckDuration(e.ProcessedNode, e.ProcessedNode.ParentNode);
-            else if (e.ProcessedNode.HasChildren)
+            if (e.ProcessedNode.ParentNode != null)
             {
-
-                foreach (GanttControlNode node in e.ProcessedNode.Nodes)
+                var currentNode = e.ProcessedNode;
+                var parentNode = e.ProcessedNode.ParentNode;
+                do
                 {
-                    var timeGap = e.ProcessedNode.GetStartDate()-e.OriginalTaskStart;
-                    node.SetValue(nameof(Task.StartDate), node.GetStartDate() + timeGap);
-                    node.SetValue(nameof(Task.FinishDate), node.GetFinishDate() + timeGap);
-                }
+                    CheckParentDuration(currentNode, parentNode);
+                    currentNode = parentNode;
+                    parentNode = currentNode.ParentNode;
+                } while (parentNode != null);
+            }
+            if (e.ProcessedNode.HasChildren)
+            {
+                var timeGap = e.ProcessedNode.GetStartDate() - e.OriginalTaskStart;
+                MoveAllChild(e.ProcessedNode, timeGap);
             }
             SaveData();
         }
@@ -208,7 +233,19 @@ namespace PersonalPlanner.GUI
 
         public void ZoomOut() => MainGanttControl.ZoomOut();
 
-        public void ZoomReset() => MainGanttControl.OptionsMainTimeRuler.Unit = GanttTimescaleUnit.Day;
+        public void ZoomReset() => MainGanttControl.ResetZoom();
+
+        public void SetViewStartDate(DateTime dateTime)
+        {
+            MainGanttControl.ChartStartDate = dateTime;
+            ZoomReset();
+        }
+
+        public void SetViewFinishDate(DateTime dateTime)
+        {
+            MainGanttControl.ChartFinishDate = dateTime;
+            ZoomReset();
+        }
 
         public bool AddTask(Task task)
         {
@@ -331,12 +368,28 @@ namespace PersonalPlanner.GUI
             MainGanttControl.ExpandAll();
         }
 
-        private void CheckDuration(GanttControlNode child, GanttControlNode parent)
+        private void CheckChildDuration(GanttControlNode child, GanttControlNode parent)
         {
             if (child.GetStartDate() < parent.GetStartDate()) child.SetValue(nameof(Task.StartDate), parent.GetStartDate());
-            else if(child.GetStartDate()>parent.GetFinishDate()) child.SetValue(nameof(Task.StartDate), parent.GetFinishDate());
+            else if (child.GetStartDate() > parent.GetFinishDate()) child.SetValue(nameof(Task.StartDate), parent.GetFinishDate());
             if (child.GetFinishDate() > parent.GetFinishDate()) child.SetValue(nameof(Task.FinishDate), parent.GetFinishDate());
-            else if(child.GetFinishDate() < parent.GetStartDate()) child.SetValue(nameof(Task.FinishDate), parent.GetStartDate());
+            else if (child.GetFinishDate() < parent.GetStartDate()) child.SetValue(nameof(Task.FinishDate), parent.GetStartDate());
+        }
+
+        private void CheckParentDuration(GanttControlNode child, GanttControlNode parent)
+        {
+            if (child.GetStartDate() < parent.GetStartDate()) parent.SetValue(nameof(Task.StartDate), child.GetStartDate());
+            if (child.GetFinishDate() > parent.GetFinishDate()) parent.SetValue(nameof(Task.FinishDate), child.GetFinishDate());
+        }
+
+        private void MoveAllChild(GanttControlNode currentNode, TimeSpan? span)
+        {
+            foreach (GanttControlNode node in currentNode.Nodes)
+            {
+                node.SetValue(nameof(Task.StartDate), node.GetStartDate() + span);
+                node.SetValue(nameof(Task.FinishDate), node.GetFinishDate() + span);
+                if (node.HasChildren) MoveAllChild(node, span);
+            }
         }
     }
 }

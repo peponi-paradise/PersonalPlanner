@@ -24,7 +24,7 @@ namespace PersonalPlanner.GUI
 
         private void FinishDateEdit_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
         {
-            if((DateTime)e.NewValue<StartDateEdit.DateTime)e.NewValue=StartDateEdit.DateTime;
+            if ((DateTime)e.NewValue < StartDateEdit.DateTime) e.NewValue = StartDateEdit.DateTime;
         }
 
         private void StartDateEdit_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
@@ -60,9 +60,9 @@ namespace PersonalPlanner.GUI
             ((System.ComponentModel.ISupportInitialize)StartDateEdit.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)StartDateEdit.Properties.CalendarTimeProperties).BeginInit();
             SuspendLayout();
-            // 
+            //
             // MainPanel
-            // 
+            //
             SetBoundPropertyName(MainPanel, "");
             MainPanel.ColumnCount = 6;
             MainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.6666718F));
@@ -95,9 +95,9 @@ namespace PersonalPlanner.GUI
             MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.3333321F));
             MainPanel.Size = new System.Drawing.Size(600, 100);
             MainPanel.TabIndex = 0;
-            // 
+            //
             // ResponsibilityEdit
-            // 
+            //
             SetBoundPropertyName(ResponsibilityEdit, "");
             ResponsibilityEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             ResponsibilityEdit.EditValue = "None";
@@ -106,9 +106,9 @@ namespace PersonalPlanner.GUI
             ResponsibilityEdit.Properties.AutoHeight = false;
             ResponsibilityEdit.Size = new System.Drawing.Size(93, 28);
             ResponsibilityEdit.TabIndex = 13;
-            // 
+            //
             // ProgressEdit
-            // 
+            //
             SetBoundPropertyName(ProgressEdit, "");
             ProgressEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             ProgressEdit.EditValue = 0;
@@ -119,9 +119,9 @@ namespace PersonalPlanner.GUI
             ProgressEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             ProgressEdit.Size = new System.Drawing.Size(98, 27);
             ProgressEdit.TabIndex = 12;
-            // 
+            //
             // FinishDateEdit
-            // 
+            //
             SetBoundPropertyName(FinishDateEdit, "");
             FinishDateEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             FinishDateEdit.EditValue = null;
@@ -132,9 +132,9 @@ namespace PersonalPlanner.GUI
             FinishDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             FinishDateEdit.Size = new System.Drawing.Size(93, 27);
             FinishDateEdit.TabIndex = 11;
-            // 
+            //
             // ParentIDEdit
-            // 
+            //
             SetBoundPropertyName(ParentIDEdit, "");
             ParentIDEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             ParentIDEdit.EditValue = -1;
@@ -145,9 +145,12 @@ namespace PersonalPlanner.GUI
             ParentIDEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             ParentIDEdit.Size = new System.Drawing.Size(93, 27);
             ParentIDEdit.TabIndex = 8;
-            // 
+            ParentIDEdit.ToolTip = "-1 for Root Node";
+            ParentIDEdit.ToolTipAnchor = DevExpress.Utils.ToolTipAnchor.Object;
+            ParentIDEdit.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
+            //
             // label7
-            // 
+            //
             label7.AutoSize = true;
             SetBoundPropertyName(label7, "");
             label7.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -157,9 +160,9 @@ namespace PersonalPlanner.GUI
             label7.TabIndex = 6;
             label7.Text = "Responsibility";
             label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
+            //
             // label6
-            // 
+            //
             label6.AutoSize = true;
             SetBoundPropertyName(label6, "");
             label6.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -169,9 +172,9 @@ namespace PersonalPlanner.GUI
             label6.TabIndex = 5;
             label6.Text = "Progress";
             label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
+            //
             // label5
-            // 
+            //
             label5.AutoSize = true;
             SetBoundPropertyName(label5, "");
             label5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -181,9 +184,9 @@ namespace PersonalPlanner.GUI
             label5.TabIndex = 4;
             label5.Text = "Finish Date";
             label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
+            //
             // label4
-            // 
+            //
             label4.AutoSize = true;
             SetBoundPropertyName(label4, "");
             label4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -193,9 +196,9 @@ namespace PersonalPlanner.GUI
             label4.TabIndex = 3;
             label4.Text = "Start Date";
             label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
+            //
             // label1
-            // 
+            //
             label1.AutoSize = true;
             SetBoundPropertyName(label1, "");
             label1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -205,9 +208,9 @@ namespace PersonalPlanner.GUI
             label1.TabIndex = 0;
             label1.Text = "ID";
             label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
+            //
             // label2
-            // 
+            //
             label2.AutoSize = true;
             SetBoundPropertyName(label2, "");
             label2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -217,9 +220,9 @@ namespace PersonalPlanner.GUI
             label2.TabIndex = 1;
             label2.Text = "Parent ID";
             label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
+            //
             // label3
-            // 
+            //
             label3.AutoSize = true;
             SetBoundPropertyName(label3, "");
             label3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -229,9 +232,9 @@ namespace PersonalPlanner.GUI
             label3.TabIndex = 2;
             label3.Text = "Name";
             label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
+            //
             // IDEdit
-            // 
+            //
             SetBoundPropertyName(IDEdit, "");
             IDEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             IDEdit.EditValue = 0;
@@ -242,9 +245,12 @@ namespace PersonalPlanner.GUI
             IDEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             IDEdit.Size = new System.Drawing.Size(93, 27);
             IDEdit.TabIndex = 7;
-            // 
+            IDEdit.ToolTip = "Please input non-duplicate ID as `Integer`";
+            IDEdit.ToolTipAnchor = DevExpress.Utils.ToolTipAnchor.Object;
+            IDEdit.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
+            //
             // NameEdit
-            // 
+            //
             SetBoundPropertyName(NameEdit, "");
             NameEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             NameEdit.EditValue = "New Name";
@@ -253,9 +259,9 @@ namespace PersonalPlanner.GUI
             NameEdit.Properties.AutoHeight = false;
             NameEdit.Size = new System.Drawing.Size(98, 27);
             NameEdit.TabIndex = 9;
-            // 
+            //
             // StartDateEdit
-            // 
+            //
             SetBoundPropertyName(StartDateEdit, "");
             StartDateEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             StartDateEdit.EditValue = null;
@@ -266,9 +272,9 @@ namespace PersonalPlanner.GUI
             StartDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             StartDateEdit.Size = new System.Drawing.Size(93, 27);
             StartDateEdit.TabIndex = 10;
-            // 
+            //
             // GanttEditLayout
-            // 
+            //
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(MainPanel);

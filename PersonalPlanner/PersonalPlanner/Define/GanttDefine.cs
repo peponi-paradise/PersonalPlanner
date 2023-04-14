@@ -11,9 +11,9 @@ namespace PersonalPlanner.Define
 
         public string Name { get; set; } = "New Item";
 
-        public DateTime StartDate { get; set; } = DateTime.Now;
+        public DateTime StartDate { get; set; } = DateTime.Today;
 
-        public DateTime FinishDate { get; set; } = DateTime.Now.AddDays(1);
+        public DateTime FinishDate { get; set; } = DateTime.Today.AddDays(1);
 
         public double Progress { get; set; } = 0;
 

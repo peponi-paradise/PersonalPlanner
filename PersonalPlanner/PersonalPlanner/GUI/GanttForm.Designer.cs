@@ -44,23 +44,31 @@
             RibbonPageGroupCurrentTab = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             RibbonGroupView = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             MainControl = new DevExpress.XtraTab.XtraTabControl();
+            ChartViewStart = new DevExpress.XtraBars.BarEditItem();
+            repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            ChartViewFinish = new DevExpress.XtraBars.BarEditItem();
+            repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             ((System.ComponentModel.ISupportInitialize)MainRibbonControl).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemColorPickEdit1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MainControl).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemDateEdit1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemDateEdit1.CalendarTimeProperties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemDateEdit2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemDateEdit2.CalendarTimeProperties).BeginInit();
             SuspendLayout();
             // 
             // MainRibbonControl
             // 
             MainRibbonControl.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 32, 35, 32);
             MainRibbonControl.ExpandCollapseItem.Id = 0;
-            MainRibbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] { MainRibbonControl.ExpandCollapseItem, MainRibbonControl.SearchEditItem, NewGantt, TabColor, NewTask, RemoveTask, RemoveGantt, ZoomIn, ZoomOut, ZoomReset });
+            MainRibbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] { MainRibbonControl.ExpandCollapseItem, MainRibbonControl.SearchEditItem, NewGantt, TabColor, NewTask, RemoveTask, RemoveGantt, ZoomIn, ZoomOut, ZoomReset, ChartViewStart, ChartViewFinish });
             MainRibbonControl.Location = new System.Drawing.Point(0, 0);
             MainRibbonControl.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            MainRibbonControl.MaxItemId = 20;
+            MainRibbonControl.MaxItemId = 22;
             MainRibbonControl.Name = "MainRibbonControl";
             MainRibbonControl.OptionsMenuMinWidth = 385;
             MainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { MainRibbonPage });
-            MainRibbonControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemColorPickEdit1 });
+            MainRibbonControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemColorPickEdit1, repositoryItemDateEdit1, repositoryItemDateEdit2 });
             MainRibbonControl.Size = new System.Drawing.Size(1022, 160);
             // 
             // NewGantt
@@ -160,6 +168,8 @@
             RibbonGroupView.ItemLinks.Add(ZoomIn);
             RibbonGroupView.ItemLinks.Add(ZoomOut);
             RibbonGroupView.ItemLinks.Add(ZoomReset);
+            RibbonGroupView.ItemLinks.Add(ChartViewStart);
+            RibbonGroupView.ItemLinks.Add(ChartViewFinish);
             RibbonGroupView.Name = "RibbonGroupView";
             RibbonGroupView.Text = "View";
             // 
@@ -173,6 +183,38 @@
             MainControl.Name = "MainControl";
             MainControl.Size = new System.Drawing.Size(1022, 607);
             MainControl.TabIndex = 1;
+            // 
+            // ChartViewStart
+            // 
+            ChartViewStart.Caption = "Start Date";
+            ChartViewStart.Edit = repositoryItemDateEdit1;
+            ChartViewStart.EditWidth = 100;
+            ChartViewStart.Id = 20;
+            ChartViewStart.Name = "ChartViewStart";
+            ChartViewStart.EditValueChanged += ChartViewStart_EditValueChanged;
+            // 
+            // repositoryItemDateEdit1
+            // 
+            repositoryItemDateEdit1.AutoHeight = false;
+            repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
+            // 
+            // ChartViewFinish
+            // 
+            ChartViewFinish.Caption = "Finish Date";
+            ChartViewFinish.Edit = repositoryItemDateEdit2;
+            ChartViewFinish.EditWidth = 100;
+            ChartViewFinish.Id = 21;
+            ChartViewFinish.Name = "ChartViewFinish";
+            ChartViewFinish.EditValueChanged += ChartViewFinish_EditValueChanged;
+            // 
+            // repositoryItemDateEdit2
+            // 
+            repositoryItemDateEdit2.AutoHeight = false;
+            repositoryItemDateEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            repositoryItemDateEdit2.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            repositoryItemDateEdit2.Name = "repositoryItemDateEdit2";
             // 
             // GanttForm
             // 
@@ -188,6 +230,10 @@
             ((System.ComponentModel.ISupportInitialize)MainRibbonControl).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemColorPickEdit1).EndInit();
             ((System.ComponentModel.ISupportInitialize)MainControl).EndInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemDateEdit1.CalendarTimeProperties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemDateEdit1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemDateEdit2.CalendarTimeProperties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemDateEdit2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -209,6 +255,10 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup RibbonGroupView;
         private DevExpress.XtraBars.BarButtonItem ZoomOut;
         private DevExpress.XtraBars.BarButtonItem ZoomReset;
+        private DevExpress.XtraBars.BarEditItem ChartViewStart;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
+        private DevExpress.XtraBars.BarEditItem ChartViewFinish;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit2;
     }
 }
 

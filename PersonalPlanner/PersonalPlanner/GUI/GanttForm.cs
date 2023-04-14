@@ -12,6 +12,12 @@ namespace PersonalPlanner.GUI
         {
             InitializeComponent();
             InitialDraw();
+            MainControl.SelectedPageChanged += MainControl_SelectedPageChanged;
+        }
+
+        private void MainControl_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            TabColor.EditValue = (MainControl.SelectedTabPage as GanttUI).GanttData.Color.ToDrawingColor();
         }
 
         private void InitialDraw()
@@ -120,6 +126,16 @@ namespace PersonalPlanner.GUI
         private void ZoomReset_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (MainControl.SelectedTabPage != null) (MainControl.SelectedTabPage as GanttUI).ZoomReset();
+        }
+
+        private void ChartViewStart_EditValueChanged(object sender, EventArgs e)
+        {
+            if (MainControl.SelectedTabPage != null && ChartViewStart.EditValue != null) (MainControl.SelectedTabPage as GanttUI).SetViewStartDate((DateTime)ChartViewStart.EditValue);
+        }
+
+        private void ChartViewFinish_EditValueChanged(object sender, EventArgs e)
+        {
+            if (MainControl.SelectedTabPage != null && ChartViewFinish.EditValue != null) (MainControl.SelectedTabPage as GanttUI).SetViewFinishDate((DateTime)ChartViewFinish.EditValue);
         }
     }
 }
