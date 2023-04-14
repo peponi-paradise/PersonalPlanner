@@ -27,7 +27,7 @@ namespace PersonalPlanner.GUI
 
         private void MainControl_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            TabColor.EditValue = (MainControl.SelectedTabPage as GanttUI).GanttData.Color.ToDrawingColor();
+            if (MainControl.SelectedTabPage != null) TabColor.EditValue = (MainControl.SelectedTabPage as GanttUI).GanttData.Color.ToDrawingColor();
         }
 
         private void InitialDraw()
@@ -129,7 +129,7 @@ namespace PersonalPlanner.GUI
         private void SaveAndUpdate()
         {
             GanttData.SaveData();
-            MainControl.LayoutChanged();
+            if (MainControl.TabPages != null) MainControl.LayoutChanged();
         }
 
         private void ZoomIn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

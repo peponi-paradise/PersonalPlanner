@@ -332,6 +332,9 @@ namespace PersonalPlanner
             }
             if (settings.MainFrameSize != new Size(0, 0)) this.Size = settings.MainFrameSize;
 
+            MemoFormShow.Checked = settings.MemoFormShowOnStartUp;
+            GanttFormShow.Checked = settings.GanttFormShowOnStartUp;
+
             MainScheduler.GoToToday();
             MainScheduler.DayView.ShowWorkTimeOnly = settings.DayViewWorktimeShow;
             MainScheduler.WorkWeekView.ShowWorkTimeOnly = settings.WorkweekViewWorktimeShow;
@@ -352,6 +355,8 @@ namespace PersonalPlanner
 
             settings.MainFrameLocation = this.Location;
             settings.MainFrameSize = this.Size;
+            if (MemoForm.Visible) { settings.MemoFormLocation = MemoForm.Location; settings.MemoFormSize = MemoForm.Size; }
+            if (GanttForm.Visible) { settings.GanttFormLocation = GanttForm.Location; settings.GanttFormSize = GanttForm.Size; }
 
             settings.SchedulerViewType = (int)MainScheduler.ActiveViewType;
             settings.DayViewWorktimeShow = MainScheduler.DayView.ShowWorkTimeOnly;

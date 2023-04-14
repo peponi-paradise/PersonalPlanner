@@ -92,6 +92,8 @@
             repositoryItemTimeSpanEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeSpanEdit();
             HomeOpenGanttWindow = new DevExpress.XtraBars.BarButtonItem();
             ViewOpenGanttWindow = new DevExpress.XtraBars.BarButtonItem();
+            MemoFormShow = new DevExpress.XtraBars.BarCheckItem();
+            GanttFormShow = new DevExpress.XtraBars.BarCheckItem();
             calendarToolsRibbonPageCategory1 = new DevExpress.XtraScheduler.UI.CalendarToolsRibbonPageCategory();
             MainScheduler = new DevExpress.XtraScheduler.SchedulerControl();
             MainSchedulerDataStorage = new DevExpress.XtraScheduler.SchedulerDataStorage(components);
@@ -120,12 +122,10 @@
             ribbonPageGroupSkinColors = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             SchedulerSettingGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             AppointmentSettingGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            RibbonGroupShowStartUp = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             splitContainerControlCalendar = new DevExpress.XtraEditors.SplitContainerControl();
             MainCalendar = new DevExpress.XtraScheduler.DateNavigator();
             MainSchedulerBarController = new DevExpress.XtraScheduler.UI.SchedulerBarController(components);
-            ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            MemoFormShow = new DevExpress.XtraBars.BarCheckItem();
-            GanttFormShow = new DevExpress.XtraBars.BarCheckItem();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemSpinEdit1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemDuration1).BeginInit();
@@ -528,6 +528,24 @@
             ViewOpenGanttWindow.Name = "ViewOpenGanttWindow";
             ViewOpenGanttWindow.ItemClick += OpenGanttWindow;
             // 
+            // MemoFormShow
+            // 
+            MemoFormShow.Caption = "Memo Window";
+            MemoFormShow.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText;
+            MemoFormShow.Id = 72;
+            MemoFormShow.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("MemoFormShow.ImageOptions.SvgImage");
+            MemoFormShow.Name = "MemoFormShow";
+            MemoFormShow.CheckedChanged += MemoFormShow_CheckedChanged;
+            // 
+            // GanttFormShow
+            // 
+            GanttFormShow.Caption = "Gantt Window";
+            GanttFormShow.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText;
+            GanttFormShow.Id = 73;
+            GanttFormShow.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("GanttFormShow.ImageOptions.SvgImage");
+            GanttFormShow.Name = "GanttFormShow";
+            GanttFormShow.CheckedChanged += GanttFormShow_CheckedChanged;
+            // 
             // calendarToolsRibbonPageCategory1
             // 
             calendarToolsRibbonPageCategory1.Control = MainScheduler;
@@ -734,7 +752,7 @@
             // 
             // ribbonPageSettings
             // 
-            ribbonPageSettings.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroupSkins, ribbonPageGroupSkinColors, SchedulerSettingGroup, AppointmentSettingGroup, ribbonPageGroup1 });
+            ribbonPageSettings.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroupSkins, ribbonPageGroupSkinColors, SchedulerSettingGroup, AppointmentSettingGroup, RibbonGroupShowStartUp });
             ribbonPageSettings.Name = "ribbonPageSettings";
             ribbonPageSettings.Text = "Setting";
             // 
@@ -766,6 +784,13 @@
             AppointmentSettingGroup.ItemLinks.Add(OpenResourceEdit);
             AppointmentSettingGroup.Name = "AppointmentSettingGroup";
             AppointmentSettingGroup.Text = "Appointment Settings";
+            // 
+            // RibbonGroupShowStartUp
+            // 
+            RibbonGroupShowStartUp.ItemLinks.Add(MemoFormShow);
+            RibbonGroupShowStartUp.ItemLinks.Add(GanttFormShow);
+            RibbonGroupShowStartUp.Name = "RibbonGroupShowStartUp";
+            RibbonGroupShowStartUp.Text = "Show StartUp";
             // 
             // splitContainerControlCalendar
             // 
@@ -839,31 +864,6 @@
             MainSchedulerBarController.BarItems.Add(toggleRecurrenceItem1);
             MainSchedulerBarController.BarItems.Add(changeAppointmentReminderItem1);
             MainSchedulerBarController.Control = MainScheduler;
-            // 
-            // ribbonPageGroup1
-            // 
-            ribbonPageGroup1.ItemLinks.Add(MemoFormShow);
-            ribbonPageGroup1.ItemLinks.Add(GanttFormShow);
-            ribbonPageGroup1.Name = "ribbonPageGroup1";
-            ribbonPageGroup1.Text = "ribbonPageGroup1";
-            // 
-            // MemoFormShow
-            // 
-            MemoFormShow.Caption = "Memo Window";
-            MemoFormShow.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText;
-            MemoFormShow.Id = 72;
-            MemoFormShow.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barCheckItem1.ImageOptions.SvgImage");
-            MemoFormShow.Name = "MemoFormShow";
-            MemoFormShow.CheckedChanged += MemoFormShow_CheckedChanged;
-            // 
-            // GanttFormShow
-            // 
-            GanttFormShow.Caption = "Gantt Window";
-            GanttFormShow.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText;
-            GanttFormShow.Id = 73;
-            GanttFormShow.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("GanttFormShow.ImageOptions.SvgImage");
-            GanttFormShow.Name = "GanttFormShow";
-            GanttFormShow.CheckedChanged += GanttFormShow_CheckedChanged;
             // 
             // MainFrame
             // 
@@ -991,7 +991,7 @@
         private DevExpress.XtraBars.BarButtonItem ViewOpenGanttWindow;
         private DevExpress.XtraBars.BarCheckItem MemoFormShow;
         private DevExpress.XtraBars.BarCheckItem GanttFormShow;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup RibbonGroupShowStartUp;
     }
 }
 
