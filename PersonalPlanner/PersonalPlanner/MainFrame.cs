@@ -153,12 +153,53 @@ namespace PersonalPlanner
 
         private void MainFrame_FormClosing(object sender, FormClosingEventArgs e)
         {
+            WaitForm.OpenDialog("Closing...", "Saving datas...");
             SkinData.SaveAllSkinData();
             var settings = Properties.Settings.Default;
             MemoData.SaveData();
             CalendarData.WriteCalendar(settings.CalendarFilePath, MainSchedulerDataStorage);
             GanttData.SaveData();
             SaveUILayout();
+            WaitForm.CloseDialog();
+        }
+
+        private void OpenMemo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenMemoForm();
+
+        private void OpenGantt_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenGanttForm();
+
+        private void OpenLabelEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenLabelEditForm();
+
+        private void LabelEditForm_FormClosing(object sender, FormClosingEventArgs e) => UpdateAppointmentLabelList();
+
+        private void OpenStatusEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenStatusEditForm();
+
+        private void StatusEditForm_FormClosing(object sender, FormClosingEventArgs e) => UpdateAppointmentStatusList();
+
+        private void OpenResourceEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenResourceEditForm();
+
+        private void ResourceEditForm_FormClosing(object sender, FormClosingEventArgs e) => UpdateAppointmentResourceList();
+
+        private void AppointmentGroupSelector_EditValueChanged(object sender, EventArgs e)
+        {
+            MainScheduler.ResourceCategories.Clear();
+            GroupType = (DevExpress.XtraScheduler.SchedulerGroupType)(int)AppointmentGroupSelector.EditValue;
+            MainScheduler.GroupType = GroupType;
+        }
+
+        private void WorkTimeStart_EditValueChanged(object sender, EventArgs e)
+        {
+            var settings = Properties.Settings.Default;
+            settings.OfficeStart = (TimeSpan)WorkTimeStart.EditValue;
+            settings.Save();
+            SetWorkTime();
+        }
+
+        private void WorkTimeEnd_EditValueChanged(object sender, EventArgs e)
+        {
+            var settings = Properties.Settings.Default;
+            settings.OfficeEnd = (TimeSpan)WorkTimeEnd.EditValue;
+            settings.Save();
+            SetWorkTime();
         }
 
         private async void ScheduleImportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -218,7 +259,25 @@ namespace PersonalPlanner
             if (saveFileDialog.ShowDialog() == DialogResult.OK) await MemoData.SaveDataAsync(saveFileDialog.FileName);
         }
 
-        private void OpenMemo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenMemoForm();
+        private void MemoFormShow_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var settings = Properties.Settings.Default;
+            settings.MemoFormShowOnStartUp = MemoFormShow.Checked;
+            settings.Save();
+        }
+
+        private void GanttFormShow_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var settings = Properties.Settings.Default;
+            settings.GanttFormShowOnStartUp = GanttFormShow.Checked;
+            settings.Save();
+        }
+
+        /*-------------------------------------------
+         *
+         *      Private functions
+         *
+         -------------------------------------------*/
 
         private void OpenMemoForm()
         {
@@ -228,11 +287,12 @@ namespace PersonalPlanner
             MemoForm.Show();
         }
 
-        private void OpenLabelEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenLabelEditForm();
-
-        private void OpenStatusEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenStatusEditForm();
-
-        private void OpenResourceEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenResourceEditForm();
+        private void OpenGanttForm()
+        {
+            if (GanttForm != null) { GanttData.SaveData(); GanttForm.Close(); }
+            GanttForm = new GanttForm();
+            GanttForm.Show();
+        }
 
         private void OpenLabelEditForm()
         {
@@ -241,8 +301,6 @@ namespace PersonalPlanner
             labelEditForm.SetDataSources(AppointmentSettingData.GetLabelDataSet());
             labelEditForm.Show();
         }
-
-        private void LabelEditForm_FormClosing(object sender, FormClosingEventArgs e) => UpdateAppointmentLabelList();
 
         private void UpdateAppointmentLabelList()
         {
@@ -258,8 +316,6 @@ namespace PersonalPlanner
             statusEditForm.Show();
         }
 
-        private void StatusEditForm_FormClosing(object sender, FormClosingEventArgs e) => UpdateAppointmentStatusList();
-
         private void UpdateAppointmentStatusList()
         {
             AppointmentSettingData.SaveStatusData();
@@ -274,36 +330,11 @@ namespace PersonalPlanner
             resourceEditForm.Show();
         }
 
-        private void ResourceEditForm_FormClosing(object sender, FormClosingEventArgs e) => UpdateAppointmentResourceList();
-
         private void UpdateAppointmentResourceList()
         {
             AppointmentSettingData.SaveResourceData();
             AppointmentSettingData.UpdateResourceData(MainSchedulerDataStorage.Resources);
             MainScheduler.ResourceCategories.Clear();
-        }
-
-        private void AppointmentGroupSelector_EditValueChanged(object sender, EventArgs e)
-        {
-            MainScheduler.ResourceCategories.Clear();
-            GroupType = (DevExpress.XtraScheduler.SchedulerGroupType)(int)AppointmentGroupSelector.EditValue;
-            MainScheduler.GroupType = GroupType;
-        }
-
-        private void WorkTimeStart_EditValueChanged(object sender, EventArgs e)
-        {
-            var settings = Properties.Settings.Default;
-            settings.OfficeStart = (TimeSpan)WorkTimeStart.EditValue;
-            settings.Save();
-            SetWorkTime();
-        }
-
-        private void WorkTimeEnd_EditValueChanged(object sender, EventArgs e)
-        {
-            var settings = Properties.Settings.Default;
-            settings.OfficeEnd = (TimeSpan)WorkTimeEnd.EditValue;
-            settings.Save();
-            SetWorkTime();
         }
 
         private void SetWorkTime()
@@ -362,29 +393,6 @@ namespace PersonalPlanner
             settings.DayViewWorktimeShow = MainScheduler.DayView.ShowWorkTimeOnly;
             settings.WorkweekViewWorktimeShow = MainScheduler.WorkWeekView.ShowWorkTimeOnly;
             settings.FullweekViewWorktimeShow = MainScheduler.FullWeekView.ShowWorkTimeOnly;
-            settings.Save();
-        }
-
-        private void OpenGanttWindow(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenGanttForm();
-
-        private void OpenGanttForm()
-        {
-            if (GanttForm != null) { GanttData.SaveData(); GanttForm.Close(); }
-            GanttForm = new GanttForm();
-            GanttForm.Show();
-        }
-
-        private void MemoFormShow_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            var settings = Properties.Settings.Default;
-            settings.MemoFormShowOnStartUp = MemoFormShow.Checked;
-            settings.Save();
-        }
-
-        private void GanttFormShow_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            var settings = Properties.Settings.Default;
-            settings.GanttFormShowOnStartUp = GanttFormShow.Checked;
             settings.Save();
         }
     }

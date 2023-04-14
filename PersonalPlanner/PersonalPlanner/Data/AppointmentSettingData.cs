@@ -11,6 +11,12 @@ namespace PersonalPlanner.Data
 {
     public static class AppointmentSettingData
     {
+        /*-------------------------------------------
+         *
+         *      Private members
+         *
+         -------------------------------------------*/
+
         private static string DefaultFilePath = $@"{Environment.CurrentDirectory}\Data\";
         private static string LabelFilePath = DefaultFilePath + $"{nameof(LabelDataSet)}.xml";
         private static string StatusFilePath = DefaultFilePath + $"{nameof(StatusDataSet)}.xml";
@@ -19,6 +25,12 @@ namespace PersonalPlanner.Data
         private static DataSet LabelDataSet;
         private static DataSet StatusDataSet;
         private static DataSet ResourceDataSet;
+
+        /*-------------------------------------------
+         *
+         *      Public functions
+         *
+         -------------------------------------------*/
 
         public static DataTable GetLabelDataSet() => LabelDataSet.Tables[0];
 
@@ -53,10 +65,7 @@ namespace PersonalPlanner.Data
             }
         }
 
-        public static void SaveLabelData()
-        {
-            LabelDataSet.WriteXml(LabelFilePath);
-        }
+        public static void SaveLabelData() => LabelDataSet.WriteXml(LabelFilePath);
 
         public static void LoadStatusData(IAppointmentStatusStorage appointmentStatuses)
         {
@@ -100,10 +109,7 @@ namespace PersonalPlanner.Data
             }
         }
 
-        public static void SaveStatusData()
-        {
-            StatusDataSet.WriteXml(StatusFilePath);
-        }
+        public static void SaveStatusData() => StatusDataSet.WriteXml(StatusFilePath);
 
         public static void LoadResourceData(ResourceDataStorage dataStorage)
         {
@@ -131,9 +137,6 @@ namespace PersonalPlanner.Data
             }
         }
 
-        public static void SaveResourceData()
-        {
-            ResourceDataSet.WriteXml(ResourceFilePath);
-        }
+        public static void SaveResourceData() => ResourceDataSet.WriteXml(ResourceFilePath);
     }
 }

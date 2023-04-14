@@ -518,7 +518,7 @@
             HomeOpenGanttWindow.Id = 70;
             HomeOpenGanttWindow.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("HomeOpenGanttWindow.ImageOptions.SvgImage");
             HomeOpenGanttWindow.Name = "HomeOpenGanttWindow";
-            HomeOpenGanttWindow.ItemClick += OpenGanttWindow;
+            HomeOpenGanttWindow.ItemClick += OpenGantt_ItemClick;
             // 
             // ViewOpenGanttWindow
             // 
@@ -526,7 +526,7 @@
             ViewOpenGanttWindow.Id = 71;
             ViewOpenGanttWindow.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ViewOpenGanttWindow.ImageOptions.SvgImage");
             ViewOpenGanttWindow.Name = "ViewOpenGanttWindow";
-            ViewOpenGanttWindow.ItemClick += OpenGanttWindow;
+            ViewOpenGanttWindow.ItemClick += OpenGantt_ItemClick;
             // 
             // MemoFormShow
             // 

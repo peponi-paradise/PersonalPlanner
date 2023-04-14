@@ -13,12 +13,6 @@ namespace PersonalPlanner.Data
             settings.Save();
         }
 
-        public static async Task SaveAllSkinDataAsync()
-        {
-            await Task.Run(() =>
-            {
-                SaveAllSkinData();
-            });
-        }
+        public static async Task SaveAllSkinDataAsync() => await Task.Run(() => { SaveAllSkinData(); });
     }
 }

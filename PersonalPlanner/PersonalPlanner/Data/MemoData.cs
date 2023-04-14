@@ -10,17 +10,10 @@ namespace PersonalPlanner.Data
     {
         public static List<MemoDefine> Memos = new();
 
-        private static void ChangeMemoDataPath(string filePath)
-        {
-            var settings = Properties.Settings.Default;
-            settings.MemoFilePath = filePath;
-            settings.Save();
-        }
-
         public static bool LoadData()
         {
-            var settings = Properties.Settings.Default;
-            if (YAMLParser.LoadData(settings.MemoFilePath, out List<MemoDefine> memos))
+            ;
+            if (YAMLParser.LoadData(Properties.Settings.Default.MemoFilePath, out List<MemoDefine> memos))
             {
                 if (memos != null)
                 {
@@ -55,19 +48,19 @@ namespace PersonalPlanner.Data
 
         public static async Task<bool> LoadDataAsync(string filePath) => await System.Threading.Tasks.Task.Run(() => LoadData(filePath));
 
-        public static void SaveData()
-        {
-            var settings = Properties.Settings.Default;
-            YAMLParser.SaveData(settings.MemoFilePath, Memos);
-        }
+        public static void SaveData() => YAMLParser.SaveData(Properties.Settings.Default.MemoFilePath, Memos);
 
         public static async System.Threading.Tasks.Task SaveDataAsync() => await System.Threading.Tasks.Task.Run(() => SaveData());
 
-        public static void SaveData(string filePath)
-        {
-            YAMLParser.SaveData(filePath, Memos);
-        }
+        public static void SaveData(string filePath) => YAMLParser.SaveData(filePath, Memos);
 
         public static async System.Threading.Tasks.Task SaveDataAsync(string filePath) => await System.Threading.Tasks.Task.Run(() => SaveData(filePath));
+
+        private static void ChangeMemoDataPath(string filePath)
+        {
+            var settings = Properties.Settings.Default;
+            settings.MemoFilePath = filePath;
+            settings.Save();
+        }
     }
 }

@@ -13,13 +13,7 @@ namespace PersonalPlanner.Data
             calendarImporter.Import(filePath);
         }
 
-        public static async Task ReadCalendarAsync(string filePath, SchedulerDataStorage dataStorage)
-        {
-            await Task.Run(() =>
-            {
-                ReadCalendar(filePath, dataStorage);
-            });
-        }
+        public static async Task ReadCalendarAsync(string filePath, SchedulerDataStorage dataStorage) => await Task.Run(() => { ReadCalendar(filePath, dataStorage); });
 
         public static void WriteCalendar(string filePath, SchedulerDataStorage dataStorage)
         {
@@ -27,13 +21,7 @@ namespace PersonalPlanner.Data
             calendarExporter.Export(filePath);
         }
 
-        public static async Task WriteCalendarAsync(string filePath, SchedulerDataStorage dataStorage)
-        {
-            await Task.Run(() =>
-            {
-                WriteCalendar(filePath, dataStorage);
-            });
-        }
+        public static async Task WriteCalendarAsync(string filePath, SchedulerDataStorage dataStorage) => await Task.Run(() => { WriteCalendar(filePath, dataStorage); });
 
         private static void ChangeCalendarDataPath(string filePath)
         {

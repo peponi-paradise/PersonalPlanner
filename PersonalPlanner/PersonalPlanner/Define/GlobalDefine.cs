@@ -25,7 +25,12 @@ namespace PersonalPlanner.Define
         public int R = 0, G = 0, B = 0, A = 0;
 
         public void ToInternalColor(System.Drawing.Color color)
-        { A = color.A; R = color.R; G = color.G; B = color.B; }
+        {
+            A = color.A;
+            R = color.R;
+            G = color.G;
+            B = color.B;
+        }
 
         public System.Drawing.Color ToDrawingColor() => System.Drawing.Color.FromArgb(A, R, G, B);
     }
