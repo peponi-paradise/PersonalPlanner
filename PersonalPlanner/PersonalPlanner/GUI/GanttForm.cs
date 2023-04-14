@@ -2,6 +2,7 @@
 using PersonalPlanner.Data;
 using PersonalPlanner.Define;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace PersonalPlanner.GUI
@@ -13,6 +14,15 @@ namespace PersonalPlanner.GUI
             InitializeComponent();
             InitialDraw();
             MainControl.SelectedPageChanged += MainControl_SelectedPageChanged;
+            this.FormClosing += GanttForm_FormClosing;
+        }
+
+        private void GanttForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var settings = Properties.Settings.Default;
+            settings.GanttFormLocation = this.Location;
+            settings.GanttFormSize = this.Size;
+            settings.Save();
         }
 
         private void MainControl_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
@@ -22,6 +32,15 @@ namespace PersonalPlanner.GUI
 
         private void InitialDraw()
         {
+            var settings = Properties.Settings.Default;
+            if (settings.GanttFormLocation == new Point(0, 0)) this.StartPosition = FormStartPosition.WindowsDefaultLocation;
+            else
+            {
+                this.StartPosition = FormStartPosition.Manual;
+                this.Location = settings.GanttFormLocation;
+            }
+            if (settings.GanttFormSize != new Size(0, 0)) this.Size = settings.GanttFormSize;
+
             foreach (var ganttData in GanttData.GanttDatas)
             {
                 GanttUI ganttUI = new GanttUI(ganttData);

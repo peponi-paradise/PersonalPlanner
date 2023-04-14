@@ -123,6 +123,9 @@
             splitContainerControlCalendar = new DevExpress.XtraEditors.SplitContainerControl();
             MainCalendar = new DevExpress.XtraScheduler.DateNavigator();
             MainSchedulerBarController = new DevExpress.XtraScheduler.UI.SchedulerBarController(components);
+            ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            MemoFormShow = new DevExpress.XtraBars.BarCheckItem();
+            GanttFormShow = new DevExpress.XtraBars.BarCheckItem();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemSpinEdit1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemDuration1).BeginInit();
@@ -146,10 +149,10 @@
             // 
             ribbonControl1.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 32, 35, 32);
             ribbonControl1.ExpandCollapseItem.Id = 0;
-            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, ribbonControl1.SearchEditItem, skinPaletteRibbonGalleryBarItem1, skinRibbonGalleryBarItem1, printPreviewItem1, printPageSetupItem1, newAppointmentItem1, newRecurringAppointmentItem1, navigateViewBackwardItem1, navigateViewForwardItem1, gotoTodayItem1, viewZoomInItem1, viewZoomOutItem1, switchToDayViewItem1, switchToWorkWeekViewItem1, switchToFullWeekViewItem1, switchToMonthViewItem1, switchToTimelineViewItem1, switchToAgendaViewItem1, switchToYearViewItem1, switchTimeScalesItem1, changeScaleWidthItem1, switchTimeScalesCaptionItem1, switchCompressWeekendItem1, switchShowWorkTimeOnlyItem1, switchCellsAutoHeightItem1, changeSnapToCellsuiItem1, editAppointmentQueryItem1, editOccurrenceuiCommandItem1, editSeriesuiCommandItem1, deleteAppointmentsItem1, deleteOccurrenceItem1, deleteSeriesItem1, splitAppointmentItem1, changeAppointmentStatusItem1, changeAppointmentLabelItem1, toggleRecurrenceItem1, changeAppointmentReminderItem1, MemoImportButton, MemoSaveButton, skinDropDownButtonItem1, skinPaletteDropDownButtonItem1, ScheduleImportButton, ScheduleSaveButton, OpenStatusEdit, OpenLabelEdit, OpenResourceEdit, OpenMemo, ViewOpenMemoWindow, AppointmentGroupSelector, WorkTimeStart, WorkTimeEnd, HomeOpenGanttWindow, ViewOpenGanttWindow });
+            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, ribbonControl1.SearchEditItem, skinPaletteRibbonGalleryBarItem1, skinRibbonGalleryBarItem1, printPreviewItem1, printPageSetupItem1, newAppointmentItem1, newRecurringAppointmentItem1, navigateViewBackwardItem1, navigateViewForwardItem1, gotoTodayItem1, viewZoomInItem1, viewZoomOutItem1, switchToDayViewItem1, switchToWorkWeekViewItem1, switchToFullWeekViewItem1, switchToMonthViewItem1, switchToTimelineViewItem1, switchToAgendaViewItem1, switchToYearViewItem1, switchTimeScalesItem1, changeScaleWidthItem1, switchTimeScalesCaptionItem1, switchCompressWeekendItem1, switchShowWorkTimeOnlyItem1, switchCellsAutoHeightItem1, changeSnapToCellsuiItem1, editAppointmentQueryItem1, editOccurrenceuiCommandItem1, editSeriesuiCommandItem1, deleteAppointmentsItem1, deleteOccurrenceItem1, deleteSeriesItem1, splitAppointmentItem1, changeAppointmentStatusItem1, changeAppointmentLabelItem1, toggleRecurrenceItem1, changeAppointmentReminderItem1, MemoImportButton, MemoSaveButton, skinDropDownButtonItem1, skinPaletteDropDownButtonItem1, ScheduleImportButton, ScheduleSaveButton, OpenStatusEdit, OpenLabelEdit, OpenResourceEdit, OpenMemo, ViewOpenMemoWindow, AppointmentGroupSelector, WorkTimeStart, WorkTimeEnd, HomeOpenGanttWindow, ViewOpenGanttWindow, MemoFormShow, GanttFormShow });
             ribbonControl1.Location = new System.Drawing.Point(0, 0);
             ribbonControl1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            ribbonControl1.MaxItemId = 72;
+            ribbonControl1.MaxItemId = 74;
             ribbonControl1.Name = "ribbonControl1";
             ribbonControl1.OptionsMenuMinWidth = 385;
             ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] { calendarToolsRibbonPageCategory1 });
@@ -731,7 +734,7 @@
             // 
             // ribbonPageSettings
             // 
-            ribbonPageSettings.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroupSkins, ribbonPageGroupSkinColors, SchedulerSettingGroup, AppointmentSettingGroup });
+            ribbonPageSettings.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroupSkins, ribbonPageGroupSkinColors, SchedulerSettingGroup, AppointmentSettingGroup, ribbonPageGroup1 });
             ribbonPageSettings.Name = "ribbonPageSettings";
             ribbonPageSettings.Text = "Setting";
             // 
@@ -836,6 +839,31 @@
             MainSchedulerBarController.BarItems.Add(toggleRecurrenceItem1);
             MainSchedulerBarController.BarItems.Add(changeAppointmentReminderItem1);
             MainSchedulerBarController.Control = MainScheduler;
+            // 
+            // ribbonPageGroup1
+            // 
+            ribbonPageGroup1.ItemLinks.Add(MemoFormShow);
+            ribbonPageGroup1.ItemLinks.Add(GanttFormShow);
+            ribbonPageGroup1.Name = "ribbonPageGroup1";
+            ribbonPageGroup1.Text = "ribbonPageGroup1";
+            // 
+            // MemoFormShow
+            // 
+            MemoFormShow.Caption = "Memo Window";
+            MemoFormShow.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText;
+            MemoFormShow.Id = 72;
+            MemoFormShow.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barCheckItem1.ImageOptions.SvgImage");
+            MemoFormShow.Name = "MemoFormShow";
+            MemoFormShow.CheckedChanged += MemoFormShow_CheckedChanged;
+            // 
+            // GanttFormShow
+            // 
+            GanttFormShow.Caption = "Gantt Window";
+            GanttFormShow.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText;
+            GanttFormShow.Id = 73;
+            GanttFormShow.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("GanttFormShow.ImageOptions.SvgImage");
+            GanttFormShow.Name = "GanttFormShow";
+            GanttFormShow.CheckedChanged += GanttFormShow_CheckedChanged;
             // 
             // MainFrame
             // 
@@ -961,6 +989,9 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ViewRibbonGroupGantt;
         private DevExpress.XtraBars.BarButtonItem HomeOpenGanttWindow;
         private DevExpress.XtraBars.BarButtonItem ViewOpenGanttWindow;
+        private DevExpress.XtraBars.BarCheckItem MemoFormShow;
+        private DevExpress.XtraBars.BarCheckItem GanttFormShow;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
     }
 }
 

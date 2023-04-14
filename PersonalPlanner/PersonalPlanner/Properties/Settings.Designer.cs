@@ -142,5 +142,101 @@ namespace PersonalPlanner.Properties {
                 this["FullweekViewWorktimeShow"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Point MainFrameLocation {
+            get {
+                return ((global::System.Drawing.Point)(this["MainFrameLocation"]));
+            }
+            set {
+                this["MainFrameLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Point MemoFormLocation {
+            get {
+                return ((global::System.Drawing.Point)(this["MemoFormLocation"]));
+            }
+            set {
+                this["MemoFormLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Point GanttFormLocation {
+            get {
+                return ((global::System.Drawing.Point)(this["GanttFormLocation"]));
+            }
+            set {
+                this["GanttFormLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Size MainFrameSize {
+            get {
+                return ((global::System.Drawing.Size)(this["MainFrameSize"]));
+            }
+            set {
+                this["MainFrameSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Size MemoFormSize {
+            get {
+                return ((global::System.Drawing.Size)(this["MemoFormSize"]));
+            }
+            set {
+                this["MemoFormSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Size GanttFormSize {
+            get {
+                return ((global::System.Drawing.Size)(this["GanttFormSize"]));
+            }
+            set {
+                this["GanttFormSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool MemoFormShowOnStartUp {
+            get {
+                return ((bool)(this["MemoFormShowOnStartUp"]));
+            }
+            set {
+                this["MemoFormShowOnStartUp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool GanttFormShowOnStartUp {
+            get {
+                return ((bool)(this["GanttFormShowOnStartUp"]));
+            }
+            set {
+                this["GanttFormShowOnStartUp"] = value;
+            }
+        }
     }
 }

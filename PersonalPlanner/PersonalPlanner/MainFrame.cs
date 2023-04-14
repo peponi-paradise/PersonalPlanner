@@ -3,6 +3,7 @@ using DevExpress.XtraEditors;
 using PersonalPlanner.Data;
 using PersonalPlanner.GUI;
 using System;
+using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -141,6 +142,9 @@ namespace PersonalPlanner
             LoadingForm.SetProgress("Loading Gantt Done...");
 
             LoadingForm.SetProgress("Program Start...");
+
+            if (settings.MemoFormShowOnStartUp) OpenMemoForm();
+            if (settings.GanttFormShowOnStartUp) OpenGanttForm();
 
             this.ResumeLayout(false);
 
@@ -319,6 +323,15 @@ namespace PersonalPlanner
         private void SetUILayout()
         {
             var settings = Properties.Settings.Default;
+
+            if (settings.MainFrameLocation == new Point(0, 0)) this.StartPosition = FormStartPosition.CenterScreen;
+            else
+            {
+                this.StartPosition = FormStartPosition.Manual;
+                this.Location = settings.MainFrameLocation;
+            }
+            if (settings.MainFrameSize != new Size(0, 0)) this.Size = settings.MainFrameSize;
+
             MainScheduler.GoToToday();
             MainScheduler.DayView.ShowWorkTimeOnly = settings.DayViewWorktimeShow;
             MainScheduler.WorkWeekView.ShowWorkTimeOnly = settings.WorkweekViewWorktimeShow;
@@ -336,6 +349,10 @@ namespace PersonalPlanner
         private void SaveUILayout()
         {
             var settings = Properties.Settings.Default;
+
+            settings.MainFrameLocation = this.Location;
+            settings.MainFrameSize = this.Size;
+
             settings.SchedulerViewType = (int)MainScheduler.ActiveViewType;
             settings.DayViewWorktimeShow = MainScheduler.DayView.ShowWorkTimeOnly;
             settings.WorkweekViewWorktimeShow = MainScheduler.WorkWeekView.ShowWorkTimeOnly;
@@ -343,11 +360,27 @@ namespace PersonalPlanner
             settings.Save();
         }
 
-        private void OpenGanttWindow(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void OpenGanttWindow(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenGanttForm();
+
+        private void OpenGanttForm()
         {
             if (GanttForm != null) { GanttData.SaveData(); GanttForm.Close(); }
             GanttForm = new GanttForm();
             GanttForm.Show();
+        }
+
+        private void MemoFormShow_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var settings = Properties.Settings.Default;
+            settings.MemoFormShowOnStartUp = MemoFormShow.Checked;
+            settings.Save();
+        }
+
+        private void GanttFormShow_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var settings = Properties.Settings.Default;
+            settings.GanttFormShowOnStartUp = GanttFormShow.Checked;
+            settings.Save();
         }
     }
 }

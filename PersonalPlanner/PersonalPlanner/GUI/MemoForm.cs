@@ -3,6 +3,8 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraTabbedMdi;
 using PersonalPlanner.Data;
 using PersonalPlanner.Define;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace PersonalPlanner.GUI
 {
@@ -11,6 +13,16 @@ namespace PersonalPlanner.GUI
         public MemoForm()
         {
             InitializeComponent();
+
+            var settings = Properties.Settings.Default;
+            if (settings.MemoFormLocation == new Point(0, 0)) this.StartPosition = FormStartPosition.WindowsDefaultLocation;
+            else
+            {
+                this.StartPosition = FormStartPosition.Manual;
+                this.Location = settings.MemoFormLocation;
+            }
+            if (settings.MemoFormSize != new Size(0, 0)) this.Size = settings.MemoFormSize;
+
             MdiManager.PageRemoved += MdiManager_PageRemoved;
             this.FormClosing += MemoForm_FormClosing;
         }
@@ -18,6 +30,10 @@ namespace PersonalPlanner.GUI
         private void MemoForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
             MemoData.SaveData();
+            var settings = Properties.Settings.Default;
+            settings.MemoFormLocation = this.Location;
+            settings.MemoFormSize = this.Size;
+            settings.Save();
         }
 
         private void NewMemo_ItemClick(object sender, ItemClickEventArgs e)
