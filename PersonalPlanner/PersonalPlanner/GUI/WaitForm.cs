@@ -5,11 +5,27 @@ namespace PersonalPlanner.GUI
 {
     internal partial class WaitDialog : DevExpress.XtraWaitForm.WaitForm
     {
+        public enum WaitFormCommand
+        {
+        }
+
+        /*-------------------------------------------
+         *
+         *      Constructor / Destructor
+         *
+         -------------------------------------------*/
+
         public WaitDialog()
         {
             InitializeComponent();
             this.progressPanel1.AutoHeight = true;
         }
+
+        /*-------------------------------------------
+         *
+         *      Public functions
+         *
+         -------------------------------------------*/
 
         public override void SetCaption(string caption)
         {
@@ -27,14 +43,16 @@ namespace PersonalPlanner.GUI
         {
             base.ProcessCommand(cmd, arg);
         }
-
-        public enum WaitFormCommand
-        {
-        }
     }
 
     public static class WaitForm
     {
+        /*-------------------------------------------
+         *
+         *      Public functions
+         *
+         -------------------------------------------*/
+
         public static void OpenDialog() => SplashScreenManager.ShowForm(typeof(WaitDialog), true, true);
 
         public static void OpenDialog(string caption, string description)

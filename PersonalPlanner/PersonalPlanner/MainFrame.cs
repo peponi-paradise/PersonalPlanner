@@ -154,13 +154,19 @@ namespace PersonalPlanner
         private void MainFrame_FormClosing(object sender, FormClosingEventArgs e)
         {
             WaitForm.OpenDialog("Closing...", "Saving datas...");
-            SkinData.SaveAllSkinData();
-            var settings = Properties.Settings.Default;
-            MemoData.SaveData();
-            CalendarData.WriteCalendar(settings.CalendarFilePath, MainSchedulerDataStorage);
-            GanttData.SaveData();
-            SaveUILayout();
-            WaitForm.CloseDialog();
+            try
+            {
+                SkinData.SaveAllSkinData();
+                var settings = Properties.Settings.Default;
+                MemoData.SaveData();
+                CalendarData.WriteCalendar(settings.CalendarFilePath, MainSchedulerDataStorage);
+                GanttData.SaveData();
+                SaveUILayout();
+            }
+            finally
+            {
+                WaitForm.CloseDialog();
+            }
         }
 
         private void OpenMemo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenMemoForm();
@@ -190,7 +196,6 @@ namespace PersonalPlanner
         {
             var settings = Properties.Settings.Default;
             settings.OfficeStart = (TimeSpan)WorkTimeStart.EditValue;
-            settings.Save();
             SetWorkTime();
         }
 
@@ -198,7 +203,6 @@ namespace PersonalPlanner
         {
             var settings = Properties.Settings.Default;
             settings.OfficeEnd = (TimeSpan)WorkTimeEnd.EditValue;
-            settings.Save();
             SetWorkTime();
         }
 
@@ -263,14 +267,12 @@ namespace PersonalPlanner
         {
             var settings = Properties.Settings.Default;
             settings.MemoFormShowOnStartUp = MemoFormShow.Checked;
-            settings.Save();
         }
 
         private void GanttFormShow_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var settings = Properties.Settings.Default;
             settings.GanttFormShowOnStartUp = GanttFormShow.Checked;
-            settings.Save();
         }
 
         /*-------------------------------------------
@@ -386,14 +388,13 @@ namespace PersonalPlanner
 
             settings.MainFrameLocation = this.Location;
             settings.MainFrameSize = this.Size;
-            if (MemoForm.Visible) { settings.MemoFormLocation = MemoForm.Location; settings.MemoFormSize = MemoForm.Size; }
-            if (GanttForm.Visible) { settings.GanttFormLocation = GanttForm.Location; settings.GanttFormSize = GanttForm.Size; }
+            if (MemoForm != null && MemoForm.Visible) { settings.MemoFormLocation = MemoForm.Location; settings.MemoFormSize = MemoForm.Size; }
+            if (GanttForm != null && GanttForm.Visible) { settings.GanttFormLocation = GanttForm.Location; settings.GanttFormSize = GanttForm.Size; }
 
             settings.SchedulerViewType = (int)MainScheduler.ActiveViewType;
             settings.DayViewWorktimeShow = MainScheduler.DayView.ShowWorkTimeOnly;
             settings.WorkweekViewWorktimeShow = MainScheduler.WorkWeekView.ShowWorkTimeOnly;
             settings.FullweekViewWorktimeShow = MainScheduler.FullWeekView.ShowWorkTimeOnly;
-            settings.Save();
         }
     }
 }

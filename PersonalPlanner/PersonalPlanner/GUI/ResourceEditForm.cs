@@ -7,7 +7,19 @@ namespace PersonalPlanner.GUI
 {
     public partial class ResourceEditForm : Form
     {
+        /*-------------------------------------------
+         *
+         *      Private members
+         *
+         -------------------------------------------*/
+
         private RepositoryItemColorPickEdit ColorPickEdit;
+
+        /*-------------------------------------------
+         *
+         *      Constructor / Destructor
+         *
+         -------------------------------------------*/
 
         public ResourceEditForm()
         {
@@ -16,6 +28,12 @@ namespace PersonalPlanner.GUI
             ColorPickEdit.StoreColorAsInteger = true;
             MainGridControl.DataSourceChanged += MainGridControl_DataSourceChanged;
         }
+
+        /*-------------------------------------------
+         *
+         *      Event functions
+         *
+         -------------------------------------------*/
 
         private void MainGridControl_DataSourceChanged(object sender, EventArgs e)
         {
@@ -28,6 +46,12 @@ namespace PersonalPlanner.GUI
             }
             if (MainGridView.Columns.ColumnByFieldName("Color") != null) MainGridView.Columns["Color"].ColumnEdit = ColorPickEdit;
         }
+
+        /*-------------------------------------------
+         *
+         *      Public functions
+         *
+         -------------------------------------------*/
 
         public void SetDataSources(object source) => MainGridControl.DataSource = source;
     }

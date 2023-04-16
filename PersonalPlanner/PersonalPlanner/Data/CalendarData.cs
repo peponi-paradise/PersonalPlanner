@@ -6,6 +6,12 @@ namespace PersonalPlanner.Data
 {
     public static class CalendarData
     {
+        /*-------------------------------------------
+         *
+         *      Public functions
+         *
+         -------------------------------------------*/
+
         public static void ReadCalendar(string filePath, SchedulerDataStorage dataStorage)
         {
             dataStorage.Appointments.Clear();
@@ -23,11 +29,16 @@ namespace PersonalPlanner.Data
 
         public static async Task WriteCalendarAsync(string filePath, SchedulerDataStorage dataStorage) => await Task.Run(() => { WriteCalendar(filePath, dataStorage); });
 
+        /*-------------------------------------------
+         *
+         *      Private functions
+         *
+         -------------------------------------------*/
+
         private static void ChangeCalendarDataPath(string filePath)
         {
             var settings = Properties.Settings.Default;
             settings.CalendarFilePath = filePath;
-            settings.Save();
         }
     }
 }

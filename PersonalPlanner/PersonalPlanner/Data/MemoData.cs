@@ -8,7 +8,18 @@ namespace PersonalPlanner.Data
 {
     public static class MemoData
     {
+        /*-------------------------------------------
+         *
+         *      Public members
+         *
+         -------------------------------------------*/
         public static List<MemoDefine> Memos = new();
+
+        /*-------------------------------------------
+         *
+         *      Public functions
+         *
+         -------------------------------------------*/
 
         public static bool LoadData()
         {
@@ -56,11 +67,16 @@ namespace PersonalPlanner.Data
 
         public static async System.Threading.Tasks.Task SaveDataAsync(string filePath) => await System.Threading.Tasks.Task.Run(() => SaveData(filePath));
 
+        /*-------------------------------------------
+         *
+         *      Private functions
+         *
+         -------------------------------------------*/
+
         private static void ChangeMemoDataPath(string filePath)
         {
             var settings = Properties.Settings.Default;
             settings.MemoFilePath = filePath;
-            settings.Save();
         }
     }
 }

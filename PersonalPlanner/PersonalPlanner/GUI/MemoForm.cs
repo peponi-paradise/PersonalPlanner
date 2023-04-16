@@ -10,6 +10,12 @@ namespace PersonalPlanner.GUI
 {
     public partial class MemoForm : DevExpress.XtraEditors.XtraForm
     {
+        /*-------------------------------------------
+         *
+         *      Constructor / Destructor
+         *
+         -------------------------------------------*/
+
         public MemoForm()
         {
             InitializeComponent();
@@ -27,13 +33,18 @@ namespace PersonalPlanner.GUI
             this.FormClosing += MemoForm_FormClosing;
         }
 
+        /*-------------------------------------------
+         *
+         *      Event functions
+         *
+         -------------------------------------------*/
+
         private void MemoForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
             MemoData.SaveData();
             var settings = Properties.Settings.Default;
             settings.MemoFormLocation = this.Location;
             settings.MemoFormSize = this.Size;
-            settings.Save();
         }
 
         private void NewMemo_ItemClick(object sender, ItemClickEventArgs e)
@@ -93,18 +104,11 @@ namespace PersonalPlanner.GUI
             }
         }
 
-        private bool CheckDuplicated(string name)
-        {
-            foreach (var memo in MemoData.Memos)
-            {
-                if (memo.Name == name)
-                {
-                    XtraMessageBox.Show("Duplicated name of Memo has been detected\nTry other name");
-                    return true;
-                }
-            }
-            return false;
-        }
+        /*-------------------------------------------
+         *
+         *      Public functions
+         *
+         -------------------------------------------*/
 
         public void SetMemos()
         {
@@ -120,6 +124,12 @@ namespace PersonalPlanner.GUI
             }
         }
 
+        /*-------------------------------------------
+         *
+         *      Private functions
+         *
+         -------------------------------------------*/
+
         private void SetTabSetting(MemoDefine memoDefine)
         {
             foreach (XtraMdiTabPage page in MdiManager.Pages)
@@ -131,6 +141,25 @@ namespace PersonalPlanner.GUI
                     break;
                 }
             }
+        }
+
+        /*-------------------------------------------
+         *
+         *      Helper functions
+         *
+         -------------------------------------------*/
+
+        private bool CheckDuplicated(string name)
+        {
+            foreach (var memo in MemoData.Memos)
+            {
+                if (memo.Name == name)
+                {
+                    XtraMessageBox.Show("Duplicated name of Memo has been detected\nTry other name");
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

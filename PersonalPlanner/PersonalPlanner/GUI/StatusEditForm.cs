@@ -9,7 +9,19 @@ namespace PersonalPlanner.GUI
 {
     public partial class StatusEditForm : Form
     {
+        /*-------------------------------------------
+         *
+         *      Private members
+         *
+         -------------------------------------------*/
+
         private RepositoryItemColorPickEdit ColorPickEdit;
+
+        /*-------------------------------------------
+         *
+         *      Constructor / Destructor
+         *
+         -------------------------------------------*/
 
         public StatusEditForm()
         {
@@ -22,7 +34,11 @@ namespace PersonalPlanner.GUI
             MainGridView.OptionsEditForm.CustomEditFormLayout = new StatusEditLayout();
         }
 
-        public void SetDataSources(object source) => MainGridControl.DataSource = source;
+        /*-------------------------------------------
+         *
+         *      Event functions
+         *
+         -------------------------------------------*/
 
         private void MainGridControl_DataSourceChanged(object sender, EventArgs e)
         {
@@ -38,5 +54,13 @@ namespace PersonalPlanner.GUI
                 if (col.Name.Contains("Color")) col.ColumnEdit = ColorPickEdit;
             }
         }
+
+        /*-------------------------------------------
+         *
+         *      Public functions
+         *
+         -------------------------------------------*/
+
+        public void SetDataSources(object source) => MainGridControl.DataSource = source;
     }
 }

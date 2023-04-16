@@ -8,6 +8,12 @@ namespace PersonalPlanner.GUI
 {
     public partial class StatusEditLayout : EditFormUserControl
     {
+        /*-------------------------------------------
+         *
+         *      Constructor / Destructor
+         *
+         -------------------------------------------*/
+
         public StatusEditLayout()
         {
             InitializeComponent();
@@ -23,11 +29,31 @@ namespace PersonalPlanner.GUI
             SetBoundFieldName(BackColorPick, nameof(AppointmentStatusDefine.BackColor));
         }
 
+        /*-------------------------------------------
+         *
+         *      Event functions
+         *
+         -------------------------------------------*/
+
         private void PaintStyleList_SelectedIndexChanged(object sender, EventArgs e) => DrawPreview();
 
         private void HatchStyleList_SelectedIndexChanged(object sender, EventArgs e) => DrawPreview();
 
         private void ColorPick_EditValueChanged(object sender, EventArgs e) => DrawPreview();
+
+        private void StatusEditTest_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                DrawPreview();
+            }
+        }
+
+        /*-------------------------------------------
+         *
+         *      Private functions
+         *
+         -------------------------------------------*/
 
         private void DrawPreview()
         {
@@ -48,14 +74,6 @@ namespace PersonalPlanner.GUI
                         break;
                 }
                 Preview.Image = bitmap;
-            }
-        }
-
-        private void StatusEditTest_VisibleChanged(object sender, EventArgs e)
-        {
-            if (this.Visible)
-            {
-                DrawPreview();
             }
         }
     }

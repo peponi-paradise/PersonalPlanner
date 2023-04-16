@@ -9,6 +9,12 @@ namespace PersonalPlanner.GUI
 {
     public partial class GanttForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        /*-------------------------------------------
+         *
+         *      Constructor / Destructor
+         *
+         -------------------------------------------*/
+
         public GanttForm()
         {
             InitializeComponent();
@@ -17,37 +23,22 @@ namespace PersonalPlanner.GUI
             this.FormClosing += GanttForm_FormClosing;
         }
 
+        /*-------------------------------------------
+         *
+         *      Event functions
+         *
+         -------------------------------------------*/
+
         private void GanttForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             var settings = Properties.Settings.Default;
             settings.GanttFormLocation = this.Location;
             settings.GanttFormSize = this.Size;
-            settings.Save();
         }
 
         private void MainControl_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
             if (MainControl.SelectedTabPage != null) TabColor.EditValue = (MainControl.SelectedTabPage as GanttUI).GanttData.Color.ToDrawingColor();
-        }
-
-        private void InitialDraw()
-        {
-            var settings = Properties.Settings.Default;
-            if (settings.GanttFormLocation == new Point(0, 0)) this.StartPosition = FormStartPosition.WindowsDefaultLocation;
-            else
-            {
-                this.StartPosition = FormStartPosition.Manual;
-                this.Location = settings.GanttFormLocation;
-            }
-            if (settings.GanttFormSize != new Size(0, 0)) this.Size = settings.GanttFormSize;
-
-            foreach (var ganttData in GanttData.GanttDatas)
-            {
-                GanttUI ganttUI = new GanttUI(ganttData);
-                ganttUI.GanttDataSave += GanttUI_GanttDataSave;
-                MainControl.TabPages.Add(ganttUI);
-                MainControl.LayoutChanged();
-            }
         }
 
         private void GanttUI_GanttDataSave() => GanttData.SaveDataAsync();
@@ -126,12 +117,6 @@ namespace PersonalPlanner.GUI
             }
         }
 
-        private void SaveAndUpdate()
-        {
-            GanttData.SaveData();
-            if (MainControl.TabPages != null) MainControl.LayoutChanged();
-        }
-
         private void ZoomIn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (MainControl.SelectedTabPage != null) (MainControl.SelectedTabPage as GanttUI).ZoomIn();
@@ -155,6 +140,44 @@ namespace PersonalPlanner.GUI
         private void ChartViewFinish_EditValueChanged(object sender, EventArgs e)
         {
             if (MainControl.SelectedTabPage != null && ChartViewFinish.EditValue != null) (MainControl.SelectedTabPage as GanttUI).SetViewFinishDate((DateTime)ChartViewFinish.EditValue);
+        }
+
+        /*-------------------------------------------
+         *
+         *      Private functions
+         *
+         -------------------------------------------*/
+
+        private void InitialDraw()
+        {
+            var settings = Properties.Settings.Default;
+            if (settings.GanttFormLocation == new Point(0, 0)) this.StartPosition = FormStartPosition.WindowsDefaultLocation;
+            else
+            {
+                this.StartPosition = FormStartPosition.Manual;
+                this.Location = settings.GanttFormLocation;
+            }
+            if (settings.GanttFormSize != new Size(0, 0)) this.Size = settings.GanttFormSize;
+
+            foreach (var ganttData in GanttData.GanttDatas)
+            {
+                GanttUI ganttUI = new GanttUI(ganttData);
+                ganttUI.GanttDataSave += GanttUI_GanttDataSave;
+                MainControl.TabPages.Add(ganttUI);
+                MainControl.LayoutChanged();
+            }
+        }
+
+        /*-------------------------------------------
+         *
+         *      Helper functions
+         *
+         -------------------------------------------*/
+
+        private void SaveAndUpdate()
+        {
+            GanttData.SaveData();
+            if (MainControl.TabPages != null) MainControl.LayoutChanged();
         }
     }
 }

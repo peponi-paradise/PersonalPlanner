@@ -8,6 +8,12 @@ namespace PersonalPlanner.GUI
 {
     public partial class MemoUI : DevExpress.XtraEditors.XtraForm
     {
+        /*-------------------------------------------
+         *
+         *      Events
+         *
+         -------------------------------------------*/
+
         public delegate void PropertyChangedEventHandler(MemoDefine memoData);
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -16,10 +22,22 @@ namespace PersonalPlanner.GUI
 
         public event MemoUpdateEventHandler MemoUpdated;
 
+        /*-------------------------------------------
+         *
+         *      Private members
+         *
+         -------------------------------------------*/
+
         private MemoDefine MemoData;
 
         private System.Timers.Timer Timer;
         private readonly SynchronizationContext SyncContext;
+
+        /*-------------------------------------------
+         *
+         *      Constructor / Destructor
+         *
+         -------------------------------------------*/
 
         public MemoUI()
         {
@@ -40,13 +58,11 @@ namespace PersonalPlanner.GUI
             ActivateTimer();
         }
 
-        private void ActivateTimer()
-        {
-            Timer = new System.Timers.Timer();
-            Timer.Interval = 3000;
-            Timer.Elapsed += Timer_Elapsed;
-            Timer.Start();
-        }
+        /*-------------------------------------------
+         *
+         *      Event functions
+         *
+         -------------------------------------------*/
 
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
@@ -74,6 +90,20 @@ namespace PersonalPlanner.GUI
                 MemoData.FontColor.ToInternalColor(dialog.Color);
                 ChangeSettings();
             }
+        }
+
+        /*-------------------------------------------
+         *
+         *      Private functions
+         *
+         -------------------------------------------*/
+
+        private void ActivateTimer()
+        {
+            Timer = new System.Timers.Timer();
+            Timer.Interval = 3000;
+            Timer.Elapsed += Timer_Elapsed;
+            Timer.Start();
         }
 
         private void ApplySettings()

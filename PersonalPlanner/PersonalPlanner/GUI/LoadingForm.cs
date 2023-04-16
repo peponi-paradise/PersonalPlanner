@@ -7,6 +7,18 @@ namespace PersonalPlanner.GUI
 {
     internal partial class LoadingDialog : SplashScreen
     {
+        public enum SplashScreenCommand
+        {
+            Progress,
+            Version,
+        }
+
+        /*-------------------------------------------
+         *
+         *      Constructor / Destructor
+         *
+         -------------------------------------------*/
+
         public LoadingDialog()
         {
             InitializeComponent();
@@ -15,6 +27,12 @@ namespace PersonalPlanner.GUI
             VersionLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             VersionLabel.BringToFront();
         }
+
+        /*-------------------------------------------
+         *
+         *      Public functions
+         *
+         -------------------------------------------*/
 
         public override void ProcessCommand(Enum cmd, object arg)
         {
@@ -32,16 +50,16 @@ namespace PersonalPlanner.GUI
                     break;
             }
         }
-
-        public enum SplashScreenCommand
-        {
-            Progress,
-            Version,
-        }
     }
 
     public static class LoadingForm
     {
+        /*-------------------------------------------
+         *
+         *      Public functions
+         *
+         -------------------------------------------*/
+
         public static void OpenDialog() => SplashScreenManager.ShowForm(typeof(LoadingDialog), true, true);
 
         public static void SetVersion(string version) => SplashScreenManager.Default.SendCommand(LoadingDialog.SplashScreenCommand.Version, version);

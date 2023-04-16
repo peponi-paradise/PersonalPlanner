@@ -15,7 +15,10 @@
             //
             // this.SettingsSaving += this.SettingsSavingEventHandler;
             //
+            this.PropertyChanged += Settings_PropertyChanged;
         }
+
+        private void Settings_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) => this.Save();
 
         private void SettingChangingEventHandler(object sender, System.Configuration.SettingChangingEventArgs e)
         {
