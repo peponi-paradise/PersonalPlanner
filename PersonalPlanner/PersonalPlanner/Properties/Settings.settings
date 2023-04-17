@@ -42,13 +42,13 @@
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
     <Setting Name="MainFrameSize" Type="System.Drawing.Size" Scope="User">
-      <Value Profile="(Default)">0, 0</Value>
+      <Value Profile="(Default)">1280, 960</Value>
     </Setting>
     <Setting Name="MemoFormSize" Type="System.Drawing.Size" Scope="User">
-      <Value Profile="(Default)">0, 0</Value>
+      <Value Profile="(Default)">640, 480</Value>
     </Setting>
     <Setting Name="GanttFormSize" Type="System.Drawing.Size" Scope="User">
-      <Value Profile="(Default)">0, 0</Value>
+      <Value Profile="(Default)">800, 600</Value>
     </Setting>
     <Setting Name="MemoFormShowOnStartUp" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

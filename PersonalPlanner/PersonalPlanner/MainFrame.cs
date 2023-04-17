@@ -1,4 +1,6 @@
 ﻿using DevExpress.LookAndFeel;
+using DevExpress.Utils;
+using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using PersonalPlanner.Data;
 using PersonalPlanner.GUI;
@@ -37,6 +39,7 @@ namespace PersonalPlanner
         private MemoForm MemoForm;
         private GanttForm GanttForm;
         private DevExpress.XtraScheduler.SchedulerGroupType GroupType;
+        private bool IsMinimized = false;
 
         /*-------------------------------------------
          *
@@ -49,6 +52,7 @@ namespace PersonalPlanner
             InitializeComponent();
             SetUILayout();
             this.FormClosing += MainFrame_FormClosing;
+            MainRibbonControl.MouseWheel += MainRibbonControl_MouseWheel;
         }
 
         /*-------------------------------------------
@@ -64,45 +68,6 @@ namespace PersonalPlanner
             LoadingForm.SetVersion(Assembly.GetExecutingAssembly().GetName().Version.ToString());
             this.SuspendLayout();
             var settings = Properties.Settings.Default;
-
-            LoadingForm.SetProgress("Set Skin...");
-            // Set Skin
-            if (!string.IsNullOrEmpty(settings.SkinName))
-            {
-                if (!string.IsNullOrEmpty(settings.Palette)) UserLookAndFeel.Default.SetSkinStyle(settings.SkinName, settings.Palette);
-                else UserLookAndFeel.Default.SetSkinStyle(settings.SkinName, "DefaultSkinPalette");
-            }
-            LoadingForm.SetProgress("Set Skin Done...");
-
-            LoadingForm.SetProgress("Loading Environments...");
-            // Import Environments
-            try
-            {
-                AppointmentSettingData.LoadLabelData(MainScheduler.DataStorage.Appointments.Labels);
-            }
-            catch
-            {
-                MessageBox.Show("Could not import Label file");
-            }
-
-            try
-            {
-                AppointmentSettingData.LoadStatusData(MainScheduler.DataStorage.Appointments.Statuses);
-            }
-            catch
-            {
-                MessageBox.Show("Could not import Status file");
-            }
-
-            try
-            {
-                AppointmentSettingData.LoadResourceData(MainSchedulerDataStorage.Resources);
-            }
-            catch
-            {
-                MessageBox.Show("Could not import Resource file");
-            }
-            LoadingForm.SetProgress("Loading Environments Done...");
 
             LoadingForm.SetProgress("Loading Memos...");
             // Import Memo
@@ -141,6 +106,50 @@ namespace PersonalPlanner
             }
             LoadingForm.SetProgress("Loading Gantt Done...");
 
+            LoadingForm.SetProgress("Set Skin...");
+            // Set Skin
+            if (!string.IsNullOrEmpty(settings.SkinName))
+            {
+                if (!string.IsNullOrEmpty(settings.Palette)) UserLookAndFeel.Default.SetSkinStyle(settings.SkinName, settings.Palette);
+                else UserLookAndFeel.Default.SetSkinStyle(settings.SkinName, "DefaultSkinPalette");
+            }
+            foreach (GalleryItem item in skinRibbonGalleryBarItem1.Gallery.GetAllItems())
+            {
+                if (item.Caption.Contains("Compact")) item.Visible = false;
+            }
+            LoadingForm.SetProgress("Set Skin Done...");
+
+            LoadingForm.SetProgress("Loading Environments...");
+            // Import Environments
+            try
+            {
+                AppointmentSettingData.LoadLabelData(MainScheduler.DataStorage.Appointments.Labels);
+            }
+            catch
+            {
+                MessageBox.Show("Could not import Label file");
+            }
+
+            try
+            {
+                AppointmentSettingData.LoadStatusData(MainScheduler.DataStorage.Appointments.Statuses);
+                MainScheduler.Appointment.
+            }
+            catch
+            {
+                MessageBox.Show("Could not import Status file");
+            }
+
+            try
+            {
+                AppointmentSettingData.LoadResourceData(MainSchedulerDataStorage.Resources);
+            }
+            catch
+            {
+                MessageBox.Show("Could not import Resource file");
+            }
+            LoadingForm.SetProgress("Loading Environments Done...");
+
             LoadingForm.SetProgress("Program Start...");
 
             if (settings.MemoFormShowOnStartUp) OpenMemoForm();
@@ -149,6 +158,23 @@ namespace PersonalPlanner
             this.ResumeLayout(false);
 
             LoadingForm.CloseDialog();
+
+            this.Resize += MainFrame_Resized;
+        }
+
+        private void MainFrame_Resized(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized) IsMinimized = true;
+            else if (this.IsMinimized)
+            {
+                this.IsMinimized = false;
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form != null && form.WindowState == FormWindowState.Minimized) GUI.GUI.RestoreWindow(form);
+                    form.BringToFront();
+                }
+                this.Focus();
+            }
         }
 
         private void MainFrame_FormClosing(object sender, FormClosingEventArgs e)
@@ -168,6 +194,8 @@ namespace PersonalPlanner
                 WaitForm.CloseDialog();
             }
         }
+
+        private void MainRibbonControl_MouseWheel(object sender, MouseEventArgs e) => DXMouseEventArgs.GetMouseArgs(e).Handled = true;
 
         private void OpenMemo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenMemoForm();
 
@@ -273,6 +301,32 @@ namespace PersonalPlanner
         {
             var settings = Properties.Settings.Default;
             settings.GanttFormShowOnStartUp = GanttFormShow.Checked;
+        }
+
+        private void skinRibbonGalleryBarItem1_Gallery_ItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
+        {
+            Properties.Settings.Default.SkinName = e.Item.Caption;
+            try
+            {
+                UserLookAndFeel.Default.SetSkinStyle(Properties.Settings.Default.SkinName, Properties.Settings.Default.Palette);
+            }
+            catch
+            {
+                UserLookAndFeel.Default.SetSkinStyle(Properties.Settings.Default.SkinName);
+            }
+        }
+
+        private void skinPaletteRibbonGalleryBarItem1_Gallery_ItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
+        {
+            Properties.Settings.Default.Palette = e.Item.Caption;
+            try
+            {
+                UserLookAndFeel.Default.SetSkinStyle(Properties.Settings.Default.SkinName, Properties.Settings.Default.Palette);
+            }
+            catch
+            {
+                UserLookAndFeel.Default.SetSkinStyle(Properties.Settings.Default.SkinName);
+            }
         }
 
         /*-------------------------------------------
@@ -388,8 +442,8 @@ namespace PersonalPlanner
 
             settings.MainFrameLocation = this.Location;
             settings.MainFrameSize = this.Size;
-            if (MemoForm != null && MemoForm.Visible) { settings.MemoFormLocation = MemoForm.Location; settings.MemoFormSize = MemoForm.Size; }
-            if (GanttForm != null && GanttForm.Visible) { settings.GanttFormLocation = GanttForm.Location; settings.GanttFormSize = GanttForm.Size; }
+            if (MemoForm != null && MemoForm.Visible && MemoForm.WindowState != FormWindowState.Minimized) { settings.MemoFormLocation = MemoForm.Location; settings.MemoFormSize = MemoForm.Size; }
+            if (GanttForm != null && GanttForm.Visible && GanttForm.WindowState != FormWindowState.Minimized) { settings.GanttFormLocation = GanttForm.Location; settings.GanttFormSize = GanttForm.Size; }
 
             settings.SchedulerViewType = (int)MainScheduler.ActiveViewType;
             settings.DayViewWorktimeShow = MainScheduler.DayView.ShowWorkTimeOnly;

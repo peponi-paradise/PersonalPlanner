@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrame));
-            DevExpress.XtraScheduler.TimeRuler timeRuler4 = new DevExpress.XtraScheduler.TimeRuler();
-            DevExpress.XtraScheduler.TimeRuler timeRuler5 = new DevExpress.XtraScheduler.TimeRuler();
-            DevExpress.XtraScheduler.TimeRuler timeRuler6 = new DevExpress.XtraScheduler.TimeRuler();
-            ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            DevExpress.XtraScheduler.TimeRuler timeRuler1 = new DevExpress.XtraScheduler.TimeRuler();
+            DevExpress.XtraScheduler.TimeRuler timeRuler2 = new DevExpress.XtraScheduler.TimeRuler();
+            DevExpress.XtraScheduler.TimeRuler timeRuler3 = new DevExpress.XtraScheduler.TimeRuler();
+            MainRibbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
             skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             printPreviewItem1 = new DevExpress.XtraScheduler.UI.PrintPreviewItem();
@@ -75,8 +74,6 @@
             repositoryItemDuration1 = new DevExpress.XtraScheduler.UI.RepositoryItemDuration();
             MemoImportButton = new DevExpress.XtraBars.BarButtonItem();
             MemoSaveButton = new DevExpress.XtraBars.BarButtonItem();
-            skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
-            skinPaletteDropDownButtonItem1 = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
             ScheduleImportButton = new DevExpress.XtraBars.BarButtonItem();
             ScheduleSaveButton = new DevExpress.XtraBars.BarButtonItem();
             OpenStatusEdit = new DevExpress.XtraBars.BarButtonItem();
@@ -126,7 +123,7 @@
             splitContainerControlCalendar = new DevExpress.XtraEditors.SplitContainerControl();
             MainCalendar = new DevExpress.XtraScheduler.DateNavigator();
             MainSchedulerBarController = new DevExpress.XtraScheduler.UI.SchedulerBarController(components);
-            ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)MainRibbonControl).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemSpinEdit1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemDuration1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemRadioGroup1).BeginInit();
@@ -145,30 +142,38 @@
             ((System.ComponentModel.ISupportInitialize)MainSchedulerBarController).BeginInit();
             SuspendLayout();
             // 
-            // ribbonControl1
+            // MainRibbonControl
             // 
-            ribbonControl1.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 32, 35, 32);
-            ribbonControl1.ExpandCollapseItem.Id = 0;
-            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, ribbonControl1.SearchEditItem, skinPaletteRibbonGalleryBarItem1, skinRibbonGalleryBarItem1, printPreviewItem1, printPageSetupItem1, newAppointmentItem1, newRecurringAppointmentItem1, navigateViewBackwardItem1, navigateViewForwardItem1, gotoTodayItem1, viewZoomInItem1, viewZoomOutItem1, switchToDayViewItem1, switchToWorkWeekViewItem1, switchToFullWeekViewItem1, switchToMonthViewItem1, switchToTimelineViewItem1, switchToAgendaViewItem1, switchToYearViewItem1, switchTimeScalesItem1, changeScaleWidthItem1, switchTimeScalesCaptionItem1, switchCompressWeekendItem1, switchShowWorkTimeOnlyItem1, switchCellsAutoHeightItem1, changeSnapToCellsuiItem1, editAppointmentQueryItem1, editOccurrenceuiCommandItem1, editSeriesuiCommandItem1, deleteAppointmentsItem1, deleteOccurrenceItem1, deleteSeriesItem1, splitAppointmentItem1, changeAppointmentStatusItem1, changeAppointmentLabelItem1, toggleRecurrenceItem1, changeAppointmentReminderItem1, MemoImportButton, MemoSaveButton, skinDropDownButtonItem1, skinPaletteDropDownButtonItem1, ScheduleImportButton, ScheduleSaveButton, OpenStatusEdit, OpenLabelEdit, OpenResourceEdit, OpenMemo, ViewOpenMemoWindow, AppointmentGroupSelector, WorkTimeStart, WorkTimeEnd, HomeOpenGanttWindow, ViewOpenGanttWindow, MemoFormShow, GanttFormShow });
-            ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            ribbonControl1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            ribbonControl1.MaxItemId = 74;
-            ribbonControl1.Name = "ribbonControl1";
-            ribbonControl1.OptionsMenuMinWidth = 385;
-            ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] { calendarToolsRibbonPageCategory1 });
-            ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { homeRibbonPage1, viewRibbonPage1, fileRibbonPage1, ribbonPageSettings });
-            ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemSpinEdit1, repositoryItemDuration1, repositoryItemRadioGroup1, repositoryItemTimeSpanEdit1, repositoryItemTimeSpanEdit2 });
-            ribbonControl1.Size = new System.Drawing.Size(1278, 160);
+            MainRibbonControl.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 32, 35, 32);
+            MainRibbonControl.ExpandCollapseItem.Id = 0;
+            MainRibbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] { MainRibbonControl.ExpandCollapseItem, MainRibbonControl.SearchEditItem, skinPaletteRibbonGalleryBarItem1, skinRibbonGalleryBarItem1, printPreviewItem1, printPageSetupItem1, newAppointmentItem1, newRecurringAppointmentItem1, navigateViewBackwardItem1, navigateViewForwardItem1, gotoTodayItem1, viewZoomInItem1, viewZoomOutItem1, switchToDayViewItem1, switchToWorkWeekViewItem1, switchToFullWeekViewItem1, switchToMonthViewItem1, switchToTimelineViewItem1, switchToAgendaViewItem1, switchToYearViewItem1, switchTimeScalesItem1, changeScaleWidthItem1, switchTimeScalesCaptionItem1, switchCompressWeekendItem1, switchShowWorkTimeOnlyItem1, switchCellsAutoHeightItem1, changeSnapToCellsuiItem1, editAppointmentQueryItem1, editOccurrenceuiCommandItem1, editSeriesuiCommandItem1, deleteAppointmentsItem1, deleteOccurrenceItem1, deleteSeriesItem1, splitAppointmentItem1, changeAppointmentStatusItem1, changeAppointmentLabelItem1, toggleRecurrenceItem1, changeAppointmentReminderItem1, MemoImportButton, MemoSaveButton, ScheduleImportButton, ScheduleSaveButton, OpenStatusEdit, OpenLabelEdit, OpenResourceEdit, OpenMemo, ViewOpenMemoWindow, AppointmentGroupSelector, WorkTimeStart, WorkTimeEnd, HomeOpenGanttWindow, ViewOpenGanttWindow, MemoFormShow, GanttFormShow });
+            MainRibbonControl.Location = new System.Drawing.Point(0, 0);
+            MainRibbonControl.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MainRibbonControl.MaxItemId = 74;
+            MainRibbonControl.Name = "MainRibbonControl";
+            MainRibbonControl.OptionsMenuMinWidth = 385;
+            MainRibbonControl.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] { calendarToolsRibbonPageCategory1 });
+            MainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { homeRibbonPage1, viewRibbonPage1, fileRibbonPage1, ribbonPageSettings });
+            MainRibbonControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemSpinEdit1, repositoryItemDuration1, repositoryItemRadioGroup1, repositoryItemTimeSpanEdit1, repositoryItemTimeSpanEdit2 });
+            MainRibbonControl.Size = new System.Drawing.Size(1278, 160);
             // 
             // skinPaletteRibbonGalleryBarItem1
             // 
             skinPaletteRibbonGalleryBarItem1.Caption = "skinPaletteRibbonGalleryBarItem1";
+            // 
+            // 
+            // 
+            skinPaletteRibbonGalleryBarItem1.Gallery.ItemClick += skinPaletteRibbonGalleryBarItem1_Gallery_ItemClick;
             skinPaletteRibbonGalleryBarItem1.Id = 1;
             skinPaletteRibbonGalleryBarItem1.Name = "skinPaletteRibbonGalleryBarItem1";
             // 
             // skinRibbonGalleryBarItem1
             // 
             skinRibbonGalleryBarItem1.Caption = "skinRibbonGalleryBarItem1";
+            // 
+            // 
+            // 
+            skinRibbonGalleryBarItem1.Gallery.ItemClick += skinRibbonGalleryBarItem1_Gallery_ItemClick;
             skinRibbonGalleryBarItem1.Id = 2;
             skinRibbonGalleryBarItem1.Name = "skinRibbonGalleryBarItem1";
             // 
@@ -385,20 +390,6 @@
             MemoSaveButton.Name = "MemoSaveButton";
             MemoSaveButton.ItemClick += MemoSaveButton_ItemClick;
             // 
-            // skinDropDownButtonItem1
-            // 
-            skinDropDownButtonItem1.ActAsDropDown = true;
-            skinDropDownButtonItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
-            skinDropDownButtonItem1.Id = 50;
-            skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
-            // 
-            // skinPaletteDropDownButtonItem1
-            // 
-            skinPaletteDropDownButtonItem1.ActAsDropDown = true;
-            skinPaletteDropDownButtonItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
-            skinPaletteDropDownButtonItem1.Id = 53;
-            skinPaletteDropDownButtonItem1.Name = "skinPaletteDropDownButtonItem1";
-            // 
             // ScheduleImportButton
             // 
             ScheduleImportButton.Caption = "Import";
@@ -561,21 +552,21 @@
             MainScheduler.DateNavigationBar.ShowViewSelectorButton = true;
             MainScheduler.Dock = System.Windows.Forms.DockStyle.Fill;
             MainScheduler.Location = new System.Drawing.Point(0, 0);
-            MainScheduler.MenuManager = ribbonControl1;
+            MainScheduler.MenuManager = MainRibbonControl;
             MainScheduler.Name = "MainScheduler";
             MainScheduler.Size = new System.Drawing.Size(1026, 607);
             MainScheduler.Start = new System.DateTime(2023, 3, 29, 0, 0, 0, 0);
             MainScheduler.TabIndex = 0;
             MainScheduler.Text = "schedulerControl1";
-            MainScheduler.Views.DayView.TimeRulers.Add(timeRuler4);
+            MainScheduler.Views.DayView.TimeRulers.Add(timeRuler1);
             MainScheduler.Views.DayView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             MainScheduler.Views.FullWeekView.Enabled = true;
-            MainScheduler.Views.FullWeekView.TimeRulers.Add(timeRuler5);
+            MainScheduler.Views.FullWeekView.TimeRulers.Add(timeRuler2);
             MainScheduler.Views.FullWeekView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             MainScheduler.Views.GanttView.Enabled = false;
             MainScheduler.Views.GanttView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             MainScheduler.Views.TimelineView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
-            MainScheduler.Views.WorkWeekView.TimeRulers.Add(timeRuler6);
+            MainScheduler.Views.WorkWeekView.TimeRulers.Add(timeRuler3);
             MainScheduler.Views.WorkWeekView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             MainScheduler.Views.YearView.UseOptimizedScrolling = false;
             // 
@@ -758,14 +749,12 @@
             // 
             // ribbonPageGroupSkins
             // 
-            ribbonPageGroupSkins.ItemLinks.Add(skinDropDownButtonItem1);
             ribbonPageGroupSkins.ItemLinks.Add(skinRibbonGalleryBarItem1);
             ribbonPageGroupSkins.Name = "ribbonPageGroupSkins";
             ribbonPageGroupSkins.Text = "Skins";
             // 
             // ribbonPageGroupSkinColors
             // 
-            ribbonPageGroupSkinColors.ItemLinks.Add(skinPaletteDropDownButtonItem1);
             ribbonPageGroupSkinColors.ItemLinks.Add(skinPaletteRibbonGalleryBarItem1);
             ribbonPageGroupSkinColors.Name = "ribbonPageGroupSkinColors";
             ribbonPageGroupSkinColors.Text = "SkinColors";
@@ -871,13 +860,13 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             ClientSize = new System.Drawing.Size(1278, 767);
             Controls.Add(splitContainerControlCalendar);
-            Controls.Add(ribbonControl1);
+            Controls.Add(MainRibbonControl);
             IsMdiContainer = true;
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "MainFrame";
-            Ribbon = ribbonControl1;
+            Ribbon = MainRibbonControl;
             Text = "Personal Planner";
-            ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)MainRibbonControl).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemSpinEdit1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemDuration1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemRadioGroup1).EndInit();
@@ -900,7 +889,7 @@
 
         #endregion
 
-        private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
+        private DevExpress.XtraBars.Ribbon.RibbonControl MainRibbonControl;
         private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem1;
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControlCalendar;
@@ -965,8 +954,6 @@
         private DevExpress.XtraBars.BarButtonItem MemoImportButton;
         private DevExpress.XtraBars.BarButtonItem MemoSaveButton;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup MemoFileRibbonPageGroup;
-        private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem1;
-        private DevExpress.XtraBars.SkinPaletteDropDownButtonItem skinPaletteDropDownButtonItem1;
         private DevExpress.XtraBars.BarButtonItem ScheduleImportButton;
         private DevExpress.XtraBars.BarButtonItem ScheduleSaveButton;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup AppointmentSettingGroup;

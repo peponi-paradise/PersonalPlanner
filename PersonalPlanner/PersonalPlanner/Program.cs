@@ -23,6 +23,8 @@ namespace PersonalPlanner
                 return;
             }
 
+            WindowsFormsSettings.ForceDirectXPaint();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainFrame());

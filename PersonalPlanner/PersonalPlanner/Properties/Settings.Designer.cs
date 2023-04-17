@@ -181,7 +181,7 @@ namespace PersonalPlanner.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1280, 960")]
         public global::System.Drawing.Size MainFrameSize {
             get {
                 return ((global::System.Drawing.Size)(this["MainFrameSize"]));
@@ -193,7 +193,7 @@ namespace PersonalPlanner.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("640, 480")]
         public global::System.Drawing.Size MemoFormSize {
             get {
                 return ((global::System.Drawing.Size)(this["MemoFormSize"]));
@@ -205,7 +205,7 @@ namespace PersonalPlanner.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("800, 600")]
         public global::System.Drawing.Size GanttFormSize {
             get {
                 return ((global::System.Drawing.Size)(this["GanttFormSize"]));

@@ -21,6 +21,8 @@ namespace PersonalPlanner.GUI
             InitialDraw();
             MainControl.SelectedPageChanged += MainControl_SelectedPageChanged;
             this.FormClosing += GanttForm_FormClosing;
+            this.Move += GanttForm_Move;
+            this.Resize += GanttForm_Resize;
         }
 
         /*-------------------------------------------
@@ -28,6 +30,16 @@ namespace PersonalPlanner.GUI
          *      Event functions
          *
          -------------------------------------------*/
+
+        private void GanttForm_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState != FormWindowState.Minimized) Properties.Settings.Default.GanttFormSize = this.Size;
+        }
+
+        private void GanttForm_Move(object sender, EventArgs e)
+        {
+            if (this.WindowState != FormWindowState.Minimized) Properties.Settings.Default.GanttFormLocation = this.Location;
+        }
 
         private void GanttForm_FormClosing(object sender, FormClosingEventArgs e)
         {

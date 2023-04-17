@@ -3,6 +3,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraTabbedMdi;
 using PersonalPlanner.Data;
 using PersonalPlanner.Define;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -31,6 +32,8 @@ namespace PersonalPlanner.GUI
 
             MdiManager.PageRemoved += MdiManager_PageRemoved;
             this.FormClosing += MemoForm_FormClosing;
+            this.Move += MemoForm_Move;
+            this.Resize += MemoForm_Resize;
         }
 
         /*-------------------------------------------
@@ -38,6 +41,16 @@ namespace PersonalPlanner.GUI
          *      Event functions
          *
          -------------------------------------------*/
+
+        private void MemoForm_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState != FormWindowState.Minimized) Properties.Settings.Default.MemoFormSize = this.Size;
+        }
+
+        private void MemoForm_Move(object sender, EventArgs e)
+        {
+            if (this.WindowState != FormWindowState.Minimized) Properties.Settings.Default.MemoFormLocation = this.Location;
+        }
 
         private void MemoForm_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
