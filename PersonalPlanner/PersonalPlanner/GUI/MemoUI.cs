@@ -56,6 +56,7 @@ namespace PersonalPlanner.GUI
             repositoryItemColorPickEdit1.StoreColorAsInteger = true;
             ApplySettings();
             ActivateTimer();
+            this.Shown += MemoUI_Shown;
         }
 
         /*-------------------------------------------
@@ -63,6 +64,12 @@ namespace PersonalPlanner.GUI
          *      Event functions
          *
          -------------------------------------------*/
+
+        private void MemoUI_Shown(object sender, EventArgs e)
+        {
+            Memo.SelectionStart = Memo.Text.Length;
+            Memo.SelectionLength = 0;
+        }
 
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
@@ -115,6 +122,7 @@ namespace PersonalPlanner.GUI
             Memo.BackColor = MemoData.BackColor.ToDrawingColor();
             this.BackColor = MemoData.BackColor.ToDrawingColor();
             Memo.Text = MemoData.Memo;
+            BackGroundColor.EditValue = MemoData.BackColor.ToDrawingColor().ToArgb();
         }
 
         private void ChangeSettings()

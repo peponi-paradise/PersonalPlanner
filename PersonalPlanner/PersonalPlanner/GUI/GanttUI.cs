@@ -84,6 +84,7 @@ namespace PersonalPlanner.GUI
             MainGanttControl.MouseDown += MainGanttControl_MouseDown;
             MainGanttControl.MouseMove += MainGanttControl_MouseMove;
             MainGanttControl.MouseUp += MainGanttControl_MouseUp;
+            MainGanttControl.CustomDrawTask += MainGanttControl_CustomDrawTask;
         }
 
         /*-------------------------------------------
@@ -94,16 +95,12 @@ namespace PersonalPlanner.GUI
 
         private void GanttControl_Load(object sender, EventArgs e) => MainGanttControl.ScrollChartToDate(DateTime.Today);
 
-        private void DrawTodayLine(CustomDrawTimescaleColumnEventArgs e)
+        private void MainGanttControl_CustomDrawTask(object sender, CustomDrawTaskEventArgs e)
         {
-            e.DrawBackground();
-            float x = (float)e.GetPosition(DateTime.Now);
-            float width = 4;
-
-            RectangleF rectangle = new RectangleF(x, e.Column.Bounds.Y, width, e.Column.Bounds.Height);
-
-            e.Cache.FillRectangle(System.Drawing.Color.Red, rectangle);
-            e.DrawHeader();
+            if (e.FinishDate < DateTime.Today)
+            {
+                if (e.Progress < 1) e.Info.Appearance.BackColor = System.Drawing.Color.Crimson;
+            }
         }
 
         private void MainGanttControl_EditFormPrepared(object sender, DevExpress.XtraTreeList.EditFormPreparedEventArgs e) => EditingNodeID = (int)e.Node.GetValue(nameof(Task.ID));
@@ -340,6 +337,18 @@ namespace PersonalPlanner.GUI
             MainGanttControl.DependencySource = GanttData.Dependency;
 
             MainGanttControl.ExpandAll();
+        }
+
+        private void DrawTodayLine(CustomDrawTimescaleColumnEventArgs e)
+        {
+            e.DrawBackground();
+            float x = (float)e.GetPosition(DateTime.Now);
+            float width = 4;
+
+            RectangleF rectangle = new RectangleF(x, e.Column.Bounds.Y, width, e.Column.Bounds.Height);
+
+            e.Cache.FillRectangle(System.Drawing.Color.Red, rectangle);
+            e.DrawHeader();
         }
 
         /*-------------------------------------------

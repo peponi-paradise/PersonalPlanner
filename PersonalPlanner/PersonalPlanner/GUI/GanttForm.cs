@@ -159,11 +159,13 @@ namespace PersonalPlanner.GUI
             }
             if (settings.GanttFormSize != new Size(0, 0)) this.Size = settings.GanttFormSize;
 
+            bool isFirstPage = true;
             foreach (var ganttData in GanttData.GanttDatas)
             {
                 GanttUI ganttUI = new GanttUI(ganttData);
                 ganttUI.GanttDataSave += GanttUI_GanttDataSave;
                 MainControl.TabPages.Add(ganttUI);
+                if (isFirstPage) { TabColor.EditValue = ganttUI.GanttData.Color.ToDrawingColor(); isFirstPage = false; }
                 MainControl.LayoutChanged();
             }
         }
