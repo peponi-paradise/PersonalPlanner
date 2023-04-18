@@ -1,6 +1,5 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
-using DevExpress.XtraTabbedMdi;
 using PersonalPlanner.Data;
 using PersonalPlanner.Define;
 using System;
@@ -9,7 +8,7 @@ using System.Windows.Forms;
 
 namespace PersonalPlanner.GUI
 {
-    public partial class MemoForm : DevExpress.XtraEditors.XtraForm
+    public partial class MemoForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         /*-------------------------------------------
          *
@@ -21,18 +20,12 @@ namespace PersonalPlanner.GUI
         {
             InitializeComponent();
 
-            if (GlobalData.Parameters.MemoFormLocation == new Point(0, 0)) this.StartPosition = FormStartPosition.WindowsDefaultLocation;
-            else
-            {
-                this.StartPosition = FormStartPosition.Manual;
-                this.Location = GlobalData.Parameters.MemoFormLocation;
-            }
-            if (GlobalData.Parameters.MemoFormSize != new Size(0, 0)) this.Size = GlobalData.Parameters.MemoFormSize;
+            InitialDraw();
 
-            MdiManager.PageRemoved += MdiManager_PageRemoved;
             this.FormClosing += MemoForm_FormClosing;
             this.Move += MemoForm_Move;
             this.Resize += MemoForm_Resize;
+            MainControl.SelectedPageChanged += MainControl_SelectedPageChanged;
         }
 
         /*-------------------------------------------
@@ -58,80 +51,72 @@ namespace PersonalPlanner.GUI
             GlobalData.Parameters.MemoFormSize = this.Size;
         }
 
+        private void MainControl_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            if (MainControl.SelectedTabPage != null) TabColor.EditValue = (MainControl.SelectedTabPage as MemoUI).MemoData.BackColor.ToDrawingColor();
+        }
+
+        private void MemoUI_MemoUpdated(Define.MemoDefine memoData) => MemoData.SaveDataAsync();
+
         private void NewMemo_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var rtn = XtraInputBox.Show("Enter a memo name", "New Memo", "Memo");
-            if (rtn != null && CheckDuplicated(rtn) == false)
+            var rtnName = XtraInputBox.Show("Please Input Name", "New Memo", "Name");
+            if (rtnName != null)
             {
-                MemoDefine memo = new MemoDefine();
-                memo.Name = rtn;
-                MemoData.Memos.Add(memo);
-                MemoUI memoUI = new MemoUI(memo);
-                memoUI.PropertyChanged += Memo_PropertyChanged;
-                memoUI.MemoUpdated += MemoUI_MemoUpdated;
-                memoUI.MdiParent = this;
-                memoUI.Show();
-                SetTabSetting(memo);
-                MemoData.SaveData();
-            }
-        }
-
-        private void MdiManager_PageRemoved(object sender, MdiTabPageEventArgs e)
-        {
-            var memo = MemoData.Memos.Find(memo => memo.Name == e.Page.MdiChild.Name);
-            if (memo != null)
-            {
-                MemoData.Memos.Remove(memo);
-                MemoData.SaveData();
-            }
-        }
-
-        private void MemoUI_MemoUpdated(MemoDefine memoData)
-        {
-            foreach (var memo in MemoData.Memos)
-            {
-                if (memo.Name == memoData.Name)
+                var checkItem = MemoData.Memos.Find(item => item.Name.Equals(rtnName));
+                if (checkItem == default)
                 {
-                    memo.Memo = memoData.Memo;
-                    MemoData.SaveData();
-                    break;
+                    var memo = new MemoDefine() { Name = rtnName };
+                    MemoData.Memos.Add(memo);
+                    MemoUI memoUI = new MemoUI(memo);
+                    memoUI.MemoUpdated += MemoUI_MemoUpdated;
+                    MainControl.TabPages.Add(memoUI);
+                    SaveAndUpdate();
+                }
+                else
+                {
+                    XtraMessageBox.Show($"Could not make duplicated name of memo : {rtnName}");
                 }
             }
         }
 
-        private void Memo_PropertyChanged(MemoDefine memoData)
+        private void RemoveMemo_ItemClick(object sender, ItemClickEventArgs e)
         {
-            foreach (var memo in MemoData.Memos)
+            if (MainControl.SelectedTabPage != null)
             {
-                if (memo.Name == memoData.Name)
+                if (XtraMessageBox.Show($"Do you want to remove memo? : {MainControl.SelectedTabPage.Text}", "Remove memo", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
-                    memo.Font = memoData.Font;
-                    memo.FontColor = memoData.FontColor;
-                    memo.BackColor = memoData.BackColor;
-                    SetTabSetting(memoData);
-                    MemoData.SaveData();
-                    break;
+                    var removeItem = (MainControl.SelectedTabPage as MemoUI).MemoData;
+                    MemoData.Memos.Remove(removeItem);
+                    MainControl.TabPages.Remove(MainControl.SelectedTabPage);
+                    SaveAndUpdate();
                 }
             }
         }
 
-        /*-------------------------------------------
-         *
-         *      Public functions
-         *
-         -------------------------------------------*/
-
-        public void SetMemos()
+        private void TabColor_EditValueChanged(object sender, EventArgs e)
         {
-            MdiManager.Pages.Clear();
-            foreach (var memo in MemoData.Memos)
+            if (MainControl.SelectedTabPage != null)
             {
-                MemoUI memoUI = new MemoUI(memo);
-                memoUI.PropertyChanged += Memo_PropertyChanged;
-                memoUI.MemoUpdated += MemoUI_MemoUpdated;
-                memoUI.MdiParent = this;
-                memoUI.Show();
-                SetTabSetting(memo);
+                var memoPage = MainControl.SelectedTabPage as MemoUI;
+                memoPage.ChangeTabPageColor((System.Drawing.Color)TabColor.EditValue);
+                SaveAndUpdate();
+            }
+        }
+
+        private void MemoFont_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (MainControl.SelectedTabPage != null)
+            {
+                FontDialog dialog = new FontDialog();
+                dialog.FontMustExist = true;
+                dialog.ShowColor = true;
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    var memoPage = MainControl.SelectedTabPage as MemoUI;
+                    memoPage.ChangeFont(dialog.Font, dialog.Color);
+                    SaveAndUpdate();
+                }
             }
         }
 
@@ -141,16 +126,24 @@ namespace PersonalPlanner.GUI
          *
          -------------------------------------------*/
 
-        private void SetTabSetting(MemoDefine memoDefine)
+        private void InitialDraw()
         {
-            foreach (XtraMdiTabPage page in MdiManager.Pages)
+            if (GlobalData.Parameters.MemoFormLocation == new Point(0, 0)) this.StartPosition = FormStartPosition.WindowsDefaultLocation;
+            else
             {
-                if (page.Text == memoDefine.Name)
-                {
-                    page.Appearance.Header.BackColor = memoDefine.BackColor.ToDrawingColor();
-                    page.Appearance.HeaderActive.BackColor = memoDefine.BackColor.ToDrawingColor();
-                    break;
-                }
+                this.StartPosition = FormStartPosition.Manual;
+                this.Location = GlobalData.Parameters.MemoFormLocation;
+            }
+            if (GlobalData.Parameters.MemoFormSize != new Size(0, 0)) this.Size = GlobalData.Parameters.MemoFormSize;
+
+            bool isFirstPage = true;
+            foreach (var memoData in MemoData.Memos)
+            {
+                MemoUI memoUI = new MemoUI(memoData);
+                MainControl.TabPages.Add(memoUI);
+                memoUI.MemoUpdated += MemoUI_MemoUpdated;
+                if (isFirstPage) { TabColor.EditValue = memoUI.MemoData.BackColor.ToDrawingColor(); isFirstPage = false; }
+                MainControl.LayoutChanged();
             }
         }
 
@@ -160,17 +153,10 @@ namespace PersonalPlanner.GUI
          *
          -------------------------------------------*/
 
-        private bool CheckDuplicated(string name)
+        private void SaveAndUpdate()
         {
-            foreach (var memo in MemoData.Memos)
-            {
-                if (memo.Name == name)
-                {
-                    XtraMessageBox.Show("Duplicated name of Memo has been detected\nTry other name");
-                    return true;
-                }
-            }
-            return false;
+            MemoData.SaveData();
+            if (MainControl.TabPages != null) MainControl.LayoutChanged();
         }
     }
 }

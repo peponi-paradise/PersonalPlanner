@@ -207,16 +207,18 @@ namespace PersonalPlanner
             }
         }
 
+        // 당분간 제거
         private async void MemoImportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 await MemoData.LoadDataAsync(fileDialog.FileName);
-                if (MemoForm.Visible) MemoForm.SetMemos();
+                //if (MemoForm.Visible) MemoForm.SetMemos();
             }
         }
 
+        // 당분간 제거
         private async void MemoSaveButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -336,7 +338,6 @@ namespace PersonalPlanner
         {
             if (MemoForm != null) { MemoData.SaveData(); MemoForm.Close(); }
             MemoForm = new MemoForm();
-            MemoForm.SetMemos();
             MemoForm.Show();
         }
 

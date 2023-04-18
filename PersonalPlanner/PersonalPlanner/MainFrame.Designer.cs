@@ -30,9 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrame));
-            DevExpress.XtraScheduler.TimeRuler timeRuler1 = new DevExpress.XtraScheduler.TimeRuler();
-            DevExpress.XtraScheduler.TimeRuler timeRuler2 = new DevExpress.XtraScheduler.TimeRuler();
-            DevExpress.XtraScheduler.TimeRuler timeRuler3 = new DevExpress.XtraScheduler.TimeRuler();
+            DevExpress.XtraScheduler.TimeRuler timeRuler4 = new DevExpress.XtraScheduler.TimeRuler();
+            DevExpress.XtraScheduler.TimeRuler timeRuler5 = new DevExpress.XtraScheduler.TimeRuler();
+            DevExpress.XtraScheduler.TimeRuler timeRuler6 = new DevExpress.XtraScheduler.TimeRuler();
             MainRibbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
             skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
@@ -111,9 +111,9 @@
             ribbonPageGroupViewMemo = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ViewRibbonGroupGantt = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             fileRibbonPage1 = new DevExpress.XtraScheduler.UI.FileRibbonPage();
-            MemoFileRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ScheduleFileRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.CommonRibbonPageGroup();
             SchedulePrintRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.PrintRibbonPageGroup();
+            MemoFileRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageSettings = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroupSkins = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroupSkinColors = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -155,7 +155,10 @@
             MainRibbonControl.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] { calendarToolsRibbonPageCategory1 });
             MainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { homeRibbonPage1, viewRibbonPage1, fileRibbonPage1, ribbonPageSettings });
             MainRibbonControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemSpinEdit1, repositoryItemDuration1, repositoryItemRadioGroup1, repositoryItemTimeSpanEdit1, repositoryItemTimeSpanEdit2 });
+            MainRibbonControl.ShowQatLocationSelector = false;
+            MainRibbonControl.ShowToolbarCustomizeItem = false;
             MainRibbonControl.Size = new System.Drawing.Size(1278, 160);
+            MainRibbonControl.Toolbar.ShowCustomizeItem = false;
             // 
             // skinPaletteRibbonGalleryBarItem1
             // 
@@ -558,15 +561,15 @@
             MainScheduler.Start = new System.DateTime(2023, 3, 29, 0, 0, 0, 0);
             MainScheduler.TabIndex = 0;
             MainScheduler.Text = "schedulerControl1";
-            MainScheduler.Views.DayView.TimeRulers.Add(timeRuler1);
+            MainScheduler.Views.DayView.TimeRulers.Add(timeRuler4);
             MainScheduler.Views.DayView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             MainScheduler.Views.FullWeekView.Enabled = true;
-            MainScheduler.Views.FullWeekView.TimeRulers.Add(timeRuler2);
+            MainScheduler.Views.FullWeekView.TimeRulers.Add(timeRuler5);
             MainScheduler.Views.FullWeekView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             MainScheduler.Views.GanttView.Enabled = false;
             MainScheduler.Views.GanttView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             MainScheduler.Views.TimelineView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
-            MainScheduler.Views.WorkWeekView.TimeRulers.Add(timeRuler3);
+            MainScheduler.Views.WorkWeekView.TimeRulers.Add(timeRuler6);
             MainScheduler.Views.WorkWeekView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             MainScheduler.Views.YearView.UseOptimizedScrolling = false;
             // 
@@ -715,15 +718,8 @@
             // 
             // fileRibbonPage1
             // 
-            fileRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { MemoFileRibbonPageGroup, ScheduleFileRibbonPageGroup1, SchedulePrintRibbonPageGroup1 });
+            fileRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ScheduleFileRibbonPageGroup1, SchedulePrintRibbonPageGroup1, MemoFileRibbonPageGroup });
             fileRibbonPage1.Name = "fileRibbonPage1";
-            // 
-            // MemoFileRibbonPageGroup
-            // 
-            MemoFileRibbonPageGroup.ItemLinks.Add(MemoImportButton);
-            MemoFileRibbonPageGroup.ItemLinks.Add(MemoSaveButton);
-            MemoFileRibbonPageGroup.Name = "MemoFileRibbonPageGroup";
-            MemoFileRibbonPageGroup.Text = "Memo";
             // 
             // ScheduleFileRibbonPageGroup1
             // 
@@ -740,6 +736,14 @@
             SchedulePrintRibbonPageGroup1.ItemLinks.Add(printPageSetupItem1);
             SchedulePrintRibbonPageGroup1.Name = "SchedulePrintRibbonPageGroup1";
             SchedulePrintRibbonPageGroup1.Text = "Schedule";
+            // 
+            // MemoFileRibbonPageGroup
+            // 
+            MemoFileRibbonPageGroup.ItemLinks.Add(MemoImportButton);
+            MemoFileRibbonPageGroup.ItemLinks.Add(MemoSaveButton);
+            MemoFileRibbonPageGroup.Name = "MemoFileRibbonPageGroup";
+            MemoFileRibbonPageGroup.Text = "Memo";
+            MemoFileRibbonPageGroup.Visible = false;
             // 
             // ribbonPageSettings
             // 
@@ -861,6 +865,7 @@
             ClientSize = new System.Drawing.Size(1278, 767);
             Controls.Add(splitContainerControlCalendar);
             Controls.Add(MainRibbonControl);
+            IconOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("MainFrame.IconOptions.SvgImage");
             IsMdiContainer = true;
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "MainFrame";
