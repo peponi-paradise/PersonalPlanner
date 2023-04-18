@@ -88,11 +88,9 @@ namespace PersonalPlanner.Data
                                                       }).ToList();
 
             appointmentStatuses.Clear();
-            int statusIndex = 0;
             foreach (var status in statuses)
             {
-                var addData = appointmentStatuses.CreateNewStatus(statusIndex++, status.DisplayName);
-                addData.MenuCaption = status.DisplayName;
+                AppointmentStatus addData = (AppointmentStatus)appointmentStatuses.CreateNewStatus(status.DisplayName, status.DisplayName, status.DisplayName);
                 addData.Type = AppointmentStatusType.Custom;
                 switch (status.PaintStyle)
                 {

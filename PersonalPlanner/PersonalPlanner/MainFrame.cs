@@ -69,6 +69,36 @@ namespace PersonalPlanner
             this.SuspendLayout();
             var settings = Properties.Settings.Default;
 
+            LoadingForm.SetProgress("Loading Environments...");
+            // Import Environments
+            try
+            {
+                AppointmentSettingData.LoadLabelData(MainScheduler.DataStorage.Appointments.Labels);
+            }
+            catch
+            {
+                MessageBox.Show("Could not import Label file");
+            }
+
+            try
+            {
+                AppointmentSettingData.LoadStatusData(MainScheduler.DataStorage.Appointments.Statuses);
+            }
+            catch
+            {
+                MessageBox.Show("Could not import Status file");
+            }
+
+            try
+            {
+                AppointmentSettingData.LoadResourceData(MainSchedulerDataStorage.Resources);
+            }
+            catch
+            {
+                MessageBox.Show("Could not import Resource file");
+            }
+            LoadingForm.SetProgress("Loading Environments Done...");
+
             LoadingForm.SetProgress("Loading Memos...");
             // Import Memo
             try
@@ -94,6 +124,7 @@ namespace PersonalPlanner
             {
                 MessageBox.Show("Could not import calendar file");
             }
+            MainSchedulerDataStorage.RefreshData(true);
             LoadingForm.SetProgress("Loading Calendar Done...");
 
             LoadingForm.SetProgress("Loading Gantt...");
@@ -118,37 +149,6 @@ namespace PersonalPlanner
                 if (item.Caption.Contains("Compact")) item.Visible = false;
             }
             LoadingForm.SetProgress("Set Skin Done...");
-
-            LoadingForm.SetProgress("Loading Environments...");
-            // Import Environments
-            try
-            {
-                AppointmentSettingData.LoadLabelData(MainScheduler.DataStorage.Appointments.Labels);
-            }
-            catch
-            {
-                MessageBox.Show("Could not import Label file");
-            }
-
-            try
-            {
-                AppointmentSettingData.LoadStatusData(MainScheduler.DataStorage.Appointments.Statuses);
-                MainScheduler.Appointment.
-            }
-            catch
-            {
-                MessageBox.Show("Could not import Status file");
-            }
-
-            try
-            {
-                AppointmentSettingData.LoadResourceData(MainSchedulerDataStorage.Resources);
-            }
-            catch
-            {
-                MessageBox.Show("Could not import Resource file");
-            }
-            LoadingForm.SetProgress("Loading Environments Done...");
 
             LoadingForm.SetProgress("Program Start...");
 
