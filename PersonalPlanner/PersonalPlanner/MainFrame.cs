@@ -50,9 +50,14 @@ namespace PersonalPlanner
         public MainFrame()
         {
             InitializeComponent();
+
+            LoadingForm.OpenDialog();
+            LoadingForm.SetVersion(Assembly.GetExecutingAssembly().GetName().Version.ToString());
+
+            LoadDatas();
             SetUILayout();
-            this.FormClosing += MainFrame_FormClosing;
-            MainRibbonControl.MouseWheel += MainRibbonControl_MouseWheel;
+
+            LoadingForm.CloseDialog();
         }
 
         /*-------------------------------------------
@@ -64,102 +69,18 @@ namespace PersonalPlanner
         protected override async void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            LoadingForm.OpenDialog();
-            LoadingForm.SetVersion(Assembly.GetExecutingAssembly().GetName().Version.ToString());
-            this.SuspendLayout();
-            var settings = Properties.Settings.Default;
 
-            LoadingForm.SetProgress("Loading Environments...");
-            // Import Environments
-            try
-            {
-                AppointmentSettingData.LoadLabelData(MainScheduler.DataStorage.Appointments.Labels);
-            }
-            catch
-            {
-                MessageBox.Show("Could not import Label file");
-            }
-
-            try
-            {
-                AppointmentSettingData.LoadStatusData(MainScheduler.DataStorage.Appointments.Statuses);
-            }
-            catch
-            {
-                MessageBox.Show("Could not import Status file");
-            }
-
-            try
-            {
-                AppointmentSettingData.LoadResourceData(MainSchedulerDataStorage.Resources);
-            }
-            catch
-            {
-                MessageBox.Show("Could not import Resource file");
-            }
-            LoadingForm.SetProgress("Loading Environments Done...");
-
-            LoadingForm.SetProgress("Loading Memos...");
-            // Import Memo
-            try
-            {
-                // First execute check
-                if (string.IsNullOrEmpty(settings.MemoFilePath)) settings.MemoFilePath = $@"{Environment.CurrentDirectory}\Data\Memo.yaml";
-                await MemoData.LoadDataAsync();
-            }
-            catch
-            {
-                MessageBox.Show("Could not import memo file");
-            }
-            LoadingForm.SetProgress("Loading Memos Done...");
-
-            LoadingForm.SetProgress("Loading Calendar...");
-            // Import Calendar
-            try
-            {
-                if (string.IsNullOrEmpty(settings.CalendarFilePath)) settings.CalendarFilePath = $@"{Environment.CurrentDirectory}\Data\Calendar.ics";
-                CalendarData.ReadCalendar(settings.CalendarFilePath, MainSchedulerDataStorage);
-            }
-            catch
-            {
-                MessageBox.Show("Could not import calendar file");
-            }
-            MainSchedulerDataStorage.RefreshData(true);
-            LoadingForm.SetProgress("Loading Calendar Done...");
-
-            LoadingForm.SetProgress("Loading Gantt...");
-            try
-            {
-                if (!GanttData.LoadData()) XtraMessageBox.Show("Could not import gantt file");
-            }
-            catch
-            {
-            }
-            LoadingForm.SetProgress("Loading Gantt Done...");
-
-            LoadingForm.SetProgress("Set Skin...");
-            // Set Skin
-            if (!string.IsNullOrEmpty(settings.SkinName))
-            {
-                if (!string.IsNullOrEmpty(settings.Palette)) UserLookAndFeel.Default.SetSkinStyle(settings.SkinName, settings.Palette);
-                else UserLookAndFeel.Default.SetSkinStyle(settings.SkinName, "DefaultSkinPalette");
-            }
             foreach (GalleryItem item in skinRibbonGalleryBarItem1.Gallery.GetAllItems())
             {
                 if (item.Caption.Contains("Compact")) item.Visible = false;
             }
-            LoadingForm.SetProgress("Set Skin Done...");
-
-            LoadingForm.SetProgress("Program Start...");
-
-            if (settings.MemoFormShowOnStartUp) OpenMemoForm();
-            if (settings.GanttFormShowOnStartUp) OpenGanttForm();
-
-            this.ResumeLayout(false);
-
-            LoadingForm.CloseDialog();
-
             this.Resize += MainFrame_Resized;
+            this.Move += MainFrame_Move;
+            this.FormClosing += MainFrame_FormClosing;
+            MainRibbonControl.MouseWheel += MainRibbonControl_MouseWheel;
+
+            if (GlobalData.Parameters.MemoFormShowOnStartUp) OpenMemoForm();
+            if (GlobalData.Parameters.GanttFormShowOnStartUp) OpenGanttForm();
         }
 
         private void MainFrame_Resized(object sender, EventArgs e)
@@ -175,6 +96,12 @@ namespace PersonalPlanner
                 }
                 this.Focus();
             }
+            if (this.WindowState != FormWindowState.Minimized) GlobalData.Parameters.MainFrameSize = this.Size;
+        }
+
+        private void MainFrame_Move(object sender, EventArgs e)
+        {
+            if (this.WindowState != FormWindowState.Minimized) GlobalData.Parameters.MainFrameLocation = this.Location;
         }
 
         private void MainFrame_FormClosing(object sender, FormClosingEventArgs e)
@@ -182,10 +109,9 @@ namespace PersonalPlanner
             WaitForm.OpenDialog("Closing...", "Saving datas...");
             try
             {
-                SkinData.SaveAllSkinData();
-                var settings = Properties.Settings.Default;
+                GlobalData.SaveData();
                 MemoData.SaveData();
-                CalendarData.WriteCalendar(settings.CalendarFilePath, MainSchedulerDataStorage);
+                CalendarData.WriteCalendar(MainSchedulerDataStorage);
                 GanttData.SaveData();
                 SaveUILayout();
             }
@@ -195,7 +121,18 @@ namespace PersonalPlanner
             }
         }
 
-        private void MainRibbonControl_MouseWheel(object sender, MouseEventArgs e) => DXMouseEventArgs.GetMouseArgs(e).Handled = true;
+        private void MainRibbonControl_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.X > splitContainerControlCalendar.Location.X && e.X < splitContainerControlCalendar.Location.X + splitContainerControlCalendar.Width &&
+                e.Y > splitContainerControlCalendar.Location.Y && e.Y < splitContainerControlCalendar.Location.Y + splitContainerControlCalendar.Height)
+            {
+                return;
+            }
+            else
+            {
+                DXMouseEventArgs.GetMouseArgs(e).Handled = true;
+            }
+        }
 
         private void OpenMemo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => OpenMemoForm();
 
@@ -222,15 +159,13 @@ namespace PersonalPlanner
 
         private void WorkTimeStart_EditValueChanged(object sender, EventArgs e)
         {
-            var settings = Properties.Settings.Default;
-            settings.OfficeStart = (TimeSpan)WorkTimeStart.EditValue;
+            GlobalData.Parameters.OfficeStart = (TimeSpan)WorkTimeStart.EditValue;
             SetWorkTime();
         }
 
         private void WorkTimeEnd_EditValueChanged(object sender, EventArgs e)
         {
-            var settings = Properties.Settings.Default;
-            settings.OfficeEnd = (TimeSpan)WorkTimeEnd.EditValue;
+            GlobalData.Parameters.OfficeEnd = (TimeSpan)WorkTimeEnd.EditValue;
             SetWorkTime();
         }
 
@@ -241,12 +176,12 @@ namespace PersonalPlanner
             {
                 try
                 {
-                    await CalendarData.ReadCalendarAsync(fileDialog.FileName, MainSchedulerDataStorage);
+                    await CalendarData.ReadCalendarAsync(MainSchedulerDataStorage, fileDialog.FileName);
                     MainSchedulerDataStorage.RefreshData(true);
                 }
                 catch
                 {
-                    MessageBox.Show("Could not import calendar file");
+                    XtraMessageBox.Show("Could not import calendar file");
                     return;
                 }
             }
@@ -262,11 +197,11 @@ namespace PersonalPlanner
             {
                 try
                 {
-                    await CalendarData.WriteCalendarAsync(saveFileDialog.FileName, MainSchedulerDataStorage);
+                    await CalendarData.WriteCalendarAsync(MainSchedulerDataStorage, saveFileDialog.FileName);
                 }
                 catch
                 {
-                    MessageBox.Show("Could not save calendar file");
+                    XtraMessageBox.Show("Could not save calendar file");
                     return;
                 }
             }
@@ -291,42 +226,21 @@ namespace PersonalPlanner
             if (saveFileDialog.ShowDialog() == DialogResult.OK) await MemoData.SaveDataAsync(saveFileDialog.FileName);
         }
 
-        private void MemoFormShow_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            var settings = Properties.Settings.Default;
-            settings.MemoFormShowOnStartUp = MemoFormShow.Checked;
-        }
+        private void MemoFormShow_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => GlobalData.Parameters.MemoFormShowOnStartUp = MemoFormShow.Checked;
 
-        private void GanttFormShow_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            var settings = Properties.Settings.Default;
-            settings.GanttFormShowOnStartUp = GanttFormShow.Checked;
-        }
+        private void GanttFormShow_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => GlobalData.Parameters.GanttFormShowOnStartUp = GanttFormShow.Checked;
 
         private void skinRibbonGalleryBarItem1_Gallery_ItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
         {
-            Properties.Settings.Default.SkinName = e.Item.Caption;
-            try
-            {
-                UserLookAndFeel.Default.SetSkinStyle(Properties.Settings.Default.SkinName, Properties.Settings.Default.Palette);
-            }
-            catch
-            {
-                UserLookAndFeel.Default.SetSkinStyle(Properties.Settings.Default.SkinName);
-            }
+            GlobalData.Parameters.SkinName = e.Item.Caption;
+            GlobalData.Parameters.SkinPaletteName = "DefaultSkinPalette";
+            UserLookAndFeel.Default.SetSkinStyle(GlobalData.Parameters.SkinName, "DefaultSkinPalette");
         }
 
         private void skinPaletteRibbonGalleryBarItem1_Gallery_ItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
         {
-            Properties.Settings.Default.Palette = e.Item.Caption;
-            try
-            {
-                UserLookAndFeel.Default.SetSkinStyle(Properties.Settings.Default.SkinName, Properties.Settings.Default.Palette);
-            }
-            catch
-            {
-                UserLookAndFeel.Default.SetSkinStyle(Properties.Settings.Default.SkinName);
-            }
+            GlobalData.Parameters.SkinPaletteName = e.Item.Caption;
+            UserLookAndFeel.Default.SetSkinStyle(GlobalData.Parameters.SkinName, GlobalData.Parameters.SkinPaletteName);
         }
 
         /*-------------------------------------------
@@ -334,6 +248,89 @@ namespace PersonalPlanner
          *      Private functions
          *
          -------------------------------------------*/
+
+        private void LoadDatas()
+        {
+            LoadingForm.SetProgress("Loading Environments...");
+            // Import Environments
+            try
+            {
+                GlobalData.LoadData();
+            }
+            catch
+            {
+                XtraMessageBox.Show("Could not import Global setting");
+            }
+            try
+            {
+                AppointmentSettingData.LoadLabelData(MainScheduler.DataStorage.Appointments.Labels);
+            }
+            catch
+            {
+                XtraMessageBox.Show("Could not import Label file");
+            }
+
+            try
+            {
+                AppointmentSettingData.LoadStatusData(MainScheduler.DataStorage.Appointments.Statuses);
+            }
+            catch
+            {
+                XtraMessageBox.Show("Could not import Status file");
+            }
+
+            try
+            {
+                AppointmentSettingData.LoadResourceData(MainSchedulerDataStorage.Resources);
+            }
+            catch
+            {
+                XtraMessageBox.Show("Could not import Resource file");
+            }
+            LoadingForm.SetProgress("Loading Environments Done...");
+
+            LoadingForm.SetProgress("Loading Memos...");
+            // Import Memo
+            try
+            {
+                MemoData.LoadData();
+            }
+            catch
+            {
+                XtraMessageBox.Show("Could not import memo file");
+            }
+            LoadingForm.SetProgress("Loading Memos Done...");
+
+            LoadingForm.SetProgress("Loading Calendar...");
+            // Import Calendar
+            try
+            {
+                CalendarData.ReadCalendar(MainSchedulerDataStorage);
+            }
+            catch
+            {
+                XtraMessageBox.Show("Could not import calendar file");
+            }
+            MainSchedulerDataStorage.RefreshData(true);
+            LoadingForm.SetProgress("Loading Calendar Done...");
+
+            LoadingForm.SetProgress("Loading Gantt...");
+            try
+            {
+                if (!GanttData.LoadData()) XtraMessageBox.Show("Could not import gantt file");
+            }
+            catch
+            {
+            }
+            LoadingForm.SetProgress("Loading Gantt Done...");
+
+            LoadingForm.SetProgress("Set Skin...");
+            // Set Skin
+            UserLookAndFeel.Default.SetSkinStyle(GlobalData.Parameters.SkinName, GlobalData.Parameters.SkinPaletteName);
+            LoadingForm.SetProgress("Set Skin Done...");
+
+            LoadingForm.SetProgress("Program Start...");
+        }
 
         private void OpenMemoForm()
         {
@@ -395,40 +392,37 @@ namespace PersonalPlanner
 
         private void SetWorkTime()
         {
-            var settings = Properties.Settings.Default;
-            MainScheduler.DayView.WorkTime.Start = settings.OfficeStart;
-            MainScheduler.WorkWeekView.WorkTime.Start = settings.OfficeStart;
-            MainScheduler.FullWeekView.WorkTime.Start = settings.OfficeStart;
-            MainScheduler.TimelineView.WorkTime.Start = settings.OfficeStart;
+            MainScheduler.DayView.WorkTime.Start = GlobalData.Parameters.OfficeStart;
+            MainScheduler.WorkWeekView.WorkTime.Start = GlobalData.Parameters.OfficeStart;
+            MainScheduler.FullWeekView.WorkTime.Start = GlobalData.Parameters.OfficeStart;
+            MainScheduler.TimelineView.WorkTime.Start = GlobalData.Parameters.OfficeStart;
 
-            MainScheduler.DayView.WorkTime.End = settings.OfficeEnd;
-            MainScheduler.WorkWeekView.WorkTime.End = settings.OfficeEnd;
-            MainScheduler.FullWeekView.WorkTime.End = settings.OfficeEnd;
-            MainScheduler.TimelineView.WorkTime.End = settings.OfficeEnd;
+            MainScheduler.DayView.WorkTime.End = GlobalData.Parameters.OfficeEnd;
+            MainScheduler.WorkWeekView.WorkTime.End = GlobalData.Parameters.OfficeEnd;
+            MainScheduler.FullWeekView.WorkTime.End = GlobalData.Parameters.OfficeEnd;
+            MainScheduler.TimelineView.WorkTime.End = GlobalData.Parameters.OfficeEnd;
         }
 
         private void SetUILayout()
         {
-            var settings = Properties.Settings.Default;
-
-            if (settings.MainFrameLocation == new Point(0, 0)) this.StartPosition = FormStartPosition.CenterScreen;
+            if (GlobalData.Parameters.MainFrameLocation == new Point(0, 0)) this.StartPosition = FormStartPosition.CenterScreen;
             else
             {
                 this.StartPosition = FormStartPosition.Manual;
-                this.Location = settings.MainFrameLocation;
+                this.Location = GlobalData.Parameters.MainFrameLocation;
             }
-            if (settings.MainFrameSize != new Size(0, 0)) this.Size = settings.MainFrameSize;
+            if (GlobalData.Parameters.MainFrameSize != new Size(0, 0)) this.Size = GlobalData.Parameters.MainFrameSize;
 
-            MemoFormShow.Checked = settings.MemoFormShowOnStartUp;
-            GanttFormShow.Checked = settings.GanttFormShowOnStartUp;
+            MemoFormShow.Checked = GlobalData.Parameters.MemoFormShowOnStartUp;
+            GanttFormShow.Checked = GlobalData.Parameters.GanttFormShowOnStartUp;
 
             MainScheduler.GoToToday();
-            MainScheduler.DayView.ShowWorkTimeOnly = settings.DayViewWorktimeShow;
-            MainScheduler.WorkWeekView.ShowWorkTimeOnly = settings.WorkweekViewWorktimeShow;
-            MainScheduler.FullWeekView.ShowWorkTimeOnly = settings.FullweekViewWorktimeShow;
-            MainScheduler.ActiveViewType = (DevExpress.XtraScheduler.SchedulerViewType)settings.SchedulerViewType;
-            WorkTimeStart.EditValue = settings.OfficeStart;
-            WorkTimeEnd.EditValue = settings.OfficeEnd;
+            MainScheduler.DayView.ShowWorkTimeOnly = GlobalData.Parameters.DayViewWorktimeShow;
+            MainScheduler.WorkWeekView.ShowWorkTimeOnly = GlobalData.Parameters.WorkweekViewWorktimeShow;
+            MainScheduler.FullWeekView.ShowWorkTimeOnly = GlobalData.Parameters.FullweekViewWorktimeShow;
+            MainScheduler.ActiveViewType = (DevExpress.XtraScheduler.SchedulerViewType)GlobalData.Parameters.SchedulerViewType;
+            WorkTimeStart.EditValue = GlobalData.Parameters.OfficeStart;
+            WorkTimeEnd.EditValue = GlobalData.Parameters.OfficeEnd;
             SetWorkTime();
 
             AppointmentGroupSelector.EditValue = 0;
@@ -438,17 +432,18 @@ namespace PersonalPlanner
 
         private void SaveUILayout()
         {
-            var settings = Properties.Settings.Default;
+            if (this.WindowState != FormWindowState.Minimized)
+            {
+                GlobalData.Parameters.MainFrameLocation = this.Location;
+                GlobalData.Parameters.MainFrameSize = this.Size;
+            }
+            if (MemoForm != null && MemoForm.Visible && MemoForm.WindowState != FormWindowState.Minimized) { GlobalData.Parameters.MemoFormLocation = MemoForm.Location; GlobalData.Parameters.MemoFormSize = MemoForm.Size; }
+            if (GanttForm != null && GanttForm.Visible && GanttForm.WindowState != FormWindowState.Minimized) { GlobalData.Parameters.GanttFormLocation = GanttForm.Location; GlobalData.Parameters.GanttFormSize = GanttForm.Size; }
 
-            settings.MainFrameLocation = this.Location;
-            settings.MainFrameSize = this.Size;
-            if (MemoForm != null && MemoForm.Visible && MemoForm.WindowState != FormWindowState.Minimized) { settings.MemoFormLocation = MemoForm.Location; settings.MemoFormSize = MemoForm.Size; }
-            if (GanttForm != null && GanttForm.Visible && GanttForm.WindowState != FormWindowState.Minimized) { settings.GanttFormLocation = GanttForm.Location; settings.GanttFormSize = GanttForm.Size; }
-
-            settings.SchedulerViewType = (int)MainScheduler.ActiveViewType;
-            settings.DayViewWorktimeShow = MainScheduler.DayView.ShowWorkTimeOnly;
-            settings.WorkweekViewWorktimeShow = MainScheduler.WorkWeekView.ShowWorkTimeOnly;
-            settings.FullweekViewWorktimeShow = MainScheduler.FullWeekView.ShowWorkTimeOnly;
+            GlobalData.Parameters.SchedulerViewType = (int)MainScheduler.ActiveViewType;
+            GlobalData.Parameters.DayViewWorktimeShow = MainScheduler.DayView.ShowWorkTimeOnly;
+            GlobalData.Parameters.WorkweekViewWorktimeShow = MainScheduler.WorkWeekView.ShowWorkTimeOnly;
+            GlobalData.Parameters.FullweekViewWorktimeShow = MainScheduler.FullWeekView.ShowWorkTimeOnly;
         }
     }
 }

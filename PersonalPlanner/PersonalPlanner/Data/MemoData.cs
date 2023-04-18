@@ -17,6 +17,14 @@ namespace PersonalPlanner.Data
 
         /*-------------------------------------------
          *
+         *      Private members
+         *
+         -------------------------------------------*/
+
+        private static string MemoDataPath = GlobalData.DefaultFIlePath + $@"Memo.yaml";
+
+        /*-------------------------------------------
+         *
          *      Public functions
          *
          -------------------------------------------*/
@@ -24,7 +32,7 @@ namespace PersonalPlanner.Data
         public static bool LoadData()
         {
             ;
-            if (YAMLParser.LoadData(Properties.Settings.Default.MemoFilePath, out List<MemoDefine> memos))
+            if (YAMLParser.LoadData(MemoDataPath, out List<MemoDefine> memos))
             {
                 if (memos != null)
                 {
@@ -59,7 +67,7 @@ namespace PersonalPlanner.Data
 
         public static async Task<bool> LoadDataAsync(string filePath) => await System.Threading.Tasks.Task.Run(() => LoadData(filePath));
 
-        public static void SaveData() => YAMLParser.SaveData(Properties.Settings.Default.MemoFilePath, Memos);
+        public static void SaveData() => YAMLParser.SaveData(MemoDataPath, Memos);
 
         public static async System.Threading.Tasks.Task SaveDataAsync() => await System.Threading.Tasks.Task.Run(() => SaveData());
 
@@ -72,11 +80,5 @@ namespace PersonalPlanner.Data
          *      Private functions
          *
          -------------------------------------------*/
-
-        private static void ChangeMemoDataPath(string filePath)
-        {
-            var settings = Properties.Settings.Default;
-            settings.MemoFilePath = filePath;
-        }
     }
 }

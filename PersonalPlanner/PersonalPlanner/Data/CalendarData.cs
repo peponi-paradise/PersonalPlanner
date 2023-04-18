@@ -1,7 +1,6 @@
 ﻿using DevExpress.XtraScheduler;
 using DevExpress.XtraScheduler.iCalendar;
 using DevExpress.XtraScheduler.iCalendar.Components;
-using System;
 using System.Threading.Tasks;
 
 namespace PersonalPlanner.Data
@@ -10,16 +9,25 @@ namespace PersonalPlanner.Data
     {
         /*-------------------------------------------
          *
+         *      Private members
+         *
+         -------------------------------------------*/
+
+        private static string CalendarDataPath = GlobalData.DefaultFIlePath + $@"Calendar.ics";
+
+        /*-------------------------------------------
+         *
          *      Public functions
          *
          -------------------------------------------*/
 
-        public static void ReadCalendar(string filePath, SchedulerDataStorage dataStorage)
+        public static void ReadCalendar(SchedulerDataStorage dataStorage, string filePath = null)
         {
             dataStorage.Appointments.Clear();
             iCalendarImporter calendarImporter = new iCalendarImporter(dataStorage);
             calendarImporter.AppointmentImported += CalendarImporter_AppointmentImported;
-            calendarImporter.Import(filePath);
+            if (filePath == null) calendarImporter.Import(CalendarDataPath);
+            else calendarImporter.Import(filePath);
         }
 
         private static void CalendarImporter_AppointmentImported(object sender, AppointmentImportedEventArgs e)
@@ -32,13 +40,14 @@ namespace PersonalPlanner.Data
             }
         }
 
-        public static async Task ReadCalendarAsync(string filePath, SchedulerDataStorage dataStorage) => await Task.Run(() => { ReadCalendar(filePath, dataStorage); });
+        public static async Task ReadCalendarAsync(SchedulerDataStorage dataStorage, string filePath = null) => await Task.Run(() => { ReadCalendar(dataStorage, filePath); });
 
-        public static void WriteCalendar(string filePath, SchedulerDataStorage dataStorage)
+        public static void WriteCalendar(SchedulerDataStorage dataStorage, string filePath = null)
         {
             iCalendarExporter calendarExporter = new iCalendarExporter(dataStorage);
             calendarExporter.AppointmentExporting += CalendarExporter_AppointmentExporting;
-            calendarExporter.Export(filePath);
+            if (filePath == null) calendarExporter.Export(CalendarDataPath);
+            else calendarExporter.Export(filePath);
         }
 
         private static void CalendarExporter_AppointmentExporting(object sender, AppointmentExportingEventArgs e)
@@ -51,18 +60,12 @@ namespace PersonalPlanner.Data
             }
         }
 
-        public static async Task WriteCalendarAsync(string filePath, SchedulerDataStorage dataStorage) => await Task.Run(() => { WriteCalendar(filePath, dataStorage); });
+        public static async Task WriteCalendarAsync(SchedulerDataStorage dataStorage, string filePath = null) => await Task.Run(() => { WriteCalendar(dataStorage, filePath); });
 
         /*-------------------------------------------
          *
          *      Private functions
          *
          -------------------------------------------*/
-
-        private static void ChangeCalendarDataPath(string filePath)
-        {
-            var settings = Properties.Settings.Default;
-            settings.CalendarFilePath = filePath;
-        }
     }
 }

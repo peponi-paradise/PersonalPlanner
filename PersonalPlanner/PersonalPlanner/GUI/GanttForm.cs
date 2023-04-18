@@ -33,19 +33,18 @@ namespace PersonalPlanner.GUI
 
         private void GanttForm_Resize(object sender, EventArgs e)
         {
-            if (this.WindowState != FormWindowState.Minimized) Properties.Settings.Default.GanttFormSize = this.Size;
+            if (this.WindowState != FormWindowState.Minimized) GlobalData.Parameters.GanttFormSize = this.Size;
         }
 
         private void GanttForm_Move(object sender, EventArgs e)
         {
-            if (this.WindowState != FormWindowState.Minimized) Properties.Settings.Default.GanttFormLocation = this.Location;
+            if (this.WindowState != FormWindowState.Minimized) GlobalData.Parameters.GanttFormLocation = this.Location;
         }
 
         private void GanttForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var settings = Properties.Settings.Default;
-            settings.GanttFormLocation = this.Location;
-            settings.GanttFormSize = this.Size;
+            GlobalData.Parameters.GanttFormLocation = this.Location;
+            GlobalData.Parameters.GanttFormSize = this.Size;
         }
 
         private void MainControl_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
@@ -162,14 +161,13 @@ namespace PersonalPlanner.GUI
 
         private void InitialDraw()
         {
-            var settings = Properties.Settings.Default;
-            if (settings.GanttFormLocation == new Point(0, 0)) this.StartPosition = FormStartPosition.WindowsDefaultLocation;
+            if (GlobalData.Parameters.GanttFormLocation == new Point(0, 0)) this.StartPosition = FormStartPosition.WindowsDefaultLocation;
             else
             {
                 this.StartPosition = FormStartPosition.Manual;
-                this.Location = settings.GanttFormLocation;
+                this.Location = GlobalData.Parameters.GanttFormLocation;
             }
-            if (settings.GanttFormSize != new Size(0, 0)) this.Size = settings.GanttFormSize;
+            if (GlobalData.Parameters.GanttFormSize != new Size(0, 0)) this.Size = GlobalData.Parameters.GanttFormSize;
 
             bool isFirstPage = true;
             foreach (var ganttData in GanttData.GanttDatas)

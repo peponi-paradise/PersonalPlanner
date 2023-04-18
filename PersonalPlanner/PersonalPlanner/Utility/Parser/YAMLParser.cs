@@ -19,7 +19,7 @@ namespace PersonalPlanner.Parser.YAML
     {
         private static object Locker = new object();
 
-        public static bool LoadData<T>(string dataPath, out T outData, List<Type> dataTags = null)
+        public static bool LoadData<T>(string dataPath, out T outData, List<Type> dataTags = null, bool ignoreNonExists = false)
         {
             bool isSuccess = true;
             outData = default;
@@ -28,9 +28,16 @@ namespace PersonalPlanner.Parser.YAML
             {
                 string YAMLContents = File.ReadAllText(dataPath);
 
-                var deserializer = dataTags == null ? new DeserializerBuilder().Build() : SerializerDesigner(new DeserializerBuilder(), dataTags).Build();
-
-                outData = (T)deserializer.Deserialize<T>(YAMLContents);
+                if (ignoreNonExists)
+                {
+                    var deserializer = dataTags == null ? new DeserializerBuilder().IgnoreUnmatchedProperties().Build() : SerializerDesigner(new DeserializerBuilder(), dataTags).IgnoreUnmatchedProperties().Build();
+                    outData = (T)deserializer.Deserialize<T>(YAMLContents);
+                }
+                else
+                {
+                    var deserializer = dataTags == null ? new DeserializerBuilder().Build() : SerializerDesigner(new DeserializerBuilder(), dataTags).Build();
+                    outData = (T)deserializer.Deserialize<T>(YAMLContents);
+                }
             }
             return isSuccess;
         }
