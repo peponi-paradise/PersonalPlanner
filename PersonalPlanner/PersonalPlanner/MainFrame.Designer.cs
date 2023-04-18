@@ -486,6 +486,10 @@
             repositoryItemTimeSpanEdit1.AutoHeight = false;
             repositoryItemTimeSpanEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             repositoryItemTimeSpanEdit1.MaskSettings.Set("mask", "hh:mm:ss");
+            repositoryItemTimeSpanEdit1.MaskSettings.Set("allowNegativeValues", false);
+            repositoryItemTimeSpanEdit1.MaskSettings.Set("inputMode", DevExpress.Data.Mask.TimeSpanMaskInputMode.NotRestrictedLargestUnit);
+            repositoryItemTimeSpanEdit1.MaxValue = System.TimeSpan.Parse("23:59:59");
+            repositoryItemTimeSpanEdit1.MinValue = System.TimeSpan.Parse("00:00:00");
             repositoryItemTimeSpanEdit1.Name = "repositoryItemTimeSpanEdit1";
             repositoryItemTimeSpanEdit1.UseAdvancedMode = DevExpress.Utils.DefaultBoolean.False;
             // 
@@ -504,6 +508,9 @@
             repositoryItemTimeSpanEdit2.AutoHeight = false;
             repositoryItemTimeSpanEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             repositoryItemTimeSpanEdit2.MaskSettings.Set("mask", "hh:mm:ss");
+            repositoryItemTimeSpanEdit2.MaskSettings.Set("allowNegativeValues", false);
+            repositoryItemTimeSpanEdit2.MaxValue = System.TimeSpan.Parse("23:59:59");
+            repositoryItemTimeSpanEdit2.MinValue = System.TimeSpan.Parse("00:00:00");
             repositoryItemTimeSpanEdit2.Name = "repositoryItemTimeSpanEdit2";
             // 
             // HomeOpenGanttWindow
