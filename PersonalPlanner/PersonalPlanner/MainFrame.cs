@@ -207,7 +207,7 @@ namespace PersonalPlanner
             }
         }
 
-        // 당분간 제거
+        // 당분간 제거. 메모 윈도우로 가자
         private async void MemoImportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
@@ -218,7 +218,7 @@ namespace PersonalPlanner
             }
         }
 
-        // 당분간 제거
+        // 당분간 제거. 메모 윈도우로 가자
         private async void MemoSaveButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
