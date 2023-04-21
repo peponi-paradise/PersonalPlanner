@@ -69,6 +69,7 @@
             MainRibbonControl.OptionsMenuMinWidth = 385;
             MainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { MainRibbonPage });
             MainRibbonControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemColorPickEdit1, repositoryItemDateEdit1, repositoryItemDateEdit2 });
+            MainRibbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             MainRibbonControl.ShowQatLocationSelector = false;
             MainRibbonControl.ShowToolbarCustomizeItem = false;
             MainRibbonControl.Size = new System.Drawing.Size(1022, 160);

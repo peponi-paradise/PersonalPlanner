@@ -104,18 +104,12 @@ namespace PersonalPlanner.GUI
         {
             if (MainControl.SelectedTabPage != null)
             {
-                var input = XtraInputBox.Show("Input new Item's ID", "New Item", "0");
+                var input = XtraInputBox.Show("Input new Item's Name", "New Item", "New Name");
                 if (input != null)
                 {
-                    if (int.TryParse(input, out var ID))
-                    {
-                        Task task = new Task() { ID = ID };
-                        if ((MainControl.SelectedTabPage as GanttUI).AddTask(task)) SaveAndUpdate();
-                    }
-                    else
-                    {
-                        XtraMessageBox.Show("Could not parse ID.\nPlease input as `Integer`");
-                    }
+                    var ID = (MainControl.SelectedTabPage as GanttUI).GanttData.Task.Count;
+                    Task task = new Task() { ID = ID, Name = input };
+                    if ((MainControl.SelectedTabPage as GanttUI).AddTask(task)) SaveAndUpdate();
                 }
             }
         }

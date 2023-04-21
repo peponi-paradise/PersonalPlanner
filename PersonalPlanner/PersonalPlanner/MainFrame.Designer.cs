@@ -155,6 +155,7 @@
             MainRibbonControl.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] { calendarToolsRibbonPageCategory1 });
             MainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { homeRibbonPage1, viewRibbonPage1, fileRibbonPage1, ribbonPageSettings });
             MainRibbonControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemSpinEdit1, repositoryItemDuration1, repositoryItemRadioGroup1, repositoryItemTimeSpanEdit1, repositoryItemTimeSpanEdit2 });
+            MainRibbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             MainRibbonControl.ShowQatLocationSelector = false;
             MainRibbonControl.ShowToolbarCustomizeItem = false;
             MainRibbonControl.Size = new System.Drawing.Size(1278, 160);

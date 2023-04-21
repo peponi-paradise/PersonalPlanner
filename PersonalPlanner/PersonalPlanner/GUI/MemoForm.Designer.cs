@@ -56,6 +56,7 @@
             MainRibbonControl.Name = "MainRibbonControl";
             MainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { OptionsRibbonPage });
             MainRibbonControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemColorPickEdit1, repositoryItemFontEdit1 });
+            MainRibbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             MainRibbonControl.ShowQatLocationSelector = false;
             MainRibbonControl.ShowToolbarCustomizeItem = false;
             MainRibbonControl.Size = new System.Drawing.Size(478, 160);
