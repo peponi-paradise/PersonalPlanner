@@ -58,6 +58,7 @@ namespace PersonalPlanner.Dev.Test
             MainGanttControl.ChartMappings.StartDateFieldName = nameof(Task.StartDate);
             MainGanttControl.ChartMappings.FinishDateFieldName = nameof(Task.FinishDate);
             MainGanttControl.ChartMappings.ProgressFieldName = nameof(Task.Progress);
+            // MainGanttControl.ChartMappings.PredecessorsFieldName = nameof(Task.PredecessorID);
 
             MainGanttControl.DependencyMappings.PredecessorFieldName = nameof(Dependency.PredecessorID);
             MainGanttControl.DependencyMappings.SuccessorFieldName = nameof(Dependency.SuccessorID);
@@ -66,6 +67,12 @@ namespace PersonalPlanner.Dev.Test
 
             MainGanttControl.InitNewRow += MainGanttControl_InitNewRow;
             MainGanttControl.BeforeDropNode += MainGanttControl_BeforeDropNode;
+            MainGanttControl.AfterDragNode += MainGanttControl_AfterDragNode;
+        }
+
+        private void MainGanttControl_AfterDragNode(object sender, DevExpress.XtraTreeList.AfterDragNodeEventArgs e)
+        {
+            MainGanttControl.ExpandAll();
         }
 
         private void MainGanttControl_EditFormPrepared(object sender, DevExpress.XtraTreeList.EditFormPreparedEventArgs e)
@@ -106,6 +113,7 @@ namespace PersonalPlanner.Dev.Test
             e.SetValue(nameof(Task.FinishDate), DateTime.Now.AddDays(2));
             e.SetValue(nameof(Task.Progress), 0);
             e.SetValue(nameof(Task.Responsibility), "");
+            e.SetValue(nameof(Task.PredecessorID), "");
         }
 
         private void SetGanttColumn()
@@ -124,6 +132,8 @@ namespace PersonalPlanner.Dev.Test
             column.UnboundDataType = typeof(int);
             column = MainGanttControl.Columns.AddVisible(nameof(Task.Responsibility));
             column.UnboundDataType = typeof(string);
+            //column = MainGanttControl.Columns.AddField(nameof(Task.PredecessorID));
+            //column.UnboundDataType = typeof(string);
         }
 
         private void SetDependencyDatas()
@@ -151,10 +161,12 @@ namespace PersonalPlanner.Dev.Test
 
         private void Import()
         {
-            MainGanttControl.ImportFromXml($@"C:\temp\ganttData.xml");
             DependencyDataSet.Clear();
+            MainGanttControl.RefreshDataSource();
+            MainGanttControl.ImportFromXml($@"C:\temp\ganttData.xml");
             DependencyDataSet.ReadXml($@"C:\temp\DepenData.xml");
-            MainGanttControl.Refresh();
+            MainGanttControl.DependencySource = DependencyDataSet.Tables[nameof(Dependency)];
+            MainGanttControl.ExpandAll();
         }
 
         private void button2_Click(object sender, EventArgs e)

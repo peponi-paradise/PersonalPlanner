@@ -18,6 +18,8 @@ namespace PersonalPlanner.Define
         public double Progress { get; set; } = 0;
 
         public string Responsibility { get; set; } = "None";
+
+        public string PredecessorID { get; set; }
     }
 
     public class Dependency
