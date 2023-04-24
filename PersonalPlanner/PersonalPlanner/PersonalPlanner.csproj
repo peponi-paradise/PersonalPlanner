@@ -10,7 +10,7 @@
     <ProductName>MemoScheduler</ProductName>
     <AssemblyTitle>MemoScheduler</AssemblyTitle>
     <AssemblyVersion>1.0.0.3</AssemblyVersion>
-    <FileVersion>1.0.0.1</FileVersion>
+    <FileVersion>1.0.0.2</FileVersion>
     <Platforms>AnyCPU;x64</Platforms>
     <ApplicationIcon>ShortDate.ico</ApplicationIcon>
   </PropertyGroup>
@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <None Remove="Calendar.ics" />
+    <None Remove="Dev.Test\GanttTestForm.resx~RF94346.TMP" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,9 +35,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Dev.Test\GanttEditLayout.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="GUI\StatusEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +76,10 @@
   <ItemGroup>
     <PackageReference Include="DevExpress.Win.Design" Version="22.2.4" />
     <PackageReference Include="YamlDotNet" Version="13.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Dev.Test\" />
   </ItemGroup>
 
 </Project>

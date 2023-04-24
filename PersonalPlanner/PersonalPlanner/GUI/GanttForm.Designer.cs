@@ -153,6 +153,7 @@
             ChartViewStart.EditWidth = 100;
             ChartViewStart.Id = 20;
             ChartViewStart.Name = "ChartViewStart";
+            ChartViewStart.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             ChartViewStart.EditValueChanged += ChartViewStart_EditValueChanged;
             // 
             // repositoryItemDateEdit1
@@ -169,6 +170,7 @@
             ChartViewFinish.EditWidth = 100;
             ChartViewFinish.Id = 21;
             ChartViewFinish.Name = "ChartViewFinish";
+            ChartViewFinish.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             ChartViewFinish.EditValueChanged += ChartViewFinish_EditValueChanged;
             // 
             // repositoryItemDateEdit2

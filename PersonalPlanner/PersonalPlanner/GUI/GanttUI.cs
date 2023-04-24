@@ -3,13 +3,12 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraGantt;
 using DevExpress.XtraGantt.Options;
 using DevExpress.XtraGantt.Scrolling;
-using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraTab;
 using DevExpress.XtraTreeList.Columns;
 using DevExpress.XtraTreeList.Nodes;
 using PersonalPlanner.Define;
 using System;
-using System.Data;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Threading;
@@ -52,6 +51,8 @@ namespace PersonalPlanner.GUI
         private readonly SynchronizationContext SyncContext;
         private bool mouseIsDown = false;
         private int _prevX;
+        private DateEdit StartDateEdit;
+        private DateEdit FinishDateEdit;
 
         /*-------------------------------------------
          *
@@ -99,15 +100,22 @@ namespace PersonalPlanner.GUI
             if (e.FinishDate < DateTime.Today)
             {
                 if (e.Progress < 1) e.Info.Appearance.BackColor = System.Drawing.Color.Crimson;
+                else e.Handled = false;
             }
+            else e.Handled = false;
         }
 
-        private void MainGanttControl_TaskProgressModified(object sender, TaskProgressModifiedEventArgs e) => SaveData();
+        private void MainGanttControl_TaskProgressModified(object sender, TaskProgressModifiedEventArgs e)
+        {
+            SaveData();
+        }
 
         private void MainGanttControl_TaskFinishDateModified(object sender, TaskFinishModifiedEventArgs e)
         {
+            //날짜는 알아서 맞추는게 나은 것 같당..
             //if (e.ProcessedNode.ParentNode != null) CheckChildDuration(e.ProcessedNode, e.ProcessedNode.ParentNode);
             //if (e.ProcessedNode.HasChildren) foreach (GanttControlNode node in e.ProcessedNode.Nodes) CheckChildDuration(node, e.ProcessedNode);
+            e.ProcessedNode[nameof(Task.Progress)] = (double)e.ProcessedNode[nameof(Task.Progress)] * 100;
             SaveData();
         }
 
@@ -132,9 +140,6 @@ namespace PersonalPlanner.GUI
                 MoveAllChild(e.ProcessedNode, timeGap);
             }
             SaveData();
-
-            MainGanttControl.Nodes.TreeList.SaveLayoutToXml($@"C:\temp\gantttestlayout.xml");
-            ds.WriteXml($@"C:\temp\gantttestdata.xml");
         }
 
         private void GanttUI_VisibleChanged(object sender, EventArgs e)
@@ -187,6 +192,40 @@ namespace PersonalPlanner.GUI
             mouseIsDown = false;
             GC.Collect();
             GC.WaitForPendingFinalizers();
+        }
+
+        private void MainGanttControl_AfterDragNode(object sender, DevExpress.XtraTreeList.AfterDragNodeEventArgs e)
+        {
+            SaveData();
+        }
+
+        private void MainGanttControl_EditFormPrepared(object sender, DevExpress.XtraTreeList.EditFormPreparedEventArgs e)
+        {
+            StartDateEdit = e.BindableControls[nameof(Task.StartDate)] as DateEdit;
+            FinishDateEdit = e.BindableControls[nameof(Task.FinishDate)] as DateEdit;
+            StartDateEdit.EditValueChanging += StartDateEdit_EditValueChanging;
+            FinishDateEdit.EditValueChanging += FinishDateEdit_EditValueChanging;
+        }
+
+        private void MainGanttControl_EditFormHidden(object sender, DevExpress.XtraTreeList.EditFormHiddenEventArgs e)
+        {
+            StartDateEdit.EditValueChanging -= StartDateEdit_EditValueChanging;
+            FinishDateEdit.EditValueChanging -= FinishDateEdit_EditValueChanging;
+        }
+
+        private void StartDateEdit_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
+        {
+            if ((DateTime)e.NewValue > FinishDateEdit.DateTime) e.Cancel = true;
+        }
+
+        private void FinishDateEdit_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
+        {
+            if ((DateTime)e.NewValue < StartDateEdit.DateTime) e.Cancel = true;
+        }
+
+        private void MainGanttControl_BeforeDropNode(object sender, DevExpress.XtraTreeList.BeforeDropNodeEventArgs e)
+        {
+            if (MainGanttControl.IsNewItemRow(e.DestinationNode)) e.Cancel = true;
         }
 
         /*-------------------------------------------
@@ -281,20 +320,22 @@ namespace PersonalPlanner.GUI
             MainGanttControl.OptionsSplitter.OverlayResizeZoneThickness = 5;
 
             MainGanttControl.OptionsBehavior.EditingMode = DevExpress.XtraTreeList.TreeListEditingMode.EditForm;
+            MainGanttControl.EditFormPrepared += MainGanttControl_EditFormPrepared;
+            MainGanttControl.EditFormHidden += MainGanttControl_EditFormHidden;
             MainGanttControl.OptionsBehavior.TaskDateChangeMode = TaskDateChangeMode.UpdateDuration;
             MainGanttControl.OptionsDragAndDrop.DragNodesMode = DevExpress.XtraTreeList.DragNodesMode.Single;
             MainGanttControl.OptionsDragAndDrop.DropNodesMode = DevExpress.XtraTreeList.DropNodesMode.Advanced;
-            MainGanttControl.OptionsDragAndDrop.CanCloneNodesOnDrop = true;
+            MainGanttControl.OptionsView.ShowIndicator = true;
 
             MainGanttControl.Load += GanttControl_Load;
+            MainGanttControl.BeforeDropNode += MainGanttControl_BeforeDropNode;
+            MainGanttControl.AfterDragNode += MainGanttControl_AfterDragNode;
         }
-
-        private DataSet ds = new DataSet();
 
         private void BindData()
         {
-            //AddGanttColumn(nameof(Task.ID));
-            //AddGanttColumn(nameof(Task.ParentID));
+            AddGanttColumn(nameof(Task.ID), false);
+            AddGanttColumn(nameof(Task.ParentID), false);
             AddGanttColumn(nameof(Task.Name));
             AddGanttColumn(nameof(Task.StartDate));
             AddGanttColumn(nameof(Task.FinishDate));
@@ -311,12 +352,11 @@ namespace PersonalPlanner.GUI
 
             MainGanttControl.DependencyMappings.PredecessorFieldName = nameof(Dependency.PredecessorID);
             MainGanttControl.DependencyMappings.SuccessorFieldName = nameof(Dependency.SuccessorID);
+            MainGanttControl.DependencyMappings.TypeFieldName = nameof(Dependency.DependencyType);
+            MainGanttControl.DependencyMappings.LagFieldName = nameof(Dependency.TimeLag);
 
-            //MainGanttControl.DataSource = GanttData.Task;
-            //MainGanttControl.DependencySource = GanttData.Dependency;
-            ds.DataSetName = GanttData.Name;
-            ds.Tables.Add(ds.DataSetName);
-            MainGanttControl.DataSource = ds.Tables[0];
+            MainGanttControl.DataSource = GanttData.Task;
+            MainGanttControl.DependencySource = GanttData.Dependency;
 
             MainGanttControl.ExpandAll();
         }
@@ -339,7 +379,7 @@ namespace PersonalPlanner.GUI
          *
          -------------------------------------------*/
 
-        private void AddGanttColumn(string name)
+        private void AddGanttColumn(string name, bool isVisible = true)
         {
             TreeListColumn column = new TreeListColumn();
 
@@ -347,13 +387,30 @@ namespace PersonalPlanner.GUI
             column.FieldName = name;
             column.Caption = name;
             column.Width = 100;
-            column.Visible = true;
+            column.Visible = isVisible;
 
             MainGanttControl.Columns.Add(column);
         }
 
         private void SaveData()
         {
+            List<Task> toSave = new List<Task>();
+            foreach (TreeListNode node in MainGanttControl.GetNodeList())
+            {
+                Task task = new Task()
+                {
+                    ID = (int)node[nameof(Task.ID)],
+                    ParentID = (int)node[nameof(Task.ParentID)],
+                    Name = node[nameof(Task.Name)].ToString(),
+                    StartDate = (DateTime)node[nameof(Task.StartDate)],
+                    FinishDate = (DateTime)node[nameof(Task.FinishDate)],
+                    Progress = (double)node[nameof(Task.Progress)],
+                    Responsibility = node[nameof(Task.Responsibility)].ToString()
+                };
+                toSave.Add(task);
+            }
+            GanttData.Task.Clear();
+            GanttData.Task.AddRange(toSave);
             GanttDataSave?.Invoke();
             MainGanttControl.RefreshDataSource();
             MainGanttControl.ExpandAll();

@@ -67,6 +67,7 @@ namespace PersonalPlanner.GUI
                     GanttUI ganttUI = new GanttUI(chart);
                     ganttUI.GanttDataSave += GanttUI_GanttDataSave;
                     MainControl.TabPages.Add(ganttUI);
+                    MainControl.SelectedTabPage = ganttUI;
                     SaveAndUpdate();
                 }
                 else
@@ -107,7 +108,7 @@ namespace PersonalPlanner.GUI
                 var input = XtraInputBox.Show("Input new Item's Name", "New Item", "New Name");
                 if (input != null)
                 {
-                    var ID = (MainControl.SelectedTabPage as GanttUI).GanttData.Task.Count;
+                    var ID = (MainControl.SelectedTabPage as GanttUI).GanttData.Task.Count + 1;
                     Task task = new Task() { ID = ID, Name = input };
                     if ((MainControl.SelectedTabPage as GanttUI).AddTask(task)) SaveAndUpdate();
                 }

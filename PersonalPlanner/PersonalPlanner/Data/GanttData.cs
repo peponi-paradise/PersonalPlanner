@@ -46,7 +46,7 @@ namespace PersonalPlanner.Data
         {
             try
             {
-                if (YAMLParser.LoadData(FilePath, out List<GanttDefine> ganttDatas))
+                if (YAMLParser.LoadData(FilePath, out List<GanttDefine> ganttDatas, null, true))
                 {
                     if (ganttDatas != null)
                     {

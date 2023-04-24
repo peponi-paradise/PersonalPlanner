@@ -7,7 +7,7 @@ namespace PersonalPlanner.Define
     {
         public int ID { get; set; }
 
-        public int ParentID { get; set; } = -1;
+        public int ParentID { get; set; } = 0;
 
         public string Name { get; set; } = "New Item";
 
@@ -18,8 +18,6 @@ namespace PersonalPlanner.Define
         public double Progress { get; set; } = 0;
 
         public string Responsibility { get; set; } = "None";
-
-        public string PredecessorID { get; set; }
     }
 
     public class Dependency
