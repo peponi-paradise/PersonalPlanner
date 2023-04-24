@@ -25,6 +25,9 @@ namespace PersonalPlanner.Define
         public int PredecessorID { get; set; }
 
         public int SuccessorID { get; set; }
+
+        public DevExpress.XtraGantt.DependencyType DependencyType { get; set; }
+        public TimeSpan TimeLag { get; set; } = TimeSpan.Zero;
     }
 
     public class GanttDefine
