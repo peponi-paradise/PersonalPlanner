@@ -234,6 +234,11 @@ namespace PersonalPlanner
 
         private void skinRibbonGalleryBarItem1_Gallery_ItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
         {
+            if(GanttForm!=null&&GanttForm.Visible)
+            {
+                XtraMessageBox.Show("Close Gantt window for changing skin");
+                GanttForm.Close();
+            }
             GlobalData.Parameters.SkinName = e.Item.Caption;
             GlobalData.Parameters.SkinPaletteName = "DefaultSkinPalette";
             UserLookAndFeel.Default.SetSkinStyle(GlobalData.Parameters.SkinName, "DefaultSkinPalette");
@@ -241,6 +246,11 @@ namespace PersonalPlanner
 
         private void skinPaletteRibbonGalleryBarItem1_Gallery_ItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
         {
+            if (GanttForm != null && GanttForm.Visible)
+            {
+                XtraMessageBox.Show("Close Gantt window for changing skin");
+                GanttForm.Close();
+            }
             GlobalData.Parameters.SkinPaletteName = e.Item.Caption;
             UserLookAndFeel.Default.SetSkinStyle(GlobalData.Parameters.SkinName, GlobalData.Parameters.SkinPaletteName);
         }

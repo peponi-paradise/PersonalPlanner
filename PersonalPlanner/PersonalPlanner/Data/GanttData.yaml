@@ -1,1 +1,84 @@
-﻿[]
+﻿- Name: Sample Chart
+  Color:
+    R: 255
+    G: 255
+    B: 255
+    A: 0
+  Task:
+  - ID: 7
+    ParentID: 0
+    Name: Sample Project
+    StartDate: 2023-04-25T01:10:01.9933638
+    FinishDate: 2023-05-02T22:54:45.0498171
+    Progress: 43.31011199951172
+    Responsibility: Everyone
+  - ID: 1
+    ParentID: 7
+    Name: Task 1
+    StartDate: 2023-04-25T01:18:47.2425337
+    FinishDate: 2023-04-26T01:18:47.2425337
+    Progress: 100
+    Responsibility: Person 1
+  - ID: 2
+    ParentID: 7
+    Name: Task 2
+    StartDate: 2023-04-26T02:24:30.0996732
+    FinishDate: 2023-04-27T23:33:04.3853874
+    Progress: 48.14885711669922
+    Responsibility: Person 1, 2
+  - ID: 3
+    ParentID: 2
+    Name: Task 3
+    StartDate: 2023-04-26T02:24:30.0996732+09:00
+    FinishDate: 2023-04-27T02:24:30.0996732+09:00
+    Progress: 31.304216384887695
+    Responsibility: Person 1
+  - ID: 4
+    ParentID: 2
+    Name: Task 4
+    StartDate: 2023-04-26T20:07:21.5282446
+    FinishDate: 2023-04-27T22:35:55.8139588
+    Progress: 63.4181022644043
+    Responsibility: Person 2
+  - ID: 5
+    ParentID: 7
+    Name: Task 5
+    StartDate: 2023-04-27T23:47:02.5913624
+    FinishDate: 2023-04-28T23:47:02.5913624
+    Progress: 0
+    Responsibility: Team 1
+  - ID: 6
+    ParentID: 7
+    Name: Task 6
+    StartDate: 2023-05-01T00:00:20.9302219
+    FinishDate: 2023-05-02T00:00:20.9302219
+    Progress: 19.753599166870117
+    Responsibility: Jerry
+  - ID: 8
+    ParentID: 7
+    Name: Task 7
+    StartDate: 2023-05-02T14:53:16.3454991
+    FinishDate: 2023-05-02T14:53:16.3454991
+    Progress: 0
+    Responsibility: Everyone
+  Dependency:
+  - PredecessorID: 5
+    SuccessorID: 6
+    DependencyType: FinishToStart
+    TimeLag: 00:00:00
+  - PredecessorID: 1
+    SuccessorID: 3
+    DependencyType: FinishToStart
+    TimeLag: 00:00:00
+  - PredecessorID: 1
+    SuccessorID: 4
+    DependencyType: FinishToStart
+    TimeLag: 00:00:00
+  - PredecessorID: 4
+    SuccessorID: 5
+    DependencyType: FinishToStart
+    TimeLag: 00:00:00
+  - PredecessorID: 6
+    SuccessorID: 8
+    DependencyType: FinishToStart
+    TimeLag: 00:00:00

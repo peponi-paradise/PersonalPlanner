@@ -212,6 +212,7 @@
             PaintStyleList.Name = "PaintStyleList";
             PaintStyleList.Properties.AutoHeight = false;
             PaintStyleList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            PaintStyleList.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             PaintStyleList.Size = new System.Drawing.Size(154, 44);
             PaintStyleList.TabIndex = 12;
             PaintStyleList.SelectedIndexChanged += PaintStyleList_SelectedIndexChanged;
@@ -224,16 +225,17 @@
             HatchStyleList.Name = "HatchStyleList";
             HatchStyleList.Properties.AutoHeight = false;
             HatchStyleList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
+            HatchStyleList.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             HatchStyleList.Size = new System.Drawing.Size(154, 81);
             HatchStyleList.TabIndex = 13;
             HatchStyleList.SelectedIndexChanged += HatchStyleList_SelectedIndexChanged;
             // 
-            // StatusEditTest
+            // StatusEditLayout
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(MainPanel);
-            Name = "StatusEditTest";
+            Name = "StatusEditLayout";
             Size = new System.Drawing.Size(400, 250);
             VisibleChanged += StatusEditTest_VisibleChanged;
             MainPanel.ResumeLayout(false);

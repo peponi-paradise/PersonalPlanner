@@ -1,4 +1,6 @@
-﻿using DevExpress.Utils;
+﻿using DevExpress.LookAndFeel;
+using DevExpress.Utils;
+using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGantt;
 using DevExpress.XtraGantt.Options;
@@ -6,6 +8,7 @@ using DevExpress.XtraGantt.Scrolling;
 using DevExpress.XtraTab;
 using DevExpress.XtraTreeList.Columns;
 using DevExpress.XtraTreeList.Nodes;
+using PersonalPlanner.Data;
 using PersonalPlanner.Define;
 using System;
 using System.Collections.Generic;
@@ -51,6 +54,7 @@ namespace PersonalPlanner.GUI
         private readonly SynchronizationContext SyncContext;
         private bool mouseIsDown = false;
         private int _prevX;
+        private XtraForm EditForm;
         private DateEdit StartDateEdit;
         private DateEdit FinishDateEdit;
 
@@ -100,9 +104,7 @@ namespace PersonalPlanner.GUI
             if (e.FinishDate < DateTime.Today)
             {
                 if (e.Progress < 1) e.Info.Appearance.BackColor = System.Drawing.Color.Crimson;
-                else e.Handled = false;
             }
-            else e.Handled = false;
         }
 
         private void MainGanttControl_TaskProgressModified(object sender, TaskProgressModifiedEventArgs e)
@@ -201,6 +203,7 @@ namespace PersonalPlanner.GUI
 
         private void MainGanttControl_EditFormPrepared(object sender, DevExpress.XtraTreeList.EditFormPreparedEventArgs e)
         {
+            EditForm = e.EditForm;
             StartDateEdit = e.BindableControls[nameof(Task.StartDate)] as DateEdit;
             FinishDateEdit = e.BindableControls[nameof(Task.FinishDate)] as DateEdit;
             StartDateEdit.EditValueChanging += StartDateEdit_EditValueChanging;
@@ -211,6 +214,7 @@ namespace PersonalPlanner.GUI
         {
             StartDateEdit.EditValueChanging -= StartDateEdit_EditValueChanging;
             FinishDateEdit.EditValueChanging -= FinishDateEdit_EditValueChanging;
+            UserLookAndFeel.Default.UpdateStyleSettings();
         }
 
         private void StartDateEdit_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
