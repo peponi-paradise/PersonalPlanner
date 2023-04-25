@@ -154,6 +154,10 @@ namespace PersonalPlanner.GUI
          *
          -------------------------------------------*/
 
+        public void SetWorkTime()
+        {
+            foreach (GanttUI ganttUI in MainControl.TabPages) ganttUI.SetWorkTime();
+        }
 
         /*-------------------------------------------
          *

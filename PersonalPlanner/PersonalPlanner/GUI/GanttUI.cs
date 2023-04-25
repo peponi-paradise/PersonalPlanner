@@ -4,6 +4,7 @@ using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGantt;
 using DevExpress.XtraGantt.Options;
+using DevExpress.XtraGantt.Scheduling;
 using DevExpress.XtraGantt.Scrolling;
 using DevExpress.XtraTab;
 using DevExpress.XtraTreeList.Columns;
@@ -262,6 +263,18 @@ namespace PersonalPlanner.GUI
             ZoomReset();
         }
 
+        public void SetWorkTime()
+        {
+            WorkTime workTime = new WorkTime(GlobalData.Parameters.OfficeStart, GlobalData.Parameters.OfficeEnd);
+            foreach (var dayName in Enum.GetNames(typeof(DayOfWeek)).ToList())
+            {
+                if (!dayName.ToLower().Contains("sat") && !dayName.ToLower().Contains("sun"))
+                {
+                    MainGanttControl.WorkWeek.Add(new WorkDayOfWeek((DayOfWeek)Enum.Parse(typeof(DayOfWeek), dayName), workTime));
+                }
+            }
+        }
+
         public bool AddTask(Task task)
         {
             var taskData = GanttData.Task.Find(item => item.ID.Equals(task.ID));
@@ -330,6 +343,8 @@ namespace PersonalPlanner.GUI
             MainGanttControl.OptionsDragAndDrop.DragNodesMode = DevExpress.XtraTreeList.DragNodesMode.Single;
             MainGanttControl.OptionsDragAndDrop.DropNodesMode = DevExpress.XtraTreeList.DropNodesMode.Advanced;
             MainGanttControl.OptionsView.ShowIndicator = true;
+
+            SetWorkTime();
 
             MainGanttControl.Load += GanttControl_Load;
             MainGanttControl.BeforeDropNode += MainGanttControl_BeforeDropNode;

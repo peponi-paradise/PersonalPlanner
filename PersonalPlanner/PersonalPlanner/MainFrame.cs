@@ -234,7 +234,7 @@ namespace PersonalPlanner
 
         private void skinRibbonGalleryBarItem1_Gallery_ItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
         {
-            if(GanttForm!=null&&GanttForm.Visible)
+            if (GanttForm != null && GanttForm.Visible)
             {
                 XtraMessageBox.Show("Close Gantt window for changing skin");
                 GanttForm.Close();
@@ -412,6 +412,8 @@ namespace PersonalPlanner
             MainScheduler.WorkWeekView.WorkTime.End = GlobalData.Parameters.OfficeEnd;
             MainScheduler.FullWeekView.WorkTime.End = GlobalData.Parameters.OfficeEnd;
             MainScheduler.TimelineView.WorkTime.End = GlobalData.Parameters.OfficeEnd;
+
+            if (GanttForm != null && GanttForm.Visible) GanttForm.SetWorkTime();
         }
 
         private void SetUILayout()

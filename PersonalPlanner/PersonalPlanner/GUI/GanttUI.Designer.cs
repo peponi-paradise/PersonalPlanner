@@ -36,7 +36,6 @@
             // 
             MainGanttControl.Dock = System.Windows.Forms.DockStyle.Fill;
             MainGanttControl.Name = "MainGanttControl";
-            MainGanttControl.OptionsMainTimeRuler.MinUnit = DevExpress.XtraGantt.GanttTimescaleUnit.Day;
             MainGanttControl.Size = new System.Drawing.Size(1024, 200);
             MainGanttControl.SplitterPosition = 400;
             MainGanttControl.TabIndex = 0;
