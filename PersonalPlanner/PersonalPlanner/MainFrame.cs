@@ -84,6 +84,7 @@ namespace PersonalPlanner
             this.FormClosing += MainFrame_FormClosing;
             MainRibbonControl.MouseWheel += MainRibbonControl_MouseWheel;
             NotificationsManager.UpdateToastContent += NotificationsManager_UpdateToastContent;
+            if (ShellHelper.IsApplicationShortcutExist(Application.ProductName)) ShortcutPageGroup.Visible = false;
 
             if (GlobalData.Parameters.MemoFormShowOnStartUp) OpenMemoForm();
             if (GlobalData.Parameters.GanttFormShowOnStartUp) OpenGanttForm();
