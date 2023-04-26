@@ -244,6 +244,8 @@ namespace PersonalPlanner.GUI
             SetTabPageColor();
         }
 
+        public void ExpandAllNodes() => MainGanttControl.ExpandAll();
+
         public void ZoomIn() => MainGanttControl.ZoomIn();
 
         public void ZoomOut() => MainGanttControl.ZoomOut();

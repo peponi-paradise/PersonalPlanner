@@ -49,7 +49,11 @@ namespace PersonalPlanner.GUI
 
         private void MainControl_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            if (MainControl.SelectedTabPage != null) TabColor.EditValue = (MainControl.SelectedTabPage as GanttUI).GanttData.Color.ToDrawingColor();
+            if (MainControl.SelectedTabPage != null)
+            {
+                TabColor.EditValue = (MainControl.SelectedTabPage as GanttUI).GanttData.Color.ToDrawingColor();
+                (MainControl.SelectedTabPage as GanttUI).ExpandAllNodes();
+            }
         }
 
         private void GanttUI_GanttDataSave() => GanttData.SaveDataAsync();
