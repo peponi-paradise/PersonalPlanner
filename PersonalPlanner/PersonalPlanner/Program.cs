@@ -1,5 +1,4 @@
-﻿using DevExpress.Data;
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
 using System;
 using System.Reflection;
 using System.Threading;

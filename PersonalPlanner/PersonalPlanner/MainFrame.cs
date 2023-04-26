@@ -3,7 +3,6 @@ using DevExpress.LookAndFeel;
 using DevExpress.Utils;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
-using DevExpress.XtraRichEdit.Import.Html;
 using DevExpress.XtraScheduler;
 using PersonalPlanner.Data;
 using PersonalPlanner.GUI;
@@ -11,11 +10,8 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
-using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace PersonalPlanner
 {

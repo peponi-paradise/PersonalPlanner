@@ -1,6 +1,5 @@
 ﻿using DevExpress.LookAndFeel;
 using DevExpress.Utils;
-using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGantt;
 using DevExpress.XtraGantt.Options;
