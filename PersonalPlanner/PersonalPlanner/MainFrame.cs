@@ -1,13 +1,21 @@
-﻿using DevExpress.LookAndFeel;
+﻿using DevExpress.Data;
+using DevExpress.LookAndFeel;
 using DevExpress.Utils;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
+using DevExpress.XtraRichEdit.Import.Html;
+using DevExpress.XtraScheduler;
 using PersonalPlanner.Data;
 using PersonalPlanner.GUI;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
+using System.Xml;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace PersonalPlanner
 {
@@ -55,6 +63,7 @@ namespace PersonalPlanner
             LoadingForm.SetVersion(Assembly.GetExecutingAssembly().GetName().Version.ToString());
 
             LoadDatas();
+            CheckShortcut();
             SetUILayout();
 
             LoadingForm.CloseDialog();
@@ -78,9 +87,34 @@ namespace PersonalPlanner
             this.Move += MainFrame_Move;
             this.FormClosing += MainFrame_FormClosing;
             MainRibbonControl.MouseWheel += MainRibbonControl_MouseWheel;
+            NotificationsManager.UpdateToastContent += NotificationsManager_UpdateToastContent;
 
             if (GlobalData.Parameters.MemoFormShowOnStartUp) OpenMemoForm();
             if (GlobalData.Parameters.GanttFormShowOnStartUp) OpenGanttForm();
+        }
+
+        private void NotificationsManager_UpdateToastContent(object sender, DevExpress.XtraBars.ToastNotifications.UpdateToastContentEventArgs e)
+        {
+            XmlDocument doc = e.ToastContent;
+            XmlNode bindingNode = doc.GetElementsByTagName("binding").Item(0);
+            if (bindingNode != null)
+            {
+                XmlElement group = doc.CreateElement("group");
+                bindingNode.AppendChild(group);
+
+                XmlElement subGroup = doc.CreateElement("subgroup");
+                group.AppendChild(subGroup);
+
+                XmlElement text = doc.CreateElement("text");
+                subGroup.AppendChild(text);
+                text.SetAttribute("hint-style", "base");
+                text.InnerText = "https://github.com/peponi-paradise";
+
+                text = doc.CreateElement("text");
+                subGroup.AppendChild(text);
+                text.SetAttribute("hint-style", "captionSubtle");
+                text.InnerText = "https://peponi-paradise.tistory.com/";
+            }
         }
 
         private void MainFrame_Resized(object sender, EventArgs e)
@@ -253,6 +287,29 @@ namespace PersonalPlanner
             }
             GlobalData.Parameters.SkinPaletteName = e.Item.Caption;
             UserLookAndFeel.Default.SetSkinStyle(GlobalData.Parameters.SkinName, GlobalData.Parameters.SkinPaletteName);
+        }
+
+        private void MainScheduler_RemindersFormShowing(object sender, DevExpress.XtraScheduler.RemindersFormEventArgs e)
+        {
+            if (ShellHelper.IsApplicationShortcutExist(Application.ProductName))
+            {
+                NotificationsManager.ApplicationName = Application.ProductName;
+                NotificationsManager.Notifications[0].AttributionText = $"©ClockStrikes, {DateTime.Now.Year}";
+                foreach (ReminderAlertNotification alert in e.AlertNotifications)
+                {
+                    NotificationsManager.Notifications[0].Header = alert.ActualAppointment.Subject ?? "Empty subject";
+                    NotificationsManager.Notifications[0].Body = alert.ActualAppointment.Description ?? "Empty Description";
+                    NotificationsManager.Notifications[0].Body2 = alert.ActualAppointment.Location ?? "Empty Location";
+                    NotificationsManager.ShowNotification(NotificationsManager.Notifications[0]);
+                }
+            }
+        }
+
+        private void AddShortcutButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var rtn = XtraMessageBox.Show("This work will create shortcut on start menu\nProceed?", "Add application shortcut", MessageBoxButtons.OKCancel);
+            GlobalData.Parameters.CheckApplicationShortcut = true;
+            if (rtn == DialogResult.OK) AddShortcut();
         }
 
         /*-------------------------------------------
@@ -441,6 +498,7 @@ namespace PersonalPlanner
             AppointmentGroupSelector.EditValue = 0;
             MainScheduler.OptionsView.ResourceCategories.ResourceDisplayStyle = DevExpress.XtraScheduler.ResourceDisplayStyle.Tabs;
             MainScheduler.OptionsView.ResourceCategories.ShowCloseButton = true;
+            MainScheduler.RemindersFormShowing += MainScheduler_RemindersFormShowing;
         }
 
         private void SaveUILayout()
@@ -457,6 +515,35 @@ namespace PersonalPlanner
             GlobalData.Parameters.DayViewWorktimeShow = MainScheduler.DayView.ShowWorkTimeOnly;
             GlobalData.Parameters.WorkweekViewWorktimeShow = MainScheduler.WorkWeekView.ShowWorkTimeOnly;
             GlobalData.Parameters.FullweekViewWorktimeShow = MainScheduler.FullWeekView.ShowWorkTimeOnly;
+        }
+
+        private void CheckShortcut()
+        {
+            if (!GlobalData.Parameters.CheckApplicationShortcut)
+            {
+                if (!ShellHelper.IsApplicationShortcutExist(Application.ProductName))
+                {
+                    var rtn = XtraMessageBox.Show("Need to create shortcut on start menu\nif you want to get windows notification.\nProceed?", "Add application shortcut", MessageBoxButtons.OKCancel);
+                    GlobalData.Parameters.CheckApplicationShortcut = true;
+                    if (rtn == DialogResult.OK) AddShortcut();
+                    else
+                    {
+                        XtraMessageBox.Show("You can create shortcut manually or via application menu", "Add application shortcut");
+                    }
+                }
+            }
+        }
+
+        private void AddShortcut()
+        {
+            ShellHelper.TryCreateShortcut(
+                            exePath: Application.ExecutablePath,
+                            applicationId: NotificationsManager.ApplicationId,
+                            name: Application.ProductName);
+            XtraMessageBox.Show("Application will restart automatically", "Work done");
+            Program.Mutex.ReleaseMutex();
+            Process.Start(Application.ExecutablePath);
+            Process.GetCurrentProcess().Kill();
         }
     }
 }

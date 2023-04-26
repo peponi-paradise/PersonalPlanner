@@ -7,8 +7,8 @@
     <Copyright>ClockStrikes https://peponi-paradise.tistory.com</Copyright>
     <Description>peponi</Description>
     <Product>PersonalPlanner</Product>
-    <ProductName>MemoScheduler</ProductName>
-    <AssemblyTitle>MemoScheduler</AssemblyTitle>
+    <ProductName>PersonalPlanner</ProductName>
+    <AssemblyTitle>PersonalPlanner</AssemblyTitle>
     <AssemblyVersion>1.0.0.3</AssemblyVersion>
     <FileVersion>1.0.0.2</FileVersion>
     <Platforms>AnyCPU;x64</Platforms>

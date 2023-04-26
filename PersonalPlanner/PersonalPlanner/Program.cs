@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.Data;
+using DevExpress.XtraEditors;
 using System;
 using System.Reflection;
 using System.Threading;
@@ -8,6 +9,8 @@ namespace PersonalPlanner
 {
     internal static class Program
     {
+        public static Mutex Mutex;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +19,7 @@ namespace PersonalPlanner
         {
             // 중복 실행 방지
             var guid = Assembly.GetExecutingAssembly().GetType().GUID;
-            var mutex = new Mutex(true, guid.ToString(), out var newApp);
+            Mutex = new Mutex(true, guid.ToString(), out var newApp);
             if (!newApp)
             {
                 XtraMessageBox.Show("Could not start application", "Application is running");

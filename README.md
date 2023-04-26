@@ -14,6 +14,13 @@
 
 <br>
 
+- Version 1.0.0.2
+	- 간트차트 드래그&드롭
+	- 간트 UI 간소화 (날짜 설정 제거 : 더 불편함. 줌 기능 이용 유도로 변경)
+	- 간트 UI 업무시간 연동
+	- 스케쥴러 Status 설정에서 Style 및 Hatch 설정에 키보드 입력 제거
+	- 스케쥴러 토스트 알림 추가
+
 - Todo:
 	- appointment setting 시 시간 설정 UI TimeSpanEdit으로 바꾸기
 	- 데이터 불러오기 시 경고 필요 : 기존 데이터 덮어씌움

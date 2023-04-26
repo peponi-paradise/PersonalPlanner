@@ -245,6 +245,18 @@ namespace PersonalPlanner.Data
                     SaveData();
                 }
             }
+
+            private bool _CheckApplicationShortcut = false;
+
+            public bool CheckApplicationShortcut
+            {
+                get => _CheckApplicationShortcut;
+                set
+                {
+                    _CheckApplicationShortcut = value;
+                    SaveData();
+                }
+            }
         }
     }
 }

@@ -30,9 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrame));
-            DevExpress.XtraScheduler.TimeRuler timeRuler4 = new DevExpress.XtraScheduler.TimeRuler();
-            DevExpress.XtraScheduler.TimeRuler timeRuler5 = new DevExpress.XtraScheduler.TimeRuler();
-            DevExpress.XtraScheduler.TimeRuler timeRuler6 = new DevExpress.XtraScheduler.TimeRuler();
+            DevExpress.XtraScheduler.TimeRuler timeRuler1 = new DevExpress.XtraScheduler.TimeRuler();
+            DevExpress.XtraScheduler.TimeRuler timeRuler2 = new DevExpress.XtraScheduler.TimeRuler();
+            DevExpress.XtraScheduler.TimeRuler timeRuler3 = new DevExpress.XtraScheduler.TimeRuler();
             MainRibbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
             skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
@@ -123,6 +123,9 @@
             splitContainerControlCalendar = new DevExpress.XtraEditors.SplitContainerControl();
             MainCalendar = new DevExpress.XtraScheduler.DateNavigator();
             MainSchedulerBarController = new DevExpress.XtraScheduler.UI.SchedulerBarController(components);
+            NotificationsManager = new DevExpress.XtraBars.ToastNotifications.ToastNotificationsManager(components);
+            ShortcutPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            AddShortcutButton = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)MainRibbonControl).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemSpinEdit1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemDuration1).BeginInit();
@@ -140,16 +143,17 @@
             ((System.ComponentModel.ISupportInitialize)MainCalendar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MainCalendar.CalendarTimeProperties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MainSchedulerBarController).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NotificationsManager).BeginInit();
             SuspendLayout();
             // 
             // MainRibbonControl
             // 
             MainRibbonControl.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 32, 35, 32);
             MainRibbonControl.ExpandCollapseItem.Id = 0;
-            MainRibbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] { MainRibbonControl.ExpandCollapseItem, MainRibbonControl.SearchEditItem, skinPaletteRibbonGalleryBarItem1, skinRibbonGalleryBarItem1, printPreviewItem1, printPageSetupItem1, newAppointmentItem1, newRecurringAppointmentItem1, navigateViewBackwardItem1, navigateViewForwardItem1, gotoTodayItem1, viewZoomInItem1, viewZoomOutItem1, switchToDayViewItem1, switchToWorkWeekViewItem1, switchToFullWeekViewItem1, switchToMonthViewItem1, switchToTimelineViewItem1, switchToAgendaViewItem1, switchToYearViewItem1, switchTimeScalesItem1, changeScaleWidthItem1, switchTimeScalesCaptionItem1, switchCompressWeekendItem1, switchShowWorkTimeOnlyItem1, switchCellsAutoHeightItem1, changeSnapToCellsuiItem1, editAppointmentQueryItem1, editOccurrenceuiCommandItem1, editSeriesuiCommandItem1, deleteAppointmentsItem1, deleteOccurrenceItem1, deleteSeriesItem1, splitAppointmentItem1, changeAppointmentStatusItem1, changeAppointmentLabelItem1, toggleRecurrenceItem1, changeAppointmentReminderItem1, MemoImportButton, MemoSaveButton, ScheduleImportButton, ScheduleSaveButton, OpenStatusEdit, OpenLabelEdit, OpenResourceEdit, OpenMemo, ViewOpenMemoWindow, AppointmentGroupSelector, WorkTimeStart, WorkTimeEnd, HomeOpenGanttWindow, ViewOpenGanttWindow, MemoFormShow, GanttFormShow });
+            MainRibbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] { MainRibbonControl.ExpandCollapseItem, MainRibbonControl.SearchEditItem, skinPaletteRibbonGalleryBarItem1, skinRibbonGalleryBarItem1, printPreviewItem1, printPageSetupItem1, newAppointmentItem1, newRecurringAppointmentItem1, navigateViewBackwardItem1, navigateViewForwardItem1, gotoTodayItem1, viewZoomInItem1, viewZoomOutItem1, switchToDayViewItem1, switchToWorkWeekViewItem1, switchToFullWeekViewItem1, switchToMonthViewItem1, switchToTimelineViewItem1, switchToAgendaViewItem1, switchToYearViewItem1, switchTimeScalesItem1, changeScaleWidthItem1, switchTimeScalesCaptionItem1, switchCompressWeekendItem1, switchShowWorkTimeOnlyItem1, switchCellsAutoHeightItem1, changeSnapToCellsuiItem1, editAppointmentQueryItem1, editOccurrenceuiCommandItem1, editSeriesuiCommandItem1, deleteAppointmentsItem1, deleteOccurrenceItem1, deleteSeriesItem1, splitAppointmentItem1, changeAppointmentStatusItem1, changeAppointmentLabelItem1, toggleRecurrenceItem1, changeAppointmentReminderItem1, MemoImportButton, MemoSaveButton, ScheduleImportButton, ScheduleSaveButton, OpenStatusEdit, OpenLabelEdit, OpenResourceEdit, OpenMemo, ViewOpenMemoWindow, AppointmentGroupSelector, WorkTimeStart, WorkTimeEnd, HomeOpenGanttWindow, ViewOpenGanttWindow, MemoFormShow, GanttFormShow, AddShortcutButton });
             MainRibbonControl.Location = new System.Drawing.Point(0, 0);
             MainRibbonControl.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            MainRibbonControl.MaxItemId = 74;
+            MainRibbonControl.MaxItemId = 75;
             MainRibbonControl.Name = "MainRibbonControl";
             MainRibbonControl.OptionsMenuMinWidth = 385;
             MainRibbonControl.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] { calendarToolsRibbonPageCategory1 });
@@ -569,15 +573,15 @@
             MainScheduler.Start = new System.DateTime(2023, 3, 29, 0, 0, 0, 0);
             MainScheduler.TabIndex = 0;
             MainScheduler.Text = "schedulerControl1";
-            MainScheduler.Views.DayView.TimeRulers.Add(timeRuler4);
+            MainScheduler.Views.DayView.TimeRulers.Add(timeRuler1);
             MainScheduler.Views.DayView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             MainScheduler.Views.FullWeekView.Enabled = true;
-            MainScheduler.Views.FullWeekView.TimeRulers.Add(timeRuler5);
+            MainScheduler.Views.FullWeekView.TimeRulers.Add(timeRuler2);
             MainScheduler.Views.FullWeekView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             MainScheduler.Views.GanttView.Enabled = false;
             MainScheduler.Views.GanttView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             MainScheduler.Views.TimelineView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
-            MainScheduler.Views.WorkWeekView.TimeRulers.Add(timeRuler6);
+            MainScheduler.Views.WorkWeekView.TimeRulers.Add(timeRuler3);
             MainScheduler.Views.WorkWeekView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             MainScheduler.Views.YearView.UseOptimizedScrolling = false;
             // 
@@ -755,7 +759,7 @@
             // 
             // ribbonPageSettings
             // 
-            ribbonPageSettings.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroupSkins, ribbonPageGroupSkinColors, SchedulerSettingGroup, AppointmentSettingGroup, RibbonGroupShowStartUp });
+            ribbonPageSettings.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroupSkins, ribbonPageGroupSkinColors, SchedulerSettingGroup, AppointmentSettingGroup, RibbonGroupShowStartUp, ShortcutPageGroup });
             ribbonPageSettings.Name = "ribbonPageSettings";
             ribbonPageSettings.Text = "Setting";
             // 
@@ -866,6 +870,25 @@
             MainSchedulerBarController.BarItems.Add(changeAppointmentReminderItem1);
             MainSchedulerBarController.Control = MainScheduler;
             // 
+            // NotificationsManager
+            // 
+            NotificationsManager.ApplicationId = "f5722466-cb24-4a51-bea0-4ff54ccb3589";
+            NotificationsManager.Notifications.AddRange(new DevExpress.XtraBars.ToastNotifications.IToastNotificationProperties[] { new DevExpress.XtraBars.ToastNotifications.ToastNotification("e19225bd-06fe-4d2b-8598-76a2fac944b4", null, null, null, null, null, null, "", "", "", null, DevExpress.XtraBars.ToastNotifications.ToastNotificationSound.Default, DevExpress.XtraBars.ToastNotifications.ToastNotificationDuration.Long, null, DevExpress.XtraBars.ToastNotifications.AppLogoCrop.Default, DevExpress.XtraBars.ToastNotifications.ToastNotificationTemplate.Generic) });
+            // 
+            // ShortcutPageGroup
+            // 
+            ShortcutPageGroup.ItemLinks.Add(AddShortcutButton);
+            ShortcutPageGroup.Name = "ShortcutPageGroup";
+            ShortcutPageGroup.Text = "Shortcut";
+            // 
+            // AddShortcutButton
+            // 
+            AddShortcutButton.Caption = "Add to Start menu";
+            AddShortcutButton.Id = 74;
+            AddShortcutButton.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem1.ImageOptions.SvgImage");
+            AddShortcutButton.Name = "AddShortcutButton";
+            AddShortcutButton.ItemClick += AddShortcutButton_ItemClick;
+            // 
             // MainFrame
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -896,6 +919,7 @@
             ((System.ComponentModel.ISupportInitialize)MainCalendar.CalendarTimeProperties).EndInit();
             ((System.ComponentModel.ISupportInitialize)MainCalendar).EndInit();
             ((System.ComponentModel.ISupportInitialize)MainSchedulerBarController).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NotificationsManager).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -992,6 +1016,9 @@
         private DevExpress.XtraBars.BarCheckItem MemoFormShow;
         private DevExpress.XtraBars.BarCheckItem GanttFormShow;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup RibbonGroupShowStartUp;
+        private DevExpress.XtraBars.ToastNotifications.ToastNotificationsManager NotificationsManager;
+        private DevExpress.XtraBars.BarButtonItem AddShortcutButton;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ShortcutPageGroup;
     }
 }
 

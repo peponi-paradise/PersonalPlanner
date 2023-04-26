@@ -1,5 +1,5 @@
-﻿SkinName: "Basic"
-SkinPaletteName: "DefaultSkinPalette"
+﻿SkinName: WXI
+SkinPaletteName: Freshness
 OfficeStart: 08:00:00
 OfficeEnd: 17:00:00
 SchedulerViewType: 0
@@ -32,3 +32,4 @@ GanttFormSize:
  IsEmpty: false
 MemoFormShowOnStartUp: false
 GanttFormShowOnStartUp: false
+CheckApplicationShortcut: false
