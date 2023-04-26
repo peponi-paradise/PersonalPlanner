@@ -21,7 +21,7 @@ namespace PersonalPlanner.Data
          *
          -------------------------------------------*/
 
-        private static string MemoDataPath = GlobalData.DefaultFIlePath + $@"Memo.yaml";
+        private static string MemoDataPath = GlobalData.DefaultFilePath + $@"Memo.yaml";
 
         /*-------------------------------------------
          *

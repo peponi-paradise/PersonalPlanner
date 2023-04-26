@@ -4,8 +4,10 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <Copyright>ClockStrikes https://peponi-paradise.tistory.com</Copyright>
-    <Description>peponi</Description>
+    <Copyright>©ClockStrikes</Copyright>
+    <Description>©ClockStrikes
+https://peponi-paradise.tistory.com
+https://github.com/peponi-paradise</Description>
     <Product>PersonalPlanner</Product>
     <ProductName>PersonalPlanner</ProductName>
     <AssemblyTitle>PersonalPlanner</AssemblyTitle>
@@ -13,6 +15,9 @@
     <FileVersion>1.0.0.2</FileVersion>
     <Platforms>AnyCPU;x64</Platforms>
     <ApplicationIcon>ShortDate.ico</ApplicationIcon>
+    <PackageProjectUrl>https://peponi-paradise.tistory.com</PackageProjectUrl>
+    <Company>https://peponi-paradise.tistory.com</Company>
+    <Authors>ClockStrikes</Authors>
   </PropertyGroup>
 
   <ItemGroup>

@@ -3,6 +3,7 @@ using PersonalPlanner.Parser.YAML;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PersonalPlanner.Data
 {
@@ -28,7 +29,7 @@ namespace PersonalPlanner.Data
          *
          -------------------------------------------*/
 
-        private static string FilePath = $@"{Environment.CurrentDirectory}\Data\{nameof(GanttData)}.yaml";
+        private static string FilePath = GlobalData.DefaultFilePath + $@"{nameof(GanttData)}.yaml";
 
         /*-------------------------------------------
          *

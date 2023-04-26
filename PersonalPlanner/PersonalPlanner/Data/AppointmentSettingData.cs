@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace PersonalPlanner.Data
 {
@@ -17,10 +18,9 @@ namespace PersonalPlanner.Data
          *
          -------------------------------------------*/
 
-        private static string DefaultFilePath = $@"{Environment.CurrentDirectory}\Data\";
-        private static string LabelFilePath = DefaultFilePath + $"{nameof(LabelDataSet)}.xml";
-        private static string StatusFilePath = DefaultFilePath + $"{nameof(StatusDataSet)}.xml";
-        private static string ResourceFilePath = DefaultFilePath + $"{nameof(ResourceDataSet)}.xml";
+        private static string LabelFilePath = GlobalData.DefaultFilePath + $"{nameof(LabelDataSet)}.xml";
+        private static string StatusFilePath = GlobalData.DefaultFilePath + $"{nameof(StatusDataSet)}.xml";
+        private static string ResourceFilePath = GlobalData.DefaultFilePath + $"{nameof(ResourceDataSet)}.xml";
 
         private static DataSet LabelDataSet;
         private static DataSet StatusDataSet;

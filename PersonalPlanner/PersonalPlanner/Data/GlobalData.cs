@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PersonalPlanner.Data
 {
@@ -14,7 +15,7 @@ namespace PersonalPlanner.Data
          -------------------------------------------*/
         public static Parameter Parameters { get; set; }
 
-        public static string DefaultFIlePath = $@"{Environment.CurrentDirectory}\Data\";
+        public static string DefaultFilePath = $@"{Application.StartupPath}\Data\";
 
         /*-------------------------------------------
          *
@@ -22,7 +23,7 @@ namespace PersonalPlanner.Data
          *
          -------------------------------------------*/
 
-        private static string GlobalDataPath = DefaultFIlePath + $@"{nameof(GlobalData)}.yaml";
+        private static string GlobalDataPath = DefaultFilePath + $@"{nameof(GlobalData)}.yaml";
 
         /*-------------------------------------------
          *

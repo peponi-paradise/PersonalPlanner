@@ -13,7 +13,7 @@ namespace PersonalPlanner.Data
          *
          -------------------------------------------*/
 
-        private static string CalendarDataPath = GlobalData.DefaultFIlePath + $@"Calendar.ics";
+        private static string CalendarDataPath = GlobalData.DefaultFilePath + $@"Calendar.ics";
 
         /*-------------------------------------------
          *

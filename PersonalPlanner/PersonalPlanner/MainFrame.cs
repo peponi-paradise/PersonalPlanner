@@ -534,7 +534,6 @@ namespace PersonalPlanner
         private void AddShortcut()
         {
             ShellHelper.TryCreateShortcut(
-                            exePath: Application.ExecutablePath,
                             applicationId: NotificationsManager.ApplicationId,
                             name: Application.ProductName);
             XtraMessageBox.Show("Application will restart automatically", "Work done");
