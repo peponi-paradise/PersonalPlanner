@@ -91,6 +91,7 @@
             ViewOpenGanttWindow = new DevExpress.XtraBars.BarButtonItem();
             MemoFormShow = new DevExpress.XtraBars.BarCheckItem();
             GanttFormShow = new DevExpress.XtraBars.BarCheckItem();
+            AddShortcutButton = new DevExpress.XtraBars.BarButtonItem();
             calendarToolsRibbonPageCategory1 = new DevExpress.XtraScheduler.UI.CalendarToolsRibbonPageCategory();
             MainScheduler = new DevExpress.XtraScheduler.SchedulerControl();
             MainSchedulerDataStorage = new DevExpress.XtraScheduler.SchedulerDataStorage(components);
@@ -120,12 +121,14 @@
             SchedulerSettingGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             AppointmentSettingGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             RibbonGroupShowStartUp = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ShortcutPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             splitContainerControlCalendar = new DevExpress.XtraEditors.SplitContainerControl();
             MainCalendar = new DevExpress.XtraScheduler.DateNavigator();
             MainSchedulerBarController = new DevExpress.XtraScheduler.UI.SchedulerBarController(components);
             NotificationsManager = new DevExpress.XtraBars.ToastNotifications.ToastNotificationsManager(components);
-            ShortcutPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            AddShortcutButton = new DevExpress.XtraBars.BarButtonItem();
+            HelpRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            HelpRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ShowHelp = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)MainRibbonControl).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemSpinEdit1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemDuration1).BeginInit();
@@ -150,14 +153,14 @@
             // 
             MainRibbonControl.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 32, 35, 32);
             MainRibbonControl.ExpandCollapseItem.Id = 0;
-            MainRibbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] { MainRibbonControl.ExpandCollapseItem, MainRibbonControl.SearchEditItem, skinPaletteRibbonGalleryBarItem1, skinRibbonGalleryBarItem1, printPreviewItem1, printPageSetupItem1, newAppointmentItem1, newRecurringAppointmentItem1, navigateViewBackwardItem1, navigateViewForwardItem1, gotoTodayItem1, viewZoomInItem1, viewZoomOutItem1, switchToDayViewItem1, switchToWorkWeekViewItem1, switchToFullWeekViewItem1, switchToMonthViewItem1, switchToTimelineViewItem1, switchToAgendaViewItem1, switchToYearViewItem1, switchTimeScalesItem1, changeScaleWidthItem1, switchTimeScalesCaptionItem1, switchCompressWeekendItem1, switchShowWorkTimeOnlyItem1, switchCellsAutoHeightItem1, changeSnapToCellsuiItem1, editAppointmentQueryItem1, editOccurrenceuiCommandItem1, editSeriesuiCommandItem1, deleteAppointmentsItem1, deleteOccurrenceItem1, deleteSeriesItem1, splitAppointmentItem1, changeAppointmentStatusItem1, changeAppointmentLabelItem1, toggleRecurrenceItem1, changeAppointmentReminderItem1, MemoImportButton, MemoSaveButton, ScheduleImportButton, ScheduleSaveButton, OpenStatusEdit, OpenLabelEdit, OpenResourceEdit, OpenMemo, ViewOpenMemoWindow, AppointmentGroupSelector, WorkTimeStart, WorkTimeEnd, HomeOpenGanttWindow, ViewOpenGanttWindow, MemoFormShow, GanttFormShow, AddShortcutButton });
+            MainRibbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] { MainRibbonControl.ExpandCollapseItem, MainRibbonControl.SearchEditItem, skinPaletteRibbonGalleryBarItem1, skinRibbonGalleryBarItem1, printPreviewItem1, printPageSetupItem1, newAppointmentItem1, newRecurringAppointmentItem1, navigateViewBackwardItem1, navigateViewForwardItem1, gotoTodayItem1, viewZoomInItem1, viewZoomOutItem1, switchToDayViewItem1, switchToWorkWeekViewItem1, switchToFullWeekViewItem1, switchToMonthViewItem1, switchToTimelineViewItem1, switchToAgendaViewItem1, switchToYearViewItem1, switchTimeScalesItem1, changeScaleWidthItem1, switchTimeScalesCaptionItem1, switchCompressWeekendItem1, switchShowWorkTimeOnlyItem1, switchCellsAutoHeightItem1, changeSnapToCellsuiItem1, editAppointmentQueryItem1, editOccurrenceuiCommandItem1, editSeriesuiCommandItem1, deleteAppointmentsItem1, deleteOccurrenceItem1, deleteSeriesItem1, splitAppointmentItem1, changeAppointmentStatusItem1, changeAppointmentLabelItem1, toggleRecurrenceItem1, changeAppointmentReminderItem1, MemoImportButton, MemoSaveButton, ScheduleImportButton, ScheduleSaveButton, OpenStatusEdit, OpenLabelEdit, OpenResourceEdit, OpenMemo, ViewOpenMemoWindow, AppointmentGroupSelector, WorkTimeStart, WorkTimeEnd, HomeOpenGanttWindow, ViewOpenGanttWindow, MemoFormShow, GanttFormShow, AddShortcutButton, ShowHelp });
             MainRibbonControl.Location = new System.Drawing.Point(0, 0);
             MainRibbonControl.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            MainRibbonControl.MaxItemId = 75;
+            MainRibbonControl.MaxItemId = 76;
             MainRibbonControl.Name = "MainRibbonControl";
             MainRibbonControl.OptionsMenuMinWidth = 385;
             MainRibbonControl.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] { calendarToolsRibbonPageCategory1 });
-            MainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { homeRibbonPage1, viewRibbonPage1, fileRibbonPage1, ribbonPageSettings });
+            MainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { homeRibbonPage1, viewRibbonPage1, fileRibbonPage1, ribbonPageSettings, HelpRibbonPage });
             MainRibbonControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemSpinEdit1, repositoryItemDuration1, repositoryItemRadioGroup1, repositoryItemTimeSpanEdit1, repositoryItemTimeSpanEdit2 });
             MainRibbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             MainRibbonControl.ShowQatLocationSelector = false;
@@ -552,6 +555,14 @@
             GanttFormShow.Name = "GanttFormShow";
             GanttFormShow.CheckedChanged += GanttFormShow_CheckedChanged;
             // 
+            // AddShortcutButton
+            // 
+            AddShortcutButton.Caption = "Add to Start menu";
+            AddShortcutButton.Id = 74;
+            AddShortcutButton.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("AddShortcutButton.ImageOptions.SvgImage");
+            AddShortcutButton.Name = "AddShortcutButton";
+            AddShortcutButton.ItemClick += AddShortcutButton_ItemClick;
+            // 
             // calendarToolsRibbonPageCategory1
             // 
             calendarToolsRibbonPageCategory1.Control = MainScheduler;
@@ -797,6 +808,12 @@
             RibbonGroupShowStartUp.Name = "RibbonGroupShowStartUp";
             RibbonGroupShowStartUp.Text = "Show StartUp";
             // 
+            // ShortcutPageGroup
+            // 
+            ShortcutPageGroup.ItemLinks.Add(AddShortcutButton);
+            ShortcutPageGroup.Name = "ShortcutPageGroup";
+            ShortcutPageGroup.Text = "Shortcut";
+            // 
             // splitContainerControlCalendar
             // 
             splitContainerControlCalendar.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -875,19 +892,25 @@
             NotificationsManager.ApplicationId = "f5722466-cb24-4a51-bea0-4ff54ccb3589";
             NotificationsManager.Notifications.AddRange(new DevExpress.XtraBars.ToastNotifications.IToastNotificationProperties[] { new DevExpress.XtraBars.ToastNotifications.ToastNotification("e19225bd-06fe-4d2b-8598-76a2fac944b4", null, null, null, null, null, null, "", "", "", null, DevExpress.XtraBars.ToastNotifications.ToastNotificationSound.Default, DevExpress.XtraBars.ToastNotifications.ToastNotificationDuration.Long, null, DevExpress.XtraBars.ToastNotifications.AppLogoCrop.Default, DevExpress.XtraBars.ToastNotifications.ToastNotificationTemplate.Generic) });
             // 
-            // ShortcutPageGroup
+            // HelpRibbonPage
             // 
-            ShortcutPageGroup.ItemLinks.Add(AddShortcutButton);
-            ShortcutPageGroup.Name = "ShortcutPageGroup";
-            ShortcutPageGroup.Text = "Shortcut";
+            HelpRibbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { HelpRibbonPageGroup });
+            HelpRibbonPage.Name = "HelpRibbonPage";
+            HelpRibbonPage.Text = "Help";
             // 
-            // AddShortcutButton
+            // HelpRibbonPageGroup
             // 
-            AddShortcutButton.Caption = "Add to Start menu";
-            AddShortcutButton.Id = 74;
-            AddShortcutButton.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem1.ImageOptions.SvgImage");
-            AddShortcutButton.Name = "AddShortcutButton";
-            AddShortcutButton.ItemClick += AddShortcutButton_ItemClick;
+            HelpRibbonPageGroup.ItemLinks.Add(ShowHelp);
+            HelpRibbonPageGroup.Name = "HelpRibbonPageGroup";
+            HelpRibbonPageGroup.Text = "Help";
+            // 
+            // ShowHelp
+            // 
+            ShowHelp.Caption = "Show Help";
+            ShowHelp.Id = 75;
+            ShowHelp.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem1.ImageOptions.SvgImage");
+            ShowHelp.Name = "ShowHelp";
+            ShowHelp.ItemClick += ShowHelp_ItemClick;
             // 
             // MainFrame
             // 
@@ -1019,6 +1042,9 @@
         private DevExpress.XtraBars.ToastNotifications.ToastNotificationsManager NotificationsManager;
         private DevExpress.XtraBars.BarButtonItem AddShortcutButton;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ShortcutPageGroup;
+        private DevExpress.XtraBars.BarButtonItem ShowHelp;
+        private DevExpress.XtraBars.Ribbon.RibbonPage HelpRibbonPage;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup HelpRibbonPageGroup;
     }
 }
 

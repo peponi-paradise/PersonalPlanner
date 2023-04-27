@@ -54,6 +54,87 @@ https://github.com/peponi-paradise</Description>
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Assets\appointment1.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\appointment2.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\appointment3.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\appointment4.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\ganttchartview.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\ganttdependency.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\ganttitem.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\ganttmilestone.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\gantttreeview.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\gantttreeview2.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\ganttupperitem.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\GanttWindow.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\MemoWindow.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\MenuHome.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\MenuView.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\Scheduler1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\Scheduler2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\Scheduler3.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\Scheduler4.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\Scheduler5.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\settingappointments.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\settings.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\settingshortcut.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\settingskin.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\settingstartup.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\settingworktime.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\UISample.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Data\GanttData.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -76,6 +157,9 @@ https://github.com/peponi-paradise</Description>
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Update="README.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="README.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -85,6 +169,9 @@ https://github.com/peponi-paradise</Description>
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CefSharp.Common.NETCore" Version="112.3.0" />
+    <PackageReference Include="CefSharp.OffScreen.NETCore" Version="112.3.0" />
+    <PackageReference Include="CefSharp.WinForms.NETCore" Version="112.3.0" />
     <PackageReference Include="DevExpress.Win.Design" Version="22.2.4" />
     <PackageReference Include="YamlDotNet" Version="13.0.2" />
   </ItemGroup>

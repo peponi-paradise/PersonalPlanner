@@ -48,6 +48,9 @@
             RibbonPageGroupCurrentTab = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             RibbonGroupView = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             MainControl = new DevExpress.XtraTab.XtraTabControl();
+            HelpRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            HelpRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ShowHelp = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)MainRibbonControl).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemColorPickEdit1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemDateEdit1).BeginInit();
@@ -61,13 +64,13 @@
             // 
             MainRibbonControl.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 32, 35, 32);
             MainRibbonControl.ExpandCollapseItem.Id = 0;
-            MainRibbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] { MainRibbonControl.ExpandCollapseItem, MainRibbonControl.SearchEditItem, NewGantt, TabColor, NewTask, RemoveTask, RemoveGantt, ZoomIn, ZoomOut, ZoomReset, ChartViewStart, ChartViewFinish });
+            MainRibbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] { MainRibbonControl.ExpandCollapseItem, MainRibbonControl.SearchEditItem, NewGantt, TabColor, NewTask, RemoveTask, RemoveGantt, ZoomIn, ZoomOut, ZoomReset, ChartViewStart, ChartViewFinish, ShowHelp });
             MainRibbonControl.Location = new System.Drawing.Point(0, 0);
             MainRibbonControl.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            MainRibbonControl.MaxItemId = 22;
+            MainRibbonControl.MaxItemId = 23;
             MainRibbonControl.Name = "MainRibbonControl";
             MainRibbonControl.OptionsMenuMinWidth = 385;
-            MainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { MainRibbonPage });
+            MainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { MainRibbonPage, HelpRibbonPage });
             MainRibbonControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemColorPickEdit1, repositoryItemDateEdit1, repositoryItemDateEdit2 });
             MainRibbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             MainRibbonControl.ShowQatLocationSelector = false;
@@ -222,6 +225,26 @@
             MainControl.Size = new System.Drawing.Size(1022, 607);
             MainControl.TabIndex = 1;
             // 
+            // HelpRibbonPage
+            // 
+            HelpRibbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { HelpRibbonPageGroup });
+            HelpRibbonPage.Name = "HelpRibbonPage";
+            HelpRibbonPage.Text = "Help";
+            // 
+            // HelpRibbonPageGroup
+            // 
+            HelpRibbonPageGroup.ItemLinks.Add(ShowHelp);
+            HelpRibbonPageGroup.Name = "HelpRibbonPageGroup";
+            HelpRibbonPageGroup.Text = "Help";
+            // 
+            // ShowHelp
+            // 
+            ShowHelp.Caption = "Show Help";
+            ShowHelp.Id = 22;
+            ShowHelp.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem1.ImageOptions.SvgImage");
+            ShowHelp.Name = "ShowHelp";
+            ShowHelp.ItemClick += ShowHelp_ItemClick;
+            // 
             // GanttForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -266,6 +289,9 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
         private DevExpress.XtraBars.BarEditItem ChartViewFinish;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit2;
+        private DevExpress.XtraBars.BarButtonItem ShowHelp;
+        private DevExpress.XtraBars.Ribbon.RibbonPage HelpRibbonPage;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup HelpRibbonPageGroup;
     }
 }
 

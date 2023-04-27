@@ -40,6 +40,9 @@
             RibbonPageGroupMemoItems = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             repositoryItemFontEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemFontEdit();
             MainControl = new DevExpress.XtraTab.XtraTabControl();
+            HelpRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            HelpRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ShowHelp = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)MainRibbonControl).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemColorPickEdit1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemFontEdit1).BeginInit();
@@ -50,11 +53,11 @@
             // 
             MainRibbonControl.AllowMdiChildButtons = false;
             MainRibbonControl.ExpandCollapseItem.Id = 0;
-            MainRibbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] { MainRibbonControl.ExpandCollapseItem, MainRibbonControl.SearchEditItem, NewMemo, RemoveMemo, TabColor, MemoFont });
+            MainRibbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] { MainRibbonControl.ExpandCollapseItem, MainRibbonControl.SearchEditItem, NewMemo, RemoveMemo, TabColor, MemoFont, ShowHelp });
             MainRibbonControl.Location = new System.Drawing.Point(0, 0);
-            MainRibbonControl.MaxItemId = 6;
+            MainRibbonControl.MaxItemId = 7;
             MainRibbonControl.Name = "MainRibbonControl";
-            MainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { OptionsRibbonPage });
+            MainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { OptionsRibbonPage, HelpRibbonPage });
             MainRibbonControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemColorPickEdit1, repositoryItemFontEdit1 });
             MainRibbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             MainRibbonControl.ShowQatLocationSelector = false;
@@ -138,6 +141,26 @@
             MainControl.Size = new System.Drawing.Size(478, 479);
             MainControl.TabIndex = 2;
             // 
+            // HelpRibbonPage
+            // 
+            HelpRibbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { HelpRibbonPageGroup });
+            HelpRibbonPage.Name = "HelpRibbonPage";
+            HelpRibbonPage.Text = "Help";
+            // 
+            // HelpRibbonPageGroup
+            // 
+            HelpRibbonPageGroup.ItemLinks.Add(ShowHelp);
+            HelpRibbonPageGroup.Name = "HelpRibbonPageGroup";
+            HelpRibbonPageGroup.Text = "Help";
+            // 
+            // ShowHelp
+            // 
+            ShowHelp.Caption = "Show Help";
+            ShowHelp.Id = 6;
+            ShowHelp.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem1.ImageOptions.SvgImage");
+            ShowHelp.Name = "ShowHelp";
+            ShowHelp.ItemClick += ShowHelp_ItemClick;
+            // 
             // MemoForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -170,5 +193,8 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit repositoryItemColorPickEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemFontEdit repositoryItemFontEdit1;
         private DevExpress.XtraBars.BarButtonItem MemoFont;
+        private DevExpress.XtraBars.BarButtonItem ShowHelp;
+        private DevExpress.XtraBars.Ribbon.RibbonPage HelpRibbonPage;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup HelpRibbonPageGroup;
     }
 }

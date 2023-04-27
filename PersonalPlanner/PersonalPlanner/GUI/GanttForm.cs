@@ -152,6 +152,12 @@ namespace PersonalPlanner.GUI
             if (MainControl.SelectedTabPage != null && ChartViewFinish.EditValue != null) (MainControl.SelectedTabPage as GanttUI).SetViewFinishDate((DateTime)ChartViewFinish.EditValue);
         }
 
+        private void ShowHelp_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            HelpForm form = new HelpForm($@"{Application.StartupPath}\README.html");
+            form.Show();
+        }
+
         /*-------------------------------------------
          *
          *      Public functions

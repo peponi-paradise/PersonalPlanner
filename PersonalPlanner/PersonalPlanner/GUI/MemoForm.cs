@@ -120,6 +120,12 @@ namespace PersonalPlanner.GUI
             }
         }
 
+        private void ShowHelp_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            HelpForm form = new HelpForm($@"{Application.StartupPath}\README.html");
+            form.Show();
+        }
+
         /*-------------------------------------------
          *
          *      Private functions

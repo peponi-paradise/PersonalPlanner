@@ -309,6 +309,12 @@ namespace PersonalPlanner
             if (rtn == DialogResult.OK) AddShortcut();
         }
 
+        private void ShowHelp_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            HelpForm form = new HelpForm($@"{Application.StartupPath}\README.html");
+            form.Show();
+        }
+
         /*-------------------------------------------
          *
          *      Private functions
