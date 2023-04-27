@@ -3,6 +3,7 @@ using DevExpress.XtraEditors;
 using PersonalPlanner.Data;
 using PersonalPlanner.Define;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -122,8 +123,10 @@ namespace PersonalPlanner.GUI
 
         private void ShowHelp_ItemClick(object sender, ItemClickEventArgs e)
         {
-            HelpForm form = new HelpForm($@"{Application.StartupPath}\README.html");
-            form.Show();
+            string url = $@"{Application.StartupPath}\README.html";
+            ProcessStartInfo info = new ProcessStartInfo(url);
+            info.UseShellExecute = true;
+            System.Diagnostics.Process.Start(info);
         }
 
         /*-------------------------------------------

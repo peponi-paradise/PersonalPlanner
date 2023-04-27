@@ -311,8 +311,10 @@ namespace PersonalPlanner
 
         private void ShowHelp_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            HelpForm form = new HelpForm($@"{Application.StartupPath}\README.html");
-            form.Show();
+            string url = $@"{Application.StartupPath}\README.html";
+            ProcessStartInfo info = new ProcessStartInfo(url);
+            info.UseShellExecute = true;
+            System.Diagnostics.Process.Start(info);
         }
 
         /*-------------------------------------------

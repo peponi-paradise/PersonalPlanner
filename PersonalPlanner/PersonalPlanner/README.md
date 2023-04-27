@@ -22,7 +22,6 @@ Github : https://github.com/peponi-paradise
     |Gantt chart|Gantt chart|
 
 - SW 제작에 사용된 언어는 C#, 버전은 10입니다.
-- GUI는 Winform, [DevExpress](https://www.devexpress.com/)를 이용하여 제작되었습니다.
 - GUI는 스케줄러를 메인 화면으로 하며 메모, 간트 차트 기능을 개별 화면으로 제공하고 있습니다.
     ![UISample](./Assets/UISample.png)
 - SW 버전 이력은 `VersionHistory.md` 파일을 통해 확인 가능합니다.
