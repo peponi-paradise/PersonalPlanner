@@ -12,7 +12,7 @@ https://github.com/peponi-paradise</Description>
     <ProductName>PersonalPlanner</ProductName>
     <AssemblyTitle>PersonalPlanner</AssemblyTitle>
     <AssemblyVersion>1.0.0.3</AssemblyVersion>
-    <FileVersion>1.0.0.2</FileVersion>
+    <FileVersion>1.0.0.3</FileVersion>
     <Platforms>AnyCPU;x64</Platforms>
     <ApplicationIcon>ShortDate.ico</ApplicationIcon>
     <PackageProjectUrl>https://peponi-paradise.tistory.com</PackageProjectUrl>
