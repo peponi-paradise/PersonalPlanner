@@ -14,4 +14,4 @@
 
 <br>
 
-- Latest version : 1.0.0.2
+- Latest version : 1.0.0.3
