@@ -1,5 +1,4 @@
-﻿using DevExpress.LookAndFeel;
-using DevExpress.Utils;
+﻿using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGantt;
 using DevExpress.XtraGantt.Options;
@@ -54,9 +53,9 @@ namespace PersonalPlanner.GUI
         private readonly SynchronizationContext SyncContext;
         private bool mouseIsDown = false;
         private int _prevX;
-        private XtraForm EditForm;
         private DateEdit StartDateEdit;
         private DateEdit FinishDateEdit;
+        private DevExpress.XtraGantt.GanttControl MainGanttControl;
 
         /*-------------------------------------------
          *
@@ -64,27 +63,26 @@ namespace PersonalPlanner.GUI
          *
          -------------------------------------------*/
 
-        public GanttUI()
-        {
-            InitializeComponent();
-            // Do not use this
-        }
-
         public GanttUI(GanttDefine ganttData)
         {
             InitializeComponent();
             SyncContext = SynchronizationContext.Current;
+            MainGanttControl = new DevExpress.XtraGantt.GanttControl();
+            MainGanttControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            MainGanttControl.Size = new System.Drawing.Size(1024, 200);
+            MainGanttControl.SplitterPosition = 400;
+            MainGanttControl.TabIndex = 0;
             MainGanttControl.Dock = DockStyle.Fill;
             this.Controls.Add(MainGanttControl);
             GanttData = ganttData;
 
             this.Text = ganttData.Name;
+            this.Name = ganttData.Name;
             SetTabPageColor();
 
             SetGanttControlSettings();
             BindData();
 
-            this.VisibleChanged += GanttUI_VisibleChanged;
             MainGanttControl.MouseDown += MainGanttControl_MouseDown;
             MainGanttControl.MouseMove += MainGanttControl_MouseMove;
             MainGanttControl.MouseUp += MainGanttControl_MouseUp;
@@ -97,7 +95,11 @@ namespace PersonalPlanner.GUI
          *
          -------------------------------------------*/
 
-        private void GanttControl_Load(object sender, EventArgs e) => MainGanttControl.ScrollChartToDate(DateTime.Today);
+        private void GanttControl_Load(object sender, EventArgs e)
+        {
+            MainGanttControl.ScrollChartToDate(DateTime.Today);
+            MainGanttControl.ExpandAll();
+        }
 
         private void MainGanttControl_CustomDrawTask(object sender, CustomDrawTaskEventArgs e)
         {
@@ -142,11 +144,6 @@ namespace PersonalPlanner.GUI
                 MoveAllChild(e.ProcessedNode, timeGap);
             }
             SaveData();
-        }
-
-        private void GanttUI_VisibleChanged(object sender, EventArgs e)
-        {
-            if (this.PageVisible) MainGanttControl.ExpandAll();
         }
 
         private void MainGanttControl_MouseMove(object sender, MouseEventArgs e)
@@ -203,7 +200,6 @@ namespace PersonalPlanner.GUI
 
         private void MainGanttControl_EditFormPrepared(object sender, DevExpress.XtraTreeList.EditFormPreparedEventArgs e)
         {
-            EditForm = e.EditForm;
             StartDateEdit = e.BindableControls[nameof(Task.StartDate)] as DateEdit;
             FinishDateEdit = e.BindableControls[nameof(Task.FinishDate)] as DateEdit;
             StartDateEdit.EditValueChanging += StartDateEdit_EditValueChanging;
@@ -214,7 +210,6 @@ namespace PersonalPlanner.GUI
         {
             StartDateEdit.EditValueChanging -= StartDateEdit_EditValueChanging;
             FinishDateEdit.EditValueChanging -= FinishDateEdit_EditValueChanging;
-            UserLookAndFeel.Default.UpdateStyleSettings();
         }
 
         private void StartDateEdit_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
@@ -237,6 +232,11 @@ namespace PersonalPlanner.GUI
          *      Public functions
          *
          -------------------------------------------*/
+
+        public new void Dispose()
+        {
+            MainGanttControl.Dispose();
+        }
 
         public void ChangeTabPageColor(System.Drawing.Color color)
         {
@@ -377,8 +377,6 @@ namespace PersonalPlanner.GUI
 
             MainGanttControl.DataSource = GanttData.Task;
             MainGanttControl.DependencySource = GanttData.Dependency;
-
-            MainGanttControl.ExpandAll();
         }
 
         private void DrawTodayLine(CustomDrawTimescaleColumnEventArgs e)
@@ -398,6 +396,16 @@ namespace PersonalPlanner.GUI
          *      Helper functions
          *
          -------------------------------------------*/
+
+        private void InitializeComponent()
+        {
+            SuspendLayout();
+            //
+            // GanttUI
+            //
+            Margin = new System.Windows.Forms.Padding(0);
+            ResumeLayout(false);
+        }
 
         private void AddGanttColumn(string name, bool isVisible = true)
         {

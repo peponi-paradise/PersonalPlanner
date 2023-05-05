@@ -88,9 +88,11 @@ namespace PersonalPlanner.GUI
             {
                 if (XtraMessageBox.Show($"Do you want to remove chart? : {MainControl.SelectedTabPage.Text}", "Remove chart", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
-                    var removeItem = (MainControl.SelectedTabPage as GanttUI).GanttData;
+                    var page = MainControl.SelectedTabPage as GanttUI;
+                    var removeItem = page.GanttData;
                     GanttData.GanttDatas.Remove(removeItem);
-                    MainControl.TabPages.Remove(MainControl.SelectedTabPage);
+                    page.Dispose();
+                    MainControl.TabPages.Remove(page);
                     SaveAndUpdate();
                 }
             }
@@ -113,9 +115,12 @@ namespace PersonalPlanner.GUI
                 var input = XtraInputBox.Show("Input new Item's Name", "New Item", "New Name");
                 if (input != null)
                 {
-                    var ID = (MainControl.SelectedTabPage as GanttUI).GanttData.Task.Count + 1;
+                    var ganttPage = MainControl.SelectedTabPage as GanttUI;
+                    int maxIndex = 0;
+                    foreach (var item in ganttPage.GanttData.Task) maxIndex = item.ID > maxIndex ? item.ID : maxIndex;
+                    var ID = maxIndex + 1;
                     Task task = new Task() { ID = ID, Name = input };
-                    if ((MainControl.SelectedTabPage as GanttUI).AddTask(task)) SaveAndUpdate();
+                    if (ganttPage.AddTask(task)) SaveAndUpdate();
                 }
             }
         }

@@ -140,6 +140,7 @@ Github : https://github.com/peponi-paradise
 ![gantttreeview](./Assets/gantttreeview.PNG)
 
 - `드래그 & 드롭` 기능을 지원하여, 각 항목을 다른 항목의 하위에 위치시키거나 순서 변경이 가능합니다.
+    ![gantttreeviewdragdrop](./Assets/GanttItemTreeViewDragDrop.gif)
 - 각 항목을 `더블 클릭`하면 세부 설정 창이 나타나며 항목 수정이 가능합니다.
 - 상위 항목의 `Progress`는 하위 항목의 `Progress` 값에 따라 결정됩니다.
 - 각 열에 대해 `정렬`, `필터` 기능을 지원합니다.

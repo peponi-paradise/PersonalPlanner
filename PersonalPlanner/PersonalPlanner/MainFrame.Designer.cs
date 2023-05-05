@@ -92,6 +92,7 @@
             MemoFormShow = new DevExpress.XtraBars.BarCheckItem();
             GanttFormShow = new DevExpress.XtraBars.BarCheckItem();
             AddShortcutButton = new DevExpress.XtraBars.BarButtonItem();
+            ShowHelp = new DevExpress.XtraBars.BarButtonItem();
             calendarToolsRibbonPageCategory1 = new DevExpress.XtraScheduler.UI.CalendarToolsRibbonPageCategory();
             MainScheduler = new DevExpress.XtraScheduler.SchedulerControl();
             MainSchedulerDataStorage = new DevExpress.XtraScheduler.SchedulerDataStorage(components);
@@ -122,13 +123,12 @@
             AppointmentSettingGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             RibbonGroupShowStartUp = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ShortcutPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            HelpRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            HelpRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             splitContainerControlCalendar = new DevExpress.XtraEditors.SplitContainerControl();
             MainCalendar = new DevExpress.XtraScheduler.DateNavigator();
             MainSchedulerBarController = new DevExpress.XtraScheduler.UI.SchedulerBarController(components);
             NotificationsManager = new DevExpress.XtraBars.ToastNotifications.ToastNotificationsManager(components);
-            HelpRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            HelpRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            ShowHelp = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)MainRibbonControl).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemSpinEdit1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemDuration1).BeginInit();
@@ -504,6 +504,7 @@
             // WorkTimeEnd
             // 
             WorkTimeEnd.Caption = "Work Time End";
+            WorkTimeEnd.CaptionToEditorIndent = 8;
             WorkTimeEnd.Edit = repositoryItemTimeSpanEdit2;
             WorkTimeEnd.EditWidth = 80;
             WorkTimeEnd.Id = 69;
@@ -562,6 +563,14 @@
             AddShortcutButton.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("AddShortcutButton.ImageOptions.SvgImage");
             AddShortcutButton.Name = "AddShortcutButton";
             AddShortcutButton.ItemClick += AddShortcutButton_ItemClick;
+            // 
+            // ShowHelp
+            // 
+            ShowHelp.Caption = "Show Help";
+            ShowHelp.Id = 75;
+            ShowHelp.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ShowHelp.ImageOptions.SvgImage");
+            ShowHelp.Name = "ShowHelp";
+            ShowHelp.ItemClick += ShowHelp_ItemClick;
             // 
             // calendarToolsRibbonPageCategory1
             // 
@@ -814,6 +823,18 @@
             ShortcutPageGroup.Name = "ShortcutPageGroup";
             ShortcutPageGroup.Text = "Shortcut";
             // 
+            // HelpRibbonPage
+            // 
+            HelpRibbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { HelpRibbonPageGroup });
+            HelpRibbonPage.Name = "HelpRibbonPage";
+            HelpRibbonPage.Text = "Help";
+            // 
+            // HelpRibbonPageGroup
+            // 
+            HelpRibbonPageGroup.ItemLinks.Add(ShowHelp);
+            HelpRibbonPageGroup.Name = "HelpRibbonPageGroup";
+            HelpRibbonPageGroup.Text = "Help";
+            // 
             // splitContainerControlCalendar
             // 
             splitContainerControlCalendar.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -891,26 +912,6 @@
             // 
             NotificationsManager.ApplicationId = "f5722466-cb24-4a51-bea0-4ff54ccb3589";
             NotificationsManager.Notifications.AddRange(new DevExpress.XtraBars.ToastNotifications.IToastNotificationProperties[] { new DevExpress.XtraBars.ToastNotifications.ToastNotification("e19225bd-06fe-4d2b-8598-76a2fac944b4", null, null, null, null, null, null, "", "", "", null, DevExpress.XtraBars.ToastNotifications.ToastNotificationSound.Default, DevExpress.XtraBars.ToastNotifications.ToastNotificationDuration.Long, null, DevExpress.XtraBars.ToastNotifications.AppLogoCrop.Default, DevExpress.XtraBars.ToastNotifications.ToastNotificationTemplate.Generic) });
-            // 
-            // HelpRibbonPage
-            // 
-            HelpRibbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { HelpRibbonPageGroup });
-            HelpRibbonPage.Name = "HelpRibbonPage";
-            HelpRibbonPage.Text = "Help";
-            // 
-            // HelpRibbonPageGroup
-            // 
-            HelpRibbonPageGroup.ItemLinks.Add(ShowHelp);
-            HelpRibbonPageGroup.Name = "HelpRibbonPageGroup";
-            HelpRibbonPageGroup.Text = "Help";
-            // 
-            // ShowHelp
-            // 
-            ShowHelp.Caption = "Show Help";
-            ShowHelp.Id = 75;
-            ShowHelp.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem1.ImageOptions.SvgImage");
-            ShowHelp.Name = "ShowHelp";
-            ShowHelp.ItemClick += ShowHelp_ItemClick;
             // 
             // MainFrame
             // 

@@ -1,5 +1,18 @@
+- Version 1.0.0.4
+  1. Gantt chart 오류 수정
+	- Chart 제거 오류 수정
+	- Task 추가 시 중복 ID 오류 수정
+  2. UI 오류 수정
+	- 스케줄러 세팅 탭의 워킹타임 길이 맞게 수정
+  2. InApp manual 수정
+	- Gantt Tree view drag & drop gif 추가
+
+<br>
+
 - Version 1.0.0.3
   1. InApp manual 추가 : 각 window별 Help 항목
+
+<br>
 
 - Version 1.0.0.2
   1. 기능 변동
@@ -28,3 +41,4 @@
 	- 스케쥴러 장소 입력에 지도 연결 : 도로명 주소 찾을 수 있게. 후순위 (현재는 오프라인 기능 위주 작업)
 	- 스케쥴러 검색 기능
 	- 스케쥴러 자주가는 장소 등록 : 스케쥴러 검색 기능 구현될 시 Location 추릴 수 있을 것으로 보임
+	- Installer 제작 : NSIS? MSI? 뭐로하지..
