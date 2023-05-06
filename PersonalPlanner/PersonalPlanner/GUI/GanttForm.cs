@@ -158,6 +158,11 @@ namespace PersonalPlanner.GUI
             if (MainControl.SelectedTabPage != null && ChartViewFinish.EditValue != null) (MainControl.SelectedTabPage as GanttUI).SetViewFinishDate((DateTime)ChartViewFinish.EditValue);
         }
 
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (MainControl.SelectedTabPage != null) (MainControl.SelectedTabPage as GanttUI).ShowPrintPreview();
+        }
+
         private void ShowHelp_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             string url = $@"{Application.StartupPath}\README.html";

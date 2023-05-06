@@ -71,7 +71,7 @@ namespace PersonalPlanner
          *
          -------------------------------------------*/
 
-        protected override async void OnShown(EventArgs e)
+        protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
 
@@ -315,6 +315,21 @@ namespace PersonalPlanner
             ProcessStartInfo info = new ProcessStartInfo(url);
             info.UseShellExecute = true;
             System.Diagnostics.Process.Start(info);
+        }
+
+        private void MainScheduler_EditAppointmentFormShowing(object sender, AppointmentFormEventArgs e)
+        {
+            DevExpress.XtraScheduler.SchedulerControl scheduler = ((DevExpress.XtraScheduler.SchedulerControl)(sender));
+            AppointmentEditForm form = new AppointmentEditForm(scheduler, e.Appointment, e.OpenRecurrenceForm);
+            try
+            {
+                e.DialogResult = form.ShowDialog();
+                e.Handled = true;
+            }
+            finally
+            {
+                form.Dispose();
+            }
         }
 
         /*-------------------------------------------

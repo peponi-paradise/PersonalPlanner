@@ -43,14 +43,17 @@
             repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             ChartViewFinish = new DevExpress.XtraBars.BarEditItem();
             repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            ShowHelp = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             MainRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             RibbonPageGroupNewGantt = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             RibbonPageGroupCurrentTab = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             RibbonGroupView = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            MainControl = new DevExpress.XtraTab.XtraTabControl();
             HelpRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             HelpRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            ShowHelp = new DevExpress.XtraBars.BarButtonItem();
+            ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            MainControl = new DevExpress.XtraTab.XtraTabControl();
             ((System.ComponentModel.ISupportInitialize)MainRibbonControl).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemColorPickEdit1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemDateEdit1).BeginInit();
@@ -64,13 +67,13 @@
             // 
             MainRibbonControl.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 32, 35, 32);
             MainRibbonControl.ExpandCollapseItem.Id = 0;
-            MainRibbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] { MainRibbonControl.ExpandCollapseItem, MainRibbonControl.SearchEditItem, NewGantt, TabColor, NewTask, RemoveTask, RemoveGantt, ZoomIn, ZoomOut, ZoomReset, ChartViewStart, ChartViewFinish, ShowHelp });
+            MainRibbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] { MainRibbonControl.ExpandCollapseItem, MainRibbonControl.SearchEditItem, NewGantt, TabColor, NewTask, RemoveTask, RemoveGantt, ZoomIn, ZoomOut, ZoomReset, ChartViewStart, ChartViewFinish, ShowHelp, barButtonItem1 });
             MainRibbonControl.Location = new System.Drawing.Point(0, 0);
             MainRibbonControl.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            MainRibbonControl.MaxItemId = 23;
+            MainRibbonControl.MaxItemId = 24;
             MainRibbonControl.Name = "MainRibbonControl";
             MainRibbonControl.OptionsMenuMinWidth = 385;
-            MainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { MainRibbonPage, HelpRibbonPage });
+            MainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { MainRibbonPage, HelpRibbonPage, ribbonPage1 });
             MainRibbonControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemColorPickEdit1, repositoryItemDateEdit1, repositoryItemDateEdit2 });
             MainRibbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             MainRibbonControl.ShowQatLocationSelector = false;
@@ -183,6 +186,21 @@
             repositoryItemDateEdit2.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             repositoryItemDateEdit2.Name = "repositoryItemDateEdit2";
             // 
+            // ShowHelp
+            // 
+            ShowHelp.Caption = "Show Help";
+            ShowHelp.Id = 22;
+            ShowHelp.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ShowHelp.ImageOptions.SvgImage");
+            ShowHelp.Name = "ShowHelp";
+            ShowHelp.ItemClick += ShowHelp_ItemClick;
+            // 
+            // barButtonItem1
+            // 
+            barButtonItem1.Caption = "barButtonItem1";
+            barButtonItem1.Id = 23;
+            barButtonItem1.Name = "barButtonItem1";
+            barButtonItem1.ItemClick += barButtonItem1_ItemClick;
+            // 
             // MainRibbonPage
             // 
             MainRibbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { RibbonPageGroupNewGantt, RibbonPageGroupCurrentTab, RibbonGroupView });
@@ -214,17 +232,6 @@
             RibbonGroupView.Name = "RibbonGroupView";
             RibbonGroupView.Text = "View";
             // 
-            // MainControl
-            // 
-            MainControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            MainControl.HeaderButtons = DevExpress.XtraTab.TabButtons.None;
-            MainControl.HeaderLocation = DevExpress.XtraTab.TabHeaderLocation.Left;
-            MainControl.Location = new System.Drawing.Point(0, 160);
-            MainControl.MultiLine = DevExpress.Utils.DefaultBoolean.True;
-            MainControl.Name = "MainControl";
-            MainControl.Size = new System.Drawing.Size(1022, 607);
-            MainControl.TabIndex = 1;
-            // 
             // HelpRibbonPage
             // 
             HelpRibbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { HelpRibbonPageGroup });
@@ -237,13 +244,28 @@
             HelpRibbonPageGroup.Name = "HelpRibbonPageGroup";
             HelpRibbonPageGroup.Text = "Help";
             // 
-            // ShowHelp
+            // ribbonPage1
             // 
-            ShowHelp.Caption = "Show Help";
-            ShowHelp.Id = 22;
-            ShowHelp.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem1.ImageOptions.SvgImage");
-            ShowHelp.Name = "ShowHelp";
-            ShowHelp.ItemClick += ShowHelp_ItemClick;
+            ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1 });
+            ribbonPage1.Name = "ribbonPage1";
+            ribbonPage1.Text = "ribbonPage1";
+            // 
+            // ribbonPageGroup1
+            // 
+            ribbonPageGroup1.ItemLinks.Add(barButtonItem1);
+            ribbonPageGroup1.Name = "ribbonPageGroup1";
+            ribbonPageGroup1.Text = "ribbonPageGroup1";
+            // 
+            // MainControl
+            // 
+            MainControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            MainControl.HeaderButtons = DevExpress.XtraTab.TabButtons.None;
+            MainControl.HeaderLocation = DevExpress.XtraTab.TabHeaderLocation.Left;
+            MainControl.Location = new System.Drawing.Point(0, 160);
+            MainControl.MultiLine = DevExpress.Utils.DefaultBoolean.True;
+            MainControl.Name = "MainControl";
+            MainControl.Size = new System.Drawing.Size(1022, 607);
+            MainControl.TabIndex = 1;
             // 
             // GanttForm
             // 
@@ -292,6 +314,9 @@
         private DevExpress.XtraBars.BarButtonItem ShowHelp;
         private DevExpress.XtraBars.Ribbon.RibbonPage HelpRibbonPage;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup HelpRibbonPageGroup;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
     }
 }
 

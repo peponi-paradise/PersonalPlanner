@@ -604,6 +604,7 @@
             MainScheduler.Views.WorkWeekView.TimeRulers.Add(timeRuler3);
             MainScheduler.Views.WorkWeekView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             MainScheduler.Views.YearView.UseOptimizedScrolling = false;
+            MainScheduler.EditAppointmentFormShowing += MainScheduler_EditAppointmentFormShowing;
             // 
             // MainSchedulerDataStorage
             // 

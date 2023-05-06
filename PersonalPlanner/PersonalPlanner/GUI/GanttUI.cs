@@ -311,6 +311,12 @@ namespace PersonalPlanner.GUI
             return false;
         }
 
+        public void ShowPrintPreview()
+        {
+            MainGanttControl.ShowRibbonPrintPreview();
+            //MainGanttControl.ExportToXls($@"C:\temp\testxls.xls");
+        }
+
         /*-------------------------------------------
          *
          *      Private functions
