@@ -249,6 +249,7 @@
             ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1 });
             ribbonPage1.Name = "ribbonPage1";
             ribbonPage1.Text = "ribbonPage1";
+            ribbonPage1.Visible = false;
             // 
             // ribbonPageGroup1
             // 
