@@ -28,15 +28,11 @@ https://github.com/peponi-paradise</Description>
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Assets\MainFrameOverFlowButton.html" />
     <None Remove="Calendar.ics" />
     <None Remove="Dev.Test\GanttTestForm.resx~RF94346.TMP" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assets\MainFrameOverFlowButton.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Data\Calendar.ics">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -95,12 +91,6 @@ https://github.com/peponi-paradise</Description>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Assets\GanttWindow.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\MainFrameOverFlowButtonDarkMode.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\MainFrameOverFlowButtonLightMode.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Assets\MemoWindow.PNG">
@@ -182,7 +172,7 @@ https://github.com/peponi-paradise</Description>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DevExpress.Win.Design" Version="22.2.6" />
+    <PackageReference Include="DevExpress.Win.Design" Version="22.2.4" />
     <PackageReference Include="YamlDotNet" Version="13.0.2" />
   </ItemGroup>
 

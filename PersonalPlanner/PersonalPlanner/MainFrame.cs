@@ -556,6 +556,7 @@ namespace PersonalPlanner
 
         private void AddShortcut()
         {
+            NotificationsManager.ApplicationId = "f5722466-cb24-4a51-bea0-4ff54ccb3589";
             ShellHelper.TryCreateShortcut(
                             applicationId: NotificationsManager.ApplicationId,
                             name: Application.ProductName);
