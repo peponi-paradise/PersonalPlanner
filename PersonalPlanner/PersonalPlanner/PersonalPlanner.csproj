@@ -44,11 +44,22 @@ https://github.com/peponi-paradise</Description>
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Dev.Test\SchedulerFlyout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Dev.Test\CalendarFlyout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="GUI\StatusEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="GUI\LabelEditForm.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -184,6 +195,13 @@ https://github.com/peponi-paradise</Description>
   <ItemGroup>
     <PackageReference Include="DevExpress.Win.Design" Version="22.2.6" />
     <PackageReference Include="YamlDotNet" Version="13.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

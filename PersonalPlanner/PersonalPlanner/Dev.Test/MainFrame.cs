@@ -1,14 +1,8 @@
-﻿using DevExpress.XtraBars;
-using DevExpress.XtraBars.Navigation;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using DevExpress.XtraBars.Navigation;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using DevExpress.XtraBars.Docking2010.Views.Widget;
 
 namespace PersonalPlanner.Dev.Test
 {
@@ -19,8 +13,35 @@ namespace PersonalPlanner.Dev.Test
             InitializeComponent();
 
             SetOverFlowButton();
-            //NavigationControl.HtmlTemplates.FooterOverflowButton.Template = "< div class=\"container\"><div id = \"dx - item\" class=\"button\"><div class=\"content\"><div class=\"dot\"></div><div class=\"dot\"></div><div class=\"dot\"></div></div></div></div>";
-            //NavigationControl.HtmlTemplates.FooterOverflowButton.Styles = ".button {\r\n    padding: 7px;\r\n    border-radius: 3px;\r\n    margin: 1px;\r\n}\r\n\r\n.content{\r\n    display: flex;\r\n    width: 32px;\r\n    height: 32px;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\n.dot {\r\n    width: 2px;\r\n    height: 2px;\r\n    background-color: #000000;\r\n    box-shadow: 0px 0px 2px #FFFFFF;\r\n    margin: 2px;\r\n}";
+            InitScheduler();
+
+            Navigation.ElementClicked += Navigation_ElementClicked;
+            View.DocumentClosed += View_DocumentClosed;
+
+            AccordionControlElement element = new AccordionControlElement();
+            element.Name = "AAA";
+            element.Text = "AAA";
+            element.Style = ElementStyle.Item;
+            GroupMemoLists.Elements.Add(element);
+
+            element = new AccordionControlElement();
+            element.Name = "BBB";
+            element.Text = "BBB";
+            element.Style = ElementStyle.Item;
+            GroupMemoLists.Elements.Add(element);
+
+            Navigation.RegisterElementClick(GroupMemoLists);
+
+            Calendar.Click += CalendarLabel_Click;
+            Calendar.ContextButtons[0].Click += CalendarShowButton_Click;
+            Scheduler.Click += Scheduler_Click;
+            Scheduler.ContextButtons[0].Click += SchedulerShowButton_Click;
+        }
+
+        private void View_DocumentClosed(object sender, DevExpress.XtraBars.Docking2010.Views.DocumentEventArgs e)
+        {
+            if (e.Document == SchedulerDoc) InitSchedulerOnly();
+            else if (MemoDocs.Contains((Document)e.Document)) RemoveMemoDoc((Document)e.Document);
         }
 
         private void SetOverFlowButton()
@@ -34,6 +55,25 @@ namespace PersonalPlanner.Dev.Test
 
             Navigation.HtmlTemplates.FooterOverflowButton.Template = html;
             Navigation.HtmlTemplates.FooterOverflowButton.Styles = css;
+        }
+
+        private void Navigation_ElementClicked(AccordionControlElement element, Point point) => ShowMemoContextMenu(element, point);
+
+        private bool ActivateWidget(AccordionControlElement element)
+        {
+            // Activate widget
+            var doc = View.Documents.FindFirst(item => item.Caption == element.Name);
+            if (doc != null) View.Controller.Activate(doc);
+            else return false;
+            return true;
+        }
+
+        private bool ActivateWidget(DevExpress.XtraBars.Docking2010.Views.Widget.Document doc)
+        {
+            // Activate widget
+            if (View.Documents.Contains(doc)) View.Controller.Activate(doc);
+            else return false;
+            return true;
         }
     }
 }
