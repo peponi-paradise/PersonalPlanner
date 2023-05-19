@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using PersonalPlanner.Define;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -45,11 +46,13 @@ namespace PersonalPlanner.Dev.Test
             InitializeComponent();
         }
 
-        public MemoFlyout(string memoPreview = "")
+        public MemoFlyout(MemoDefine memoData)
         {
             InitializeComponent();
 
-            MemoPreview.Text = memoPreview;
+            MemoUI uI = new MemoUI(memoData);
+            uI.Dock = DockStyle.Fill;
+            FlyoutControl.Controls.Add(uI);
         }
 
         /*-------------------------------------------

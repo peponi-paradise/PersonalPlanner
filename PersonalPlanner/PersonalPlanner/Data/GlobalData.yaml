@@ -1,35 +1,17 @@
-﻿SkinName: WXI
+SkinName: WXI
 SkinPaletteName: Freshness
 OfficeStart: 08:00:00
 OfficeEnd: 17:00:00
 SchedulerViewType: 0
-DayViewWorktimeShow: false
-WorkweekViewWorktimeShow: false
-FullweekViewWorktimeShow: false
+WorktimeShow: false
 MainFrameLocation:
- X: 0
- Y: 0
- IsEmpty: true
-MemoFormLocation:
- X: 0
- Y: 0
- IsEmpty: true
-GanttFormLocation:
- X: 0
- Y: 0
- IsEmpty: true
+  IsEmpty: false
+  X: 0
+  Y: 0
 MainFrameSize:
- Width: 1280
- Height: 960
- IsEmpty: false
-MemoFormSize:
- Width: 480
- Height: 640
- IsEmpty: false
-GanttFormSize:
- Width: 800
- Height: 600
- IsEmpty: false
-MemoFormShowOnStartUp: false
-GanttFormShowOnStartUp: false
+  IsEmpty: false
+  Width: 1280
+  Height: 960
+IsCalendarShow: true
+IsSchedulerShow: true
 CheckApplicationShortcut: false

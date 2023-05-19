@@ -48,7 +48,7 @@ namespace PersonalPlanner.Dev.Test
         {
             InitializeComponent();
             MemoData = memoData;
-            SetBackgroundColor();
+            //SetBackgroundColor();
             SetFont();
             MainMemo.Text = MemoData.Memo;
             MainMemo.TextChanged += MainMemo_TextChanged;
@@ -75,7 +75,7 @@ namespace PersonalPlanner.Dev.Test
         public void ChangeBackgroundColor(System.Drawing.Color color)
         {
             MemoData.BackColor.ToInternalColor(color);
-            SetBackgroundColor();
+            //SetBackgroundColor();
         }
 
         public void ChangeFont(System.Drawing.Font font, System.Drawing.Color color)
@@ -91,7 +91,7 @@ namespace PersonalPlanner.Dev.Test
          *
          -------------------------------------------*/
 
-        private void SetBackgroundColor() => MainMemo.BackColor = MemoData.BackColor.ToDrawingColor();
+        //private void SetBackgroundColor() => MainMemo.BackColor = MemoData.BackColor.ToDrawingColor();
 
         private void SetFont()
         {

@@ -81,7 +81,9 @@ namespace PersonalPlanner.Dev.Test
          *
          -------------------------------------------*/
 
-        public void RegisterElementClick(AccordionControlElement elem)
+        public void RegisterElementClick(AccordionControlElement elem) => elem.Click += Element_Click;
+
+        public void RegisterElementGroupClick(AccordionControlElement elem)
         {
             foreach (var element in elem.Elements) element.Click += Element_Click;
         }

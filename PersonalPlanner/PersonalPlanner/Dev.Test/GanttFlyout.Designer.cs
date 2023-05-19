@@ -1,6 +1,6 @@
 ﻿namespace PersonalPlanner.Dev.Test
 {
-    partial class MemoFlyout
+    partial class GanttFlyout
     {
         /// <summary> 
         /// 필수 디자이너 변수입니다.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MemoFlyout));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GanttFlyout));
             Flyout = new DevExpress.Utils.FlyoutPanel();
             FlyoutControl = new DevExpress.Utils.FlyoutPanelControl();
             ((System.ComponentModel.ISupportInitialize)Flyout).BeginInit();
@@ -50,7 +50,7 @@
             Flyout.OptionsButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] { new DevExpress.Utils.PeekFormButton("Show", true, buttonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false) });
             Flyout.OptionsButtonPanel.ShowButtonPanel = true;
             Flyout.Padding = new System.Windows.Forms.Padding(0, 0, 0, 30);
-            Flyout.Size = new System.Drawing.Size(300, 200);
+            Flyout.Size = new System.Drawing.Size(750, 300);
             Flyout.TabIndex = 1;
             Flyout.ButtonClick += Flyout_ButtonClick;
             // 
@@ -60,16 +60,16 @@
             FlyoutControl.FlyoutPanel = Flyout;
             FlyoutControl.Location = new System.Drawing.Point(0, 0);
             FlyoutControl.Name = "FlyoutControl";
-            FlyoutControl.Size = new System.Drawing.Size(300, 170);
+            FlyoutControl.Size = new System.Drawing.Size(750, 270);
             FlyoutControl.TabIndex = 0;
             // 
-            // MemoFlyout
+            // GanttFlyout
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(Flyout);
-            Name = "MemoFlyout";
-            Size = new System.Drawing.Size(300, 200);
+            Name = "GanttFlyout";
+            Size = new System.Drawing.Size(750, 300);
             ((System.ComponentModel.ISupportInitialize)Flyout).EndInit();
             Flyout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)FlyoutControl).EndInit();

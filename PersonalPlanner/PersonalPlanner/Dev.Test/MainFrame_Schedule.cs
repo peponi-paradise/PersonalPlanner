@@ -1,9 +1,11 @@
-﻿using DevExpress.XtraBars.Docking;
+﻿using DevExpress.Data;
+using DevExpress.XtraBars.Docking;
 using DevExpress.XtraBars.Docking2010;
 using DevExpress.XtraBars.Docking2010.Views.Widget;
 using DevExpress.XtraBars.Navigation;
-using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraScheduler;
+using PersonalPlanner.Data;
+using PersonalPlanner.GUI;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -106,6 +108,49 @@ namespace PersonalPlanner.Dev.Test
             }
         }
 
+        private void MainScheduler_EditAppointmentFormShowing(object sender, AppointmentFormEventArgs e)
+        {
+            DevExpress.XtraScheduler.SchedulerControl scheduler = ((DevExpress.XtraScheduler.SchedulerControl)(sender));
+            AppointmentEditForm form = new AppointmentEditForm(scheduler, e.Appointment, e.OpenRecurrenceForm);
+            try
+            {
+                e.DialogResult = form.ShowDialog();
+                e.Handled = true;
+            }
+            finally
+            {
+                form.Dispose();
+            }
+        }
+
+        private void MainScheduler_RemindersFormShowing(object sender, DevExpress.XtraScheduler.RemindersFormEventArgs e)
+        {
+            if (ShellHelper.IsApplicationShortcutExist(Application.ProductName))
+            {
+                NotificationsManager.ApplicationName = Application.ProductName;
+                NotificationsManager.Notifications[0].AttributionText = $"©ClockStrikes, {DateTime.Now.Year}";
+                foreach (ReminderAlertNotification alert in e.AlertNotifications)
+                {
+                    NotificationsManager.Notifications[0].Header = alert.ActualAppointment.Subject ?? "Empty subject";
+                    NotificationsManager.Notifications[0].Body = alert.ActualAppointment.Description ?? "Empty Description";
+                    NotificationsManager.Notifications[0].Body2 = alert.ActualAppointment.Location ?? "Empty Location";
+                    NotificationsManager.ShowNotification(NotificationsManager.Notifications[0]);
+                }
+            }
+        }
+
+        private void AppointmentLabelButton_Click(object sender, DevExpress.Utils.ContextItemClickEventArgs e) => OpenLabelEditForm();
+
+        private void AppointmentStatusButton_Click(object sender, DevExpress.Utils.ContextItemClickEventArgs e) => OpenStatusEditForm();
+
+        private void AppointmentResourceButton_Click(object sender, DevExpress.Utils.ContextItemClickEventArgs e) => OpenResourceEditForm();
+
+        private void LabelEditForm_FormClosing(object sender, FormClosingEventArgs e) => UpdateAppointmentLabelList();
+
+        private void StatusEditForm_FormClosing(object sender, FormClosingEventArgs e) => UpdateAppointmentStatusList();
+
+        private void ResourceEditForm_FormClosing(object sender, FormClosingEventArgs e) => UpdateAppointmentResourceList();
+
         /*-------------------------------------------
          *
          *      Public functions
@@ -161,6 +206,49 @@ namespace PersonalPlanner.Dev.Test
             Scheduler.ContentContainer = null;
         }
 
+        private void OpenLabelEditForm()
+        {
+            LabelEditForm labelEditForm = new();
+            labelEditForm.FormClosing += LabelEditForm_FormClosing;
+            labelEditForm.SetDataSources(AppointmentSettingData.GetLabelDataSet());
+            labelEditForm.Show();
+        }
+
+        private void UpdateAppointmentLabelList()
+        {
+            AppointmentSettingData.SaveLabelData();
+            AppointmentSettingData.UpdateLabelData(MainScheduler.DataStorage.Appointments.Labels);
+        }
+
+        private void OpenStatusEditForm()
+        {
+            StatusEditForm statusEditForm = new();
+            statusEditForm.FormClosing += StatusEditForm_FormClosing;
+            statusEditForm.SetDataSources(AppointmentSettingData.GetStatusDataSet());
+            statusEditForm.Show();
+        }
+
+        private void UpdateAppointmentStatusList()
+        {
+            AppointmentSettingData.SaveStatusData();
+            AppointmentSettingData.UpdateStatusData(MainScheduler.DataStorage.Appointments.Statuses);
+        }
+
+        private void OpenResourceEditForm()
+        {
+            ResourceEditForm resourceEditForm = new();
+            resourceEditForm.FormClosing += ResourceEditForm_FormClosing;
+            resourceEditForm.SetDataSources(AppointmentSettingData.GetResourceDataSet());
+            resourceEditForm.Show();
+        }
+
+        private void UpdateAppointmentResourceList()
+        {
+            AppointmentSettingData.SaveResourceData();
+            AppointmentSettingData.UpdateResourceData(MainSchedulerDataStorage.Resources);
+            MainScheduler.ResourceCategories.Clear();
+        }
+
         /*-------------------------------------------
          *
          *      Helper functions
@@ -169,43 +257,38 @@ namespace PersonalPlanner.Dev.Test
 
         private void InitScheduler()
         {
-            MainScheduler = new SchedulerControl();
-            MainSchedulerDataStorage = new SchedulerDataStorage(components);
-
-            MainSchedulerDataStorage.AppointmentDependencies.AutoReload = false;
-            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(0, "None", "&None", System.Drawing.SystemColors.Window);
-            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(1, "Important", "&Important", System.Drawing.Color.FromArgb(255, 194, 190));
-            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(2, "Business", "&Business", System.Drawing.Color.FromArgb(168, 213, 255));
-            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(3, "Personal", "&Personal", System.Drawing.Color.FromArgb(193, 244, 156));
-            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(4, "Vacation", "&Vacation", System.Drawing.Color.FromArgb(243, 228, 199));
-            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(5, "Must Attend", "Must &Attend", System.Drawing.Color.FromArgb(244, 206, 147));
-            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(6, "Travel Required", "&Travel Required", System.Drawing.Color.FromArgb(199, 244, 255));
-            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(7, "Needs Preparation", "&Needs Preparation", System.Drawing.Color.FromArgb(207, 219, 152));
-            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(8, "Birthday", "&Birthday", System.Drawing.Color.FromArgb(224, 207, 233));
-            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(9, "Anniversary", "&Anniversary", System.Drawing.Color.FromArgb(141, 233, 223));
-            MainSchedulerDataStorage.Appointments.Labels.CreateNewLabel(10, "Phone Call", "Phone &Call", System.Drawing.Color.FromArgb(255, 247, 165));
+            //MainSchedulerDataStorage.AppointmentDependencies.AutoReload = true;
+            //MainSchedulerDataStorage.Appointments.Labels.Clear();
             MainSchedulerDataStorage.Appointments.ResourceSharing = true;
 
-            MainScheduler.DataStorage = MainSchedulerDataStorage;
             MainScheduler.DateNavigationBar.CalendarButton.Show = true;
             MainScheduler.DateNavigationBar.ShowTodayButton = true;
             MainScheduler.DateNavigationBar.ShowViewSelectorButton = false;
+
+            MainScheduler.GoToToday();
+            SetWorkingTime();
+            MainScheduler.DayView.ShowWorkTimeOnly = GlobalData.Parameters.WorktimeShow;
+            MainScheduler.WorkWeekView.ShowWorkTimeOnly = GlobalData.Parameters.WorktimeShow;
+            MainScheduler.FullWeekView.ShowWorkTimeOnly = GlobalData.Parameters.WorktimeShow;
+            MainScheduler.ActiveViewType = (DevExpress.XtraScheduler.SchedulerViewType)GlobalData.Parameters.SchedulerViewType;
+
+            MainScheduler.OptionsView.ResourceCategories.ResourceDisplayStyle = DevExpress.XtraScheduler.ResourceDisplayStyle.Tabs;
+            MainScheduler.OptionsView.ResourceCategories.ShowCloseButton = true;
+            MainScheduler.RemindersFormShowing += MainScheduler_RemindersFormShowing;
+
             MainScheduler.Dock = System.Windows.Forms.DockStyle.Fill;
             MainScheduler.MenuManager = FormManager;
             MainScheduler.Name = "MainScheduler";
-            MainScheduler.Start = DateTime.Today;
-            MainScheduler.Views.DayView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             MainScheduler.Views.FullWeekView.Enabled = true;
-            MainScheduler.Views.FullWeekView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             MainScheduler.Views.GanttView.Enabled = false;
-            MainScheduler.Views.GanttView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
-            MainScheduler.Views.TimelineView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
-            MainScheduler.Views.WorkWeekView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             MainScheduler.Views.YearView.UseOptimizedScrolling = false;
-            //MainScheduler.EditAppointmentFormShowing += MainScheduler_EditAppointmentFormShowing;
+            MainScheduler.EditAppointmentFormShowing += MainScheduler_EditAppointmentFormShowing;
 
             MainCalendar.SchedulerControl = MainScheduler;
             SchedulerContainer.Controls.Add(MainScheduler);
+
+            if (GlobalData.Parameters.IsCalendarShow) AddOrActivateCalendar();
+            if (GlobalData.Parameters.IsSchedulerShow) AddOrActivateScheduler();
         }
 
         private void InitSchedulerOnly()
@@ -215,20 +298,26 @@ namespace PersonalPlanner.Dev.Test
             MainScheduler.DateNavigationBar.CalendarButton.Show = true;
             MainScheduler.DateNavigationBar.ShowTodayButton = true;
             MainScheduler.DateNavigationBar.ShowViewSelectorButton = false;
+
+            MainScheduler.Start = MainCalendar.SelectionStart;
+
+            SetWorkingTime();
+            MainScheduler.DayView.ShowWorkTimeOnly = GlobalData.Parameters.WorktimeShow;
+            MainScheduler.WorkWeekView.ShowWorkTimeOnly = GlobalData.Parameters.WorktimeShow;
+            MainScheduler.FullWeekView.ShowWorkTimeOnly = GlobalData.Parameters.WorktimeShow;
+            MainScheduler.ActiveViewType = (DevExpress.XtraScheduler.SchedulerViewType)GlobalData.Parameters.SchedulerViewType;
+
+            MainScheduler.OptionsView.ResourceCategories.ResourceDisplayStyle = DevExpress.XtraScheduler.ResourceDisplayStyle.Tabs;
+            MainScheduler.OptionsView.ResourceCategories.ShowCloseButton = true;
+            MainScheduler.RemindersFormShowing += MainScheduler_RemindersFormShowing;
+
             MainScheduler.Dock = System.Windows.Forms.DockStyle.Fill;
             MainScheduler.MenuManager = FormManager;
             MainScheduler.Name = "MainScheduler";
-            MainScheduler.Start = MainCalendar.SelectionStart;
-
-            MainScheduler.Views.DayView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             MainScheduler.Views.FullWeekView.Enabled = true;
-            MainScheduler.Views.FullWeekView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             MainScheduler.Views.GanttView.Enabled = false;
-            MainScheduler.Views.GanttView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
-            MainScheduler.Views.TimelineView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
-            MainScheduler.Views.WorkWeekView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("08:00:00"), System.TimeSpan.Parse("17:00:00"));
             MainScheduler.Views.YearView.UseOptimizedScrolling = false;
-            //MainScheduler.EditAppointmentFormShowing += MainScheduler_EditAppointmentFormShowing;
+            MainScheduler.EditAppointmentFormShowing += MainScheduler_EditAppointmentFormShowing;
 
             MainCalendar.SchedulerControl = MainScheduler;
             if (ActivateWidget(CalendarDoc)) WidgetNavigator.SchedulerControl = MainScheduler;

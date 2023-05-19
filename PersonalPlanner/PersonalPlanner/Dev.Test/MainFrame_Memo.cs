@@ -4,8 +4,10 @@ using DevExpress.XtraBars.Docking2010.Views.Widget;
 using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraEditors;
 using PersonalPlanner.Data;
+using PersonalPlanner.Define;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace PersonalPlanner.Dev.Test
@@ -39,13 +41,34 @@ namespace PersonalPlanner.Dev.Test
          *
          -------------------------------------------*/
 
+        private void NewMemo_Click(object sender, System.EventArgs e)
+        {
+            var rtnName = XtraInputBox.Show("Please Input Name", "New Memo", "Name");
+            if (rtnName != null)
+            {
+                var checkItem = MemoData.Memos.Find(item => item.Name.Equals(rtnName));
+                if (checkItem == default)
+                {
+                    var memo = new MemoDefine() { Name = rtnName };
+                    MemoData.Memos.Add(memo);
+                    AddMemoElement(memo);
+                    AddMemoWidget(memo);
+                    MemoData.SaveData();
+                }
+                else
+                {
+                    XtraMessageBox.Show($"Could not make duplicated name of memo : {rtnName}");
+                }
+            }
+        }
+
         private void MemoFlyout_ShowClicked(AccordionControlElement element)
         {
             Navigation.ClosePopupForm();
             AddOrActivateMemo(element);
         }
 
-        private void Doc_CustomButtonClick(object sender, ButtonEventArgs e)
+        private void MemoDoc_CustomButtonClick(object sender, ButtonEventArgs e)
         {
             var doc = sender as Document;
             if (e.Button == doc.CustomHeaderButtons[0])
@@ -58,7 +81,7 @@ namespace PersonalPlanner.Dev.Test
                 {
                     var memoPage = MemoUIs.Find(ui => ui.MemoData.Name == doc.Caption);
                     memoPage.ChangeFont(dialog.Font, dialog.Color);
-                    //SaveAndUpdate();
+                    MemoData.SaveData();
                 }
             }
             else if (e.Button == doc.CustomHeaderButtons[1])
@@ -67,11 +90,11 @@ namespace PersonalPlanner.Dev.Test
                 var colorEdit = new ColorPickEdit();
                 if (XtraDialog.Show(colorEdit, "Choose Color", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
-                    //doc.AppearanceCaption.BackColor = colorEdit.Color;
-                    //doc.AppearanceCaption.BorderColor = colorEdit.Color;
+                    doc.AppearanceCaption.BackColor = colorEdit.Color;
+                    doc.AppearanceCaption.BorderColor = colorEdit.Color;
                     var memoPage = MemoUIs.Find(ui => ui.MemoData.Name == doc.Caption);
                     memoPage.ChangeBackgroundColor(colorEdit.Color);
-                    //SaveAndUpdate();
+                    MemoData.SaveData();
                 }
             }
         }
@@ -88,6 +111,19 @@ namespace PersonalPlanner.Dev.Test
          *
          -------------------------------------------*/
 
+        private void InitMemos()
+        {
+            foreach (var memo in MemoData.Memos)
+            {
+                if (memo.IsOpened)
+                {
+                    AddMemoElement(memo);
+                    AddMemoWidget(memo);
+                }
+                else AddMemoElement(memo);
+            }
+        }
+
         private void ShowMemoContextMenu(AccordionControlElement element, Point point)
         {
             if (point == default) return;
@@ -99,31 +135,45 @@ namespace PersonalPlanner.Dev.Test
                 return;
             }
 
-            var flyout = new MemoFlyout();
+            var memo = MemoData.Memos.Find(item => item.Name == element.Name);
+            var flyout = new MemoFlyout(memo);
             flyout.ShowClicked += () => MemoFlyout_ShowClicked(element);
             if (Navigation.IsPopupFormShown) flyout.Show(Navigation.PopupForm, Navigation.PopupForm, point);
             else flyout.Show(this, point);
         }
+
+        private void AddMemoElement(MemoDefine memoData)
+        {
+            AccordionControlElement element = new AccordionControlElement();
+            element.Name = memoData.Name;
+            element.Text = memoData.Name;
+            element.Style = ElementStyle.Item;
+            GroupMemoLists.Elements.Add(element);
+            Navigation.RegisterElementClick(element);
+        }
+
+        private void RemoveMemoElement(MemoDefine memoData) => GroupMemoLists.Elements.Remove(GroupMemoLists.Elements.Single(elem => elem.Name == memoData.Name));
 
         private void AddOrActivateMemo(AccordionControlElement element)
         {
             // Add or activate widget
             var document = MemoDocs.Find(doc => doc.Caption == element.Name);
             if (ActivateWidget(document)) return;
-            else AddMemoWidget(element.Name);
+            else AddMemoWidget(MemoData.Memos.Find(item => item.Name.Equals(element.Name)));
         }
 
-        private void AddMemoWidget(string name)
+        private void AddMemoWidget(MemoDefine memoData)
         {
-            //MemoUI memoUI = new MemoUI(MemoData);
-            MemoUI memoUI = new MemoUI(new Define.MemoDefine() { Name = name });
-            memoUI.Name = name;
-            var doc = View.AddDocument(memoUI, name) as Document;
+            MemoUI memoUI = new MemoUI(memoData);
+            memoUI.Name = memoData.Name;
+            var doc = View.AddDocument(memoUI, memoData.Name) as Document;
+            doc.ImageOptions.ImageUri = "bo_note;Size16x16";
+            SetDocumentBorderColor(doc, memoData.BackColor.ToDrawingColor());
             MemoDocs.Add(doc);
             MemoUIs.Add(memoUI);
             doc.CustomHeaderButtons.Add(new CustomHeaderButton("Font", "changefontstyle;Size16x16", HorizontalImageLocation.Default, ButtonStyle.PushButton, "Change Font Setting", false, 0, -1));
-            doc.CustomHeaderButtons.Add(new CustomHeaderButton("BackgroundColor", "pagecolor;Size16x16", HorizontalImageLocation.Default, ButtonStyle.PushButton, "Change Background Color", false, 1, -1));
-            doc.CustomButtonClick += Doc_CustomButtonClick;
+            doc.CustomHeaderButtons.Add(new CustomHeaderButton("BackgroundColor", "pagecolor;Size16x16", HorizontalImageLocation.Default, ButtonStyle.PushButton, "Change Widget Color", false, 1, -1));
+            doc.CustomButtonClick += MemoDoc_CustomButtonClick;
         }
 
         private void RemoveMemoDoc(Document doc)
@@ -136,7 +186,9 @@ namespace PersonalPlanner.Dev.Test
         private void RemoveMemoData(Document doc)
         {
             var memo = MemoData.Memos.Find(item => item.Name == doc.Caption);
+            RemoveMemoElement(memo);
             MemoData.Memos.Remove(memo);
+            MemoData.SaveData();
         }
 
         /*-------------------------------------------
@@ -144,5 +196,15 @@ namespace PersonalPlanner.Dev.Test
          *      Helper functions
          *
          -------------------------------------------*/
+
+        private void SaveMemoWidgetStatus()
+        {
+            foreach (var item in MemoData.Memos)
+            {
+                if (MemoUIs.Find(ui => ui.MemoData == item) != null) item.IsOpened = true;
+                else item.IsOpened = false;
+            }
+            MemoData.SaveData();
+        }
     }
 }

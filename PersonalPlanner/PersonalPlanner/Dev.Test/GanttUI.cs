@@ -4,7 +4,6 @@ using DevExpress.XtraGantt;
 using DevExpress.XtraGantt.Options;
 using DevExpress.XtraGantt.Scheduling;
 using DevExpress.XtraGantt.Scrolling;
-using DevExpress.XtraTab;
 using DevExpress.XtraTreeList.Columns;
 using DevExpress.XtraTreeList.Nodes;
 using PersonalPlanner.Data;
@@ -16,9 +15,9 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace PersonalPlanner.GUI
+namespace PersonalPlanner.Dev.Test
 {
-    public partial class GanttUI : XtraTabPage
+    public partial class GanttUI : XtraUserControl
     {
         /*-------------------------------------------
          *
@@ -78,7 +77,6 @@ namespace PersonalPlanner.GUI
 
             this.Text = ganttData.Name;
             this.Name = ganttData.Name;
-            SetTabPageColor();
 
             SetGanttControlSettings();
             BindData();
@@ -238,12 +236,6 @@ namespace PersonalPlanner.GUI
             MainGanttControl.Dispose();
         }
 
-        public void ChangeTabPageColor(System.Drawing.Color color)
-        {
-            GanttData.Color.ToInternalColor(color);
-            SetTabPageColor();
-        }
-
         public void ExpandAllNodes() => MainGanttControl.ExpandAll();
 
         public void ZoomIn() => MainGanttControl.ZoomIn();
@@ -317,18 +309,23 @@ namespace PersonalPlanner.GUI
             //MainGanttControl.ExportToXls($@"C:\temp\testxls.xls");
         }
 
+        public void ChangeBackgroundColor(System.Drawing.Color color)
+        {
+            GanttData.Color.ToInternalColor(color);
+            //SetBackgroundColor();
+        }
+
+        public void ResetEditor()
+        {
+            MainGanttControl.OptionsEditForm.CustomEditFormLayout = new UserControl();
+            MainGanttControl.OptionsEditForm.CustomEditFormLayout = null;
+        }
+
         /*-------------------------------------------
          *
          *      Private functions
          *
          -------------------------------------------*/
-
-        private void SetTabPageColor()
-        {
-            this.BackColor = GanttData.Color.ToDrawingColor();
-            this.Appearance.Header.BackColor = GanttData.Color.ToDrawingColor();
-            this.Appearance.HeaderActive.BackColor = GanttData.Color.ToDrawingColor();
-        }
 
         private void SetGanttControlSettings()
         {

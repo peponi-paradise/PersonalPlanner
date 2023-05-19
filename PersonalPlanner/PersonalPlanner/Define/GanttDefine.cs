@@ -36,5 +36,7 @@ namespace PersonalPlanner.Define
         public Color Color { get; set; } = new Color() { R = 255, G = 255, B = 255, A = 0 };
         public List<Task> Task { get; set; } = new List<Task>();
         public List<Dependency> Dependency { get; set; } = new List<Dependency>();
+
+        public bool IsOpened { get; set; } = false;
     }
 }
