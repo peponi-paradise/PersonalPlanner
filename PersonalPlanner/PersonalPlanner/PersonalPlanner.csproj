@@ -11,8 +11,8 @@ https://github.com/peponi-paradise</Description>
     <Product>PersonalPlanner</Product>
     <ProductName>PersonalPlanner</ProductName>
     <AssemblyTitle>PersonalPlanner</AssemblyTitle>
-    <AssemblyVersion>1.0.0.4</AssemblyVersion>
-    <FileVersion>1.0.0.4</FileVersion>
+    <AssemblyVersion>1.1.0.5</AssemblyVersion>
+    <FileVersion>1.1.0.5</FileVersion>
     <Platforms>AnyCPU;x64</Platforms>
     <ApplicationIcon>ShortDate.ico</ApplicationIcon>
     <PackageProjectUrl>https://peponi-paradise.tistory.com</PackageProjectUrl>
@@ -28,23 +28,42 @@ https://github.com/peponi-paradise</Description>
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Assets\MainFrameOverFlowButton.html" />
     <None Remove="Calendar.ics" />
+    <None Remove="Data\Layout.xml" />
     <None Remove="Dev.Test\GanttTestForm.resx~RF94346.TMP" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Assets\MainFrameOverFlowButton.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Data\Calendar.ics">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Layout.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ShortDate.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="GUI\StatusEditForm.cs">
-      <SubType>Form</SubType>
+    <Compile Update="GUI\Components\GanttUI.cs" />
+    <Compile Update="GUI\Components\GanttFlyout.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="GUI\LabelEditForm.cs">
-      <SubType>Form</SubType>
+    <Compile Update="GUI\Components\SchedulerFlyout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GUI\Components\CalendarFlyout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GUI\Forms\StatusEditForm.cs" />
+    <Compile Update="GUI\Forms\LabelEditForm.cs" />
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -54,89 +73,95 @@ https://github.com/peponi-paradise</Description>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Assets\appointment1.PNG">
+    <None Update="Legacy\Asset\appointment1.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Legacy\Asset\appointment2.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Legacy\Asset\appointment3.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Legacy\Asset\appointment4.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Legacy\Asset\ganttchartview.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Legacy\Asset\ganttdependency.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Legacy\Asset\ganttitem.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Legacy\Asset\GanttItemTreeViewDragDrop.gif">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Legacy\Asset\ganttmilestone.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Legacy\Asset\gantttreeview.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Legacy\Asset\gantttreeview2.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Legacy\Asset\ganttupperitem.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Legacy\Asset\GanttWindow.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\MainFrameOverFlowButtonDarkMode.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\appointment2.PNG">
+    <None Update="Assets\MainFrameOverFlowButtonLightMode.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\appointment3.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Legacy\Asset\MemoWindow.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\appointment4.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Legacy\Asset\MenuHome.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\ganttchartview.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Legacy\Asset\MenuView.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\ganttdependency.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Legacy\Asset\Scheduler1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\ganttitem.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Legacy\Asset\Scheduler2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\GanttItemTreeViewDragDrop.gif">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Legacy\Asset\Scheduler3.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\ganttmilestone.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Legacy\Asset\Scheduler4.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\gantttreeview.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Legacy\Asset\Scheduler5.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\gantttreeview2.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Legacy\Asset\settingappointments.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\ganttupperitem.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Legacy\Asset\settings.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\GanttWindow.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Legacy\Asset\settingshortcut.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\MemoWindow.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Legacy\Asset\settingskin.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\MenuHome.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Legacy\Asset\settingstartup.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\MenuView.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Legacy\Asset\settingworktime.PNG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\Scheduler1.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\Scheduler2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\Scheduler3.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\Scheduler4.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\Scheduler5.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\settingappointments.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\settings.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\settingshortcut.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\settingskin.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\settingstartup.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\settingworktime.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\UISample.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Legacy\Asset\UISample.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Data\GanttData.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -160,11 +185,11 @@ https://github.com/peponi-paradise</Description>
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Update="README.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Legacy\Doc\README.html">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="README.md">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Legacy\Doc\README.md">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="VersionHistory.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -172,8 +197,15 @@ https://github.com/peponi-paradise</Description>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DevExpress.Win.Design" Version="22.2.4" />
+    <PackageReference Include="DevExpress.Win.Design" Version="22.2.6" />
     <PackageReference Include="YamlDotNet" Version="13.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

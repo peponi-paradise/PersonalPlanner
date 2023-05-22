@@ -34,4 +34,11 @@ namespace PersonalPlanner.Define
 
         public System.Drawing.Color ToDrawingColor() => System.Drawing.Color.FromArgb(A, R, G, B);
     }
+
+    public record GuideInformation
+    {
+        public string Description;
+        public object TargetControl;
+        public Point TargetLocation;
+    }
 }

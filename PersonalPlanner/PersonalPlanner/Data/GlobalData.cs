@@ -115,38 +115,14 @@ namespace PersonalPlanner.Data
                 }
             }
 
-            private bool _DayViewWorktimeShow = false;
+            private bool _WorktimeShow = false;
 
-            public bool DayViewWorktimeShow
+            public bool WorktimeShow
             {
-                get => _DayViewWorktimeShow;
+                get => _WorktimeShow;
                 set
                 {
-                    _DayViewWorktimeShow = value;
-                    SaveData();
-                }
-            }
-
-            private bool _WorkweekViewWorktimeShow = false;
-
-            public bool WorkweekViewWorktimeShow
-            {
-                get => _WorkweekViewWorktimeShow;
-                set
-                {
-                    _WorkweekViewWorktimeShow = value;
-                    SaveData();
-                }
-            }
-
-            private bool _FullweekViewWorktimeShow = false;
-
-            public bool FullweekViewWorktimeShow
-            {
-                get => _FullweekViewWorktimeShow;
-                set
-                {
-                    _FullweekViewWorktimeShow = value;
+                    _WorktimeShow = value;
                     SaveData();
                 }
             }
@@ -163,30 +139,6 @@ namespace PersonalPlanner.Data
                 }
             }
 
-            private Point _MemoFormLocation = new Point(0, 0);
-
-            public Point MemoFormLocation
-            {
-                get => _MemoFormLocation;
-                set
-                {
-                    _MemoFormLocation = value;
-                    SaveData();
-                }
-            }
-
-            private Point _GanttFormLocation = new Point(0, 0);
-
-            public Point GanttFormLocation
-            {
-                get => _GanttFormLocation;
-                set
-                {
-                    _GanttFormLocation = value;
-                    SaveData();
-                }
-            }
-
             private Size _MainFrameSize = new Size(1280, 960);
 
             public Size MainFrameSize
@@ -199,50 +151,38 @@ namespace PersonalPlanner.Data
                 }
             }
 
-            private Size _MemoFormSize = new Size(480, 640);
+            private FormWindowState _MainFrameWindowState = FormWindowState.Normal;
 
-            public Size MemoFormSize
+            public FormWindowState MainFrameWindowState
             {
-                get => _MemoFormSize;
+                get => _MainFrameWindowState;
                 set
                 {
-                    _MemoFormSize = value;
+                    _MainFrameWindowState = value;
                     SaveData();
                 }
             }
 
-            private Size _GanttFormSize = new Size(800, 600);
+            private bool _IsCalendarShow = false;
 
-            public Size GanttFormSize
+            public bool IsCalendarShow
             {
-                get => _GanttFormSize;
+                get => _IsCalendarShow;
                 set
                 {
-                    _GanttFormSize = value;
+                    _IsCalendarShow = value;
                     SaveData();
                 }
             }
 
-            private bool _MemoFormShowOnStartUp = false;
+            private bool _IsSchedulerShow = false;
 
-            public bool MemoFormShowOnStartUp
+            public bool IsSchedulerShow
             {
-                get => _MemoFormShowOnStartUp;
+                get => _IsSchedulerShow;
                 set
                 {
-                    _MemoFormShowOnStartUp = value;
-                    SaveData();
-                }
-            }
-
-            private bool _GanttFormShowOnStartUp = false;
-
-            public bool GanttFormShowOnStartUp
-            {
-                get => _GanttFormShowOnStartUp;
-                set
-                {
-                    _GanttFormShowOnStartUp = value;
+                    _IsSchedulerShow = value;
                     SaveData();
                 }
             }

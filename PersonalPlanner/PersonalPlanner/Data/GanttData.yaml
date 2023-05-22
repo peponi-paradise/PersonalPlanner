@@ -1,4 +1,4 @@
-﻿- Name: Sample Chart
+- Name: Sample Chart
   Color:
     R: 255
     G: 255
@@ -82,3 +82,4 @@
     SuccessorID: 8
     DependencyType: FinishToStart
     TimeLag: 00:00:00
+  IsOpened: true
