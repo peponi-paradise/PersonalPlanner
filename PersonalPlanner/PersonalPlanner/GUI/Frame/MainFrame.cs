@@ -48,14 +48,15 @@ namespace PersonalPlanner.GUI.Frame
             LoadingForm.SetProgress("Check Application Shortcut...");
             CheckShortcut();
             LoadingForm.SetProgress("Check Application Shortcut Done...");
-            LoadingForm.SetProgress("Set UI Layout...");
-            SetUILayout();
-            LoadingForm.SetProgress("Set UI Layout Done...");
+
             LoadingForm.SetProgress("Connecting User Events...");
             ConnectingUserEvents();
 
-            LoadingForm.SetProgress("Program Start...");
+            LoadingForm.SetProgress("Set UI Layout...");
+            SetUILayout();
+            LoadingForm.SetProgress("Set UI Layout Done...");
 
+            LoadingForm.SetProgress("Program Start...");
             LoadingForm.CloseDialog();
         }
 

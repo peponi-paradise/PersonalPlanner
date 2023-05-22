@@ -78,7 +78,7 @@ namespace PersonalPlanner.GUI.Frame
         private void GanttDoc_CustomButtonClick(object sender, ButtonEventArgs e)
         {
             var doc = sender as Document;
-            var ui = GanttUIs.Find(gantt => gantt.GanttData.Name == doc.Caption.ToString());
+            var ui = GanttUIs.Find(gantt => gantt.Name == doc.Control.Name);
             if (e.Button == doc.CustomHeaderButtons[0])
             {
                 var input = XtraInputBox.Show("Input new task's name", "New Task", "Task Name");
@@ -140,7 +140,7 @@ namespace PersonalPlanner.GUI.Frame
         private void ShowGanttContextMenu(AccordionControlElement element, Point point)
         {
             if (point == default) return;
-            var document = GanttDocs.Find(doc => doc.Caption == element.Name);
+            var document = GanttDocs.Find(doc => doc.Control.Name == $@"{nameof(GanttUI)}{element.Name}");
             if (ActivateWidget(document))
             {
                 Navigation.ClosePopupForm();
@@ -170,7 +170,7 @@ namespace PersonalPlanner.GUI.Frame
         private void AddOrActivateGantt(AccordionControlElement element)
         {
             // Add or activate widget
-            var document = GanttDocs.Find(doc => doc.Caption == element.Name);
+            var document = GanttDocs.Find(doc => doc.Control.Name == $@"{nameof(GanttUI)}{element.Name}");
             if (ActivateWidget(document)) return;
             else AddGanttWidget(GanttData.GanttDatas.Find(item => item.Name.Equals(element.Name)));
         }
@@ -178,7 +178,7 @@ namespace PersonalPlanner.GUI.Frame
         private void AddGanttWidget(GanttDefine ganttData)
         {
             GanttUI ganttUI = new GanttUI(ganttData);
-            ganttUI.Name = ganttData.Name;
+            ganttUI.Name = $@"{nameof(GanttUI)}{ganttData.Name}";
             var doc = View.AddDocument(ganttUI, ganttData.Name) as Document;
             doc.ImageOptions.ImageUri = "charttype_gantt;Size16x16";
             SetDocumentBorderColor(doc, ganttData.Color.ToDrawingColor());
@@ -196,13 +196,13 @@ namespace PersonalPlanner.GUI.Frame
         private void RemoveGanttDoc(Document doc)
         {
             GanttDocs.Remove(doc);
-            var ui = GanttUIs.Find(item => item.GanttData.Name == doc.Caption);
+            var ui = GanttUIs.Find(item => item.GanttData.Name == doc.Control.Name);
             GanttUIs.Remove(ui);
         }
 
         private void RemoveGanttData(Document doc)
         {
-            var gantt = GanttData.GanttDatas.Find(item => item.Name == doc.Caption);
+            var gantt = GanttData.GanttDatas.Find(item => item.Name == doc.Control.Name);
             RemoveGanttElement(gantt);
             GanttData.GanttDatas.Remove(gantt);
             GanttData.SaveData();

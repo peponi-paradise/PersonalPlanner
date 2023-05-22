@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraBars.Docking;
+﻿using DevExpress.Pdf.Native.BouncyCastle.Asn1.Cms;
+using DevExpress.XtraBars.Docking;
 using DevExpress.XtraBars.Docking2010;
 using DevExpress.XtraBars.Docking2010.Views.Widget;
 using DevExpress.XtraBars.Navigation;
@@ -80,7 +81,7 @@ namespace PersonalPlanner.GUI.Frame
                 dialog.ShowColor = true;
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    var memoPage = MemoUIs.Find(ui => ui.MemoData.Name == doc.Caption);
+                    var memoPage = MemoUIs.Find(ui => ui.Name == doc.Control.Name);
                     memoPage.ChangeFont(dialog.Font, dialog.Color);
                     MemoData.SaveData();
                 }
@@ -93,7 +94,7 @@ namespace PersonalPlanner.GUI.Frame
                 {
                     doc.AppearanceCaption.BackColor = colorEdit.Color;
                     doc.AppearanceCaption.BorderColor = colorEdit.Color;
-                    var memoPage = MemoUIs.Find(ui => ui.MemoData.Name == doc.Caption);
+                    var memoPage = MemoUIs.Find(ui => ui.Name == doc.Control.Name);
                     memoPage.ChangeBackgroundColor(colorEdit.Color);
                     MemoData.SaveData();
                 }
@@ -128,7 +129,7 @@ namespace PersonalPlanner.GUI.Frame
         private void ShowMemoContextMenu(AccordionControlElement element, Point point)
         {
             if (point == default) return;
-            var document = MemoDocs.Find(doc => doc.Caption == element.Name);
+            var document = MemoDocs.Find(doc => doc.Control.Name == $@"{nameof(MemoUI)}{element.Name}");
             if (ActivateWidget(document))
             {
                 Navigation.ClosePopupForm();
@@ -158,7 +159,7 @@ namespace PersonalPlanner.GUI.Frame
         private void AddOrActivateMemo(AccordionControlElement element)
         {
             // Add or activate widget
-            var document = MemoDocs.Find(doc => doc.Caption == element.Name);
+            var document = MemoDocs.Find(doc => doc.Control.Name == $@"{nameof(MemoUI)}{element.Name}");
             if (ActivateWidget(document)) return;
             else AddMemoWidget(MemoData.Memos.Find(item => item.Name.Equals(element.Name)));
         }
@@ -166,7 +167,7 @@ namespace PersonalPlanner.GUI.Frame
         private void AddMemoWidget(MemoDefine memoData)
         {
             MemoUI memoUI = new MemoUI(memoData);
-            memoUI.Name = memoData.Name;
+            memoUI.Name = $@"{nameof(MemoUI)}{memoData.Name}";
             var doc = View.AddDocument(memoUI, memoData.Name) as Document;
             doc.ImageOptions.ImageUri = "bo_note;Size16x16";
             SetDocumentBorderColor(doc, memoData.BackColor.ToDrawingColor());
@@ -180,13 +181,13 @@ namespace PersonalPlanner.GUI.Frame
         private void RemoveMemoDoc(Document doc)
         {
             MemoDocs.Remove(doc);
-            var ui = MemoUIs.Find(item => item.MemoData.Name == doc.Caption);
+            var ui = MemoUIs.Find(item => item.MemoData.Name == doc.Control.Name);
             MemoUIs.Remove(ui);
         }
 
         private void RemoveMemoData(Document doc)
         {
-            var memo = MemoData.Memos.Find(item => item.Name == doc.Caption);
+            var memo = MemoData.Memos.Find(item => item.Name == doc.Control.Name);
             RemoveMemoElement(memo);
             MemoData.Memos.Remove(memo);
             MemoData.SaveData();
