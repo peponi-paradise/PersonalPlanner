@@ -67,12 +67,21 @@ namespace PersonalPlanner.GUI.Frame
 
         private void MainFrame_Resized(object sender, EventArgs e)
         {
-            if (this.WindowState != FormWindowState.Minimized) GlobalData.Parameters.MainFrameSize = this.Size;
+            if (this.WindowState != FormWindowState.Minimized) GlobalData.Parameters.MainFrameWindowState = this.WindowState;
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                GlobalData.Parameters.MainFrameLocation = this.Location;
+                GlobalData.Parameters.MainFrameSize = this.Size;
+            }
         }
 
         private void MainFrame_Move(object sender, EventArgs e)
         {
-            if (this.WindowState != FormWindowState.Minimized) GlobalData.Parameters.MainFrameLocation = this.Location;
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                GlobalData.Parameters.MainFrameLocation = this.Location;
+                GlobalData.Parameters.MainFrameSize = this.Size;
+            }
         }
 
         private void MainFrame_FormClosing(object sender, FormClosingEventArgs e)

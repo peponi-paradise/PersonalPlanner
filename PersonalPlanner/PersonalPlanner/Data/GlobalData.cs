@@ -151,6 +151,18 @@ namespace PersonalPlanner.Data
                 }
             }
 
+            private FormWindowState _MainFrameWindowState = FormWindowState.Normal;
+
+            public FormWindowState MainFrameWindowState
+            {
+                get => _MainFrameWindowState;
+                set
+                {
+                    _MainFrameWindowState = value;
+                    SaveData();
+                }
+            }
+
             private bool _IsCalendarShow = false;
 
             public bool IsCalendarShow

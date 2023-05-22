@@ -136,6 +136,8 @@ namespace PersonalPlanner.GUI.Frame
                 this.Location = GlobalData.Parameters.MainFrameLocation;
             }
             if (GlobalData.Parameters.MainFrameSize != new Size(0, 0)) this.Size = GlobalData.Parameters.MainFrameSize;
+            else this.Size = new Size(1280, 960);
+            this.WindowState = GlobalData.Parameters.MainFrameWindowState;
 
             SkinGalleryEdit.EditValue = GlobalData.Parameters.SkinName;
             SkinPaletteGalleryEdit.EditValue = GlobalData.Parameters.SkinPaletteName;
@@ -153,7 +155,8 @@ namespace PersonalPlanner.GUI.Frame
 
         private void SaveUILayout()
         {
-            if (this.WindowState != FormWindowState.Minimized)
+            if (this.WindowState != FormWindowState.Minimized) GlobalData.Parameters.MainFrameWindowState = this.WindowState;
+            if (this.WindowState == FormWindowState.Normal)
             {
                 GlobalData.Parameters.MainFrameLocation = this.Location;
                 GlobalData.Parameters.MainFrameSize = this.Size;

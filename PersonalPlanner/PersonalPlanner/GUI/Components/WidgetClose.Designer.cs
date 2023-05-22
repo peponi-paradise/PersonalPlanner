@@ -100,19 +100,20 @@
             MainPanel.SetColumn(labelControl, 0);
             MainPanel.SetColumnSpan(labelControl, 4);
             labelControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            labelControl.Location = new System.Drawing.Point(3, 3);
+            labelControl.Location = new System.Drawing.Point(5, 3);
+            labelControl.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
             labelControl.Name = "labelControl";
             MainPanel.SetRow(labelControl, 0);
-            labelControl.Size = new System.Drawing.Size(294, 24);
+            labelControl.Size = new System.Drawing.Size(292, 24);
             labelControl.TabIndex = 0;
-            labelControl.Text = "Please select remove mode";
+            labelControl.Text = "   Please select remove mode";
             // 
-            // MemoWidgetClose
+            // WidgetClose
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(MainPanel);
-            Name = "MemoWidgetClose";
+            Name = "WidgetClose";
             Size = new System.Drawing.Size(300, 150);
             ((System.ComponentModel.ISupportInitialize)MainPanel).EndInit();
             MainPanel.ResumeLayout(false);

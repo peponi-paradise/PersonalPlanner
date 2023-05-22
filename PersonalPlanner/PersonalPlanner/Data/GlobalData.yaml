@@ -12,6 +12,7 @@ MainFrameSize:
   IsEmpty: false
   Width: 1280
   Height: 960
+MainFrameWindowState: Normal
 IsCalendarShow: true
 IsSchedulerShow: true
 CheckApplicationShortcut: false

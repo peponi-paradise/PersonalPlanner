@@ -113,9 +113,9 @@
             // ViewContainer
             // 
             ViewContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            ViewContainer.Location = new System.Drawing.Point(250, 31);
+            ViewContainer.Location = new System.Drawing.Point(50, 31);
             ViewContainer.Name = "ViewContainer";
-            ViewContainer.Size = new System.Drawing.Size(1028, 928);
+            ViewContainer.Size = new System.Drawing.Size(1228, 928);
             ViewContainer.TabIndex = 0;
             // 
             // Navigation
@@ -135,9 +135,10 @@
             Navigation.Name = "Navigation";
             Navigation.OptionsFooter.ActiveGroupDisplayMode = DevExpress.XtraBars.Navigation.ActiveGroupDisplayMode.GroupHeaderAndContent;
             Navigation.OptionsMinimizing.PopupFormAutoHeightMode = DevExpress.XtraBars.Navigation.AccordionPopupFormAutoHeightMode.FitContent;
+            Navigation.OptionsMinimizing.State = DevExpress.XtraBars.Navigation.AccordionControlState.Minimized;
             Navigation.RootDisplayMode = DevExpress.XtraBars.Navigation.AccordionControlRootDisplayMode.Footer;
             Navigation.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            Navigation.Size = new System.Drawing.Size(250, 928);
+            Navigation.Size = new System.Drawing.Size(50, 928);
             Navigation.TabIndex = 1;
             Navigation.UseDirectXPaint = DevExpress.Utils.DefaultBoolean.True;
             Navigation.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
