@@ -485,7 +485,7 @@
             // 
             // NotificationsManager
             // 
-            NotificationsManager.ApplicationId = "451128f0-92e1-4de8-b833-a1e16db7ffc4";
+            NotificationsManager.ApplicationId = "f5722466-cb24-4a51-bea0-4ff54ccb3589";
             // 
             // MainFrame
             // 

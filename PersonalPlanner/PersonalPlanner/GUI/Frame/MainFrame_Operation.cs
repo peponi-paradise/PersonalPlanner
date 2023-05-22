@@ -29,6 +29,9 @@ namespace PersonalPlanner.GUI.Frame
             {
                 if (item.Caption.Contains("Compact")) item.Visible = false;
             }
+
+            NotificationsManager.ApplicationId = "f5722466-cb24-4a51-bea0-4ff54ccb3589";
+            NotificationsManager.Notifications.AddRange(new DevExpress.XtraBars.ToastNotifications.IToastNotificationProperties[] { new DevExpress.XtraBars.ToastNotifications.ToastNotification("e19225bd-06fe-4d2b-8598-76a2fac944b4", null, null, null, null, null, null, "", "", "", null, DevExpress.XtraBars.ToastNotifications.ToastNotificationSound.Default, DevExpress.XtraBars.ToastNotifications.ToastNotificationDuration.Long, null, DevExpress.XtraBars.ToastNotifications.AppLogoCrop.Default, DevExpress.XtraBars.ToastNotifications.ToastNotificationTemplate.Generic) });
         }
 
         private void SetOverFlowButton()
@@ -230,7 +233,6 @@ namespace PersonalPlanner.GUI.Frame
 
         private void AddShortcut()
         {
-            NotificationsManager.ApplicationId = "f5722466-cb24-4a51-bea0-4ff54ccb3589";
             ShellHelper.TryCreateShortcut(
                             applicationId: NotificationsManager.ApplicationId,
                             name: Application.ProductName);
