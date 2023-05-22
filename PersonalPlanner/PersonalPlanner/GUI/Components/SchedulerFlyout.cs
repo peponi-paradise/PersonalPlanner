@@ -101,6 +101,7 @@ namespace PersonalPlanner.GUI.Components
         private SchedulerControl InitSchedulerOnly(SchedulerDataStorage dataStorage, MainFrame mainFrame)
         {
             var MainScheduler = new SchedulerControl();
+            MainScheduler.UseDirectXPaint = DevExpress.Utils.DefaultBoolean.True;
             MainScheduler.DataStorage = dataStorage;
             MainScheduler.DateNavigationBar.CalendarButton.Show = true;
             MainScheduler.DateNavigationBar.ShowTodayButton = true;

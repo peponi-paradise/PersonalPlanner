@@ -43,6 +43,7 @@ namespace PersonalPlanner.GUI.Components
         public SchedulerUI(SchedulerControl schedulerControl)
         {
             InitializeComponent();
+            schedulerControl.UseDirectXPaint = DevExpress.Utils.DefaultBoolean.True;
             Panel.Controls.Add(schedulerControl);
         }
 

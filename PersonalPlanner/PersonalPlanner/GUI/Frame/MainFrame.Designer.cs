@@ -56,7 +56,7 @@
             DevExpress.XtraBars.Navigation.AccordionContextButton accordionContextButton5 = new DevExpress.XtraBars.Navigation.AccordionContextButton();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrame));
             ViewContainer = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
-            Navigation = new PersonalPlanner.GUI.Components.CustomAccordionControl();
+            Navigation = new Components.CustomAccordionControl();
             CalendarContainer = new DevExpress.XtraBars.Navigation.AccordionContentContainer();
             CalendarPanel = new System.Windows.Forms.Panel();
             MainCalendar = new DevExpress.XtraScheduler.DateNavigator();
@@ -139,6 +139,7 @@
             Navigation.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
             Navigation.Size = new System.Drawing.Size(250, 928);
             Navigation.TabIndex = 1;
+            Navigation.UseDirectXPaint = DevExpress.Utils.DefaultBoolean.True;
             Navigation.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
             // CalendarContainer
@@ -494,6 +495,7 @@
             Controls.Add(ViewContainer);
             Controls.Add(Navigation);
             Controls.Add(FormControlBar);
+            DoubleBuffered = true;
             FluentDesignFormControl = FormControlBar;
             IconOptions.Image = (System.Drawing.Image)resources.GetObject("MainFrame.IconOptions.Image");
             Name = "MainFrame";

@@ -49,6 +49,7 @@ namespace PersonalPlanner.GUI.Components
         public CalendarFlyout(SchedulerControl schedulerControl)
         {
             InitializeComponent();
+            Calendar.UseDirectXPaint = DevExpress.Utils.DefaultBoolean.True;
             Calendar.SchedulerControl = schedulerControl;
         }
 

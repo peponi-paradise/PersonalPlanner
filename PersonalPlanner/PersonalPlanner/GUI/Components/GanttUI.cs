@@ -65,8 +65,10 @@ namespace PersonalPlanner.GUI.Components
         public GanttUI(GanttDefine ganttData)
         {
             InitializeComponent();
+
             SyncContext = SynchronizationContext.Current;
             MainGanttControl = new DevExpress.XtraGantt.GanttControl();
+            MainGanttControl.UseDirectXPaint = DevExpress.Utils.DefaultBoolean.True;
             MainGanttControl.Dock = System.Windows.Forms.DockStyle.Fill;
             MainGanttControl.Size = new System.Drawing.Size(1024, 200);
             MainGanttControl.SplitterPosition = 400;

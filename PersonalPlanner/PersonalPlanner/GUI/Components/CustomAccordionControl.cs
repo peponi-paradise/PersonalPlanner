@@ -38,6 +38,7 @@ namespace PersonalPlanner.GUI.Components
 
         public CustomAccordionControl()
         {
+            this.UseDirectXPaint = DevExpress.Utils.DefaultBoolean.True;
         }
 
         ~CustomAccordionControl()

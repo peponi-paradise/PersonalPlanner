@@ -47,6 +47,9 @@ namespace PersonalPlanner.GUI.Components
         public MemoUI(MemoDefine memoData)
         {
             InitializeComponent();
+            MainMemo.Properties.AdvancedModeOptions.UseDirectXPaint = DevExpress.Utils.DefaultBoolean.True;
+            MainMemo.UseOptimizedRendering = true;
+            MainMemo.Properties.UseAdvancedMode = DevExpress.Utils.DefaultBoolean.True;
             MemoData = memoData;
             //SetBackgroundColor();
             SetFont();
