@@ -84,9 +84,9 @@
       <property name="Properties" isnull="true" iskey="true" />
       <property name="IsFloating">false</property>
       <property name="Location">@1,X=0@1,Y=0</property>
-      <property name="Size">@4,Width=1229@3,Height=926</property>
+      <property name="Size">@3,Width=300@3,Height=300</property>
       <property name="IsActive">false</property>
-      <property name="Name">SchedulerUI</property>
+      <property name="Name">Calendar</property>
       <property name="TypeName">Document</property>
     </property>
     <property name="Item2" isnull="true" iskey="true">
@@ -104,9 +104,9 @@
       <property name="Properties" isnull="true" iskey="true" />
       <property name="IsFloating">false</property>
       <property name="Location">@1,X=0@1,Y=0</property>
-      <property name="Size">@4,Width=1229@3,Height=926</property>
+      <property name="Size">@3,Width=300@3,Height=300</property>
       <property name="IsActive">false</property>
-      <property name="Name">Calendar</property>
+      <property name="Name">SchedulerUI</property>
       <property name="TypeName">Document</property>
     </property>
     <property name="Item3" isnull="true" iskey="true">
@@ -124,9 +124,9 @@
       <property name="Properties" isnull="true" iskey="true" />
       <property name="IsFloating">false</property>
       <property name="Location">@1,X=0@1,Y=0</property>
-      <property name="Size">@4,Width=1229@3,Height=926</property>
+      <property name="Size">@3,Width=300@3,Height=300</property>
       <property name="IsActive">false</property>
-      <property name="Name">Sample Memo</property>
+      <property name="Name">MemoUISample Memo</property>
       <property name="TypeName">Document</property>
     </property>
     <property name="Item4" isnull="true" iskey="true">
@@ -144,9 +144,9 @@
       <property name="Properties" isnull="true" iskey="true" />
       <property name="IsFloating">false</property>
       <property name="Location">@1,X=0@1,Y=0</property>
-      <property name="Size">@4,Width=1229@3,Height=926</property>
-      <property name="IsActive">true</property>
-      <property name="Name">Sample Chart</property>
+      <property name="Size">@3,Width=300@3,Height=300</property>
+      <property name="IsActive">false</property>
+      <property name="Name">GanttUISample Chart</property>
       <property name="TypeName">Document</property>
     </property>
     <property name="Item5" isnull="true" iskey="true">
@@ -231,26 +231,6 @@
     </property>
     <property name="Item9" isnull="true" iskey="true">
       <property name="Width" isnull="true" iskey="true">
-        <property name="UnitValue">1</property>
-        <property name="UnitType">Star</property>
-      </property>
-      <property name="Height" isnull="true" iskey="true">
-        <property name="UnitValue">1</property>
-        <property name="UnitType">Star</property>
-      </property>
-      <property name="Parent">WidgetDockingContainer2</property>
-      <property name="Element">Sample Memo</property>
-      <property name="Orientation">Horizontal</property>
-      <property name="Index">1</property>
-      <property name="Length" isnull="true" iskey="true">
-        <property name="UnitValue">1</property>
-        <property name="UnitType">Star</property>
-      </property>
-      <property name="Name">WidgetDockingContainer4</property>
-      <property name="TypeName">WidgetDockingContainer</property>
-    </property>
-    <property name="Item10" isnull="true" iskey="true">
-      <property name="Width" isnull="true" iskey="true">
         <property name="UnitValue">1.6001648804616653</property>
         <property name="UnitType">Star</property>
       </property>
@@ -266,6 +246,26 @@
         <property name="UnitValue">1.6001648804616653</property>
         <property name="UnitType">Star</property>
       </property>
+      <property name="Name">WidgetDockingContainer4</property>
+      <property name="TypeName">WidgetDockingContainer</property>
+    </property>
+    <property name="Item10" isnull="true" iskey="true">
+      <property name="Width" isnull="true" iskey="true">
+        <property name="UnitValue">1</property>
+        <property name="UnitType">Star</property>
+      </property>
+      <property name="Height" isnull="true" iskey="true">
+        <property name="UnitValue">1</property>
+        <property name="UnitType">Star</property>
+      </property>
+      <property name="Parent">WidgetDockingContainer0</property>
+      <property name="Element">MemoUISample Memo</property>
+      <property name="Orientation">Horizontal</property>
+      <property name="Index">1</property>
+      <property name="Length" isnull="true" iskey="true">
+        <property name="UnitValue">1</property>
+        <property name="UnitType">Star</property>
+      </property>
       <property name="Name">WidgetDockingContainer5</property>
       <property name="TypeName">WidgetDockingContainer</property>
     </property>
@@ -279,9 +279,9 @@
         <property name="UnitType">Star</property>
       </property>
       <property name="Parent">WidgetDockingContainer0</property>
-      <property name="Element">Sample Chart</property>
+      <property name="Element">GanttUISample Chart</property>
       <property name="Orientation">Horizontal</property>
-      <property name="Index">1</property>
+      <property name="Index">2</property>
       <property name="Length" isnull="true" iskey="true">
         <property name="UnitValue">1</property>
         <property name="UnitType">Star</property>
