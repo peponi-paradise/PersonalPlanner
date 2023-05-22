@@ -29,7 +29,7 @@ namespace PersonalPlanner
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PersonalPlanner.Dev.Test.MainFrame());
+            Application.Run(new PersonalPlanner.GUI.Frame.MainFrame());
         }
     }
 }
