@@ -1,5 +1,4 @@
-﻿using DevExpress.Pdf.Native.BouncyCastle.Asn1.Cms;
-using DevExpress.XtraBars.Docking;
+﻿using DevExpress.XtraBars.Docking;
 using DevExpress.XtraBars.Docking2010;
 using DevExpress.XtraBars.Docking2010.Views.Widget;
 using DevExpress.XtraBars.Navigation;
@@ -133,7 +132,6 @@ namespace PersonalPlanner.GUI.Frame
             if (ActivateWidget(document))
             {
                 Navigation.ClosePopupForm();
-                ActivateWidget(document);
                 return;
             }
 

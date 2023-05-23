@@ -144,7 +144,6 @@ namespace PersonalPlanner.GUI.Frame
             if (ActivateWidget(document))
             {
                 Navigation.ClosePopupForm();
-                ActivateWidget(document);
                 return;
             }
 

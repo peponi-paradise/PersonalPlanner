@@ -7,6 +7,7 @@ using PersonalPlanner.GUI.Forms;
 using System;
 using System.Drawing;
 using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -16,6 +17,14 @@ namespace PersonalPlanner.GUI.Frame
     {
         /*-------------------------------------------
          *
+         *      Private members
+         *
+         -------------------------------------------*/
+
+        private readonly SynchronizationContext SyncContext;
+
+        /*-------------------------------------------
+         *
          *      Constructor / Destructor
          *
          -------------------------------------------*/
@@ -23,6 +32,7 @@ namespace PersonalPlanner.GUI.Frame
         public MainFrame()
         {
             InitializeComponent();
+            SyncContext = SynchronizationContext.Current;
 
             LoadingForm.OpenDialog();
             LoadingForm.SetVersion(Assembly.GetExecutingAssembly().GetName().Version.ToString());
@@ -33,6 +43,7 @@ namespace PersonalPlanner.GUI.Frame
 
             LoadingForm.SetProgress("Loading Environments...");
             LoadDatas();
+            CheckSkinPaletteColor();
             LoadingForm.SetProgress("Loading Environments Done...");
 
             LoadingForm.SetProgress("Init Scheduler...");

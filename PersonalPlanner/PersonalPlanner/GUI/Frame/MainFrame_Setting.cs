@@ -37,9 +37,10 @@ namespace PersonalPlanner.GUI.Frame
 
         private void SkinPaletteGallery_ItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
         {
-            GlobalData.Parameters.SkinPaletteName = e.Item.Caption;
+            SkinPaletteGalleryEdit.EditValue = GlobalData.Parameters.SkinPaletteName = e.Item.Caption;
             SetOverFlowButton();
             ResetGanttWidgets();
+            SkinPaletteGalleryEdit.Update();
         }
 
         private void SkinGallery_ItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
@@ -47,6 +48,7 @@ namespace PersonalPlanner.GUI.Frame
             SkinGalleryEdit.EditValue = GlobalData.Parameters.SkinName = e.Item.Caption;
             SetOverFlowButton();
             ResetGanttWidgets();
+            SkinGalleryEdit.Update();
         }
 
         private void WorkingTimeStart_EditValueChanged(object sender, System.EventArgs e)

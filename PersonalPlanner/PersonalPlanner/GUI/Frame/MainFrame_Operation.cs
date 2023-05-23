@@ -5,6 +5,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraScheduler;
 using PersonalPlanner.Data;
 using PersonalPlanner.GUI.Forms;
+using PersonalPlanner.Utility.GUI;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -45,6 +46,15 @@ namespace PersonalPlanner.GUI.Frame
 
             Navigation.HtmlTemplates.FooterOverflowButton.Template = html;
             Navigation.HtmlTemplates.FooterOverflowButton.Styles = css;
+        }
+
+        private void CheckSkinPaletteColor()
+        {
+            if (string.IsNullOrEmpty(GlobalData.Parameters.SkinPaletteName))
+            {
+                if (WindowThemeColor.IsDarkTheme()) GlobalData.Parameters.SkinPaletteName = "Darkness";
+                else GlobalData.Parameters.SkinPaletteName = "Freshness";
+            }
         }
 
         private void LoadDatas()
@@ -123,11 +133,6 @@ namespace PersonalPlanner.GUI.Frame
             {
             }
             LoadingForm.SetProgress("Loading Gantt Done...");
-
-            LoadingForm.SetProgress("Set Skin...");
-            // Set Skin
-            UserLookAndFeel.Default.SetSkinStyle(GlobalData.Parameters.SkinName, GlobalData.Parameters.SkinPaletteName);
-            LoadingForm.SetProgress("Set Skin Done...");
         }
 
         private void SetUILayout()
@@ -142,8 +147,10 @@ namespace PersonalPlanner.GUI.Frame
             else this.Size = new Size(1280, 960);
             this.WindowState = GlobalData.Parameters.MainFrameWindowState;
 
-            SkinGalleryEdit.EditValue = GlobalData.Parameters.SkinName;
-            SkinPaletteGalleryEdit.EditValue = GlobalData.Parameters.SkinPaletteName;
+            UserLookAndFeel.Default.SetSkinStyle(GlobalData.Parameters.SkinName, GlobalData.Parameters.SkinPaletteName);
+
+            SkinGalleryEdit.SelectedText = GlobalData.Parameters.SkinName;
+            SkinPaletteGalleryEdit.SelectedText = GlobalData.Parameters.SkinPaletteName;
 
             WorkingTimeStart.EditValue = GlobalData.Parameters.OfficeStart;
             WorkingTimeEnd.EditValue = GlobalData.Parameters.OfficeEnd;
@@ -197,9 +204,13 @@ namespace PersonalPlanner.GUI.Frame
         private bool ActivateWidget(Document doc)
         {
             // Activate widget
-            if (View.Documents.Contains(doc)) View.Controller.Activate(doc);
+            if (View.Documents.Contains(doc))
+            {
+                WidgetFlickeringEffect.Flickering(doc);
+                View.Controller.Activate(doc);
+                return true;
+            }
             else return false;
-            return true;
         }
 
         private void SetDocumentBorderColor(Document doc, Color color)

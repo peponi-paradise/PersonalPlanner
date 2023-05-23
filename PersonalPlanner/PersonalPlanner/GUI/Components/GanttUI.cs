@@ -215,11 +215,13 @@ namespace PersonalPlanner.GUI.Components
         private void StartDateEdit_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
         {
             if ((DateTime)e.NewValue > FinishDateEdit.DateTime) e.Cancel = true;
+            else e.NewValue = ((DateTime)e.NewValue).Date;
         }
 
         private void FinishDateEdit_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
         {
             if ((DateTime)e.NewValue < StartDateEdit.DateTime) e.Cancel = true;
+            else e.NewValue = ((DateTime)e.NewValue).Date.AddDays(1).AddMilliseconds(-1);
         }
 
         private void MainGanttControl_BeforeDropNode(object sender, DevExpress.XtraTreeList.BeforeDropNodeEventArgs e)
