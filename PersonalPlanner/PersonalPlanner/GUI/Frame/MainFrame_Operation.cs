@@ -9,6 +9,7 @@ using PersonalPlanner.Utility.GUI;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace PersonalPlanner.GUI.Frame
@@ -23,6 +24,7 @@ namespace PersonalPlanner.GUI.Frame
 
         private void SetUIElements()
         {
+            this.Text = $"Personal Planner by ClockStrikes. Ver: {Assembly.GetExecutingAssembly().GetName().Version}";
             SetOverFlowButton();
             DevExpress.XtraBars.Helpers.SkinHelper.InitSkinGallery(SkinGalleryEdit);
             DevExpress.XtraBars.Helpers.SkinHelper.InitSkinPaletteGallery(SkinPaletteGalleryEdit);
