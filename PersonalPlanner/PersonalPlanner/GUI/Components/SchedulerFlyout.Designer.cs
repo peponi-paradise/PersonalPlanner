@@ -50,7 +50,7 @@
             Flyout.OptionsButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] { new DevExpress.Utils.PeekFormButton("Show", true, buttonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false) });
             Flyout.OptionsButtonPanel.ShowButtonPanel = true;
             Flyout.Padding = new System.Windows.Forms.Padding(0, 0, 0, 30);
-            Flyout.Size = new System.Drawing.Size(600, 300);
+            Flyout.Size = new System.Drawing.Size(600, 500);
             Flyout.TabIndex = 1;
             Flyout.ButtonClick += Flyout_ButtonClick;
             // 
@@ -60,7 +60,7 @@
             FlyoutControl.FlyoutPanel = Flyout;
             FlyoutControl.Location = new System.Drawing.Point(0, 0);
             FlyoutControl.Name = "FlyoutControl";
-            FlyoutControl.Size = new System.Drawing.Size(600, 270);
+            FlyoutControl.Size = new System.Drawing.Size(600, 470);
             FlyoutControl.TabIndex = 0;
             // 
             // SchedulerFlyout
@@ -69,7 +69,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(Flyout);
             Name = "SchedulerFlyout";
-            Size = new System.Drawing.Size(600, 300);
+            Size = new System.Drawing.Size(600, 500);
             ((System.ComponentModel.ISupportInitialize)Flyout).EndInit();
             Flyout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)FlyoutControl).EndInit();

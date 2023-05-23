@@ -51,6 +51,12 @@ namespace PersonalPlanner.GUI.Frame
          *
          -------------------------------------------*/
 
+        private void MainScheduler_DateNavigatorQueryActiveViewType(object sender, DateNavigatorQueryActiveViewTypeEventArgs e)
+        {
+            MainScheduler.ActiveViewType = e.NewViewType;
+            GlobalData.Parameters.SchedulerViewType = (int)e.NewViewType;
+        }
+
         private void CalendarLabel_Click(object sender, EventArgs e)
         {
             if (Navigation.OptionsMinimizing.State == AccordionControlState.Minimized)
@@ -202,6 +208,7 @@ namespace PersonalPlanner.GUI.Frame
             var doc = View.AddDocument(schedulerUI, name) as Document;
             doc.ImageOptions.ImageUri = "shortdate;Size16x16";
             doc.CustomHeaderButtons.Add(new CustomHeaderButton("Working Hours", "WorkingHours;Size16x16", HorizontalImageLocation.Default, ButtonStyle.CheckButton, "Show working hours only", false, 0, -1));
+            doc.CustomHeaderButtons[0].Properties.Checked = GlobalData.Parameters.WorktimeShow;
             doc.CustomButtonChecked += Doc_CustomButtonChecked;
             doc.CustomButtonUnchecked += Doc_CustomButtonUnchecked;
             SchedulerDoc = doc;
@@ -289,6 +296,7 @@ namespace PersonalPlanner.GUI.Frame
 
             MainCalendar.SchedulerControl = MainScheduler;
             SchedulerContainer.Controls.Add(MainScheduler);
+            MainScheduler.DateNavigatorQueryActiveViewType += MainScheduler_DateNavigatorQueryActiveViewType;
 
             if (GlobalData.Parameters.IsCalendarShow) AddOrActivateCalendar();
             if (GlobalData.Parameters.IsSchedulerShow) AddOrActivateScheduler();
@@ -323,7 +331,9 @@ namespace PersonalPlanner.GUI.Frame
             MainScheduler.EditAppointmentFormShowing += MainScheduler_EditAppointmentFormShowing;
 
             MainCalendar.SchedulerControl = MainScheduler;
-            if (ActivateWidget(CalendarDoc)) WidgetNavigator.SchedulerControl = MainScheduler;
+            if (View.Documents.Contains(CalendarDoc)) WidgetNavigator.SchedulerControl = MainScheduler;
+            MainScheduler.EditAppointmentFormShowing += MainScheduler_EditAppointmentFormShowing;
+
             SchedulerContainer.Controls.Add(MainScheduler);
             Navigation.Controls.Add(SchedulerContainer);
             Scheduler.ContentContainer = SchedulerContainer;
