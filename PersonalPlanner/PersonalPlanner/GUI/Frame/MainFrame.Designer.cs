@@ -480,7 +480,7 @@
             // 
             View.AllowDocumentStateChangeAnimation = DevExpress.Utils.DefaultBoolean.True;
             View.DocumentProperties.AllowFloat = false;
-            View.LayoutMode = DevExpress.XtraBars.Docking2010.Views.Widget.LayoutMode.FreeLayout;
+            View.LayoutMode = DevExpress.XtraBars.Docking2010.Views.Widget.LayoutMode.FlowLayout;
             View.RootContainer.Orientation = System.Windows.Forms.Orientation.Vertical;
             // 
             // NotificationsManager
