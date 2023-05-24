@@ -19,7 +19,7 @@ https://github.com/peponi-paradise</Description>
     <Company>https://peponi-paradise.tistory.com</Company>
     <Authors>ClockStrikes</Authors>
     <UseWPF>False</UseWPF>
-    <BaseOutputPath>C:\Study\Toy_project\PersonalPlanner\bin\</BaseOutputPath>
+    <BaseOutputPath>..\bin\</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -195,6 +195,9 @@ https://github.com/peponi-paradise</Description>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Data\StatusDataSet.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="LICENSE.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Properties\Settings.settings">
