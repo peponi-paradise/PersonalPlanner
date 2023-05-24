@@ -478,7 +478,8 @@
             // 
             View.AllowDocumentStateChangeAnimation = DevExpress.Utils.DefaultBoolean.True;
             View.DocumentProperties.AllowFloat = false;
-            View.LayoutMode = DevExpress.XtraBars.Docking2010.Views.Widget.LayoutMode.FlowLayout;
+            View.FreeLayoutProperties.ItemDragStyle = DevExpress.XtraBars.Docking2010.Views.Widget.ItemDragStyle.DockingHints;
+            View.LayoutMode = DevExpress.XtraBars.Docking2010.Views.Widget.LayoutMode.FreeLayout;
             View.RootContainer.Orientation = System.Windows.Forms.Orientation.Vertical;
             // 
             // MainFrame

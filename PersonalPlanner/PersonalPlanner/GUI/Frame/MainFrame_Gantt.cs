@@ -195,13 +195,14 @@ namespace PersonalPlanner.GUI.Frame
         private void RemoveGanttDoc(Document doc)
         {
             GanttDocs.Remove(doc);
-            var ui = GanttUIs.Find(item => item.GanttData.Name == doc.Control.Name);
+            var ui = GanttUIs.Find(item => item.Name == doc.Control.Name);
+            View.RemoveDocument(ui);
             GanttUIs.Remove(ui);
         }
 
         private void RemoveGanttData(Document doc)
         {
-            var gantt = GanttData.GanttDatas.Find(item => item.Name == doc.Control.Name);
+            var gantt = GanttData.GanttDatas.Find(item => item.Name == doc.Caption);
             RemoveGanttElement(gantt);
             GanttData.GanttDatas.Remove(gantt);
             GanttData.SaveData();

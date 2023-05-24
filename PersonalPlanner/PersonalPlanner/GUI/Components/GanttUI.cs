@@ -235,11 +235,6 @@ namespace PersonalPlanner.GUI.Components
          *
          -------------------------------------------*/
 
-        public new void Dispose()
-        {
-            MainGanttControl.Dispose();
-        }
-
         public void ExpandAllNodes() => MainGanttControl.ExpandAll();
 
         public void ZoomIn() => MainGanttControl.ZoomIn();

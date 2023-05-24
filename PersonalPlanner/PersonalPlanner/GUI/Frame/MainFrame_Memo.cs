@@ -179,13 +179,14 @@ namespace PersonalPlanner.GUI.Frame
         private void RemoveMemoDoc(Document doc)
         {
             MemoDocs.Remove(doc);
-            var ui = MemoUIs.Find(item => item.MemoData.Name == doc.Control.Name);
+            var ui = MemoUIs.Find(item => item.Name == doc.Control.Name);
+            View.RemoveDocument(ui);
             MemoUIs.Remove(ui);
         }
 
         private void RemoveMemoData(Document doc)
         {
-            var memo = MemoData.Memos.Find(item => item.Name == doc.Control.Name);
+            var memo = MemoData.Memos.Find(item => item.Name == doc.Caption);
             RemoveMemoElement(memo);
             MemoData.Memos.Remove(memo);
             MemoData.SaveData();
@@ -201,7 +202,8 @@ namespace PersonalPlanner.GUI.Frame
         {
             foreach (var item in MemoData.Memos)
             {
-                if (MemoUIs.Find(ui => ui.MemoData == item) != null) item.IsOpened = true;
+                var ui = MemoUIs.Find(ui => ui.MemoData == item);
+                if (ui != null) item.IsOpened = true;
                 else item.IsOpened = false;
             }
             MemoData.SaveData();

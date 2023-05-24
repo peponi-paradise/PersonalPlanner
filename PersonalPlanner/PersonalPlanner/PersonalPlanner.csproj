@@ -32,7 +32,6 @@ https://github.com/peponi-paradise</Description>
   <ItemGroup>
     <None Remove="Assets\MainFrameOverFlowButton.html" />
     <None Remove="Calendar.ics" />
-    <None Remove="Data\Layout.xml" />
     <None Remove="Dev.Test\GanttTestForm.resx~RF94346.TMP" />
   </ItemGroup>
 
@@ -53,9 +52,6 @@ https://github.com/peponi-paradise</Description>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Calendar.ics">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Layout.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ShortDate.ico">
