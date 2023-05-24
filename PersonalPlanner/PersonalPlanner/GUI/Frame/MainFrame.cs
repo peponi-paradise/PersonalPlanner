@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraBars.Docking2010.Views.Widget;
 using DevExpress.XtraBars.Navigation;
+using DevExpress.XtraBars.ToastNotifications;
 using DevExpress.XtraEditors;
 using PersonalPlanner.Data;
 using PersonalPlanner.GUI.Components;
@@ -22,6 +23,8 @@ namespace PersonalPlanner.GUI.Frame
          -------------------------------------------*/
 
         private readonly SynchronizationContext SyncContext;
+        private ToastNotificationsManager NotificationsManager;
+        private bool ShortcutAdded = false;
 
         /*-------------------------------------------
          *
@@ -208,6 +211,8 @@ namespace PersonalPlanner.GUI.Frame
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
+
+            if (ShortcutAdded) { RestartSW(); return; }
 
             this.Resize += MainFrame_Resized;
             this.Move += MainFrame_Move;

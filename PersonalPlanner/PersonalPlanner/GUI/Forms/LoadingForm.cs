@@ -22,7 +22,7 @@ namespace PersonalPlanner.GUI.Forms
         public LoadingDialog()
         {
             InitializeComponent();
-            this.labelCopyright.Text = $"© {DateTime.Now.Year}. \"ClockStrikes\" all rights reserved";
+            this.labelCopyright.Text = $"©ClockStrikes, {DateTime.Now.Year}";
             VersionLabel.Parent = peImage;
             VersionLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             VersionLabel.BringToFront();

@@ -56,9 +56,9 @@
             labelCopyright.Location = new System.Drawing.Point(23, 364);
             labelCopyright.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             labelCopyright.Name = "labelCopyright";
-            labelCopyright.Size = new System.Drawing.Size(265, 14);
+            labelCopyright.Size = new System.Drawing.Size(111, 14);
             labelCopyright.TabIndex = 6;
-            labelCopyright.Text = "Copyright 2023. \"ClockStrikes\" all rights reserved";
+            labelCopyright.Text = "©ClockStrikes, 2023";
             // 
             // labelStatus
             // 

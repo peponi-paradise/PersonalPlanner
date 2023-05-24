@@ -134,7 +134,6 @@ namespace PersonalPlanner.GUI.Frame
         {
             if (ShellHelper.IsApplicationShortcutExist(Application.ProductName))
             {
-                NotificationsManager.ApplicationName = Application.ProductName;
                 NotificationsManager.Notifications[0].AttributionText = $"©ClockStrikes, {DateTime.Now.Year}";
                 foreach (ReminderAlertNotification alert in e.AlertNotifications)
                 {

@@ -18,6 +18,8 @@ https://github.com/peponi-paradise</Description>
     <PackageProjectUrl>https://peponi-paradise.tistory.com</PackageProjectUrl>
     <Company>https://peponi-paradise.tistory.com</Company>
     <Authors>ClockStrikes</Authors>
+    <UseWPF>False</UseWPF>
+    <BaseOutputPath>C:\Study\Toy_project\PersonalPlanner\bin\</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -35,6 +37,18 @@ https://github.com/peponi-paradise</Description>
   </ItemGroup>
 
   <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>f935dc20-1cf0-11d0-adb9-00c04fd58a0b</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Assets\MainFrameOverFlowButton.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -44,7 +58,9 @@ https://github.com/peponi-paradise</Description>
     <Content Include="Data\Layout.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="ShortDate.ico" />
+    <Content Include="ShortDate.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -210,6 +226,10 @@ https://github.com/peponi-paradise</Description>
 
   <ItemGroup>
     <Folder Include="Dev.Test\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WatchDog\WatchDog.csproj" />
   </ItemGroup>
 
 </Project>

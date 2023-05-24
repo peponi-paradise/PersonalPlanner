@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace PersonalPlanner.Utility.GUI
+namespace PersonalPlanner.Utility.Windows
 {
     public static class GUI
     {

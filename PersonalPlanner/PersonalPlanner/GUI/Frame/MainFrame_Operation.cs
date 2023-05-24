@@ -6,10 +6,12 @@ using DevExpress.XtraScheduler;
 using PersonalPlanner.Data;
 using PersonalPlanner.GUI.Forms;
 using PersonalPlanner.Utility.GUI;
+using PersonalPlanner.Utility.Windows;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace PersonalPlanner.GUI.Frame
@@ -33,8 +35,10 @@ namespace PersonalPlanner.GUI.Frame
                 if (item.Caption.Contains("Compact")) item.Visible = false;
             }
 
-            NotificationsManager.ApplicationId = "f5722466-cb24-4a51-bea0-4ff54ccb3589";
-            NotificationsManager.Notifications.AddRange(new DevExpress.XtraBars.ToastNotifications.IToastNotificationProperties[] { new DevExpress.XtraBars.ToastNotifications.ToastNotification("e19225bd-06fe-4d2b-8598-76a2fac944b4", null, null, null, null, null, null, "", "", "", null, DevExpress.XtraBars.ToastNotifications.ToastNotificationSound.Default, DevExpress.XtraBars.ToastNotifications.ToastNotificationDuration.Long, null, DevExpress.XtraBars.ToastNotifications.AppLogoCrop.Default, DevExpress.XtraBars.ToastNotifications.ToastNotificationTemplate.Generic) });
+            NotificationsManager = new DevExpress.XtraBars.ToastNotifications.ToastNotificationsManager(this.components);
+            NotificationsManager.CreateApplicationShortcut = DevExpress.Utils.DefaultBoolean.False;
+            NotificationsManager.ApplicationId = "bc39c8f2-c49c-4eee-9f2c-9326fa2ab3bc";
+            NotificationsManager.Notifications.Add(new DevExpress.XtraBars.ToastNotifications.ToastNotification("ee091f24-ae4c-4f95-8ad1-73e17f8f4076", null, null, null, null, null, null, "", "", "", null, DevExpress.XtraBars.ToastNotifications.ToastNotificationSound.Default, DevExpress.XtraBars.ToastNotifications.ToastNotificationDuration.Long, null, DevExpress.XtraBars.ToastNotifications.AppLogoCrop.Default, DevExpress.XtraBars.ToastNotifications.ToastNotificationTemplate.Generic));
         }
 
         private void SetOverFlowButton()
@@ -229,18 +233,10 @@ namespace PersonalPlanner.GUI.Frame
 
         private void CheckShortcut()
         {
-            if (!GlobalData.Parameters.CheckApplicationShortcut)
+            if (!ShellHelper.IsApplicationShortcutExist(Application.ProductName))
             {
-                if (!ShellHelper.IsApplicationShortcutExist(Application.ProductName))
-                {
-                    var rtn = XtraMessageBox.Show("Need to create shortcut on start menu\nif you want to get windows notification.\nProceed?", "Add application shortcut", MessageBoxButtons.OKCancel);
-                    GlobalData.Parameters.CheckApplicationShortcut = true;
-                    if (rtn == DialogResult.OK) AddShortcut();
-                    else
-                    {
-                        XtraMessageBox.Show("You can create shortcut manually or via application menu", "Add application shortcut");
-                    }
-                }
+                AddShortcut();
+                ShortcutAdded = true;
             }
         }
 
@@ -249,10 +245,13 @@ namespace PersonalPlanner.GUI.Frame
             ShellHelper.TryCreateShortcut(
                             applicationId: NotificationsManager.ApplicationId,
                             name: Application.ProductName);
-            XtraMessageBox.Show("Application will restart automatically", "Work done");
-            Program.Mutex.ReleaseMutex();
-            Process.Start(Application.ExecutablePath);
-            Process.GetCurrentProcess().Kill();
+        }
+
+        private void RestartSW()
+        {
+            XtraMessageBox.Show("Initial settings done.\r\nClick OK to continue...", "Restart SW");
+            Process.Start(Application.StartupPath + "WatchDog.exe", new string[] { Process.GetCurrentProcess().Id.ToString(), Application.ExecutablePath });
+            Application.Exit();
         }
     }
 }

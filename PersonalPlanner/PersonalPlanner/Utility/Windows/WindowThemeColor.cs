@@ -1,6 +1,6 @@
 ﻿using Microsoft.Win32;
 
-namespace PersonalPlanner.Utility.GUI
+namespace PersonalPlanner.Utility.Windows
 {
     public static class WindowThemeColor
     {

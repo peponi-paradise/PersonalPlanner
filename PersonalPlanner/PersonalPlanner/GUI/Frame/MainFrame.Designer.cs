@@ -92,7 +92,6 @@
             FormControlBar = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             DocManager = new DevExpress.XtraBars.Docking2010.DocumentManager(components);
             View = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetView(components);
-            NotificationsManager = new DevExpress.XtraBars.ToastNotifications.ToastNotificationsManager(components);
             ((System.ComponentModel.ISupportInitialize)Navigation).BeginInit();
             Navigation.SuspendLayout();
             CalendarContainer.SuspendLayout();
@@ -107,7 +106,6 @@
             ((System.ComponentModel.ISupportInitialize)FormControlBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DocManager).BeginInit();
             ((System.ComponentModel.ISupportInitialize)View).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)NotificationsManager).BeginInit();
             SuspendLayout();
             // 
             // ViewContainer
@@ -483,10 +481,6 @@
             View.LayoutMode = DevExpress.XtraBars.Docking2010.Views.Widget.LayoutMode.FlowLayout;
             View.RootContainer.Orientation = System.Windows.Forms.Orientation.Vertical;
             // 
-            // NotificationsManager
-            // 
-            NotificationsManager.ApplicationId = "f5722466-cb24-4a51-bea0-4ff54ccb3589";
-            // 
             // MainFrame
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -501,7 +495,7 @@
             IconOptions.Image = (System.Drawing.Image)resources.GetObject("MainFrame.IconOptions.Image");
             Name = "MainFrame";
             NavigationControl = Navigation;
-            Text = "Personal Planner";
+            Text = "PersonalPlanner";
             ((System.ComponentModel.ISupportInitialize)Navigation).EndInit();
             Navigation.ResumeLayout(false);
             CalendarContainer.ResumeLayout(false);
@@ -516,7 +510,6 @@
             ((System.ComponentModel.ISupportInitialize)FormControlBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)DocManager).EndInit();
             ((System.ComponentModel.ISupportInitialize)View).EndInit();
-            ((System.ComponentModel.ISupportInitialize)NotificationsManager).EndInit();
             ResumeLayout(false);
         }
 
@@ -543,7 +536,6 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement SkinSettingGroup;
         private DevExpress.XtraBars.Navigation.AccordionControlElement Skin;
         private DevExpress.XtraBars.Navigation.AccordionControlElement SkinPalette;
-        private DevExpress.XtraBars.ToastNotifications.ToastNotificationsManager NotificationsManager;
         private DevExpress.XtraBars.Navigation.AccordionControlElement WorkingTimeSettingGroup;
         private DevExpress.XtraBars.Navigation.AccordionControlElement WorkingTimeStartLabel;
         private DevExpress.XtraBars.Navigation.AccordionControlElement WorkingTimeEndLabel;
