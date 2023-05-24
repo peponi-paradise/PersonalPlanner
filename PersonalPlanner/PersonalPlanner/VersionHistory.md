@@ -1,33 +1,33 @@
 - Version 1.1.0.5
   1. GUI Change
-    - 개별 Ribbon form -> 통합 Widget form으로 변경
-	- GUI 간소화 : 최소한의 메뉴만 남겨둠
-	- GUI 위치 및 상태 정보 저장
-	- Widget 디스플레이 상태 저장
+     - 개별 Ribbon form -> 통합 Widget form으로 변경
+   	 - GUI 간소화 : 최소한의 메뉴만 남겨둠
+	 - GUI 위치 및 상태 정보 저장
+	 - Widget 디스플레이 상태 저장
   2. 메모 데이터 저장 기능 업데이트
-    - 메모 작성 시 메모리에 기록, 프로그램 종료 시 저장
+     - 메모 작성 시 메모리에 기록, 프로그램 종료 시 저장
   3. 스케쥴러 기능 업데이트
-    - GUI 간소화 : 대부분의 UI 없앰. 최소한의 기능으로 의도된 기능 사용 유도
-	- 캘린더 날짜 선택 시 스케쥴러 연동 : Single 또는 multiple day
-	- Toast notification 알림 재설정
-	  - Known issue : 바로가기 추가 후 다시 켰을 때 알림 오지 않는 경우 있음 (해결 필요). 임시로 한번 더 다시 켜주면 정상 적용..
+     - GUI 간소화 : 대부분의 UI 없앰. 최소한의 기능으로 의도된 기능 사용 유도
+	 - 캘린더 날짜 선택 시 스케쥴러 연동 : Single 또는 multiple day
+	 - Toast notification 알림 재설정
+    	 - Known issue : 바로가기 추가 후 다시 켰을 때 알림 오지 않는 경우 있음 (해결 필요). 임시로 한번 더 다시 켜주면 정상 적용..
   4. 간트 기능 업데이트
-    - 유저 편의성 업데이트 : 리소스 최적화
-	  -> 스킨 변경 시 간트 다시 켜야하던 문제점 해결
+     - 유저 편의성 업데이트 : 리소스 최적화
+		-> 스킨 변경 시 간트 다시 켜야하던 문제점 해결
   5. Watchdog 추가
-    - 바로가기 추가 후 SW 재기동을 위해 Watchdog 추가
+     - 바로가기 추가 후 SW 재기동을 위해 Watchdog 추가
 
 <br>
 
 - Version 1.0.0.4
   1. Gantt chart 오류 수정
-	- Chart 제거 오류 수정
-	- Task 추가 시 중복 ID 오류 수정
+     - Chart 제거 오류 수정
+	 - Task 추가 시 중복 ID 오류 수정
   2. UI 오류 수정
-	- 스케줄러 세팅 탭의 워킹타임 길이 맞게 수정
-	- 스케줄 설정 윈도우의 시간 설정 터치UI로 교체 -> 사용성 좋아짐
+     - 스케줄러 세팅 탭의 워킹타임 길이 맞게 수정
+     - 스케줄 설정 윈도우의 시간 설정 터치UI로 교체 -> 사용성 좋아짐
   3. InApp manual 수정
-	- Gantt Tree view drag & drop gif 추가
+     - Gantt Tree view drag & drop gif 추가
 
 <br>
 
