@@ -331,7 +331,7 @@ namespace PersonalPlanner.GUI.Frame
 
             MainCalendar.SchedulerControl = MainScheduler;
             if (View.Documents.Contains(CalendarDoc)) WidgetNavigator.SchedulerControl = MainScheduler;
-            MainScheduler.EditAppointmentFormShowing += MainScheduler_EditAppointmentFormShowing;
+            MainScheduler.DateNavigatorQueryActiveViewType += MainScheduler_DateNavigatorQueryActiveViewType;
 
             SchedulerContainer.Controls.Add(MainScheduler);
             Navigation.Controls.Add(SchedulerContainer);
