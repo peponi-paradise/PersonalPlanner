@@ -92,6 +92,8 @@
             FormControlBar = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             DocManager = new DevExpress.XtraBars.Docking2010.DocumentManager(components);
             View = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetView(components);
+            NotificationWindow = new DevExpress.XtraBars.Alerter.AlertControl(components);
+            ImageCollection = new DevExpress.Utils.SvgImageCollection(components);
             ((System.ComponentModel.ISupportInitialize)Navigation).BeginInit();
             Navigation.SuspendLayout();
             CalendarContainer.SuspendLayout();
@@ -106,6 +108,7 @@
             ((System.ComponentModel.ISupportInitialize)FormControlBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DocManager).BeginInit();
             ((System.ComponentModel.ISupportInitialize)View).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ImageCollection).BeginInit();
             SuspendLayout();
             // 
             // ViewContainer
@@ -482,6 +485,20 @@
             View.LayoutMode = DevExpress.XtraBars.Docking2010.Views.Widget.LayoutMode.FreeLayout;
             View.RootContainer.Orientation = System.Windows.Forms.Orientation.Vertical;
             // 
+            // NotificationWindow
+            // 
+            NotificationWindow.AppearanceText.Options.UseTextOptions = true;
+            NotificationWindow.AppearanceText.TextOptions.Trimming = DevExpress.Utils.Trimming.Word;
+            NotificationWindow.AppearanceText.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            NotificationWindow.ShowToolTips = false;
+            // 
+            // ImageCollection
+            // 
+            ImageCollection.Add("shortdate", "image://svgimages/spreadsheet/shortdate.svg");
+            ImageCollection.Add("pinbutton", "image://svgimages/dashboards/pinbutton.svg");
+            ImageCollection.Add("unpinbutton", "image://svgimages/dashboards/unpinbutton.svg");
+            ImageCollection.Add("delete", "image://svgimages/outlook inspired/delete.svg");
+            // 
             // MainFrame
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -511,6 +528,7 @@
             ((System.ComponentModel.ISupportInitialize)FormControlBar).EndInit();
             ((System.ComponentModel.ISupportInitialize)DocManager).EndInit();
             ((System.ComponentModel.ISupportInitialize)View).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ImageCollection).EndInit();
             ResumeLayout(false);
         }
 
@@ -552,5 +570,7 @@
         private DevExpress.XtraEditors.PopupGalleryEdit SkinPaletteGalleryEdit;
         private DevExpress.XtraEditors.TimeSpanEdit WorkingTimeStart;
         private DevExpress.XtraEditors.TimeSpanEdit WorkingTimeEnd;
+        private DevExpress.XtraBars.Alerter.AlertControl NotificationWindow;
+        private DevExpress.Utils.SvgImageCollection ImageCollection;
     }
 }

@@ -1,5 +1,4 @@
-﻿using DevExpress.Data;
-using DevExpress.XtraBars.Docking;
+﻿using DevExpress.XtraBars.Docking;
 using DevExpress.XtraBars.Docking2010;
 using DevExpress.XtraBars.Docking2010.Views.Widget;
 using DevExpress.XtraBars.Navigation;
@@ -156,16 +155,12 @@ namespace PersonalPlanner.GUI.Frame
             }
             foreach (ReminderAlertNotification item in e.AlertNotifications) item.Handled = false;
 
-            if (ShellHelper.IsApplicationShortcutExist(Application.ProductName))
+            foreach (ReminderAlertNotification alert in copied)
             {
-                NotificationsManager.Notifications[0].AttributionText = $"©ClockStrikes, {DateTime.Now.Year}";
-                foreach (ReminderAlertNotification alert in e.AlertNotifications)
-                {
-                    NotificationsManager.Notifications[0].Header = alert.ActualAppointment.Subject ?? "Empty subject";
-                    NotificationsManager.Notifications[0].Body = alert.ActualAppointment.Description ?? "Empty Description";
-                    NotificationsManager.Notifications[0].Body2 = alert.ActualAppointment.Location ?? "Empty Location";
-                    NotificationsManager.ShowNotification(NotificationsManager.Notifications[0]);
-                }
+                NotificationData.Caption = alert.ActualAppointment.Subject ?? "Empty subject";
+                NotificationData.Description1 = alert.ActualAppointment.Description ?? "Empty Description";
+                NotificationData.Description2 = alert.ActualAppointment.Location ?? "Empty Location";
+                NotificationWindow.Show(this);
             }
 
             CustomRemindersForm remindersForm = new CustomRemindersForm(MainScheduler);

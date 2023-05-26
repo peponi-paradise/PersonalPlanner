@@ -85,6 +85,12 @@ https://github.com/peponi-paradise</Description>
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Assets\Notification.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\Notification.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Legacy\Asset\appointment1.PNG">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
@@ -225,10 +231,6 @@ https://github.com/peponi-paradise</Description>
 
   <ItemGroup>
     <Folder Include="Dev.Test\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\WatchDog\WatchDog.csproj" />
   </ItemGroup>
 
 </Project>

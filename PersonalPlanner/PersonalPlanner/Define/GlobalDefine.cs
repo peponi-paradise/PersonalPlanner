@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using DevExpress.Utils.Svg;
+using System.Drawing;
 
 namespace PersonalPlanner.Define
 {
@@ -40,5 +41,28 @@ namespace PersonalPlanner.Define
         public string Description;
         public object TargetControl;
         public Point TargetLocation;
+    }
+
+    public enum NotificationType
+    {
+        Schedule,
+        Memo,
+        Gantt,
+    }
+
+    public class NotificationData
+    {
+        public NotificationType NotificationType { get; set; } = NotificationType.Schedule;
+        public string Title { get; set; } = "";
+        public SvgImage TitleImageSource { get; set; }
+        public SvgImage TitlePinImageSource { get; set; }
+        public SvgImage TitleCloseImageSource { get; set; }
+        public string Caption { get; set; } = "";
+        public SvgImage DescriptionImageSource { get; set; }
+        public string Description1 { get; set; } = "";
+        public string Description2 { get; set; } = "";
+        public string FooterUrl1 { get; set; } = "";
+        public string FooterUrl2 { get; set; } = "";
+        public string Copyright { get; set; } = "";
     }
 }

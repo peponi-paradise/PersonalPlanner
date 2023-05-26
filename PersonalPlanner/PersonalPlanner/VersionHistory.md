@@ -11,6 +11,7 @@
 	 - 캘린더 날짜 선택 시 스케쥴러 연동 : Single 또는 multiple day
 	 - Toast notification 알림 재설정
     	 - Known issue : 바로가기 추가 후 다시 켰을 때 알림 오지 않는 경우 있음 (해결 필요). 임시로 한번 더 다시 켜주면 정상 적용..
+		 - 정상 운용 전까지 `AlertControl`로 교체
   	 - 버그 수정 : `Snooze` 적용 안되는 현상, 반복 일정 `Dismiss` 불가 현상 수정
   4. 간트 기능 업데이트
      - 유저 편의성 업데이트 : 리소스 최적화

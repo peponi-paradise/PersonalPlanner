@@ -1,8 +1,8 @@
 ﻿using DevExpress.XtraBars.Docking2010.Views.Widget;
 using DevExpress.XtraBars.Navigation;
-using DevExpress.XtraBars.ToastNotifications;
 using DevExpress.XtraEditors;
 using PersonalPlanner.Data;
+using PersonalPlanner.Define;
 using PersonalPlanner.GUI.Components;
 using PersonalPlanner.GUI.Forms;
 using System;
@@ -10,7 +10,6 @@ using System.Drawing;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
-using System.Xml;
 
 namespace PersonalPlanner.GUI.Frame
 {
@@ -23,8 +22,7 @@ namespace PersonalPlanner.GUI.Frame
          -------------------------------------------*/
 
         private readonly SynchronizationContext SyncContext;
-        private ToastNotificationsManager NotificationsManager;
-        private bool ShortcutAdded = false;
+        private NotificationData NotificationData;
 
         /*-------------------------------------------
          *
@@ -58,10 +56,6 @@ namespace PersonalPlanner.GUI.Frame
             LoadingForm.SetProgress("Init Gantt...");
             InitGantts();
             LoadingForm.SetProgress("Init Gantt Done...");
-
-            LoadingForm.SetProgress("Check Application Shortcut...");
-            CheckShortcut();
-            LoadingForm.SetProgress("Check Application Shortcut Done...");
 
             LoadingForm.SetProgress("Connecting User Events...");
             ConnectingUserEvents();
@@ -178,30 +172,6 @@ namespace PersonalPlanner.GUI.Frame
             else if (e.Document == CalendarDoc) CalendarDoc = null;
         }
 
-        private void NotificationsManager_UpdateToastContent(object sender, DevExpress.XtraBars.ToastNotifications.UpdateToastContentEventArgs e)
-        {
-            XmlDocument doc = e.ToastContent;
-            XmlNode bindingNode = doc.GetElementsByTagName("binding").Item(0);
-            if (bindingNode != null)
-            {
-                XmlElement group = doc.CreateElement("group");
-                bindingNode.AppendChild(group);
-
-                XmlElement subGroup = doc.CreateElement("subgroup");
-                group.AppendChild(subGroup);
-
-                XmlElement text = doc.CreateElement("text");
-                subGroup.AppendChild(text);
-                text.SetAttribute("hint-style", "base");
-                text.InnerText = "https://github.com/peponi-paradise";
-
-                text = doc.CreateElement("text");
-                subGroup.AppendChild(text);
-                text.SetAttribute("hint-style", "captionSubtle");
-                text.InnerText = "https://peponi-paradise.tistory.com/";
-            }
-        }
-
         /*-------------------------------------------
          *
          *      Private functions
@@ -212,13 +182,9 @@ namespace PersonalPlanner.GUI.Frame
         {
             base.OnShown(e);
 
-            if (ShortcutAdded) { RestartSW(); return; }
-
             this.Resize += MainFrame_Resized;
             this.Move += MainFrame_Move;
             this.FormClosing += MainFrame_FormClosing;
-
-            NotificationsManager.UpdateToastContent += NotificationsManager_UpdateToastContent;
         }
 
         private void ConnectingUserEvents()

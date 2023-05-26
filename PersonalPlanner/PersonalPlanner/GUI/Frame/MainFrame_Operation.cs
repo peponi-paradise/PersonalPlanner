@@ -1,13 +1,13 @@
-﻿using DevExpress.Data;
-using DevExpress.LookAndFeel;
+﻿using DevExpress.LookAndFeel;
 using DevExpress.XtraBars.Docking2010.Views.Widget;
 using DevExpress.XtraEditors;
 using DevExpress.XtraScheduler;
 using PersonalPlanner.Data;
+using PersonalPlanner.Define;
 using PersonalPlanner.GUI.Forms;
 using PersonalPlanner.Utility.GUI;
 using PersonalPlanner.Utility.Windows;
-using System.Diagnostics;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
@@ -29,16 +29,16 @@ namespace PersonalPlanner.GUI.Frame
             SetOverFlowButton();
             DevExpress.XtraBars.Helpers.SkinHelper.InitSkinGallery(SkinGalleryEdit);
             DevExpress.XtraBars.Helpers.SkinHelper.InitSkinPaletteGallery(SkinPaletteGalleryEdit);
+            UserLookAndFeel.Default.StyleChanged += SkinChanged;
             foreach (var item in SkinGalleryEdit.Properties.Gallery.GetAllItems())
             {
                 if (item.Caption.Contains("Compact")) item.Visible = false;
             }
 
-            NotificationsManager = new DevExpress.XtraBars.ToastNotifications.ToastNotificationsManager(this.components);
-            NotificationsManager.CreateApplicationShortcut = DevExpress.Utils.DefaultBoolean.False;
-            NotificationsManager.ApplicationId = "bc39c8f2-c49c-4eee-9f2c-9326fa2ab3bc";
-            NotificationsManager.Notifications.Add(new DevExpress.XtraBars.ToastNotifications.ToastNotification("ee091f24-ae4c-4f95-8ad1-73e17f8f4076", null, null, null, null, null, null, "", "", "", null, DevExpress.XtraBars.ToastNotifications.ToastNotificationSound.Default, DevExpress.XtraBars.ToastNotifications.ToastNotificationDuration.Long, null, DevExpress.XtraBars.ToastNotifications.AppLogoCrop.Default, DevExpress.XtraBars.ToastNotifications.ToastNotificationTemplate.Generic));
+            InitNotification();
         }
+
+        private void SkinChanged(object sender, System.EventArgs e) => SetOverFlowButton();
 
         private void SetOverFlowButton()
         {
@@ -51,6 +51,7 @@ namespace PersonalPlanner.GUI.Frame
 
             Navigation.HtmlTemplates.FooterOverflowButton.Template = html;
             Navigation.HtmlTemplates.FooterOverflowButton.Styles = css;
+            Navigation.Update();
         }
 
         private void CheckSkinPaletteColor()
@@ -218,7 +219,7 @@ namespace PersonalPlanner.GUI.Frame
             else return false;
         }
 
-        private void SetDocumentBorderColor(Document doc, Color color)
+        private void SetDocumentBorderColor(Document doc, System.Drawing.Color color)
         {
             doc.AppearanceCaption.BackColor = color;
             doc.AppearanceCaption.BorderColor = color;
@@ -226,31 +227,52 @@ namespace PersonalPlanner.GUI.Frame
 
         /*-------------------------------------------
          *
-         *      Shortcut
+         *      Notification
          *
          -------------------------------------------*/
 
-        private void CheckShortcut()
+        private void InitNotification()
         {
-            if (!ShellHelper.IsApplicationShortcutExist(Application.ProductName))
+            NotificationData = new NotificationData()
             {
-                AddShortcut();
-                ShortcutAdded = true;
+                Title = "Personal Planner",
+                TitleImageSource = ImageCollection["shortdate"],
+                TitlePinImageSource = ImageCollection["unpinbutton"],
+                TitleCloseImageSource = ImageCollection["delete"],
+                Caption = "Caption",
+                DescriptionImageSource = ImageCollection["shortdate"],
+                Description1 = "Description1",
+                Description2 = "Description2",
+                FooterUrl1 = "https://github.com/peponi-paradise/",
+                FooterUrl2 = "https://peponi-paradise.tistory.com/",
+                Copyright = $"©ClockStrikes, {DateTime.Now.Year}",
+            };
+            NotificationWindow.BeforeFormShow += NotificationWindow_BeforeFormShow;
+            NotificationWindow.HtmlElementMouseClick += NotificationWindow_HtmlElementMouseClick;
+            NotificationWindow.FormClosing += NotificationWindow_FormClosing;
+            NotificationWindow.HtmlTemplate.Template += File.ReadAllText($@"{Application.StartupPath}\Assets\Notification.html");
+            NotificationWindow.HtmlTemplate.Styles += File.ReadAllText($@"{Application.StartupPath}\Assets\Notification.css");
+        }
+
+        private void NotificationWindow_FormClosing(object sender, DevExpress.XtraBars.Alerter.AlertFormClosingEventArgs e)
+        {
+            NotificationData.TitlePinImageSource = ImageCollection["unpinbutton"];
+        }
+
+        private void NotificationWindow_HtmlElementMouseClick(object sender, DevExpress.XtraBars.Alerter.AlertHtmlElementMouseEventArgs e)
+        {
+            if (e.ElementId == "pinButton")
+            {
+                e.HtmlPopup.Pinned = !e.HtmlPopup.Pinned;
+                if (e.HtmlPopup.Pinned) NotificationData.TitlePinImageSource = ImageCollection["pinbutton"];
+                else NotificationData.TitlePinImageSource = ImageCollection["unpinbutton"];
             }
+            else if (e.ElementId == "closeButton") e.HtmlPopup.Close();
         }
 
-        private void AddShortcut()
+        private void NotificationWindow_BeforeFormShow(object sender, DevExpress.XtraBars.Alerter.AlertFormEventArgs e)
         {
-            ShellHelper.TryCreateShortcut(
-                            applicationId: NotificationsManager.ApplicationId,
-                            name: Application.ProductName);
-        }
-
-        private void RestartSW()
-        {
-            XtraMessageBox.Show("Initial settings done.\r\nClick OK to continue...", "Restart SW");
-            Process.Start(Application.StartupPath + "WatchDog.exe", new string[] { Process.GetCurrentProcess().Id.ToString(), Application.ExecutablePath });
-            Application.Exit();
+            e.HtmlPopup.DataContext = NotificationData;
         }
     }
 }
