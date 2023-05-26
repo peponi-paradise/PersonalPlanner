@@ -1,22 +1,14 @@
-﻿using DevExpress.CodeParser;
-using DevExpress.Utils;
-using DevExpress.XtraScheduler;
+﻿using DevExpress.XtraScheduler;
 using DevExpress.XtraScheduler.Forms;
 using System;
 
-namespace DXApplication1
+namespace PersonalPlanner.GUI.Forms
 {
-    public class CustomReminderForm : RemindersForm
+    public class CustomRemindersForm : RemindersForm
     {
         /*-------------------------------------------
          *
          *      Events
-         *
-         -------------------------------------------*/
-
-        /*-------------------------------------------
-         *
-         *      Public members
          *
          -------------------------------------------*/
 
@@ -30,6 +22,12 @@ namespace DXApplication1
 
         /*-------------------------------------------
          *
+         *      Public members
+         *
+         -------------------------------------------*/
+
+        /*-------------------------------------------
+         *
          *      Private members
          *
          -------------------------------------------*/
@@ -40,30 +38,29 @@ namespace DXApplication1
          *
          -------------------------------------------*/
 
-        public CustomReminderForm(SchedulerControl schedulerControl) : base(schedulerControl)
+        public CustomRemindersForm(SchedulerControl schedulerControl) : base(schedulerControl)
         {
-            //btnDismiss.Click += BtnDismiss_Click;
-            btnDismissAll.Click += BtnDismissAll_Click;
-            btnSnooze.Click += BtnSnooze_Click;
         }
 
-        private void BtnSnooze_Click(object sender, System.EventArgs e)
+        /*-------------------------------------------
+         *
+         *      Event functions
+         *
+         -------------------------------------------*/
+
+        protected override void btnSnooze_Click(object sender, EventArgs e)
         {
             var items = GetSelectedReminders();
             TimeSpan span = (TimeSpan)cbSnooze.EditValue;
             SnoozeOccurred?.Invoke(items, span);
+            base.btnSnooze_Click(sender, e);
         }
 
-        private void BtnDismissAll_Click(object sender, System.EventArgs e)
+        protected override void btnDismissAll_Click(object sender, EventArgs e)
         {
-            var items = base.GetReminders();
+            var items = GetReminders();
             DismissOccurred?.Invoke(items);
-        }
-
-        private void BtnDismiss_Click(object sender, System.EventArgs e)
-        {
-            var items = base.GetSelectedReminders();
-            DismissOccurred?.Invoke(items);
+            base.btnDismissAll_Click(sender, e);
         }
 
         protected override void btnDismiss_Click(object sender, EventArgs e)
@@ -72,12 +69,6 @@ namespace DXApplication1
             DismissOccurred?.Invoke(items);
             base.btnDismiss_Click(sender, e);
         }
-
-        /*-------------------------------------------
-         *
-         *      Event functions
-         *
-         -------------------------------------------*/
 
         /*-------------------------------------------
          *

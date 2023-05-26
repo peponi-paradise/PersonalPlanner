@@ -8,7 +8,9 @@ using PersonalPlanner.Data;
 using PersonalPlanner.GUI.Components;
 using PersonalPlanner.GUI.Forms;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace PersonalPlanner.GUI.Frame
@@ -38,6 +40,9 @@ namespace PersonalPlanner.GUI.Frame
         private DateNavigator WidgetNavigator;
         private Document SchedulerDoc;
         private Document CalendarDoc;
+
+        private List<(string Name, DateTime Time)> DismissList = new List<(string Name, DateTime Time)>();
+        private List<(string Name, System.Timers.Timer Timer)> SnoozeList = new List<(string Name, System.Timers.Timer Timer)>();
 
         /*-------------------------------------------
          *
@@ -132,6 +137,25 @@ namespace PersonalPlanner.GUI.Frame
 
         private void MainScheduler_RemindersFormShowing(object sender, DevExpress.XtraScheduler.RemindersFormEventArgs e)
         {
+            e.Handled = true;
+            int handledCount = 0;
+            foreach (ReminderAlertNotification item in e.AlertNotifications)
+            {
+                if (item.Handled) handledCount++;
+            }
+            if (handledCount == e.AlertNotifications.Count)
+            {
+                foreach (ReminderAlertNotification item in e.AlertNotifications) item.Handled = false;
+                return;
+            }
+
+            ReminderAlertNotificationCollection copied = new ReminderAlertNotificationCollection();
+            foreach (ReminderAlertNotification item in e.AlertNotifications)
+            {
+                if (!item.Handled) copied.Add(item);
+            }
+            foreach (ReminderAlertNotification item in e.AlertNotifications) item.Handled = false;
+
             if (ShellHelper.IsApplicationShortcutExist(Application.ProductName))
             {
                 NotificationsManager.Notifications[0].AttributionText = $"©ClockStrikes, {DateTime.Now.Year}";
@@ -143,6 +167,75 @@ namespace PersonalPlanner.GUI.Frame
                     NotificationsManager.ShowNotification(NotificationsManager.Notifications[0]);
                 }
             }
+
+            CustomRemindersForm remindersForm = new CustomRemindersForm(MainScheduler);
+            var args = new ReminderEventArgs(copied);
+            remindersForm.SnoozeOccurred += RemindersForm_SnoozeOccurred;
+            remindersForm.DismissOccurred += RemindersForm_DismissOccurred;
+            remindersForm.OnReminderAlert(args);
+            if (remindersForm.WindowState == FormWindowState.Minimized) remindersForm.WindowState = FormWindowState.Normal;
+            remindersForm.BringToFront();
+        }
+
+        private void RemindersForm_SnoozeOccurred(ReminderCollection reminders, TimeSpan span)
+        {
+            foreach (var item in reminders)
+            {
+                System.Timers.Timer timer = new System.Timers.Timer();
+                timer.Interval = span.TotalMilliseconds;
+                timer.Elapsed += (object sender, ElapsedEventArgs e) => DismissTimer_Elapsed(sender, e, item.Subject);
+                timer.Start();
+                SnoozeList.Add((item.Subject, timer));
+            }
+        }
+
+        private void RemindersForm_DismissOccurred(ReminderCollection reminders)
+        {
+            foreach (var item in reminders)
+            {
+                if (item.Appointment.IsRecurring) DismissList.Add((item.Subject, item.AlertTime));
+            }
+        }
+
+        private void DismissTimer_Elapsed(object sender, ElapsedEventArgs e, string subject)
+        {
+            var item = SnoozeList.Find(x => x.Name == subject);
+            SnoozeList.Remove(item);
+            (sender as System.Timers.Timer).Stop();
+        }
+
+        private void MainSchedulerDataStorage_ReminderAlert(object sender, ReminderEventArgs e)
+        {
+            foreach (var item in SnoozeList)
+            {
+                var result = AlertContains(item.Name, e.AlertNotifications);
+                if (result.isFound)
+                {
+                    result.notification.Handled = true;
+                    result.notification.Reminder.Snooze(TimeSpan.Zero);
+                }
+            }
+
+            List<(string, DateTime)> dismissRemoveList = new List<(string, DateTime)>();
+            for (int i = 0; i < DismissList.Count; i++)
+            {
+                var item = DismissList[i];
+                var result = AlertContains(item.Name, e.AlertNotifications);
+                if (result.isFound)
+                {
+                    if (!result.notification.Handled)
+                    {
+                        if (item.Time >= result.notification.Reminder.AlertTime)
+                        {
+                            result.notification.Handled = true;
+                            result.notification.Reminder.Snooze(TimeSpan.Zero);
+                        }
+                        else item.Time = result.notification.Reminder.AlertTime;
+                    }
+                }
+                else dismissRemoveList.Add(item);
+            }
+            foreach (var item in dismissRemoveList) DismissList.Remove(item);
         }
 
         private void AppointmentLabelButton_Click(object sender, DevExpress.Utils.ContextItemClickEventArgs e) => OpenLabelEditForm();
@@ -267,8 +360,8 @@ namespace PersonalPlanner.GUI.Frame
         private void InitScheduler()
         {
             //MainSchedulerDataStorage.AppointmentDependencies.AutoReload = true;
-            //MainSchedulerDataStorage.Appointments.Labels.Clear();
             MainSchedulerDataStorage.Appointments.ResourceSharing = true;
+            MainSchedulerDataStorage.ReminderAlert += MainSchedulerDataStorage_ReminderAlert;
 
             MainScheduler.DateNavigationBar.CalendarButton.Show = true;
             MainScheduler.DateNavigationBar.ShowTodayButton = true;
@@ -336,6 +429,23 @@ namespace PersonalPlanner.GUI.Frame
             SchedulerContainer.Controls.Add(MainScheduler);
             Navigation.Controls.Add(SchedulerContainer);
             Scheduler.ContentContainer = SchedulerContainer;
+        }
+
+        private (bool isFound, ReminderAlertNotification notification) AlertContains(string subject, ReminderAlertNotificationCollection collection)
+        {
+            bool isFound = false;
+            foreach (ReminderAlertNotification notification in collection)
+            {
+                if (!notification.Handled)
+                {
+                    if (notification.ActualAppointment.Subject == subject)
+                    {
+                        isFound = true;
+                        return (isFound, notification);
+                    }
+                }
+            }
+            return (isFound, null);
         }
     }
 }

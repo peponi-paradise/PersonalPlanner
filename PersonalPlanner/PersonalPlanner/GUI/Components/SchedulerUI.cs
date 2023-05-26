@@ -44,6 +44,7 @@ namespace PersonalPlanner.GUI.Components
         {
             InitializeComponent();
             schedulerControl.UseDirectXPaint = DevExpress.Utils.DefaultBoolean.True;
+            schedulerControl.OptionsBehavior.RemindersFormDefaultAction = RemindersFormDefaultAction.SnoozeAll;
             Panel.Controls.Add(schedulerControl);
         }
 
