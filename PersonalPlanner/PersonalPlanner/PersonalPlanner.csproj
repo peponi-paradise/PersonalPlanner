@@ -14,7 +14,7 @@ https://github.com/peponi-paradise</Description>
     <AssemblyVersion>1.1.0.5</AssemblyVersion>
     <FileVersion>1.1.0.5</FileVersion>
     <Platforms>AnyCPU;x64</Platforms>
-    <ApplicationIcon>ShortDate.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\ShortDate.ico</ApplicationIcon>
     <PackageProjectUrl>https://peponi-paradise.tistory.com</PackageProjectUrl>
     <Company>https://peponi-paradise.tistory.com</Company>
     <Authors>ClockStrikes</Authors>
@@ -30,7 +30,27 @@ https://github.com/peponi-paradise</Description>
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Actions_Add.svg" />
+    <None Remove="Assets\Actions_Calendar.svg" />
+    <None Remove="Assets\Actions_Info.svg" />
+    <None Remove="Assets\Actions_Remove.svg" />
+    <None Remove="Assets\BO_Note.svg" />
+    <None Remove="Assets\ChangeFontStyle.svg" />
+    <None Remove="Assets\ChartType_Gantt.svg" />
+    <None Remove="Assets\Delete.svg" />
     <None Remove="Assets\MainFrameOverFlowButton.html" />
+    <None Remove="Assets\MainFrameOverFlowButtonDarkMode.css" />
+    <None Remove="Assets\MainFrameOverFlowButtonLightMode.css" />
+    <None Remove="Assets\Notification.css" />
+    <None Remove="Assets\Notification.html" />
+    <None Remove="Assets\PageColor.svg" />
+    <None Remove="Assets\PinButton.svg" />
+    <None Remove="Assets\ShortDate.svg" />
+    <None Remove="Assets\UnpinButton.svg" />
+    <None Remove="Assets\WorkingHours.svg" />
+    <None Remove="Assets\Zoom.svg" />
+    <None Remove="Assets\ZoomIn.svg" />
+    <None Remove="Assets\ZoomOut.svg" />
     <None Remove="Calendar.ics" />
     <None Remove="Dev.Test\GanttTestForm.resx~RF94346.TMP" />
   </ItemGroup>
@@ -48,15 +68,78 @@ https://github.com/peponi-paradise</Description>
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assets\MainFrameOverFlowButton.html">
+    <EmbeddedResource Include="Assets\MainFrameOverFlowButton.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </EmbeddedResource>
     <Content Include="Data\Calendar.ics">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="ShortDate.ico">
+    <Content Include="Assets\ShortDate.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Actions_Add.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Actions_Calendar.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Actions_Info.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Actions_Remove.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\BO_Note.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\ChangeFontStyle.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\ChartType_Gantt.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Delete.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\MainFrameOverFlowButtonDarkMode.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\MainFrameOverFlowButtonLightMode.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Notification.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Notification.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\PageColor.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\PinButton.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\ShortDate.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\UnpinButton.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\WorkingHours.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Zoom.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\ZoomIn.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\ZoomOut.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -85,12 +168,6 @@ https://github.com/peponi-paradise</Description>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Assets\Notification.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\Notification.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Legacy\Asset\appointment1.PNG">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
@@ -129,12 +206,6 @@ https://github.com/peponi-paradise</Description>
     </None>
     <None Update="Legacy\Asset\GanttWindow.PNG">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\MainFrameOverFlowButtonDarkMode.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\MainFrameOverFlowButtonLightMode.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Legacy\Asset\MemoWindow.PNG">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -231,6 +302,7 @@ https://github.com/peponi-paradise</Description>
 
   <ItemGroup>
     <Folder Include="Dev.Test\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
 
 </Project>

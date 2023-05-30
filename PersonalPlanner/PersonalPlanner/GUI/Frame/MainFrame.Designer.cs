@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -44,16 +49,11 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraBars.Navigation.AccordionContextButton accordionContextButton6 = new DevExpress.XtraBars.Navigation.AccordionContextButton();
             DevExpress.XtraBars.Navigation.AccordionContextButton accordionContextButton1 = new DevExpress.XtraBars.Navigation.AccordionContextButton();
             DevExpress.XtraBars.Navigation.AccordionContextButton accordionContextButton2 = new DevExpress.XtraBars.Navigation.AccordionContextButton();
-            DevExpress.XtraBars.Navigation.AccordionContextButton accordionContextButton3 = new DevExpress.XtraBars.Navigation.AccordionContextButton();
-            DevExpress.XtraBars.Navigation.AccordionContextButton accordionContextButton4 = new DevExpress.XtraBars.Navigation.AccordionContextButton();
-            DevExpress.XtraBars.Navigation.AccordionContextButton accordionContextButton5 = new DevExpress.XtraBars.Navigation.AccordionContextButton();
+            DevExpress.XtraBars.Navigation.AccordionContextButton accordionContextButton7 = new DevExpress.XtraBars.Navigation.AccordionContextButton();
+            DevExpress.XtraBars.Navigation.AccordionContextButton accordionContextButton8 = new DevExpress.XtraBars.Navigation.AccordionContextButton();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrame));
             ViewContainer = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             Navigation = new Components.CustomAccordionControl();
@@ -186,7 +186,7 @@
             SkinGalleryEdit.Location = new System.Drawing.Point(137, 120);
             SkinGalleryEdit.MenuManager = FormManager;
             SkinGalleryEdit.Name = "SkinGalleryEdit";
-            SkinGalleryEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default) });
+            SkinGalleryEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default) });
             SkinGalleryEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             SkinGalleryEdit.Size = new System.Drawing.Size(83, 20);
             SkinGalleryEdit.TabIndex = 15;
@@ -202,7 +202,7 @@
             SkinPaletteGalleryEdit.Location = new System.Drawing.Point(137, 150);
             SkinPaletteGalleryEdit.MenuManager = FormManager;
             SkinPaletteGalleryEdit.Name = "SkinPaletteGalleryEdit";
-            SkinPaletteGalleryEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default) });
+            SkinPaletteGalleryEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default) });
             SkinPaletteGalleryEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             SkinPaletteGalleryEdit.Size = new System.Drawing.Size(83, 20);
             SkinPaletteGalleryEdit.TabIndex = 19;
@@ -213,7 +213,7 @@
             WorkingTimeStart.Location = new System.Drawing.Point(137, 240);
             WorkingTimeStart.MenuManager = FormManager;
             WorkingTimeStart.Name = "WorkingTimeStart";
-            WorkingTimeStart.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default) });
+            WorkingTimeStart.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default) });
             WorkingTimeStart.Properties.MaskSettings.Set("mask", "hh:mm:ss");
             WorkingTimeStart.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             WorkingTimeStart.Size = new System.Drawing.Size(83, 20);
@@ -225,7 +225,7 @@
             WorkingTimeEnd.Location = new System.Drawing.Point(137, 270);
             WorkingTimeEnd.MenuManager = FormManager;
             WorkingTimeEnd.Name = "WorkingTimeEnd";
-            WorkingTimeEnd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default) });
+            WorkingTimeEnd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default) });
             WorkingTimeEnd.Properties.MaskSettings.Set("mask", "hh:mm:ss");
             WorkingTimeEnd.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             WorkingTimeEnd.Size = new System.Drawing.Size(83, 20);
@@ -244,12 +244,12 @@
             Calendar.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             Calendar.Appearance.Normal.Options.UseFont = true;
             Calendar.ContentContainer = CalendarContainer;
-            accordionContextButton1.AlignmentOptions.Panel = DevExpress.Utils.ContextItemPanel.Center;
-            accordionContextButton1.AlignmentOptions.Position = DevExpress.Utils.ContextItemPosition.Far;
-            accordionContextButton1.Id = new System.Guid("26839f67-5c88-4a5a-b725-1f5741ff34bf");
-            accordionContextButton1.ImageOptionsCollection.ItemNormal.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("resource.SvgImage");
-            accordionContextButton1.Name = "CalendarShowButton";
-            Calendar.ContextButtons.Add(accordionContextButton1);
+            accordionContextButton6.AlignmentOptions.Panel = DevExpress.Utils.ContextItemPanel.Center;
+            accordionContextButton6.AlignmentOptions.Position = DevExpress.Utils.ContextItemPosition.Far;
+            accordionContextButton6.Id = new System.Guid("26839f67-5c88-4a5a-b725-1f5741ff34bf");
+            accordionContextButton6.ImageOptionsCollection.ItemNormal.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("resource.SvgImage");
+            accordionContextButton6.Name = "CalendarShowButton";
+            Calendar.ContextButtons.Add(accordionContextButton6);
             Calendar.Expanded = true;
             Calendar.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("Calendar.ImageOptions.SvgImage");
             Calendar.Name = "Calendar";
@@ -266,12 +266,12 @@
             Scheduler.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             Scheduler.Appearance.Normal.Options.UseFont = true;
             Scheduler.ContentContainer = SchedulerContainer;
-            accordionContextButton2.AlignmentOptions.Panel = DevExpress.Utils.ContextItemPanel.Center;
-            accordionContextButton2.AlignmentOptions.Position = DevExpress.Utils.ContextItemPosition.Far;
-            accordionContextButton2.Id = new System.Guid("3b025ea0-260a-422b-8108-c70efe634387");
-            accordionContextButton2.ImageOptionsCollection.ItemNormal.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("resource.SvgImage1");
-            accordionContextButton2.Name = "SchedulerShowButton";
-            Scheduler.ContextButtons.Add(accordionContextButton2);
+            accordionContextButton1.AlignmentOptions.Panel = DevExpress.Utils.ContextItemPanel.Center;
+            accordionContextButton1.AlignmentOptions.Position = DevExpress.Utils.ContextItemPosition.Far;
+            accordionContextButton1.Id = new System.Guid("3b025ea0-260a-422b-8108-c70efe634387");
+            accordionContextButton1.ImageOptionsCollection.ItemNormal.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("resource.SvgImage1");
+            accordionContextButton1.Name = "SchedulerShowButton";
+            Scheduler.ContextButtons.Add(accordionContextButton1);
             Scheduler.Expanded = true;
             Scheduler.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("Scheduler.ImageOptions.SvgImage");
             Scheduler.Name = "Scheduler";
@@ -420,12 +420,12 @@
             // 
             // AppointmentLabel
             // 
-            accordionContextButton3.AlignmentOptions.Panel = DevExpress.Utils.ContextItemPanel.Center;
-            accordionContextButton3.AlignmentOptions.Position = DevExpress.Utils.ContextItemPosition.Far;
-            accordionContextButton3.Id = new System.Guid("8c820bbc-8b27-4c41-b8d1-12486feb4c01");
-            accordionContextButton3.ImageOptionsCollection.ItemNormal.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("resource.SvgImage2");
-            accordionContextButton3.Name = "AppointmentLabelButton";
-            AppointmentLabel.ContextButtons.Add(accordionContextButton3);
+            accordionContextButton2.AlignmentOptions.Panel = DevExpress.Utils.ContextItemPanel.Center;
+            accordionContextButton2.AlignmentOptions.Position = DevExpress.Utils.ContextItemPosition.Far;
+            accordionContextButton2.Id = new System.Guid("8c820bbc-8b27-4c41-b8d1-12486feb4c01");
+            accordionContextButton2.ImageOptionsCollection.ItemNormal.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("resource.SvgImage2");
+            accordionContextButton2.Name = "AppointmentLabelButton";
+            AppointmentLabel.ContextButtons.Add(accordionContextButton2);
             AppointmentLabel.HeaderIndent = 5;
             AppointmentLabel.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("AppointmentLabel.ImageOptions.SvgImage");
             AppointmentLabel.Name = "AppointmentLabel";
@@ -434,12 +434,12 @@
             // 
             // AppointmentStatus
             // 
-            accordionContextButton4.AlignmentOptions.Panel = DevExpress.Utils.ContextItemPanel.Center;
-            accordionContextButton4.AlignmentOptions.Position = DevExpress.Utils.ContextItemPosition.Far;
-            accordionContextButton4.Id = new System.Guid("14fb0bc6-fd83-4e9e-9d08-73e6c1f405e0");
-            accordionContextButton4.ImageOptionsCollection.ItemNormal.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("resource.SvgImage3");
-            accordionContextButton4.Name = "AppointmentStatusButton";
-            AppointmentStatus.ContextButtons.Add(accordionContextButton4);
+            accordionContextButton7.AlignmentOptions.Panel = DevExpress.Utils.ContextItemPanel.Center;
+            accordionContextButton7.AlignmentOptions.Position = DevExpress.Utils.ContextItemPosition.Far;
+            accordionContextButton7.Id = new System.Guid("14fb0bc6-fd83-4e9e-9d08-73e6c1f405e0");
+            accordionContextButton7.ImageOptionsCollection.ItemNormal.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("resource.SvgImage3");
+            accordionContextButton7.Name = "AppointmentStatusButton";
+            AppointmentStatus.ContextButtons.Add(accordionContextButton7);
             AppointmentStatus.HeaderIndent = 5;
             AppointmentStatus.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("AppointmentStatus.ImageOptions.SvgImage");
             AppointmentStatus.Name = "AppointmentStatus";
@@ -448,12 +448,12 @@
             // 
             // AppointmentResource
             // 
-            accordionContextButton5.AlignmentOptions.Panel = DevExpress.Utils.ContextItemPanel.Center;
-            accordionContextButton5.AlignmentOptions.Position = DevExpress.Utils.ContextItemPosition.Far;
-            accordionContextButton5.Id = new System.Guid("a90590d1-09eb-42fd-a6f0-2c336204e2b9");
-            accordionContextButton5.ImageOptionsCollection.ItemNormal.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("resource.SvgImage4");
-            accordionContextButton5.Name = "AppointmentResourceButton";
-            AppointmentResource.ContextButtons.Add(accordionContextButton5);
+            accordionContextButton8.AlignmentOptions.Panel = DevExpress.Utils.ContextItemPanel.Center;
+            accordionContextButton8.AlignmentOptions.Position = DevExpress.Utils.ContextItemPosition.Far;
+            accordionContextButton8.Id = new System.Guid("a90590d1-09eb-42fd-a6f0-2c336204e2b9");
+            accordionContextButton8.ImageOptionsCollection.ItemNormal.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("resource.SvgImage4");
+            accordionContextButton8.Name = "AppointmentResourceButton";
+            AppointmentResource.ContextButtons.Add(accordionContextButton8);
             AppointmentResource.HeaderIndent = 5;
             AppointmentResource.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("AppointmentResource.ImageOptions.SvgImage");
             AppointmentResource.Name = "AppointmentResource";
@@ -494,10 +494,22 @@
             // 
             // ImageCollection
             // 
-            ImageCollection.Add("shortdate", "image://svgimages/spreadsheet/shortdate.svg");
-            ImageCollection.Add("pinbutton", "image://svgimages/dashboards/pinbutton.svg");
-            ImageCollection.Add("unpinbutton", "image://svgimages/dashboards/unpinbutton.svg");
-            ImageCollection.Add("delete", "image://svgimages/outlook inspired/delete.svg");
+            ImageCollection.Add("Actions_Add", (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ImageCollection.Actions_Add"));
+            ImageCollection.Add("Actions_Calendar", (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ImageCollection.Actions_Calendar"));
+            ImageCollection.Add("Actions_Info", (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ImageCollection.Actions_Info"));
+            ImageCollection.Add("Actions_Remove", (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ImageCollection.Actions_Remove"));
+            ImageCollection.Add("BO_Note", (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ImageCollection.BO_Note"));
+            ImageCollection.Add("ChangeFontStyle", (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ImageCollection.ChangeFontStyle"));
+            ImageCollection.Add("ChartType_Gantt", (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ImageCollection.ChartType_Gantt"));
+            ImageCollection.Add("Delete", (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ImageCollection.Delete"));
+            ImageCollection.Add("PageColor", (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ImageCollection.PageColor"));
+            ImageCollection.Add("PinButton", (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ImageCollection.PinButton"));
+            ImageCollection.Add("UnpinButton", (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ImageCollection.UnpinButton"));
+            ImageCollection.Add("ShortDate", (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ImageCollection.ShortDate"));
+            ImageCollection.Add("Zoom", (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ImageCollection.Zoom"));
+            ImageCollection.Add("ZoomIn", (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ImageCollection.ZoomIn"));
+            ImageCollection.Add("ZoomOut", (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ImageCollection.ZoomOut"));
+            ImageCollection.Add("WorkingHours", (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ImageCollection.WorkingHours"));
             // 
             // MainFrame
             // 

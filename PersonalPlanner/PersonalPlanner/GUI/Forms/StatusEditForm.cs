@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace PersonalPlanner.GUI.Forms
 {
-    public partial class StatusEditForm : System.Windows.Forms.Form
+    public partial class StatusEditForm : DevExpress.XtraEditors.XtraForm
     {
         /*-------------------------------------------
          *

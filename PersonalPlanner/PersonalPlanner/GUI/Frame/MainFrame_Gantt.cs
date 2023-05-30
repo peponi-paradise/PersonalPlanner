@@ -179,16 +179,16 @@ namespace PersonalPlanner.GUI.Frame
             GanttUI ganttUI = new GanttUI(ganttData);
             ganttUI.Name = $@"{nameof(GanttUI)}{ganttData.Name}";
             var doc = View.AddDocument(ganttUI, ganttData.Name) as Document;
-            doc.ImageOptions.ImageUri = "charttype_gantt;Size16x16";
+            doc.ImageOptions.ImageUri = "ChartType_Gantt;Size16x16";
             SetDocumentBorderColor(doc, ganttData.Color.ToDrawingColor());
             GanttDocs.Add(doc);
             GanttUIs.Add(ganttUI);
-            doc.CustomHeaderButtons.Add(new CustomHeaderButton("New Task", "actions_add;Size16x16", HorizontalImageLocation.Default, ButtonStyle.PushButton, "New Task", false, 0, 0));
-            doc.CustomHeaderButtons.Add(new CustomHeaderButton("Remove Task", "actions_remove;Size16x16", HorizontalImageLocation.Default, ButtonStyle.PushButton, "Remove Task", false, 1, 0));
-            doc.CustomHeaderButtons.Add(new CustomHeaderButton("Zoom In", "zoomin;Size16x16", HorizontalImageLocation.Default, ButtonStyle.PushButton, "Zoom In", false, 2, 1));
-            doc.CustomHeaderButtons.Add(new CustomHeaderButton("Zoom Out", "zoomout;Size16x16", HorizontalImageLocation.Default, ButtonStyle.PushButton, "Zoom Out", false, 3, 1));
-            doc.CustomHeaderButtons.Add(new CustomHeaderButton("Zoom Reset", "zoom;Size16x16", HorizontalImageLocation.Default, ButtonStyle.PushButton, "Zoom Reset", false, 4, 1));
-            doc.CustomHeaderButtons.Add(new CustomHeaderButton("BackgroundColor", "pagecolor;Size16x16", HorizontalImageLocation.Default, ButtonStyle.PushButton, "Change Widget Color", false, 5, 2));
+            doc.CustomHeaderButtons.Add(new CustomHeaderButton("New Task", "Actions_Add;Size16x16", HorizontalImageLocation.Default, ButtonStyle.PushButton, "New Task", false, 0, 0));
+            doc.CustomHeaderButtons.Add(new CustomHeaderButton("Remove Task", "Actions_Remove;Size16x16", HorizontalImageLocation.Default, ButtonStyle.PushButton, "Remove Task", false, 1, 0));
+            doc.CustomHeaderButtons.Add(new CustomHeaderButton("Zoom In", "ZoomIn;Size16x16", HorizontalImageLocation.Default, ButtonStyle.PushButton, "Zoom In", false, 2, 1));
+            doc.CustomHeaderButtons.Add(new CustomHeaderButton("Zoom Out", "ZoomOut;Size16x16", HorizontalImageLocation.Default, ButtonStyle.PushButton, "Zoom Out", false, 3, 1));
+            doc.CustomHeaderButtons.Add(new CustomHeaderButton("Zoom Reset", "Zoom;Size16x16", HorizontalImageLocation.Default, ButtonStyle.PushButton, "Zoom Reset", false, 4, 1));
+            doc.CustomHeaderButtons.Add(new CustomHeaderButton("BackgroundColor", "PageColor;Size16x16", HorizontalImageLocation.Default, ButtonStyle.PushButton, "Change Widget Color", false, 5, 2));
             doc.CustomButtonClick += GanttDoc_CustomButtonClick;
         }
 

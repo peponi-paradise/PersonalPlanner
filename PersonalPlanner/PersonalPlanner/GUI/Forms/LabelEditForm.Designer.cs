@@ -28,42 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.MainGridControl = new DevExpress.XtraGrid.GridControl();
-            this.MainGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            ((System.ComponentModel.ISupportInitialize)(this.MainGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainGridView)).BeginInit();
-            this.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LabelEditForm));
+            MainGridControl = new DevExpress.XtraGrid.GridControl();
+            MainGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            ((System.ComponentModel.ISupportInitialize)MainGridControl).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)MainGridView).BeginInit();
+            SuspendLayout();
             // 
             // MainGridControl
             // 
-            this.MainGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainGridControl.Location = new System.Drawing.Point(0, 0);
-            this.MainGridControl.MainView = this.MainGridView;
-            this.MainGridControl.Name = "MainGridControl";
-            this.MainGridControl.Size = new System.Drawing.Size(800, 450);
-            this.MainGridControl.TabIndex = 0;
-            this.MainGridControl.UseEmbeddedNavigator = true;
-            this.MainGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.MainGridView});
+            MainGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            MainGridControl.Location = new System.Drawing.Point(0, 0);
+            MainGridControl.MainView = MainGridView;
+            MainGridControl.Name = "MainGridControl";
+            MainGridControl.Size = new System.Drawing.Size(800, 450);
+            MainGridControl.TabIndex = 0;
+            MainGridControl.UseEmbeddedNavigator = true;
+            MainGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { MainGridView });
             // 
             // MainGridView
             // 
-            this.MainGridView.GridControl = this.MainGridControl;
-            this.MainGridView.Name = "MainGridView";
-            this.MainGridView.OptionsView.ShowGroupPanel = false;
+            MainGridView.GridControl = MainGridControl;
+            MainGridView.Name = "MainGridView";
+            MainGridView.OptionsView.ShowGroupPanel = false;
             // 
             // LabelEditForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.MainGridControl);
-            this.Name = "LabelEditForm";
-            this.Text = "Label Editor";
-            ((System.ComponentModel.ISupportInitialize)(this.MainGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainGridView)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            ClientSize = new System.Drawing.Size(800, 450);
+            Controls.Add(MainGridControl);
+            IconOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("LabelEditForm.IconOptions.SvgImage");
+            Name = "LabelEditForm";
+            Text = "Label Editor";
+            ((System.ComponentModel.ISupportInitialize)MainGridControl).EndInit();
+            ((System.ComponentModel.ISupportInitialize)MainGridView).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion

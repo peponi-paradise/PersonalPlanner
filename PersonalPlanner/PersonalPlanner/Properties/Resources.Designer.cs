@@ -59,15 +59,5 @@ namespace PersonalPlanner.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   System.Byte[] 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        public static byte[] WorkingHours {
-            get {
-                object obj = ResourceManager.GetObject("WorkingHours", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }

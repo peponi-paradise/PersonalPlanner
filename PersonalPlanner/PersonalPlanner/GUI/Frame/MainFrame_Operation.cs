@@ -236,11 +236,11 @@ namespace PersonalPlanner.GUI.Frame
             NotificationData = new NotificationData()
             {
                 Title = "Personal Planner",
-                TitleImageSource = ImageCollection["shortdate"],
-                TitlePinImageSource = ImageCollection["unpinbutton"],
-                TitleCloseImageSource = ImageCollection["delete"],
+                TitleImageSource = ImageCollection["ShortDate"],
+                TitlePinImageSource = ImageCollection["UnpinButton"],
+                TitleCloseImageSource = ImageCollection["Delete"],
                 Caption = "Caption",
-                DescriptionImageSource = ImageCollection["shortdate"],
+                DescriptionImageSource = ImageCollection["ShortDate"],
                 Description1 = "Description1",
                 Description2 = "Description2",
                 FooterUrl1 = "https://github.com/peponi-paradise/",
@@ -256,7 +256,7 @@ namespace PersonalPlanner.GUI.Frame
 
         private void NotificationWindow_FormClosing(object sender, DevExpress.XtraBars.Alerter.AlertFormClosingEventArgs e)
         {
-            NotificationData.TitlePinImageSource = ImageCollection["unpinbutton"];
+            NotificationData.TitlePinImageSource = ImageCollection["UnpinButton"];
         }
 
         private void NotificationWindow_HtmlElementMouseClick(object sender, DevExpress.XtraBars.Alerter.AlertHtmlElementMouseEventArgs e)
@@ -264,8 +264,8 @@ namespace PersonalPlanner.GUI.Frame
             if (e.ElementId == "pinButton")
             {
                 e.HtmlPopup.Pinned = !e.HtmlPopup.Pinned;
-                if (e.HtmlPopup.Pinned) NotificationData.TitlePinImageSource = ImageCollection["pinbutton"];
-                else NotificationData.TitlePinImageSource = ImageCollection["unpinbutton"];
+                if (e.HtmlPopup.Pinned) NotificationData.TitlePinImageSource = ImageCollection["PinButton"];
+                else NotificationData.TitlePinImageSource = ImageCollection["UnpinButton"];
             }
             else if (e.ElementId == "closeButton") e.HtmlPopup.Close();
         }

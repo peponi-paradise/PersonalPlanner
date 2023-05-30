@@ -1,3 +1,12 @@
+- Version 1.1.0.6
+	1. GUI Bug fix
+		- ImageCollection 컴파일 시 이미지 라이브러리 누락 관계로 정적 이미지 로드로 변경
+		- 관련 이미지 로드 코드 수정
+	2. GUI update
+		- Label, Status, Resource 창 아이콘 추가
+
+<br>
+
 - Version 1.1.0.5
   1. GUI Change
      - 개별 Ribbon form -> 통합 Widget form으로 변경

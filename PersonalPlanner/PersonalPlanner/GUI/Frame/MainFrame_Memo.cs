@@ -167,12 +167,12 @@ namespace PersonalPlanner.GUI.Frame
             MemoUI memoUI = new MemoUI(memoData);
             memoUI.Name = $@"{nameof(MemoUI)}{memoData.Name}";
             var doc = View.AddDocument(memoUI, memoData.Name) as Document;
-            doc.ImageOptions.ImageUri = "bo_note;Size16x16";
+            doc.ImageOptions.ImageUri = "BO_Note;Size16x16";
             SetDocumentBorderColor(doc, memoData.BackColor.ToDrawingColor());
             MemoDocs.Add(doc);
             MemoUIs.Add(memoUI);
-            doc.CustomHeaderButtons.Add(new CustomHeaderButton("Font", "changefontstyle;Size16x16", HorizontalImageLocation.Default, ButtonStyle.PushButton, "Change Font Setting", false, 0, -1));
-            doc.CustomHeaderButtons.Add(new CustomHeaderButton("BackgroundColor", "pagecolor;Size16x16", HorizontalImageLocation.Default, ButtonStyle.PushButton, "Change Widget Color", false, 1, -1));
+            doc.CustomHeaderButtons.Add(new CustomHeaderButton("Font", "ChangeFontStyle;Size16x16", HorizontalImageLocation.Default, ButtonStyle.PushButton, "Change Font Setting", false, 0, -1));
+            doc.CustomHeaderButtons.Add(new CustomHeaderButton("BackgroundColor", "PageColor;Size16x16", HorizontalImageLocation.Default, ButtonStyle.PushButton, "Change Widget Color", false, 1, -1));
             doc.CustomButtonClick += MemoDoc_CustomButtonClick;
         }
 

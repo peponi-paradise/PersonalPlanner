@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace PersonalPlanner.GUI.Forms
 {
-    public partial class LabelEditForm : System.Windows.Forms.Form
+    public partial class LabelEditForm : DevExpress.XtraEditors.XtraForm
     {
         /*-------------------------------------------
          *

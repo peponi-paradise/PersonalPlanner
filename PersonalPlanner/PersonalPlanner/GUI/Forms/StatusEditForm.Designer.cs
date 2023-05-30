@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatusEditForm));
             MainGridControl = new DevExpress.XtraGrid.GridControl();
             MainGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)MainGridControl).BeginInit();
@@ -57,6 +58,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             ClientSize = new System.Drawing.Size(800, 450);
             Controls.Add(MainGridControl);
+            IconOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("StatusEditForm.IconOptions.SvgImage");
             Name = "StatusEditForm";
             Text = "Status Editor";
             ((System.ComponentModel.ISupportInitialize)MainGridControl).EndInit();

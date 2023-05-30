@@ -285,7 +285,7 @@ namespace PersonalPlanner.GUI.Frame
             WidgetNavigator.SchedulerControl = MainScheduler;
             WidgetNavigator.Name = name;
             var doc = View.AddDocument(WidgetNavigator, name) as Document;
-            doc.ImageOptions.ImageUri = "actions_calendar;Size16x16";
+            doc.ImageOptions.ImageUri = "Actions_Calendar;Size16x16";
             CalendarDoc = doc;
         }
 
@@ -293,7 +293,7 @@ namespace PersonalPlanner.GUI.Frame
         {
             SchedulerUI schedulerUI = new SchedulerUI(MainScheduler);
             var doc = View.AddDocument(schedulerUI, name) as Document;
-            doc.ImageOptions.ImageUri = "shortdate;Size16x16";
+            doc.ImageOptions.ImageUri = "ShortDate;Size16x16";
             doc.CustomHeaderButtons.Add(new CustomHeaderButton("Working Hours", "WorkingHours;Size16x16", HorizontalImageLocation.Default, ButtonStyle.CheckButton, "Show working hours only", false, 0, -1));
             doc.CustomHeaderButtons[0].Properties.Checked = GlobalData.Parameters.WorktimeShow;
             doc.CustomButtonChecked += Doc_CustomButtonChecked;
