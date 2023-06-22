@@ -12,3 +12,6 @@
 <br>
 
 - Latest version : 1.1.0.6
+
+- GitHub : [PersonalPlanner](https://github.com/peponi-paradise/PersonalPlanner)
+- Blog : [Peponi](https://peponi-paradise.tistory.com)
