@@ -14,4 +14,11 @@
 
 <br>
 
-- Latest version : 1.1.0.5
+- Latest version : 1.1.0.6
+
+
+### 2. NModbus4.Wrapper
+
+<br>
+
+- Latest version : 1.0.0.0
