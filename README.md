@@ -1,8 +1,5 @@
-## Project list
 
-<br>
-
-### 1. Personal planner
+# Personal planner
 
 <br>
 
@@ -15,10 +12,3 @@
 <br>
 
 - Latest version : 1.1.0.6
-
-
-### 2. NModbus4.Wrapper
-
-<br>
-
-- Latest version : 1.0.0.0
